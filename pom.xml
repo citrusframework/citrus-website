@@ -1,0 +1,314 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  
+  <groupId>com.consol.citrus</groupId>
+  <artifactId>citrus-website</artifactId>
+  <packaging>pom</packaging>
+  <version>2.7.6-SNAPSHOT</version>
+  <name>citrus-website</name>
+  <description>Citrus Test Framework Website Sources</description>
+  <url>https://www.citrusframework.org</url>
+  <inceptionYear>2008</inceptionYear>
+
+  <licenses>
+    <license>
+      <name>MIT License</name>
+      <url>https://opensource.org/licenses/MIT</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
+  <ciManagement>
+    <system>Jenkins</system>
+    <url>http://labs-build.consol.de/view/Citrus/</url>
+    <notifiers>
+      <notifier>
+        <type>mail</type>
+        <address>citrus-dev-l@consol.de</address>
+      </notifier>
+    </notifiers>
+  </ciManagement>
+
+  <developers>
+    <developer>
+      <id>christophd</id>
+      <name>Christoph Deppisch</name>
+      <email>citrus-dev-l@consol.de</email>
+      <organization>ConSol Software GmbH</organization>
+      <organizationUrl>http://www.consol.de/</organizationUrl>
+      <roles>
+        <role>Developer</role>
+      </roles>
+    </developer>
+    <developer>
+      <id>movchin</id>
+      <name>Michael Movchin</name>
+      <email>citrus-dev-l@consol.de</email>
+      <organization>ConSol Software GmbH</organization>
+      <organizationUrl>http://www.consol.de/</organizationUrl>
+      <roles>
+        <role>Web Developer</role>
+      </roles>
+    </developer>
+  </developers>
+
+  <scm>
+    <connection>scm:git:git@github.com:citrusframework/citrus-website.git</connection>
+    <developerConnection>scm:git:git@github.com/citrusframework/citrus-website.git</developerConnection>
+    <url>http://github.com/citrusframework/citrus-website.git</url>
+  </scm>
+
+  <organization>
+    <name>ConSol Software GmbH</name>
+    <url>http://www.consol.com/</url>
+  </organization>
+  
+  <mailingLists>
+    <mailingList>
+      <name>Project Announcements</name>
+    </mailingList>
+    <mailingList>
+      <name>Project Development List</name>
+      <post>dev@citrusframework.org</post>
+    </mailingList>
+    <mailingList>
+      <name>Project User List</name>
+      <post>user@citrusframework.org</post>
+    </mailingList>
+    <mailingList>
+      <name>Internal Project Development List</name>
+      <post>citrus-dev-l@consol.de</post>
+    </mailingList>
+  </mailingLists>
+  
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <site.path>/</site.path>
+    <site.url>https://www.citrusframework.org</site.url>
+    <citrus.version>2.7.6-SNAPSHOT</citrus.version>
+  </properties>
+  
+  <build>
+    <resources>
+      <resource>
+        <directory>${project.basedir}/src/main/site</directory>
+        <targetPath>${project.build.directory}/site</targetPath>
+        <includes>
+          <include>**/**</include>
+        </includes>
+      </resource>
+      <resource>
+        <directory>${project.basedir}/src/main/site</directory>
+        <targetPath>${project.build.directory}/site</targetPath>
+        <includes>
+          <include>_data/**</include>
+          <include>_docs/**</include>
+          <include>_posts/**</include>
+          <include>_includes/**</include>
+          <include>help/**</include>
+          <include>projects/**</include>
+          <include>index.html</include>
+          <include>_config.yml</include>
+          <include>latest_version.txt</include>
+        </includes>
+        <filtering>true</filtering>
+      </resource>
+    </resources>
+
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-release-plugin</artifactId>
+          <version>2.5.3</version>
+          <configuration>
+            <allowTimestampedSnapshots>true</allowTimestampedSnapshots>
+            <autoVersionSubmodules>true</autoVersionSubmodules>
+            <remoteTagging>true</remoteTagging>
+          </configuration>
+        </plugin>
+       <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>3.0.2</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-clean-plugin</artifactId>
+          <version>3.0.0</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.rat</groupId>
+          <artifactId>apache-rat-plugin</artifactId>
+          <version>0.12</version>
+          <configuration>
+            <includes>
+              <include>**/*.java</include>
+            </includes>
+            <excludeSubProjects>false</excludeSubProjects>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>build-helper-maven-plugin</artifactId>
+          <version>3.0.0</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-scm-plugin</artifactId>
+          <version>1.9.5</version>
+        </plugin>
+
+        <plugin>
+          <groupId>io.fabric8</groupId>
+          <artifactId>docker-maven-plugin</artifactId>
+          <version>0.22.1</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+
+    <!-- Default plugins for all modules -->
+    <plugins>
+      <plugin>
+        <groupId>io.fabric8</groupId>
+        <artifactId>docker-maven-plugin</artifactId>
+        <configuration>
+          <watchInterval>500</watchInterval>
+          <logDate>default</logDate>
+          <verbose>true</verbose>
+          <images>
+            <image>
+              <alias>jekyll</alias>
+              <name>jekyll/jekyll:3.1.6</name>
+              <run>
+                <namingStrategy>alias</namingStrategy>
+                <ports>
+                  <port>4000:4000</port>
+                </ports>
+                <volumes>
+                  <bind>
+                    <volume>${project.build.directory}/site:/srv/jekyll</volume>
+                  </bind>
+                </volumes>
+                <wait>
+                  <http>
+                    <url>http://localhost:4000</url>
+                    <method>GET</method>
+                    <status>200</status>
+                  </http>
+                  <time>60000</time>
+                  <shutdown>500</shutdown>
+                </wait>
+                <env>
+                  <POLLING>true</POLLING>
+                </env>
+                <log>
+                  <enabled>true</enabled>
+                  <color>green</color>
+                </log>
+              </run>
+            </image>
+          </images>
+        </configuration>
+        <executions>
+          <execution>
+            <id>start</id>
+            <phase>prepare-package</phase>
+            <goals>
+              <goal>start</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>stop</id>
+            <phase>package</phase>
+            <goals>
+              <goal>stop</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-resources-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>copy-site-sources</id>
+            <phase>package</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${project.build.directory}/checkout</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>${project.build.directory}/site/_site</directory>
+                  <includes>
+                    <include>**/**</include>
+                  </includes>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-scm-plugin</artifactId>
+        <configuration>
+          <connectionUrl>scm:git:git@github.com:citrusframework/citrusframework.github.io.git</connectionUrl>
+          <developerConnectionUrl>scm:git:git@github.com:citrusframework/citrusframework.github.io.git</developerConnectionUrl>
+          <scmVersion>master</scmVersion>
+          <scmVersionType>branch</scmVersionType>
+        </configuration>
+        <executions>
+          <execution>
+            <id>site-clone</id>
+            <phase>initialize</phase>
+            <goals>
+              <goal>checkout</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>site-add</id>
+            <phase>verify</phase>
+            <goals>
+              <goal>add</goal>
+            </goals>
+            <configuration>
+              <workingDirectory>${project.build.directory}/checkout</workingDirectory>
+              <includes>**/**</includes>
+            </configuration>
+          </execution>
+          <execution>
+            <id>site-push</id>
+            <phase>verify</phase>
+            <goals>
+              <goal>checkin</goal>
+            </goals>
+            <configuration>
+              <workingDirectory>${project.build.directory}/checkout</workingDirectory>
+              <message>Update reference manual</message>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.rat</groupId>
+        <artifactId>apache-rat-plugin</artifactId>
+      </plugin>
+    </plugins>
+    
+    <extensions>
+      <extension>
+        <groupId>org.apache.maven.wagon</groupId>
+        <artifactId>wagon-ssh-external</artifactId>
+        <version>2.7</version>
+      </extension>
+    </extensions>
+  </build>
+</project>
