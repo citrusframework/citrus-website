@@ -205,6 +205,7 @@
           <include>index.html</include>
           <include>_config.yml</include>
           <include>latest_version.txt</include>
+          <include>archetype-catalog.xml</include>
         </includes>
         <filtering>true</filtering>
       </resource>
@@ -1031,6 +1032,55 @@
             <configuration>
               <connectionUrl>scm:git:git@github.com:citrusframework/citrusframework.github.io.git</connectionUrl>
               <developerConnectionUrl>scm:git:git@github.com:citrusframework/citrusframework.github.io.git</developerConnectionUrl>
+              <scmVersion>master</scmVersion>
+              <scmVersionType>branch</scmVersionType>
+            </configuration>
+            <executions>
+              <execution>
+                <id>site-clone</id>
+                <phase>initialize</phase>
+                <goals>
+                  <goal>checkout</goal>
+                </goals>
+              </execution>
+              <execution>
+                <id>site-add</id>
+                <phase>verify</phase>
+                <goals>
+                  <goal>add</goal>
+                </goals>
+                <configuration>
+                  <workingDirectory>${project.build.directory}/checkout</workingDirectory>
+                  <includes>**/**</includes>
+                </configuration>
+              </execution>
+              <execution>
+                <id>site-push</id>
+                <phase>verify</phase>
+                <goals>
+                  <goal>checkin</goal>
+                </goals>
+                <configuration>
+                  <workingDirectory>${project.build.directory}/checkout</workingDirectory>
+                  <message>Update site content</message>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
+    <profile>
+      <id>release-gitlab</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-scm-plugin</artifactId>
+            <configuration>
+              <connectionUrl>scm:git:git@gitlab.consol.de:citrus/citrus-site.git</connectionUrl>
+              <developerConnectionUrl>scm:git:git@gitlab.consol.de:citrus/citrus-site.git</developerConnectionUrl>
               <scmVersion>master</scmVersion>
               <scmVersionType>branch</scmVersionType>
             </configuration>
