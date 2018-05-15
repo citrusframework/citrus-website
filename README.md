@@ -23,4 +23,38 @@ mvn docker:start
 
 You can now visit the Citrus site locally by pointing your browser to `http://localhost:4000`.
 
-It's just a Jekyll site, after all! :wink:
+## Write new posts
+
+The blog posts, release notes, samples and news are located as markdown files in `src/main/site/_posts`. You can add new posts here. You need to chose one of the following categories:
+
+* *blog*
+* *release*
+* *samples*
+
+Depending on what category you choose the post is rendered to different sections in the website:
+
+* [/news](https://citrusframework.github.io/news/)
+* [/releases](https://citrusframework.github.io/news/releases/)
+* [/samples](https://citrusframework.github.io/samples/)
+
+
+## Release to github pages
+
+This site is released as github pages using the `citrusframework` organisation [citrusframework.github.io](https://citrusframework.github.io). You can perform the release by calling
+
+```
+mvn clean resources:resources install -Prelease-github
+```
+
+This will checkout the github pages repository, copy all changes, commit all changes and push the changes to the repository.
+
+In case you want to review the changes made before pushing to the repository use `package` instead of `install`:
+
+```
+mvn clean resources:resources package -Prelease-github
+```
+
+This will checkout the github pages and perform all changes without committing and pushing the changes. So you can navigate to the checkout folder `target/checkout` and use your favorite
+git diff tool in order to see what has been changed.
+
+Have fun! It's just a Jekyll site, after all! :wink:
