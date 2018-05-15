@@ -33,7 +33,7 @@ Unfortunately the user authentication service is not ready yet and is not deploy
 login service your application is not able to work properly as each user interaction needs to be authenticated with foreign service calls first. 
 This means the foreign user login service needs to be simulated so users can explore your application in that test environment.
  
-![test-deployment.png](${site.path}img/citrus-simulator/test-deployment.png)
+![test-deployment.png](${site.path}/img/citrus-simulator/test-deployment.png)
  
 ### Spring Boot simulator 
  
@@ -149,7 +149,7 @@ You can build and run the simulator application from command line using the Grad
 You will see the application starting up. Usually you will see some console log output. The web server should start within seconds. Once the application is up and running
 you can open your browser and point to [http://localhost:8080](http://localhost:8080). You will see the simulator user interface.
 
-![dashboard.png](${site.path}img/citrus-simulator/dashboard.png)
+![dashboard.png](${site.path}/img/citrus-simulator/dashboard.png)
 
 You can access the simulated REST services on [http://localhost:8080/services/rest/](http://localhost:8080/services/rest/). Up to now we only have the default scenario so we constantly get `Http 404 NOT FOUND` responses. 
 Let's add some scenarios representing the user login service.
@@ -477,13 +477,13 @@ With the above test requests we triggered some activities on the simulator. Let'
 
 The simulator provides a web based Angular2 user interface so users can review the status and all activities on the simulator. We have already seen the dashboard that gives an overview of the simulator status:
 
-![dashboard.png](${site.path}img/citrus-simulator/dashboard.png)
+![dashboard.png](${site.path}/img/citrus-simulator/dashboard.png)
 
 In addition to that you can view detailed information available scenarios and their execution activity.
 
-![scenario_list.png](${site.path}img/citrus-simulator/scenario_list.png)
+![scenario_list.png](${site.path}/img/citrus-simulator/scenario_list.png)
 
-![scenario_activity.png](${site.path}img/citrus-simulator/scenario_activity.png)
+![scenario_activity.png](${site.path}/img/citrus-simulator/scenario_activity.png)
 
 ## Auto generate scenarios
 

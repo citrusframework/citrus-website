@@ -5,7 +5,7 @@
   <groupId>com.consol.citrus</groupId>
   <artifactId>citrus-website</artifactId>
   <packaging>pom</packaging>
-  <version>2.7.6-SNAPSHOT</version>
+  <version>1.0.5</version>
   <name>citrus-website</name>
   <description>Citrus Test Framework Website Sources</description>
   <url>https://www.citrusframework.org</url>
@@ -85,9 +85,9 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <site.path>/</site.path>
-    <site.url>https://www.citrusframework.org</site.url>
-    <citrus.version>2.7.6-SNAPSHOT</citrus.version>
+    <site.path/>
+    <site.url>https://citrusframework.github.io</site.url>
+    <citrus.version>2.7.5</citrus.version>
   </properties>
   
   <build>

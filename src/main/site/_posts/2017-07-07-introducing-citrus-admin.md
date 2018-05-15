@@ -41,14 +41,14 @@ You will see the application starting up. The web server should start within sec
 The administration web UI is able to open any Citrus project on your local machine. When opened you can display the project information such as the latest test results. In addition to that you are able 
 to view the Citrus components configured in the in the Spring application context. The web UI is also able to navigate to all test cases in your project. You can open the tests and execute them.
  
-![project-dashboard.png](${site.path}img/citrus-admin/project-dashboard.png)
+![project-dashboard.png](${site.path}/img/citrus-admin/project-dashboard.png)
 
 ## Edit configuration components
 
 One of the major goals in the web UI is to give new users an easier way to get started with the Citrus Spring configuration. All configuration components get loaded from the Spring application context. 
 You can view and edit those components such as Citrus endpoints via HTML forms:
 
-![config-endpoints.png](${site.path}img/citrus-admin/config-endpoints.png)
+![config-endpoints.png](${site.path}/img/citrus-admin/config-endpoints.png)
 
 In case you add new components or save changes to configuration items the administration web UI directly changes the Spring configuration files on your local machine in that particular project. Of course you can
 open the Spring configuration files in another editor (e.g. your favorite Java IDE) and review the changes made. In addition to that all configuration changes made from external editors are directly visible to the admin UI.
@@ -57,32 +57,32 @@ open the Spring configuration files in another editor (e.g. your favorite Java I
 
 You can see all available Citrus test cases in the opened project. The list of tests contains XML and Java DSL tests. 
 
-![test-list.png](${site.path}img/citrus-admin/test-list.png)
+![test-list.png](${site.path}/img/citrus-admin/test-list.png)
 
 When opening a particular test case the UI will display the test details to you. This includes all test actions, source code, log output and the latest test results.
 
-![test-info.png](${site.path}img/citrus-admin/test-info.png)
-![test-sources.png](${site.path}img/citrus-admin/test-sources.png)
+![test-info.png](${site.path}/img/citrus-admin/test-info.png)
+![test-sources.png](${site.path}/img/citrus-admin/test-sources.png)
 
 If you execute the test you will see the log output of that process and you will get a detailed access to all messages exchanged in that test run.
 
-![test-execute.png](${site.path}img/citrus-admin/test-execute.png)
+![test-execute.png](${site.path}/img/citrus-admin/test-execute.png)
 
 As you can see the test log output is forwarded to your browser. Also the test progress and result (success or failure) is tracked by the administration UI. 
 In the messages table you are able to review all messages (inbound/outbound) that were part of the test run.
 
-![test-messages.png](${site.path}img/citrus-admin/test-messages.png)
+![test-messages.png](${site.path}/img/citrus-admin/test-messages.png)
 
 ## Reporting
 
 The administration UI is able to read the test results in your project. Typically these are JUnit or TestNG reports that are generated from each test run. If present the UI will read and display detailed
 test results of the latest test run.
 
-![test-report.png](${site.path}img/citrus-admin/test-report.png)
+![test-report.png](${site.path}/img/citrus-admin/test-report.png)
 
 When a test case is failing for some reason exception and failure information will be provided.
 
-![test-results.png](${site.path}img/citrus-admin/test-results.png)
+![test-results.png](${site.path}/img/citrus-admin/test-results.png)
 
 The administration UI aims to give you an additional tooling for Citrus integration testing. The administration web UI is not there to eliminate your favorite IDE (IntelliJ, Eclipse or whatever)! The UI is a helping 
 instrument for getting in touch with Citrus and its concepts and works side by side with your local Java IDE as well as other text editors of your choice.

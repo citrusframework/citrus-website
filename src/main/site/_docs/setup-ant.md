@@ -32,7 +32,7 @@ installation instructions.
 
 Have a look at the folder structure I created for our new Citrus project
   
-![project_explorer.png](${site.path}img/tutorial/ant/project_explorer.png)
+![project_explorer.png](${site.path}/img/tutorial/ant/project_explorer.png)
   
 I created a simple Java project in Eclipse called *"citrus-sample"*. I manually added folders and files to the project 
 as follows. The Citrus project knows three source folders, that are also added to the Java build path as source folders:
@@ -146,7 +146,7 @@ prompted.
 Now that we have given all information for the test Citrus will create all test files automatically. Let us have a look 
 at the generated files.
 
-![created_test_files.png](${site.path}img/tutorial/ant/created_test_files.png)
+![created_test_files.png](${site.path}/img/tutorial/ant/created_test_files.png)
 
 The generated files are:
 

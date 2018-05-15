@@ -18,11 +18,11 @@ for the latest Citrus release version.
 
 ## Additional documentation material
 
-- [Quickstart Maven](${site.path}docs/setup-maven)
-- [Quickstart Gradle](${site.path}docs/setup-gradle)
-- [Quickstart Ant](${site.path}docs/setup-ant)
+- [Quickstart Maven](${site.path}/docs/setup-maven)
+- [Quickstart Gradle](${site.path}/docs/setup-gradle)
+- [Quickstart Ant](${site.path}/docs/setup-ant)
 - [Blog](http://labs.consol.de/tags/citrus)
-- [Java API](${site.path}apidocs/index.html)
+- [Java API](${site.path}/apidocs/index.html)
 - [Java Sources](http://www.github.com/christophd/citrus)
 
 
@@ -30,6 +30,6 @@ for the latest Citrus release version.
 
 In case you would like to checkout the Citrus code base and build Citrus yourself follow these instructions:
 
-- [Development quickstart](${site.path}docs/development)
-- [Coding conventions](${site.path}docs/conventions)
-- [How to contribute](${site.path}docs/contribute)
+- [Development quickstart](${site.path}/docs/development)
+- [Coding conventions](${site.path}/docs/conventions)
+- [How to contribute](${site.path}/docs/contribute)
