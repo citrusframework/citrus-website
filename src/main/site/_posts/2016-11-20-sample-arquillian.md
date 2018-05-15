@@ -93,7 +93,7 @@ The arquillian tests are configured with a **arquillian.xml** configuration file
 
   <extension qualifier="citrus">
     <property name="autoPackage">false</property>
-    <property name="citrusVersion">${project.version}</property>
+    <property name="citrusVersion">${citrus.version}</property>
   </extension>
 </arquillian>
 {% endhighlight %}

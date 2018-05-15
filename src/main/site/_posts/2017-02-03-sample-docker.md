@@ -35,7 +35,7 @@ The sample uses the Fabric8 Docker Maven plugin building and running the Docker 
     <images>
       <image>
         <alias>todo-app</alias>
-        <name>citrus/todo-app:${project.version}</name>
+        <name>citrus/todo-app:${citrus.version}</name>
         <build>
           <from>fabric8/tomcat-8:latest</from>
           <tags>
@@ -45,7 +45,7 @@ The sample uses the Fabric8 Docker Maven plugin building and running the Docker 
             <inline>
               <files>
                 <file>
-                  <source>${settings.localRepository}/com/consol/citrus/samples/citrus-sample-todo/${project.version}/citrus-sample-todo-${project.version}.war</source>
+                  <source>${settings.localRepository}/com/consol/citrus/samples/citrus-sample-todo/${citrus.version}/citrus-sample-todo-${citrus.version}.war</source>
                   <destName>ROOT.war</destName>
                   <outputDirectory>.</outputDirectory>
                 </file>
@@ -78,7 +78,7 @@ The sample uses the Fabric8 Docker Maven plugin building and running the Docker 
       </image>
       <image>
         <alias>todo-app-tests</alias>
-        <name>citrus/todo-app-tests:${project.version}</name>
+        <name>citrus/todo-app-tests:${citrus.version}</name>
         <build>
           <from>consol/citrus:2.7</from>
           <tags>
@@ -129,7 +129,7 @@ Wow that is lots of configuration. Let us understand this step by step. First of
     <inline>
       <files>
         <file>
-          <source>${settings.localRepository}/com/consol/citrus/samples/citrus-sample-todo/${project.version}/citrus-sample-todo-${project.version}.war</source>
+          <source>${settings.localRepository}/com/consol/citrus/samples/citrus-sample-todo/${citrus.version}/citrus-sample-todo-${citrus.version}.war</source>
           <destName>ROOT.war</destName>
           <outputDirectory>.</outputDirectory>
         </file>
@@ -184,7 +184,7 @@ So we are now ready to run the images as containers in Docker. If you inspect th
 {% highlight xml %}
 <image>
     <alias>todo-app</alias>
-    <name>citrus/todo-app:${project.version}</name>
+    <name>citrus/todo-app:${citrus.version}</name>
     <run>
       <namingStrategy>alias</namingStrategy>
       <env>
@@ -217,7 +217,7 @@ started and Tomcat is ready we can start the Citrus test container.
 {% highlight xml %}
 <image>
     <alias>todo-app-tests</alias>
-    <name>citrus/todo-app-tests:${project.version}</name>
+    <name>citrus/todo-app-tests:${citrus.version}</name>
     <run>
       <namingStrategy>alias</namingStrategy>
       <volumes>

@@ -147,7 +147,7 @@ The Citrus admin Docker image also works fine with the Fabric8 [docker-maven-plu
       <images>
         <image>
           <alias>citrus-tests</alias>
-          <name>sample-app/citrus-tests:${project.version}</name>
+          <name>sample-app/citrus-tests:${citrus.version}</name>
           <build>
             <from>consol/citrus-admin:1.0.1</from>
             <assembly>

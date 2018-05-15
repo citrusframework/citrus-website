@@ -4,7 +4,7 @@ title: Download
 permalink: /docs/download/
 ---
 
-Citrus ${project.version} is the latest stable release . You may also go for the [latest snapshot versions](#use-latest-snapshots) 
+Citrus ${citrus.version} is the latest stable release . You may also go for the [latest snapshot versions](#use-latest-snapshots) 
 of Citrus always being up to date with development changes. Citrus is available on [Maven central repository](http://search.maven.org/#search%7Cga%7C1%7Ccom.consol.citrus) 
 so you can add Citrus as [Maven dependency](#maven) to your project. All available versions and production releases for 
 manual download are listed below:
@@ -29,7 +29,7 @@ The Citrus core module dependency.
 <dependency>
   <groupId>com.consol.citrus</groupId>
   <artifactId>citrus-core</artifactId>
-  <version>${project.version}</version>
+  <version>${citrus.version}</version>
   <scope>test</scope>
 </dependency>
 {% endhighlight %}
@@ -40,49 +40,49 @@ In case you need Citrus modules add following dependencies. See also our modules
 <dependency>
   <groupId>com.consol.citrus</groupId>
   <artifactId>citrus-jms</artifactId>
-  <version>${project.version}</version>
+  <version>${citrus.version}</version>
   <scope>test</scope>
 </dependency>
 
 <dependency>
   <groupId>com.consol.citrus</groupId>
   <artifactId>citrus-http</artifactId>
-  <version>${project.version}</version>
+  <version>${citrus.version}</version>
   <scope>test</scope>
 </dependency>
 
 <dependency>
   <groupId>com.consol.citrus</groupId>
   <artifactId>citrus-ws</artifactId>
-  <version>${project.version}</version>
+  <version>${citrus.version}</version>
   <scope>test</scope>
 </dependency>
 
 <dependency>
   <groupId>com.consol.citrus</groupId>
   <artifactId>citrus-websocket</artifactId>
-  <version>${project.version}</version>
+  <version>${citrus.version}</version>
   <scope>test</scope>
 </dependency>
 
 <dependency>
   <groupId>com.consol.citrus</groupId>
   <artifactId>citrus-camel</artifactId>
-  <version>${project.version}</version>
+  <version>${citrus.version}</version>
   <scope>test</scope>
 </dependency>
 
 <dependency>
   <groupId>com.consol.citrus</groupId>
   <artifactId>citrus-ssh</artifactId>
-  <version>${project.version}</version>
+  <version>${citrus.version}</version>
   <scope>test</scope>
 </dependency>
 
 <dependency>
   <groupId>com.consol.citrus</groupId>
   <artifactId>citrus-vertx</artifactId>
-  <version>${project.version}</version>
+  <version>${citrus.version}</version>
   <scope>test</scope>
 </dependency>
 {% endhighlight %}
@@ -93,7 +93,7 @@ If you would like to use the new Java DSL test writing language you have to add 
 <dependency>
   <groupId>com.consol.citrus</groupId>
   <artifactId>citrus-java-dsl</artifactId>
-  <version>${project.version}</version>
+  <version>${citrus.version}</version>
   <scope>test</scope>
 </dependency>
 {% endhighlight %}

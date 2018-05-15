@@ -60,7 +60,7 @@ quite simple. Just add the SNAPSHOT dependency to your projects POM like this
 <dependency>
   <groupId>com.consol.citrus</groupId>
   <artifactId>citrus-core</artifactId>
-  <version>${project.version}</version>
+  <version>${citrus.version}</version>
   <scope>test</scope>
 </dependency>
 {% endhighlight %}

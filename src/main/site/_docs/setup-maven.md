@@ -85,25 +85,25 @@ The Citrus project libraries are loaded as dependencies in our Maven POM.
 <dependency>
   <groupId>com.consol.citrus</groupId>
   <artifactId>citrus-core</artifactId>
-  <version>${project.version}</version>
+  <version>${citrus.version}</version>
   <scope>test</scope>
 </dependency>
 <dependency>
   <groupId>com.consol.citrus</groupId>
   <artifactId>citrus-jms</artifactId>
-  <version>${project.version}</version>
+  <version>${citrus.version}</version>
   <scope>test</scope>
 </dependency>
 <dependency>
   <groupId>com.consol.citrus</groupId>
   <artifactId>citrus-ws</artifactId>
-  <version>${project.version}</version>
+  <version>${citrus.version}</version>
   <scope>test</scope>
 </dependency>
 <dependency>
   <groupId>com.consol.citrus</groupId>
   <artifactId>citrus-http</artifactId>
-  <version>${project.version}</version>
+  <version>${citrus.version}</version>
   <scope>test</scope>
 </dependency>
 {% endhighlight %}
@@ -114,7 +114,7 @@ The Citrus Maven plugin capable of test creation and report generation.
 <plugin>
   <groupId>com.consol.citrus.mvn</groupId>
   <artifactId>citrus-maven-plugin</artifactId>
-  <version>${project.version}</version>
+  <version>${citrus.version}</version>
   <configuration>
     <author>Mickey Mouse</author>
     <targetPackage>com.consol.citrus</targetPackage>
