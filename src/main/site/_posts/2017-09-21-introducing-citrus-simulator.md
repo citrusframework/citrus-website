@@ -17,7 +17,7 @@ a good option and you need a real simulator instance that receives requests and 
 This is exactly what the Citrus simulator project provides for you. Standalone simulation and complex request/response processing with solid validation capabilities. The Citrus simulator provides a very easy and reliable definition of inbound and outbound messages for different scenarios. 
 Good news is that this is not only for Http REST interfaces but also for SOAP WebService, JMS, RMI, mail messaging and many more. So you can use the simulator whenever you need to integrate with another service that is simply not available on your local machine or in your test environment.
 
-The [citrus-simulator](https://github.com/christophd/citrus-simulator) project is a side project of the test framework [Citrus](https://www.citrusframework.org). The simulator uses Citrus to define server APIs and the logic to respond with predefined messages according to
+The [citrus-simulator](https://github.com/citrusframework/citrus-simulator) project is a side project of the test framework [Citrus](https://www.citrusframework.org). The simulator uses Citrus to define server APIs and the logic to respond with predefined messages according to
 defined scenarios.
 
 In general the simulator is nothing but a normal [Spring Boot](https://projects.spring.io/spring-boot/) web application that you can start on your local machine. The simulator waits for incoming requests and each request executes a predefined scenario that will create a response message for the client. 
@@ -536,7 +536,7 @@ JMS and many other messaging transports. The integration with Citrus framework c
 content based routing.
 
 You can find the complete sample sources on [github (https://github.com/citrusframework/citrus-simulator-demo)](https://github.com/citrusframework/citrus-simulator-demo). Also please explore all other 
-simulator [sample projects](https://github.com/christophd/citrus-simulator/tree/master/simulator-samples) and find out how the simulator works best for you and your requirements.
+simulator [sample projects](https://github.com/citrusframework/citrus-simulator/tree/master/simulator-samples) and find out how the simulator works best for you and your requirements.
  
 Of course any feedback is very welcome!
 

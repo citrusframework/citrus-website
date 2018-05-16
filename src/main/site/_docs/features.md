@@ -6,7 +6,7 @@ permalink: /docs/features/
 
 See below a list of features that Citrus provides as a test automation framework for enterprise integration testing. 
 If you are missing a feature in Citrus please help us and submit a feature request. You can also just vote for ideas 
-and features on [github](http://github.com/christophd/citrus/issues), so we can start developing those things that 
+and features on [github](http://github.com/citrusframework/citrus/issues), so we can start developing those things that 
 are most relevant to you.
 
 ## Control the test flow

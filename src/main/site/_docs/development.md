@@ -37,7 +37,7 @@ OS name: &quot;mac os x&quot; version: &quot;10.9&quot; arch: &quot;x86_64&quot;
 First of all we get the Citrus sources from the repository on [GitHub](http://www.github.com/). You can use the following command to do this
 
 {% highlight shell %}  
-git clone git://github.com/christophd/citrus.git
+git clone git://github.com/citrusframework/citrus.git
 {% endhighlight %}
 
 This will clone the Citrus project to the target directory **citrus**. In the following this project directory is referred 

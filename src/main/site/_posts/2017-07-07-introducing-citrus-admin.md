@@ -7,7 +7,7 @@ github: christophd
 categories: [blog]
 ---
 
-It has been a while since the last release in the [Citrus](http://christophd.github.io/citrus/) universe. It took us some time to get the new Citrus release [2.7.2](/news/2017/07/07/release-2-7-2/) ready for you. 
+It has been a while since the last release in the [Citrus](http://citrusframework.github.io/citrus/) universe. It took us some time to get the new Citrus release [2.7.2](/news/2017/07/07/release-2-7-2/) ready for you. 
 Of course we were not being lazy in that time. Besides the new Citrus 2.7.2 release we are proud to announce a new player in the Citrus team. The *Citrus administration UI* is a 
 web-based user interface that helps you to manage your Citrus projects and test cases.
 
@@ -15,7 +15,7 @@ Often users complained about the complexity of having to learn all about Citrus 
 Especially non-developers had problems to master the learning curve for Citrus and Spring when starting to use the framework. Also people asked for a way to have a user interface for managing
 components and tests.
 
-We heard you and introduced a new administration user interface for Citrus! There is a detailed [Citrus Admin documentation](http://christophd.github.io/citrus-admin/) (which is still ongoing). 
+We heard you and introduced a new administration user interface for Citrus! There is a detailed [Citrus Admin documentation](http://citrusframework.github.io/citrus-admin/) (which is still ongoing). 
 However I would like to outline the main features of that web UI here in a short post for you.
 
 ## Download

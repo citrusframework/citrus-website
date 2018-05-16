@@ -13,7 +13,7 @@ Our guide to Citrus covering installation, writing, customization, deployment, a
 
 Our samples provide detailed code examples for various test scenarios.
 
-### [View source](https://github.com/christophd/citrus)
+### [View source](https://github.com/citrusframework/citrus)
 
 Learn from the source code.
 
@@ -23,7 +23,7 @@ StackOverflow is a staple of any developer's diet. Check out the Citrus tag
 on StackOverflow for an answer to your question. Not there? Ask a new
 question!
 
-### [Issues](https://github.com/christophd/citrus/issues)
+### [Issues](https://github.com/citrusframework/citrus/issues)
 
 Search through the issues on the main Citrus development. Think you've
 found a bug? File a new issue.

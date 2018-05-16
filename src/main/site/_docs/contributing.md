@@ -5,7 +5,7 @@ permalink: "/docs/contributing/"
 ---
 
 The Citrus development team will be glad to receive new ideas and improvements from you - any time. You can access the 
-Citrus source on [GitHub](http://github.com/christophd/citrus). You can fork the Citrus project on GitHub very easy in 
+Citrus source on [GitHub](http://github.com/citrusframework/citrus). You can fork the Citrus project on GitHub very easy in 
 order to provide changes. In case you have coded extensions, bug fixes or simply new features, please send us a pull 
 request from your repository. If you are not sure how to do it please see our quickstart or refer to the very good 
 documentation and how-to section on [GitHub](http://github.com/).
@@ -16,7 +16,7 @@ on citrus-dev [mailing list](mailto:dev@citrusframework.org).
 ## New code
 
 In case you coded a new feature or extension we are looking forward to know about it! Send us your changes as pull request 
-on [GitHub](http://github.com/christophd/citrus) including unit tests (we are very serious about testing, of course) and a 
+on [GitHub](http://github.com/citrusframework/citrus) including unit tests (we are very serious about testing, of course) and a 
 description of the feature.
 
 Note: If you want your contributions in the official Citrus code repository you have to agree that your changes are 
@@ -33,7 +33,7 @@ under the same license as Citrus to get involved into the code base.
 
 In case you have new ideas and feature requests for Citrus but you do not want to implement those on your own, we will be happy 
 to receive your request on the citrus-dev [mailing list](mailto:dev@citrusframework.org). You can also simply open a feature request 
-through the issue tracker on [GitHub](http://github.com/christophd/citrus/isues). We will discuss the benefit of the new feature 
+through the issue tracker on [GitHub](http://github.com/citrusframework/citrus/isues). We will discuss the benefit of the new feature 
 with you and help you to get the best out of Citrus for your needs.
 
 ## Site generation

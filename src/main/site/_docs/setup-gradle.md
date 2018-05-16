@@ -5,7 +5,7 @@ permalink: /docs/setup-gradle/
 ---
 
 This quickstart shows you how to setup a new Citrus project with Gradle. After that you will be able to get Citrus tests running 
-within minutes. You can find the project sources on GitHub [citrus-samples/sample-gradle](https://github.com/christophd/citrus-samples/blob/master/sample-gradle).
+within minutes. You can find the project sources on GitHub [citrus-samples/sample-gradle](https://github.com/citrusframework/citrus-samples/blob/master/sample-gradle).
 
 ### Preconditions
 

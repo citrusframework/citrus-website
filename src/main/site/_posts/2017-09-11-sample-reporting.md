@@ -48,7 +48,7 @@ public class ExtentReporter extends AbstractTestListener implements TestReporter
 }
 {% endhighlight %}
         
-You can review the complete custom reporter on this sample's [github repository](https://github.com/christophd/citrus-samples/tree/master/sample-reporting/src/test/java/com/consol/citrus/samples/todolist/reporting/ExtentReporter.java).       
+You can review the complete custom reporter on this sample's [github repository](https://github.com/citrusframework/citrus-samples/tree/master/sample-reporting/src/test/java/com/consol/citrus/samples/todolist/reporting/ExtentReporter.java).       
 
 We add the new reporter implementation as Spring bean to the application context.
     
@@ -63,7 +63,7 @@ That completes the reporting extension. Citrus will automatically see the new be
 As a result the reporter writes Extent styled Html reports to the folder `target/citrus-reports/extent-reports.html` when Citrus tests are executed.
 
 In addition to that Citrus provides some default Html reporting that is also customizable. We can use application properties to customize the report. Lets add a new application
-property file to the sample sources in [resources/citrus-application.properties](https://github.com/christophd/citrus-samples/tree/master/sample-reporting/src/test/resources/citrus-application.properties).
+property file to the sample sources in [resources/citrus-application.properties](https://github.com/citrusframework/citrus-samples/tree/master/sample-reporting/src/test/resources/citrus-application.properties).
 
 The file contains some property settings that customize the default Citrus Html reporting.
 

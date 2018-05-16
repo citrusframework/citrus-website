@@ -1,8 +1,8 @@
 - version: 2.7.5
   date: 2018-05-06
   tag: latest
-  issues: https://github.com/christophd/citrus/issues/
-  stories: https://github.com/christophd/citrus/issues/
+  issues: https://github.com/citrusframework/citrus/issues/
+  stories: https://github.com/citrusframework/citrus/issues/
   changes:
   - title: Unable to initialize Citrus instance - instance has already been initialized
     id: 357
@@ -72,8 +72,8 @@
 - version: 2.7.4
   date: 2018-03-12
   tag: v2-7-4
-  issues: https://github.com/christophd/citrus/issues/
-  stories: https://github.com/christophd/citrus/issues/
+  issues: https://github.com/citrusframework/citrus/issues/
+  stories: https://github.com/citrusframework/citrus/issues/
   changes:
   - title: JsonPath array result type
     id: 327
@@ -119,8 +119,8 @@
 - version: 2.7.3
   date: 2018-01-15
   tag: v2-7-3
-  issues: https://github.com/christophd/citrus/issues/
-  stories: https://github.com/christophd/citrus/issues/
+  issues: https://github.com/citrusframework/citrus/issues/
+  stories: https://github.com/citrusframework/citrus/issues/
   changes:
   - title: Validation of http headers should be case insensitive
     id: 326
@@ -258,8 +258,8 @@
 - version: 2.7.2
   date: 2017-07-07
   tag: v2-7-2
-  issues: https://github.com/christophd/citrus/issues/
-  stories: https://github.com/christophd/citrus/issues/
+  issues: https://github.com/citrusframework/citrus/issues/
+  stories: https://github.com/citrusframework/citrus/issues/
   changes:
   - title: Http error handling thread safety
     id: 265
@@ -377,8 +377,8 @@
 - version: 2.7.1
   date: 2017-03-15
   tag: v2-7-1
-  issues: https://github.com/christophd/citrus/issues/
-  stories: https://github.com/christophd/citrus/issues/
+  issues: https://github.com/citrusframework/citrus/issues/
+  stories: https://github.com/citrusframework/citrus/issues/
   changes:
   - title: Add ignore validation matcher
     id: 224
@@ -452,8 +452,8 @@
 - version: 2.7
   date: 2017-02-01
   tag: v2-7
-  issues: https://github.com/christophd/citrus/issues/
-  stories: https://github.com/christophd/citrus/issues/
+  issues: https://github.com/citrusframework/citrus/issues/
+  stories: https://github.com/citrusframework/citrus/issues/
   changes:
   - title: Update to Java 8
     id: 133
@@ -539,8 +539,8 @@
 - version: 2.6.2
   date: 2016-11-14
   tag: v2-6-2
-  issues: https://github.com/christophd/citrus/issues/
-  stories: https://github.com/christophd/citrus/issues/
+  issues: https://github.com/citrusframework/citrus/issues/
+  stories: https://github.com/citrusframework/citrus/issues/
   changes:
   - title: Escape variable expression syntax
     id: 160
@@ -618,8 +618,8 @@
 - version: 2.6.1
   date: 2016-10-07
   tag: v2-6-1
-  issues: https://github.com/christophd/citrus/issues/
-  stories: https://github.com/christophd/citrus/issues/
+  issues: https://github.com/citrusframework/citrus/issues/
+  stories: https://github.com/citrusframework/citrus/issues/
   changes:
   - title: Support variable object path
     id: 132
@@ -681,7 +681,7 @@
 - version: 2.6
   date: 2016-06-27
   tag: v2-6
-  issues: https://github.com/christophd/citrus/issues/
+  issues: https://github.com/citrusframework/citrus/issues/
   stories: https://tree.taiga.io/project/christophd-citrus/us/
   changes:
   - title: NoSuchElementException with custom action container in test runner
@@ -736,7 +736,7 @@
 - version: 2.5.2
   date: 2016-04-01
   tag: v2-5-2
-  issues: https://github.com/christophd/citrus/issues/
+  issues: https://github.com/citrusframework/citrus/issues/
   stories: https://tree.taiga.io/project/christophd-citrus/us/
   changes:
   - title: Support Hamcrest matchers
@@ -799,7 +799,7 @@
 - version: 2.5.1
   date: 2016-03-03
   tag: v2-5-1
-  issues: https://github.com/christophd/citrus/issues/
+  issues: https://github.com/citrusframework/citrus/issues/
   stories: https://tree.taiga.io/project/christophd-citrus/us/
   changes:
   - title: Annotation config support
@@ -850,7 +850,7 @@
 - version: 2.5
   date: 2016-01-28
   tag: v2-5
-  issues: https://github.com/christophd/citrus/issues/
+  issues: https://github.com/citrusframework/citrus/issues/
   stories: https://tree.taiga.io/project/christophd-citrus/us/
   changes:
   - title: TestContext injection
@@ -925,7 +925,7 @@
 - version: 2.4
   date: 2015-11-03
   tag: v2-4
-  issues: https://github.com/christophd/citrus/issues/
+  issues: https://github.com/citrusframework/citrus/issues/
   stories: https://tree.taiga.io/project/christophd-citrus/us/
   changes:
   - title: JSON data dictionary throws NullPointerException

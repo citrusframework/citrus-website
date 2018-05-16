@@ -3,8 +3,8 @@ highlighter: rouge
 permalink: /news/:year/:month/:day/:title/
 excerpt_separator: ""
 
-repository: https://github.com/christophd/citrus
-help_url: https://github.com/christophd/citrus
+repository: https://github.com/citrusframework/citrus
+help_url: https://github.com/citrusframework/citrus
 
 timezone: Europe/Berlin
 
