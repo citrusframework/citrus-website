@@ -28,7 +28,7 @@ another.
 | ![user](${site.path}/img/user.png) | [maherma](http://github.com/martinmaher) | Martin Maher | ConSol Software GmbH | [http://www.consol.de/](http://www.consol.de/) | Developer |
 | ![user](${site.path}/img/user.png) | [joroboro](http://github.com/joroboro) | Georgi Todorov | ConSol Software GmbH | [http://www.consol.de/](http://www.consol.de/) | Developer |
 | ![user](${site.path}/img/user.png) | [movchin](http://github.com) | Michael Movchin | ConSol Software GmbH | [http://www.consol.de/](http://www.consol.de/) | Web Developer |
-| ![user](${site.path}/img/user.png) | [fmaouroboros](http://github.com) | Sven Hettwer | ConSol Software GmbH | [http://www.consol.de/](http://www.consol.de/) | Developer |
+| ![user](${site.path}/img/user.png) | [svettwer](http://github.com) | Sven Hettwer | ConSol Software GmbH | [http://www.consol.de/](http://www.consol.de/) | Developer |
 | ![user](${site.path}/img/user.png) | [s1hofmann](http://github.com) | Simon Hofmann | ConSol Software GmbH | [http://www.consol.de/](http://www.consol.de/) | Developer |
 | ![user](${site.path}/img/user.png) | [tnobody](http://github.com) | Tim Keiner | ConSol Software GmbH | [http://www.consol.de/](http://www.consol.de/) | Developer |
 

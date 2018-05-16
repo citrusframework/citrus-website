@@ -43,11 +43,11 @@
   - title: Correct documentation concerning maven commands
     id: 362
     type: Update
-    author: FMAOuroboros
+    author: svettwer
   - title: Replace parameter instead of adding them in JdbcPreparedStatement
     id: 371
     type: Fix
-    author: FMAOuroboros
+    author: svettwer
   - title: Add binary stream validator
     id: 367
     type: Add
@@ -67,7 +67,7 @@
   - title: Transfer previously set header/contentType to Message
     id: 358
     type: Fix
-    author: FMAOuroboros
+    author: svettwer
 
 - version: 2.7.4
   date: 2018-03-12
