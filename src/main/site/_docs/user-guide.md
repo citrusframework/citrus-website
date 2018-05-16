@@ -13,17 +13,18 @@ for the latest Citrus release version.
 
 | Version | Documentation |
 |:--------|:------|
-{% for release in site.data.releases limit:12 %}| {{ release.version }} | [HTML](${site.path}/reference/{% if release.tag != "latest" %}{{ release.version }}/{% endif %}html/index.html) \| [PDF](${site.path}/reference/{% if release.tag != "latest" %}{{ release.version }}/{% endif %}pdf/citrus-reference-{{ release.version }}.pdf) |
+{% for release in site.data.releases limit:12 %}| {{ release.version }} | [HTML](https://christophd.github.io/citrus/reference/{% if release.tag != "latest" %}{{ release.version }}/{% endif %}html/index.html) \| [PDF](https://christophd.github.io/citrus/reference/{% if release.tag != "latest" %}{{ release.version }}/{% endif %}pdf/citrus-reference{% if release.tag != "latest" %}-{{ release.version }}{% endif %}.pdf) |
 {% endfor %}
 
 ## Additional documentation material
 
+- [News](${site.path}/news)
+- [Java Sources](http://www.github.com/christophd/citrus)
 - [Quickstart Maven](${site.path}/docs/setup-maven)
 - [Quickstart Gradle](${site.path}/docs/setup-gradle)
 - [Quickstart Ant](${site.path}/docs/setup-ant)
-- [Blog](http://labs.consol.de/tags/citrus)
-- [Java API](${site.path}/apidocs/index.html)
-- [Java Sources](http://www.github.com/christophd/citrus)
+- [Blog](https://labs.consol.de/tags/citrus)
+- [Release History](${site.path}/docs/history/)
 
 
 ## Contribute changes
