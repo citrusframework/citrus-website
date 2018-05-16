@@ -71,7 +71,7 @@
 
 - version: 2.7.4
   date: 2018-03-12
-  tag: latest
+  tag: v2-7-4
   issues: https://github.com/christophd/citrus/issues/
   stories: https://github.com/christophd/citrus/issues/
   changes:
