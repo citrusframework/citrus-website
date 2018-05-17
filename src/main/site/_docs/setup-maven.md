@@ -112,7 +112,7 @@ The Citrus Maven plugin capable of test creation and report generation.
 
 {% highlight xml %}
 <plugin>
-  <groupId>com.consol.citrus.archetypes</groupId>
+  <groupId>com.consol.citrus.mvn</groupId>
   <artifactId>citrus-maven-plugin</artifactId>
   <version>${citrus.version}</version>
   <configuration>
