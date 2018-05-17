@@ -13,7 +13,7 @@ manual download are listed below:
 
 | Version | Artifact | Sources |
 |:--------|:--------|:--------|
-{% for release in site.data.releases limit:12 %}| {{ release.version }} | Release [zip](${site.url}/dist/citrus-{{ release.version }}-release.zip)/[tar.gz](${site.url}/dist/citrus-{{ release.version }}-release.tar.gz) | Sources [zip](${site.url}/dist/citrus-{{ release.version }}-src.zip)/[tar.gz](${site.url}/dist/citrus-{{ release.version }}-src.tar.gz) |
+{% for release in site.data.releases limit:12 %}| {{ release.version }} | Release [zip](${download.url}/citrus-{{ release.version }}-release.zip)/[tar.gz](${download.url}/citrus-{{ release.version }}-release.tar.gz) | Sources [zip](${download.url}/citrus-{{ release.version }}-src.zip)/[tar.gz](${download.url}/citrus-{{ release.version }}-src.tar.gz) |
 {% endfor %}
 
 The Citrus project requires Java 8 (or newer version) to run.

@@ -13,24 +13,24 @@ for the latest Citrus release version.
 
 | Version | Documentation |
 |:--------|:------|
-{% for release in site.data.releases limit:12 %}| {{ release.version }} | [HTML](${site.path}/citrus/reference/{% if release.tag != "latest" %}{{ release.version }}/{% endif %}html/index.html) \| [PDF](${site.path}/citrus/reference/{% if release.tag != "latest" %}{{ release.version }}/{% endif %}pdf/citrus-reference{% if release.tag != "latest" %}-{{ release.version }}{% endif %}.pdf) |
+{% for release in site.data.releases limit:12 %}| {{ release.version }} | [HTML](${context.path}/citrus/reference/{% if release.tag != "latest" %}{{ release.version }}/{% endif %}html/index.html) \| [PDF](${context.path}/citrus/reference/{% if release.tag != "latest" %}{{ release.version }}/{% endif %}pdf/citrus-reference{% if release.tag != "latest" %}-{{ release.version }}{% endif %}.pdf) |
 {% endfor %}
 
 ## Additional documentation material
 
-- [News](${site.path}/news)
+- [News](${context.path}/news)
 - [Java Sources](http://www.github.com/citrusframework/citrus)
-- [Quickstart Maven](${site.path}/docs/setup-maven)
-- [Quickstart Gradle](${site.path}/docs/setup-gradle)
-- [Quickstart Ant](${site.path}/docs/setup-ant)
+- [Quickstart Maven](${context.path}/docs/setup-maven)
+- [Quickstart Gradle](${context.path}/docs/setup-gradle)
+- [Quickstart Ant](${context.path}/docs/setup-ant)
 - [Blog](https://labs.consol.de/tags/citrus)
-- [Release History](${site.path}/docs/history/)
+- [Release History](${context.path}/docs/history/)
 
 
 ## Contribute changes
 
 In case you would like to checkout the Citrus code base and build Citrus yourself follow these instructions:
 
-- [Development quickstart](${site.path}/docs/development)
-- [Coding conventions](${site.path}/docs/conventions)
-- [How to contribute](${site.path}/docs/contribute)
+- [Development quickstart](${context.path}/docs/development)
+- [Coding conventions](${context.path}/docs/conventions)
+- [How to contribute](${context.path}/docs/contribute)
