@@ -29,7 +29,7 @@ You should specify the version in your project's plugin configuration:
     <pluginManagement>
       <plugins>
         <plugin>
-          <groupId>com.consol.citrus.mvn</groupId>
+          <groupId>com.consol.citrus.archetypes</groupId>
           <artifactId>citrus-maven-plugin</artifactId>
           <version>${citrus.version}</version>
         </plugin>
@@ -39,7 +39,7 @@ You should specify the version in your project's plugin configuration:
     <!-- To use the plugin goals in your POM or parent POM -->
     <plugins>
       <plugin>
-        <groupId>com.consol.citrus.mvn</groupId>
+        <groupId>com.consol.citrus.archetypes</groupId>
         <artifactId>citrus-maven-plugin</artifactId>
         <configuration>
           ...
@@ -65,7 +65,7 @@ You should specify the version in your project's plugin configuration:
 
 ### Full name
 
-    com.consol.citrus.mvn:citrus-maven-plugin:${citrus.version}:create-excel-doc
+    com.consol.citrus.archetypes:citrus-maven-plugin:${citrus.version}:create-excel-doc
 
 ### Description
 
@@ -146,7 +146,7 @@ Mojo looks in this directory for test files that are included in this report. De
 
 ### Full name
 
-    com.consol.citrus.mvn:citrus-maven-plugin:${citrus.version}:create-html-doc
+    com.consol.citrus.archetypes:citrus-maven-plugin:${citrus.version}:create-html-doc
 
 ### Description
 
@@ -228,7 +228,7 @@ All test files in this directory are included into the report. Defaults to "src/
 
 ### Full name
 
-    com.consol.citrus.mvn:citrus-maven-plugin:${citrus.version}:create-test
+    com.consol.citrus.archetypes:citrus-maven-plugin:${citrus.version}:create-test
 
 ### Description
 

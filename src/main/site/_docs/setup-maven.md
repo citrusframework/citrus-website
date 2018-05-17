@@ -31,14 +31,14 @@ it is time for you to do so before continuing this tutorial. See the [Maven](htt
 site for detailed installation instructions. So let's start with creating the Citrus Java project:
 
 {% highlight shell %}
-mvn archetype:generate -Dfilter=com.consol.citrus.mvn:citrus
+mvn archetype:generate -Dfilter=com.consol.citrus.archetypes:citrus
 
 [...]
 
 Choose archetype:
-1: remote -> com.consol.citrus.mvn:citrus-quickstart (Citrus quickstart project)
-2: remote -> com.consol.citrus.mvn:citrus-quickstart-jms (Citrus quickstart project with JMS consumer and producer)
-3: remote -> com.consol.citrus.mvn:citrus-quickstart-soap (Citrus quickstart project with SOAP client and producer)
+1: remote -> com.consol.citrus.archetypes:citrus-quickstart (Citrus quickstart project)
+2: remote -> com.consol.citrus.archetypes:citrus-quickstart-jms (Citrus quickstart project with JMS consumer and producer)
+3: remote -> com.consol.citrus.archetypes:citrus-quickstart-soap (Citrus quickstart project with SOAP client and producer)
 Choose a number: 1 
 
 Define value for groupId: com.consol.citrus.samples
@@ -112,7 +112,7 @@ The Citrus Maven plugin capable of test creation and report generation.
 
 {% highlight xml %}
 <plugin>
-  <groupId>com.consol.citrus.mvn</groupId>
+  <groupId>com.consol.citrus.archetypes</groupId>
   <artifactId>citrus-maven-plugin</artifactId>
   <version>${citrus.version}</version>
   <configuration>
