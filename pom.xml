@@ -86,7 +86,6 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <context.path/>
-    <downlaod.url>https://labs.consol.de/citrus-release</downlaod.url>
     <citrus.version>2.7.5</citrus.version>
   </properties>
 
