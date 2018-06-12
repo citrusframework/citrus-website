@@ -1,6 +1,69 @@
+- version: 2.7.6
+  date: 2018-06-12
+  tag: latest
+  issues: https://github.com/citrusframework/citrus/issues/
+  stories: https://github.com/citrusframework/citrus/issues/
+  changes:
+  - title: FtpClient does not support variables when storing files
+    id: 405
+    type: Update
+    author: christophd
+  - title: Add Hamcrest Primitive Number Matchers
+    id: 389
+    type: Update
+    author: christophd
+  - title: Add wait for action condition
+    id: 411
+    type: Update
+    author: christophd
+  - title: Improve FTP samples & documentation
+    id: 398
+    type: Update
+    author: christophd
+  - title: Add SFTP/SCP support
+    id: 406
+    type: Add
+    author: christophd
+  - title: JMS topic subscription
+    id: 408
+    type: Update
+    author: christophd
+  - title: Improve Http query param handling
+    id: 395
+    type: Update
+    author: christophd
+  - title: Static message content build breaks with null header value
+    id: 404
+    type: Fix
+    author: christophd
+  - title: Add ignore new line validation matcher
+    id: 394
+    type: Add
+    author: christophd
+  - title: Add channel endpoint config and parser
+    id: 397
+    type: Update
+    author: christophd
+  - title: Specifying a DomXmlMessageValidator as validator deactivates XPath validations
+    id: 385
+    type: Fix
+    author: christophd
+  - title: Add citrus-jdbc message schema to defaults
+    id: 380
+    type: Update
+    author: christophd
+  - title: CitrusRuntimeException when using JDBC XML tests with schemaRepository
+    id: 348
+    type: Fix
+    author: christophd
+  - title: Logging reporter does not print test results in 2.7.5
+    id: 378
+    type: Fix
+    author: christophd
+
 - version: 2.7.5
   date: 2018-05-06
-  tag: latest
+  tag: v2.7.5
   issues: https://github.com/citrusframework/citrus/issues/
   stories: https://github.com/citrusframework/citrus/issues/
   changes:

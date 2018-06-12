@@ -86,7 +86,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <context.path/>
-    <citrus.version>2.7.5</citrus.version>
+    <citrus.version>2.7.6</citrus.version>
   </properties>
 
   <dependencies>
@@ -507,6 +507,24 @@
                   <directory>${project.build.directory}/schemas/com/consol/citrus/schema</directory>
                   <includes>
                     <include>citrus-sftp-config*.xsd</include>
+                  </includes>
+                </resource>
+              </resources>
+            </configuration>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>copy-citrus-scp-config-schemas</id>
+            <phase>package</phase>
+            <configuration>
+              <outputDirectory>${project.build.directory}/site/_site/schema/scp/config</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>${project.build.directory}/schemas/com/consol/citrus/schema</directory>
+                  <includes>
+                    <include>citrus-scp-config*.xsd</include>
                   </includes>
                 </resource>
               </resources>
