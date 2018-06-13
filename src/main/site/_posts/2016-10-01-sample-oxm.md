@@ -1,7 +1,8 @@
 ---
 layout: sample
 title: Object marshalling sample
-sample: samples-xml/sample-oxm
+sample: sample-oxm
+sources: samples-xml/sample-oxm
 description: Shows XML object marshalling feature when sending and receiving messages
 categories: [samples]
 permalink: /samples/oxm/

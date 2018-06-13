@@ -1,7 +1,8 @@
 ---
 layout: sample
 title: SOAP WS Addressing sample
-sample: samples-soap/sample-soap-wsaddressing
+sample: sample-soap-wsaddressing
+sources: samples-soap/sample-soap-wsaddressing
 description: Configure SOAP web service client and server with WSSecurity
 categories: [samples]
 permalink: /samples/soap-wsaddressing/

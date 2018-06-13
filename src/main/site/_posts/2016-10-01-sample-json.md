@@ -1,7 +1,8 @@
 ---
 layout: sample
 title: Json sample
-sample: samples-json/sample-json
+sample: sample-json
+sources: samples-json/sample-json
 description: Shows Json payload validation feature with JsonPath validation
 categories: [samples]
 permalink: /samples/json/

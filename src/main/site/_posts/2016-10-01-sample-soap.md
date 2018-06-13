@@ -1,7 +1,8 @@
 ---
 layout: sample
 title: SOAP WebServices sample
-sample: samples-soap/sample-soap
+sample: sample-soap
+sources: samples-soap/sample-soap
 description: Shows SOAP web service support
 categories: [samples]
 permalink: /samples/soap/

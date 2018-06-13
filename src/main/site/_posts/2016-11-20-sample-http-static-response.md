@@ -1,7 +1,8 @@
 ---
 layout: sample
 title: Static Http response sample
-sample: samples-soap/sample-http-static-response
+sample: sample-http-static-response
+sources: samples-soap/sample-http-static-response
 description: Shows how to setup a static response generating Http server component
 categories: [samples]
 permalink: /samples/http-static-response/

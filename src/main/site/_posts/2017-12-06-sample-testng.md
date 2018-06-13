@@ -1,7 +1,8 @@
 ---
 layout: sample
 title: TestNG sample
-sample: samples-testng/sample-testng
+sample: sample-testng
+sources: samples-testng/sample-testng
 description: Use TestNG test framework
 categories: [samples]
 permalink: /samples/testng/

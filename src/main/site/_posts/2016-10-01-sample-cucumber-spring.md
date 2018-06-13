@@ -1,7 +1,8 @@
 ---
 layout: sample
 title: Cucumber Spring sample
-sample: samples-cucumber/sample-cucumber-spring
+sample: sample-cucumber-spring
+sources: samples-cucumber/sample-cucumber-spring
 description: Shows BDD integration with Cucumber using Spring Framework injection
 categories: [samples]
 permalink: /samples/cucumber-spring/
