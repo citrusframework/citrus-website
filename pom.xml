@@ -262,7 +262,7 @@
         <plugin>
           <groupId>io.fabric8</groupId>
           <artifactId>docker-maven-plugin</artifactId>
-          <version>0.22.1</version>
+          <version>0.26.0</version>
         </plugin>
       </plugins>
     </pluginManagement>
@@ -300,7 +300,7 @@
           <images>
             <image>
               <alias>jekyll</alias>
-              <name>jekyll/jekyll:3.1.6</name>
+              <name>jekyll/jekyll:3.8.3</name>
               <run>
                 <namingStrategy>alias</namingStrategy>
                 <ports>
