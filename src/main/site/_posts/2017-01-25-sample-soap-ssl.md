@@ -1,7 +1,7 @@
 ---
 layout: sample
 title: SOAP SSL sample
-sample: sample-soap-ssl
+sample: samples-soap/sample-soap-ssl
 description: Shows SOAP secure web service support
 categories: [samples]
 permalink: /samples/soap-ssl/

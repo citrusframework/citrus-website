@@ -1,7 +1,7 @@
 ---
 layout: sample
 title: JDBC sample
-sample: sample-jdbc
+sample: samples-db/sample-jdbc
 description: Validates stored data in relational database
 categories: [samples]
 permalink: /samples/jdbc/

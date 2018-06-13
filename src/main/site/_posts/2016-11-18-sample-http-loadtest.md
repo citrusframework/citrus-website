@@ -1,7 +1,7 @@
 ---
 layout: sample
 title: Http load testing sample
-sample: sample-http-loadtest
+sample: samples-http/sample-http-loadtest
 description: Calls REST API on Http server with multiple threads for load testing
 categories: [samples]
 permalink: /samples/http-loadtest/

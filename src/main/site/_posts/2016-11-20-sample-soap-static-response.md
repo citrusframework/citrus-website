@@ -1,7 +1,7 @@
 ---
 layout: sample
 title: Static SOAP response sample
-sample: sample-soap-static-response
+sample: samples-soap/sample-soap-static-response
 description: Shows how to setup a static response generating SOAP web service server component
 categories: [samples]
 permalink: /samples/soap-static-response/
