@@ -2,6 +2,7 @@
 layout: sample
 title: Docker sample
 sample: sample-docker
+sources: sample-docker
 description: Shows how to use Citrus within Docker
 categories: [samples]
 permalink: /samples/docker/

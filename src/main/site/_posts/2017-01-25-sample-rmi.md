@@ -2,6 +2,7 @@
 layout: sample
 title: RMI sample
 sample: sample-rmi
+sources: sample-rmi
 description: Shows Remote Method Invocation support
 categories: [samples]
 permalink: /samples/rmi/

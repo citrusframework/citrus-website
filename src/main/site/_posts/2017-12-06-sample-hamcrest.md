@@ -2,6 +2,7 @@
 layout: sample
 title: Hamcrest matcher sample
 sample: sample-hamcrest
+sources: sample-hamcrest
 description: Use Hamcrest matchers
 categories: [samples]
 permalink: /samples/hamcrest/

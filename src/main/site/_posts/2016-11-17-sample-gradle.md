@@ -2,6 +2,7 @@
 layout: sample
 title: Gradle build sample
 sample: sample-gradle
+sources: sample-gradle
 description: Uses Gradle build to execute tests
 categories: [samples]
 permalink: /samples/gradle/

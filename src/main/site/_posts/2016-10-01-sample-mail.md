@@ -2,6 +2,7 @@
 layout: sample
 title: Mail sample
 sample: sample-mail
+sources: sample-mail
 description: Shows mail server activities in Citrus
 categories: [samples]
 permalink: /samples/mail/

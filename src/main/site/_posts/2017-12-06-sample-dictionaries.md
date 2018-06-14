@@ -2,6 +2,7 @@
 layout: sample
 title: Data dictionary sample
 sample: sample-dictionaries
+sources: sample-dictionaries
 description: Add data dictionaries
 categories: [samples]
 permalink: /samples/dictionaries/

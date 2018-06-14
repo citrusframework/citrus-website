@@ -2,6 +2,7 @@
 layout: sample
 title: Binary sample
 sample: sample-binary
+sources: sample-binary
 description: Shows binary message content handling in Citrus
 categories: [samples]
 permalink: /samples/binary/

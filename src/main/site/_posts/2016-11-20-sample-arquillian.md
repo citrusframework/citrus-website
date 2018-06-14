@@ -2,6 +2,7 @@
 layout: sample
 title: JavaEE Arquillian sample
 sample: sample-javaee
+sources: sample-javaee
 description: Use Citrus and Arquillian in combination
 categories: [samples]
 permalink: /samples/arquillian/

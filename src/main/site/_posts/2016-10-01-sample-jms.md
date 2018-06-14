@@ -2,6 +2,7 @@
 layout: sample
 title: JMS sample
 sample: sample-jms
+sources: sample-jms
 description: Shows JMS queue connectivity
 categories: [samples]
 permalink: /samples/jms/
