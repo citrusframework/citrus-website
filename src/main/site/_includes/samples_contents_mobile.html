@@ -4,8 +4,9 @@
     <option value="${context.path}/samples/">Overview</option>
     <option value="${context.path}/samples/todo-app/">Sample app</option>
     <option value="${context.path}/samples/run/">Running</option>
-    {% for post in site.categories.samples %}
-    <option value="${context.path}{{ post.url }}">{{ post.sample }}</option>
+    {% assign sorted_posts = site.categories.samples | sort: 'group' %}
+    {% for post in sorted_posts %}
+    <option value="${context.path}{{ post.url }}">{{ post.name }}</option>
     {% endfor %}
   </select>
 </div>

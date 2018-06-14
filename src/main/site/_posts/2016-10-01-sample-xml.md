@@ -1,8 +1,8 @@
 ---
 layout: sample
 title: XML sample
-sample: sample-xml
-sources: samples-xml/sample-xml
+name: sample-xml
+group: samples-xml
 description: Shows XML validation feature with schema and Xpath validation
 categories: [samples]
 permalink: /samples/xml/

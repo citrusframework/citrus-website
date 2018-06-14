@@ -1,8 +1,8 @@
 ---
 layout: sample
 title: Hamcrest matcher sample
-sample: sample-hamcrest
-sources: sample-hamcrest
+name: sample-hamcrest
+group: none
 description: Use Hamcrest matchers
 categories: [samples]
 permalink: /samples/hamcrest/

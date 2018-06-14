@@ -1,8 +1,8 @@
 ---
 layout: sample
 title: Docker sample
-sample: sample-docker
-sources: sample-docker
+name: sample-docker
+group: none
 description: Shows how to use Citrus within Docker
 categories: [samples]
 permalink: /samples/docker/

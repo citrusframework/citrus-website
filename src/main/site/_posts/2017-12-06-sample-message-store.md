@@ -1,8 +1,8 @@
 ---
 layout: sample
 title: Message store sample
-sample: sample-message-store
-sources: sample-message-store
+name: sample-message-store
+group: none
 description: Use the local message store
 categories: [samples]
 permalink: /samples/message-store/

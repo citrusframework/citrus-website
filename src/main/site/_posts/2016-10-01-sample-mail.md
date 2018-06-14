@@ -1,8 +1,8 @@
 ---
 layout: sample
 title: Mail sample
-sample: sample-mail
-sources: sample-mail
+name: sample-mail
+group: none
 description: Shows mail server activities in Citrus
 categories: [samples]
 permalink: /samples/mail/

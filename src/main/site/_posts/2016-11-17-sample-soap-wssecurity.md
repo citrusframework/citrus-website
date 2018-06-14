@@ -1,8 +1,8 @@
 ---
 layout: sample
 title: SOAP WS Security sample
-sample: sample-soap-wssecurity
-sources: samples-soap/sample-soap-wssecurity
+name: sample-soap-wssecurity
+group: samples-soap
 description: Configure SOAP web service client and server with WSSecurity
 categories: [samples]
 permalink: /samples/soap-wssecurity/

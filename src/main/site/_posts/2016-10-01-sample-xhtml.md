@@ -1,8 +1,8 @@
 ---
 layout: sample
 title: XHTML sample
-sample: sample-xhtml
-sources: samples-xml/sample-xhtml
+name: sample-xhtml
+group: samples-xml
 description: Shows XHTML validation feature
 categories: [samples]
 permalink: /samples/xhtml/

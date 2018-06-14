@@ -1,8 +1,8 @@
 ---
 layout: sample
 title: Apache Camel sample
-sample: sample-camel-context
-sources: sample-camel-context
+name: sample-camel-context
+group: none
 description: Interact with Apache Camel context and routes
 categories: [samples]
 permalink: /samples/camel-context/

@@ -1,8 +1,8 @@
 ---
 layout: sample
 title: Cucumber sample
-sample: sample-cucumber
-sources: samples-cucumber/sample-cucumber
+name: sample-cucumber
+group: samples-cucumber
 description: Shows BDD integration with Cucumber
 categories: [samples]
 permalink: /samples/cucumber/

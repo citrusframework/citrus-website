@@ -8,9 +8,16 @@ layout: samples
     <a href="{{ page.url }}" class="permalink" title="Permalink">∞</a>
   </h2>
   <div class="right">
-    <a href="https://github.com/citrusframework/citrus-samples/blob/master/{{ page.sources }}" target="_blank">
+    {% if page.group != "none" %}
+    <a href="https://github.com/citrusframework/citrus-samples/blob/master/{{ page.group }}/{{ page.name }}" target="_blank">
       <i class="fa fa-pencil"></i>&nbsp;View source code
     </a>
+    {% endif %}
+    {% if page.group == "none" %}
+    <a href="https://github.com/citrusframework/citrus-samples/blob/master/{{ page.name }}" target="_blank">
+      <i class="fa fa-pencil"></i>&nbsp;View source code
+    </a>
+    {% endif %}
   </div>
   <span class="post-category">
     <span class="label">

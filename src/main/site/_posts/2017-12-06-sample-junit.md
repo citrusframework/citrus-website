@@ -1,8 +1,8 @@
 ---
 layout: sample
 title: JUnit sample
-sample: sample-junit
-sources: samples-junit/sample-junit
+name: sample-junit
+group: samples-junit
 description: Use JUnit test framework
 categories: [samples]
 permalink: /samples/junit/

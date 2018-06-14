@@ -1,8 +1,8 @@
 ---
 layout: sample
 title: Https sample
-sample: sample-https
-sources: samples-http/sample-https
+name: sample-https
+group: samples-http
 description: Shows how to use SSL connectivity as a client and server
 categories: [samples]
 permalink: /samples/https/

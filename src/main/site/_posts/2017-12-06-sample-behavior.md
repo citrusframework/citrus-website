@@ -1,8 +1,8 @@
 ---
 layout: sample
 title: Test behavior sample
-sample: sample-behavior
-sources: sample-behavior
+name: sample-behavior
+group: none
 description: Add custom test behavior
 categories: [samples]
 permalink: /samples/behavior/

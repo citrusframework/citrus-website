@@ -1,8 +1,8 @@
 ---
 layout: sample
 title: Data dictionary sample
-sample: sample-dictionaries
-sources: sample-dictionaries
+name: sample-dictionaries
+group: none
 description: Add data dictionaries
 categories: [samples]
 permalink: /samples/dictionaries/

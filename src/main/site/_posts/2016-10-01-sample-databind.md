@@ -1,8 +1,8 @@
 ---
 layout: sample
 title: Json databind sample
-sample: sample-databind
-sources: samples-json/sample-databind
+name: sample-databind
+group: samples-json
 description: Shows JSON object mapping feature when sending and receiving messages
 categories: [samples]
 permalink: /samples/databind/

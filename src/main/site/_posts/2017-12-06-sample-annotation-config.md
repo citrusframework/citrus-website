@@ -1,8 +1,8 @@
 ---
 layout: sample
 title: Annotation configuration sample
-sample: sample-annotation-config
-sources: sample-annotation-config
+name: sample-annotation-config
+group: none
 description: Use Java annotation configuration
 categories: [samples]
 permalink: /samples/annotation-config/

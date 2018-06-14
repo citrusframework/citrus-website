@@ -2,7 +2,7 @@
 layout: samples
 title: Samples
 permalink: /samples/
-sample: sample-overview
+name: sample-overview
 ---
 
 <article>
@@ -23,17 +23,43 @@ sample: sample-overview
     <table>
       <thead>
         <tr>
-          <th style="width: 15em;">Name</th>
-          <th align="center">Objective</th>
-          <th align="center">Source code</th>
+          <th style="width: 15em;">Samples</th>
+          <th align="center">Description</th>
+          <th align="center">Sources</th>
         </tr>
       </thead>
       <tbody>
-        {% for post in site.categories.samples %}
+        {% assign sorted_posts = site.categories.samples | sort: 'group' %}
+        {% assign group = "none" %}
+
+        {% for post in sorted_posts %}
+        {% if group != post.group %}
+      </tbody>
+    </table>
+
+    {% assign group_parts = post.group | split: '-' %}
+    <br/>
+
+    <table>
+      <thead>
+      <tr>
+        <th style="width: 15em;">{{ group_parts[0] | capitalize }}&nbsp;&nbsp;{{ group_parts[1] | capitalize }}</th>
+        <th align="center">Description</th>
+        <th align="center">Sources</th>
+      </tr>
+      </thead>
+      <tbody>
+        {% assign group = post.group %}
+        {% endif %}
         <tr>
-          <td><a href="{{ post.permalink }}">{{ post.sample }}</a></td>
+          <td><a href="{{ post.permalink }}">{{ post.name }}</a></td>
           <td align="center">{{ post.description }}</td>
-          <td align="center"><a href="https://github.com/citrusframework/citrus-samples/blob/master/{{ post.sources }}" target="_blank"><i class="fa fa-pencil"></i></a></td>
+          {% if post.group != "none" %}
+          <td align="center"><a href="https://github.com/citrusframework/citrus-samples/blob/master/{{ post.group }}/{{ post.name }}" target="_blank"><i class="fa fa-pencil"></i></a></td>
+          {% endif %}
+          {% if post.group == "none" %}
+          <td align="center"><a href="https://github.com/citrusframework/citrus-samples/blob/master/{{ post.name }}" target="_blank"><i class="fa fa-pencil"></i></a></td>
+          {% endif %}
         </tr>
         {% endfor %}
       </tbody>

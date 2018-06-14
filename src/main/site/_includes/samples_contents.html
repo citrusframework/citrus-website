@@ -13,10 +13,21 @@
       </li>
     </ul>
     <h4>Samples</h4>
-    <ul>
-      {% for post in site.categories.samples %}
+    <ul style="margin-top: 5px;">
+      {% assign sorted_posts = site.categories.samples | sort: 'group' %}
+      {% assign group = "none" %}
+
+      {% for post in sorted_posts %}
+      {% if group != post.group %}
+    </ul>
+
+    {% assign group_parts = post.group | split: '-' %}
+    <h4>{{ group_parts[0] | capitalize }}&nbsp;&nbsp;{{ group_parts[1] | capitalize }}</h4>
+    <ul style="margin-top: 5px;">
+      {% assign group = post.group %}
+      {% endif %}
       <li class="{% if page.title == post.title %}current{% endif %}">
-        <a href="${context.path}{{ post.url }}">{{ post.sample }}</a>
+        <a href="${context.path}{{ post.url }}">{{ post.name }}</a>
       </li>
       {% endfor %}
     </ul>

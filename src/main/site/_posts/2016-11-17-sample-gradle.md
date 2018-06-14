@@ -1,8 +1,8 @@
 ---
 layout: sample
 title: Gradle build sample
-sample: sample-gradle
-sources: sample-gradle
+name: sample-gradle
+group: none
 description: Uses Gradle build to execute tests
 categories: [samples]
 permalink: /samples/gradle/
