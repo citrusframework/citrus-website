@@ -21,7 +21,7 @@ twitter:
 
 logo: img/brand-logo.png
 
-gems:
+plugins:
   - jekyll-feed
   - jekyll-redirect-from
   - jemoji

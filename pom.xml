@@ -311,6 +311,7 @@
                     <volume>${project.build.directory}/site:/srv/jekyll</volume>
                   </bind>
                 </volumes>
+                <cmd>jekyll serve</cmd>
                 <wait>
                   <http>
                     <url>http://localhost:4000</url>
