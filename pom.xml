@@ -8,7 +8,7 @@
   <version>1.0.6</version>
   <name>citrus-website</name>
   <description>Citrus Test Framework Website Sources</description>
-  <url>https://www.citrusframework.org</url>
+  <url>https://citrusframework.org</url>
   <inceptionYear>2008</inceptionYear>
 
   <licenses>
