@@ -9,7 +9,7 @@ permalink: /samples/soap-wsaddressing/
 ---
 
 This sample uses SOAP web services with WSAddressing SOAP header elements. Clients must use proper addressing header elements. 
-You can read more about the Citrus SOAP features in [reference guide](http://www.citrusframework.org/reference/html/#soap)
+You can read more about the Citrus SOAP features in [reference guide][1]
 
 Objectives
 ---------
@@ -19,7 +19,7 @@ server endpoint validates incoming requests and expects WSAddressing headers to 
 
 First of all we add the WSAddressing header conversion to the client component.
 
-{% highlight java %}
+```java
 @Bean
 public WebServiceClient todoClient() {
     return CitrusEndpoints.soap()
@@ -34,47 +34,47 @@ public WebServiceMessageConverter wsAddressingMessageConverter() {
     WsAddressingHeaders addressingHeaders = new WsAddressingHeaders();
 
     addressingHeaders.setVersion(WsAddressingVersion.VERSION200408);
-    addressingHeaders.setAction(URI.create("https://citrusframework.org/samples/todolist"));
-    addressingHeaders.setTo(URI.create("https://citrusframework.org/samples/todolist"));
+    addressingHeaders.setAction(URI.create("http://citrusframework.org/samples/todolist"));
+    addressingHeaders.setTo(URI.create("http://citrusframework.org/samples/todolist"));
 
-    addressingHeaders.setFrom(new EndpointReference(URI.create("https://citrusframework.org/samples/client")));
-    addressingHeaders.setReplyTo(new EndpointReference(URI.create("https://citrusframework.org/samples/client")));
-    addressingHeaders.setFaultTo(new EndpointReference(URI.create("https://citrusframework.org/samples/client/fault")));
+    addressingHeaders.setFrom(new EndpointReference(URI.create("http://citrusframework.org/samples/client")));
+    addressingHeaders.setReplyTo(new EndpointReference(URI.create("http://citrusframework.org/samples/client")));
+    addressingHeaders.setFaultTo(new EndpointReference(URI.create("http://citrusframework.org/samples/client/fault")));
 
     return new WsAddressingMessageConverter(addressingHeaders);
 }
-{% endhighlight %}
+```
    
 The client message converter automatically adds WSAddressing headers to the SOAP header. The resulting request look as follows.
 
-{% highlight xml %}
+```xml
 <SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
     <SOAP-ENV:Header xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing">
-        <wsa:To SOAP-ENV:mustUnderstand="1">https://citrusframework.org/samples/todolist</wsa:To>
+        <wsa:To SOAP-ENV:mustUnderstand="1">http://citrusframework.org/samples/todolist</wsa:To>
         <wsa:From>
-            <wsa:Address xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing">https://citrusframework.org/samples/client</wsa:Address>
+            <wsa:Address xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing">http://citrusframework.org/samples/client</wsa:Address>
         </wsa:From>
         <wsa:ReplyTo>
-            <wsa:Address xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing">https://citrusframework.org/samples/client</wsa:Address>
+            <wsa:Address xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing">http://citrusframework.org/samples/client</wsa:Address>
         </wsa:ReplyTo>
         <wsa:FaultTo>
-            <wsa:Address xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing">https://citrusframework.org/samples/client</wsa:Address>
+            <wsa:Address xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing">http://citrusframework.org/samples/client</wsa:Address>
         </wsa:FaultTo>
-        <wsa:Action>https://citrusframework.org/samples/todolist</wsa:Action>
+        <wsa:Action>http://citrusframework.org/samples/todolist</wsa:Action>
         <wsa:MessageID>urn:uuid:a3975ef6-68f2-4074-b157-db6c230120b6</wsa:MessageID>
     </SOAP-ENV:Header>
     <SOAP-ENV:Body>
-        <todo:getTodoListRequest xmlns:todo="https://citrusframework.org/samples/todolist">
+        <todo:getTodoListRequest xmlns:todo="http://citrusframework.org/samples/todolist">
         </todo:getTodoListRequest>
     </SOAP-ENV:Body>
 </SOAP-ENV:Envelope>
-{% endhighlight %}
+```
 
 The WSAddressing information goes to the header section and contains several elements. One of the elements is marked as *SOAP-ENV:mustUnderstand*.
 
 The server component has to add the *SOAP-ENV:mustUnderstand* handling explicitly in order to support the incoming WSAddressing headers:
 
-{% highlight java %}
+```java
 @Bean
 public WebServiceServer todoListServer() {
     return CitrusEndpoints.soap()
@@ -96,11 +96,11 @@ public EndpointInterceptor soapMustUnderstandEndpointInterceptor() {
     interceptor.setAcceptedHeaders(Collections.singletonList("{http://schemas.xmlsoap.org/ws/2004/08/addressing}To"));
     return interceptor;
 }   
-{% endhighlight %}
+```
      
 The server is now ready to receive the request and validate the WSAddressing header information. 
 
-{% highlight java %}
+```java
 soap()
     .server(todoServer)
     .receive()
@@ -111,41 +111,41 @@ soap()
     .server(todoServer)
     .send()
     .payload(new ClassPathResource("templates/addTodoEntryResponse.xml"));
-{% endhighlight %}
+```
         
 We do this by adding the complete SOAP header as expected XML structure. The header information is loaded from external file resource.
-       
-{% highlight xml %}
+         
+```xml
 <SOAP-ENV:Header xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing">
-  <wsa:To SOAP-ENV:mustUnderstand="1">https://citrusframework.org/samples/todolist</wsa:To>
+  <wsa:To SOAP-ENV:mustUnderstand="1">http://citrusframework.org/samples/todolist</wsa:To>
   <wsa:From>
-    <wsa:Address>https://citrusframework.org/samples/client</wsa:Address>
+    <wsa:Address>http://citrusframework.org/samples/client</wsa:Address>
   </wsa:From>
   <wsa:ReplyTo>
-    <wsa:Address>https://citrusframework.org/samples/client</wsa:Address>
+    <wsa:Address>http://citrusframework.org/samples/client</wsa:Address>
   </wsa:ReplyTo>
   <wsa:FaultTo>
-    <wsa:Address>https://citrusframework.org/samples/client</wsa:Address>
+    <wsa:Address>http://citrusframework.org/samples/client</wsa:Address>
   </wsa:FaultTo>
-  <wsa:Action>https://citrusframework.org/samples/todolist</wsa:Action>
+  <wsa:Action>http://citrusframework.org/samples/todolist</wsa:Action>
   <wsa:MessageID>@ignore@</wsa:MessageID>
 </SOAP-ENV:Header>     
-{% endhighlight %}
+```
 
 Citrus automatically performs XML comparison and validation on all header elements. As you can see we ignore the *MessageID* element with *@ignore@*. This is 
 simply because this is a generated UUID value that is newly generated on the client side for each request.
 
 In general we can overwrite WSAddressing header information in each send operation by setting the special WSAddressing message headers.
 
-{% highlight java %}
+```java
 soap()
     .client(todoClient)
     .send()
     .soapAction("addTodoEntry")
-    .header(WsAddressingMessageHeaders.ACTION, "https://citrusframework.org/samples/todolist/addTodoEntry")
+    .header(WsAddressingMessageHeaders.ACTION, "http://citrusframework.org/samples/todolist/addTodoEntry")
     .header(WsAddressingMessageHeaders.MESSAGE_ID, "urn:uuid:citrus:randomUUID()")
     .payload(new ClassPathResource("templates/addTodoEntryRequest.xml"));
-{% endhighlight %}
+```
         
 Run
 ---------
@@ -170,3 +170,5 @@ And of course green tests at the very end of the build.
 
 Of course you can also start the Citrus tests from your favorite IDE.
 Just start the Citrus test using the TestNG IDE integration in IntelliJ, Eclipse or Netbeans.
+
+ [1]: https://citrusframework.org/reference/html#soap

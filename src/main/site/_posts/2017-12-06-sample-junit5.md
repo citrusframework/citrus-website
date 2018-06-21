@@ -9,7 +9,7 @@ permalink: /samples/junit5/
 ---
 
 This sample demonstrates the JUnit5 support in Citrus. We write some JUnit5 Citrus test cases that test the REST API of the todo sample application. The JUnit5 support is
-also described in detail in [reference guide](http://www.citrusframework.org/reference/html/index.html#run-with-junit5)
+also described in detail in [reference guide][1]
 
 Objectives
 ---------
@@ -19,7 +19,7 @@ Citrus is able to call the API methods as a client in order to validate the Http
 
 We need a Http client component in the configuration:
 
-{% highlight java %}
+```java
 @Bean
 public HttpClient todoClient() {
     return CitrusEndpoints.http()
@@ -27,12 +27,12 @@ public HttpClient todoClient() {
                         .requestUrl("http://localhost:8080")
                         .build();
 }
-{% endhighlight %}
+```
     
 In test cases we can reference this client component in order to send REST calls to the server. In JUnit5 we can use the `@ExtendsWith` annotation that loads the
 `CitrusExtension` in JUnit5.
     
-{% highlight java %}
+```java
 @ExtendWith(CitrusExtension.class)
 public class TodoListIT {
 
@@ -53,7 +53,7 @@ public class TodoListIT {
             .response(HttpStatus.OK));  
     }
 }  
-{% endhighlight %}
+```
         
 The `CitrusExtension` makes sure that Citrus framework is loaded at startup and all configuration is done properly. Then we can inject method parameters such as `@CitrusResource` annotated `TestRunner` that is
 our entrance to the Citrus Java fluent API. The runner is then able to use the `httpClient` which is automatically injected via `@CitrusEndpoint` annotation as a class field member.
@@ -62,7 +62,7 @@ We can use the Citrus Java DSL fluent API in the JUnit5 test in order to exchang
 
 In order to setup Maven for JUnit5 we need to configure the `maven-failsafe-plugin` with the JUnit platform.
 
-{% highlight xml %}
+```xml
 <plugin>
     <groupId>org.apache.maven.plugins</groupId>
     <artifactId>maven-failsafe-plugin</artifactId>
@@ -87,11 +87,11 @@ In order to setup Maven for JUnit5 we need to configure the `maven-failsafe-plug
       </dependency>
     </dependencies>
 </plugin>
-{% endhighlight %}
+```
     
 In addition to that we need the JUnit dependency in test scope in our project:
 
-{% highlight xml %}
+```xml
 <!-- Test scoped dependencies -->
 <dependency>
   <groupId>org.junit.jupiter</groupId>
@@ -99,7 +99,7 @@ In addition to that we need the JUnit dependency in test scope in our project:
   <version>${junit.version}</version>
   <scope>test</scope>
 </dependency>    
-{% endhighlight %}
+```
        
 That completes the project setup. We are now ready to execute the tests.
 
@@ -118,3 +118,5 @@ And of course green tests at the very end of the build and some new reporting fi
 
 Of course you can also start the Citrus tests from your favorite IDE.
 Just start the Citrus test using the TestNG IDE integration in IntelliJ, Eclipse or Netbeans.
+
+ [1]: https://citrusframework.org/reference/html#run-with-junit5

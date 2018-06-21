@@ -628,9 +628,16 @@ h5 > code,
   font-size: 0.8em;
 }
 
+.highlighter-rouge {
+  border: 1px solid #DDDDDD;
+  border-radius: 5px;
+  margin: 0 0;
+}
+
 .highlight {
-  margin: 1em 0;
-  padding: 10px 0;
+  background-color: #FAFAFA;
+  margin: 0 0;
+  padding: 3px 0;
   width: 100%;
   overflow: auto;
 }
