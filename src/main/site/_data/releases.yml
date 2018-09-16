@@ -1,6 +1,69 @@
+- version: 2.7.7
+  date: 2018-09-14
+  tag: latest
+  issues: https://github.com/citrusframework/citrus/issues/
+  stories: https://github.com/citrusframework/citrus/issues/
+  changes:
+  - title: XML Serializer is creating new line instead of empty node
+    type: Fix
+    id: 426
+    author: christophd
+  - title: How to replace xpath variables in http:put or post
+    type: Update
+    id: 416
+    author: christophd
+  - title: Include Travis CI
+    type: Update
+    id: 364
+    author: svettwer
+  - title: Webservice Basic Auth not working
+    type: Update
+    id: 423
+    author: svettwer
+  - title: Make FTP client passive mode configurable
+    type: Update
+    id: 435
+    author: christophd
+  - title: wsdlimport not working when imported wsdl is within a jar
+    type: Fix
+    id: 409
+    author: svettwer
+  - title: Http query param header validator breaks with validation matcher expression
+    type: Fix
+    id: 437
+    author: christophd
+  - title: Empty Http query params not empty
+    type: Fix
+    id: 436
+    author: christophd
+  - title: Bug with TimeoutProducingEndpointAdapter
+    type: Fix
+    id: 410
+    author: christophd
+  - title: Cucumber XML steps not loaded
+    type: Fix
+    id: 424
+    author: christophd
+  - title: XML Selenium page action does not support multiple arguments
+    type: Fix
+    id: 421
+    author: christophd
+  - title: Missing testcase schemas in citrus-config before/after suite
+    type: Fix
+    id: 419
+    author: christophd
+  - title: Selenium set-input operation not supporting test variables
+    type: Update
+    id: 420
+    author: christophd
+  - title: Test action container usage in test behavior broken
+    type: Fix
+    id: 417
+    author: christophd
+
 - version: 2.7.6
   date: 2018-06-12
-  tag: latest
+  tag: v2.7.6
   issues: https://github.com/citrusframework/citrus/issues/
   stories: https://github.com/citrusframework/citrus/issues/
   changes:
