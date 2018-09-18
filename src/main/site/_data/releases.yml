@@ -24,10 +24,6 @@
     type: Update
     id: 435
     author: christophd
-  - title: wsdlimport not working when imported wsdl is within a jar
-    type: Fix
-    id: 409
-    author: svettwer
   - title: Http query param header validator breaks with validation matcher expression
     type: Fix
     id: 437
@@ -35,10 +31,6 @@
   - title: Empty Http query params not empty
     type: Fix
     id: 436
-    author: christophd
-  - title: Bug with TimeoutProducingEndpointAdapter
-    type: Fix
-    id: 410
     author: christophd
   - title: Cucumber XML steps not loaded
     type: Fix
