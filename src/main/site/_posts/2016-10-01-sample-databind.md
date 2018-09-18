@@ -9,7 +9,7 @@ permalink: /samples/databind/
 ---
 
 This sample demonstrates the usage of object mapping in Citrus. We are able to handle automatic object mapping
-when sending and receiving message payloads. Read about this feature in [reference guide](http://www.citrusframework.org/reference/html/#validation-callback)
+when sending and receiving message payloads. Read about this feature in [reference guide][1]
 
 Objectives
 ---------
@@ -19,20 +19,20 @@ We call this API with object mapping in Citrus so that we do not need to write m
 structures but use the model objects directly in our test cases.
 
 In test cases we can use the model objects directly as message payload.
-
-{% highlight java %}
+    
+```java
 http()
     .client(todoClient)
     .send()
-    .post("/todolist")
-    .contentType("application/json")
+    .post("/api/todolist")
+    .contentType(ContentType.APPLICATION_JSON.getMimeType())
     .payload(new TodoEntry("${todoName}", "${todoDescription}"), objectMapper);
-{% endhighlight %}
+```
         
 As you can see we are able to send the model object. Citrus will automatically convert the object to a **application/json** message content 
 as **POST** request. In a receive action we are able to use a mapping validation callback in order to get access to the model objects of an incoming message payload.
 
-{% highlight java %}
+```java
 http()
     .client(todoClient)
     .receive()
@@ -44,7 +44,7 @@ http()
             Assert.assertEquals(todoEntry.getId(), uuid);    
         }
     });
-{% endhighlight %}
+```
         
 The validation callback gets the model object as first method parameter. You can now add some validation logic with assertions on the model.    
                 
@@ -52,3 +52,5 @@ Run
 ---------
 
 You can run the sample on your localhost in order to see Citrus in action. Read the instructions [how to run](/samples/run/) the sample.
+
+ [1]: https://citrusframework.org/reference/html#validation-callback

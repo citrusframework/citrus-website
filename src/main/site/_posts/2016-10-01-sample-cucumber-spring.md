@@ -9,7 +9,7 @@ permalink: /samples/cucumber-spring/
 ---
 
 The sample uses Cucumber behavior driven development (BDD) library. The tests combine BDD feature stories with the famous 
-Gherkin syntax and Citrus integration test capabilities. Read about this feature in [reference guide](http://www.citrusframework.org/reference/html/#cucumber)
+Gherkin syntax and Citrus integration test capabilities. Read about this feature in [reference guide][1]
  
 Objectives
 ---------
@@ -29,33 +29,35 @@ Get started
 
 We start with a feature test using JUnit and Cucumber runner.
 
-{% highlight java %}
+```java
 @RunWith(Cucumber.class)
 @CucumberOptions(
         plugin = { "com.consol.citrus.cucumber.CitrusReporter" } )
 public class TodoFeatureIT {
 }
-{% endhighlight %}
+```
 
 The test feature is described in a story using Gherkin syntax.
 
-    Feature: Todo app
-    
-      Scenario: Add todo entry
-        Given Todo list is empty
-        When I add entry "Code something"
-        Then the number of todo entries should be 1
-    
-      Scenario: Remove todo entry
-        Given Todo list is empty
-        When I add entry "Remove me"
-        Then the number of todo entries should be 1
-        When I remove entry "Remove me"
-        Then the todo list should be empty
+```gherkin
+Feature: Todo app
+
+  Scenario: Add todo entry
+    Given Todo list is empty
+    When I add entry "Code something"
+    Then the number of todo entries should be 1
+
+  Scenario: Remove todo entry
+    Given Todo list is empty
+    When I add entry "Remove me"
+    Then the number of todo entries should be 1
+    When I remove entry "Remove me"
+    Then the todo list should be empty
+```
         
 The steps executed are defined in a separate class where a Citrus test designer is used to build integration test logic.
 
-{% highlight java %}
+```java
 @ContextConfiguration(classes = CitrusSpringConfig.class)
 public class TodoSteps {
 
@@ -70,12 +72,12 @@ public class TodoSteps {
         designer.http()
                 .client(todoListClient)
                 .send()
-                .delete("/todolist");
+                .delete("/api/todolist");
 
         designer.http()
                 .client(todoListClient)
                 .receive()
-                .response(HttpStatus.FOUND);
+                .response(HttpStatus.OK);
     }
 
     @When("^I add entry \"([^\"]*)\"$")
@@ -95,7 +97,7 @@ public class TodoSteps {
     
     [...]
 }    
-{% endhighlight %}
+```
     
 As you can see we are now able to use Spring **@Autowired** annotations in order to enable dependency injection. The **CitrusSpringConfig**
 class is also loaded as Spring context configuration in order to load the Citrus default Spring application context.   
@@ -106,16 +108,18 @@ Configuration
 There are some configuration aspects that should be highlighted in particular. The sample uses Cucumber Spring support. Therefore
 we have included the respective Maven dependency to the project:
 
-{% highlight xml %}
+```xml
 <dependency>
   <groupId>io.cucumber</groupId>
   <artifactId>cucumber-spring</artifactId>
 </dependency>
-{% endhighlight %}
+```
     
 Secondly we choose Citrus Spring object factory in *cucumber.properties* in order to enable Cucumber Spring support in all tests.
     
-    cucumber.api.java.ObjectFactory=cucumber.runtime.java.spring.CitrusSpringObjectFactory
+```properties
+cucumber.api.java.ObjectFactory=cucumber.runtime.java.spring.CitrusSpringObjectFactory
+```
     
 These two steps are required to make Citrus work with Cucumber Spring features.
 
@@ -126,9 +130,11 @@ The usage of this special object factory is mandatory in order to combine Citrus
    
 We also have the usual *citrus-context.xml* Citrus Spring configuration that is automatically loaded within the object factory.
 So you can define and use Citrus components as usual within your test. In this sample we use a Http client component to call some
-REST API on the [todo-list](/samples/todo-app/) application.    
+REST API on the [todo-list](/samples/todo-app/) application.       
                 
 Run
 ---------
 
 You can run the sample on your localhost in order to see Citrus in action. Read the instructions [how to run](/samples/run/) the sample.
+
+ [1]: https://citrusframework.org/reference/html#cucumber

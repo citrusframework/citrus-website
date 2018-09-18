@@ -9,7 +9,7 @@ permalink: /samples/junit/
 ---
 
 This sample demonstrates the JUnit support in Citrus. We write some JUnit Citrus test cases that test the REST API of the todo sample application. The JUnit support is
-also described in detail in [reference guide](http://www.citrusframework.org/reference/html/index.html#run-with-junit)
+also described in detail in [reference guide][1]
 
 Objectives
 ---------
@@ -19,7 +19,7 @@ Citrus is able to call the API methods as a client in order to validate the Http
 
 We need a Http client component in the configuration:
 
-{% highlight java %}
+```java
 @Bean
 public HttpClient todoClient() {
     return CitrusEndpoints.http()
@@ -27,12 +27,12 @@ public HttpClient todoClient() {
                         .requestUrl("http://localhost:8080")
                         .build();
 }
-{% endhighlight %}
+```
     
 In test cases we can reference this client component in order to send REST calls to the server. Citrus is able to integrate with JUnit as test execution framework. You can use
 the `JUnit4CitrusTestRunner` implementation as base for your test.
     
-{% highlight java %}
+```java
 public class TodoListIT extends JUnit4CitrusTestRunner {
 
     @Autowired
@@ -55,7 +55,7 @@ public class TodoListIT extends JUnit4CitrusTestRunner {
             .response(HttpStatus.FOUND));
     }
 }      
-{% endhighlight %}
+```
         
 The `JUnit4CitrusTestRunner` makes sure that Citrus framework is loaded at startup and all configuration is done properly. Also we need to set the annotation `@CitrusTest` on our test methods in
 addition to the normal JUnit `@Test` annotation. This way we can inject Citrus endpoints such as the `todoClient` and we can use the runner Java fluent API in Citrus to send and receive messages using that client component. 
@@ -64,7 +64,7 @@ As an alternative to that you can also use the test designer fluent API. You nee
 
 Last not least we can also use resource injection to the test methods using `@CitrusResource` method parameter annotations.
 
-{% highlight java %}
+```java
 public class TodoListInjectIT extends JUnit4CitrusTest {
 
     @Autowired
@@ -88,7 +88,7 @@ public class TodoListInjectIT extends JUnit4CitrusTest {
     }
 
 }  
-{% endhighlight %}
+```
   
 We can inject method parameters such as `@CitrusResource` annotated `TestRunner` that is our entrance to the Citrus Java fluent API.
 
@@ -96,14 +96,14 @@ We can use the Citrus Java DSL fluent API in the JUnit test in order to exchange
 
 In order to setup Maven for JUnit we need to add the dependency to the project POM file.
 
-{% highlight xml %}
+```xml
 <dependency>
   <groupId>junit</groupId>
   <artifactId>junit</artifactId>
   <version>${junit.version}</version>
   <scope>test</scope>
 </dependency>    
-{% endhighlight %}
+```
        
 That completes the project setup. We are now ready to execute the tests.
 
@@ -122,3 +122,5 @@ And of course green tests at the very end of the build and some new reporting fi
 
 Of course you can also start the Citrus tests from your favorite IDE.
 Just start the Citrus test using the TestNG IDE integration in IntelliJ, Eclipse or Netbeans.
+
+ [1]: https://citrusframework.org/reference/html#run-with-junit

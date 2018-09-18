@@ -20,7 +20,7 @@ Objectives
 We want to have a server component that provides a static response message to calling clients. Depending on the requested resource path the server
 should provide different response messages. we can do this in Citrus with a little bit of Spring bean configuration:
 
-{% highlight java %}
+```java
 @Bean
 public HttpServer todoListServer() throws Exception {
     return CitrusEndpoints.http()
@@ -39,13 +39,13 @@ public RequestDispatchingEndpointAdapter dispatchingEndpointAdapter() {
     dispatchingEndpointAdapter.setMappingStrategy(mappingStrategy());
     return dispatchingEndpointAdapter;
 }
-{% endhighlight %}
+```
 
 The *todoListServer* is a normal server component in Citrus. The endpoint-adapter is different though and defines the way how to automatically respond to calling clients.
 The server uses a **dispatchingEndpointAdapter**. This endpoint adapter implementation uses a mapping key extractor and a mapping strategy in order to map incoming requests to response generating
 adapters.
 
-{% highlight java %}
+```java
 @Bean
 public HeaderMappingKeyExtractor mappingKeyExtractor() {
     HeaderMappingKeyExtractor mappingKeyExtractor = new HeaderMappingKeyExtractor();
@@ -59,19 +59,19 @@ public SimpleMappingStrategy mappingStrategy() {
 
     Map<String, EndpointAdapter> mappings = new HashMap<>();
 
-    mappings.put("/todo", todoResponseAdapter());
-    mappings.put("/todolist", todoListResponseAdapter());
+    mappings.put("/api/todo", todoResponseAdapter());
+    mappings.put("/api/todolist", todoListResponseAdapter());
 
     mappingStrategy.setAdapterMappings(mappings);
     return mappingStrategy;
 }
-{% endhighlight %}
+```
 
 The mapping key extractor implementation evaluates the Http header **citrus_http_request_uri** which is an internal header representing the called request path. Depending on that request path value the
 mapping strategy maps incoming requests to different response generating adapter implementations. Here in this example we define **/todo** and **/todolist** request paths with response
 adapters.
 
-{% highlight java %}
+```java
 @Bean
 public EndpointAdapter todoResponseAdapter() {
     StaticResponseEndpointAdapter endpointAdapter = new StaticResponseEndpointAdapter();
@@ -97,7 +97,7 @@ public EndpointAdapter todoListResponseAdapter() {
                     "]");
     return endpointAdapter;
 }
-{% endhighlight %}
+```
 
 The response adapters provide static response messages. In summary we have a small Http server component that automatically responds to incoming request messages
 with static message payloads.

@@ -8,7 +8,7 @@ categories: [samples]
 permalink: /samples/https/
 ---
 
-This sample demonstrates the usage of secure Http connections with client and server certificates. Http support is described in detail in [reference guide](http://www.citrusframework.org/reference/html/#http-rest)
+This sample demonstrates the usage of secure Http connections with client and server certificates. Http support is described in detail in [reference guide][1]
 
 Objectives
 ---------
@@ -18,7 +18,7 @@ supported certificates. The sample uses the keystore in **src/test/resources/key
 
 We need a special Http client configuration:
 
-{% highlight java %}
+```java
 @Bean
 public HttpClient todoClient() {
     return CitrusEndpoints.http()
@@ -27,12 +27,12 @@ public HttpClient todoClient() {
                         .requestFactory(sslRequestFactory())
                         .build();
 }
-{% endhighlight %}
+```
     
 The client component references a special request factory and uses the transport scheme **https** on port **8443**. The SSL request factory is defined in a
 Java Spring configuration class simply because it is way more comfortable to do this in Java than in XML.
-
-{% highlight java %}
+    
+```java
 @Bean
 public HttpClient httpClient() {
     try {
@@ -57,27 +57,27 @@ public HttpClient httpClient() {
 public HttpComponentsClientHttpRequestFactory sslRequestFactory() {
     return new HttpComponentsClientHttpRequestFactory(httpClient());
 }
-{% endhighlight %}
+```
         
 As you can see we load the keystore file **keys/citrus.jks** in order to setup the http client ssl context. In the Citrus test case you can use the client component as usual for 
 sending messages to the server.
 
-{% highlight java %}
+```java
 http()
     .client(todoClient)
     .send()
     .get("/todo")
-    .accept("application/xml");
+    .accept(ContentType.APPLICATION_XML.getMimeType());
     
 http()
     .client(todoClient)
     .receive()
     .response(HttpStatus.OK);    
-{% endhighlight %}
+```
         
 On the server side the configuration looks like follows:
-
-{% highlight java %}
+        
+```java
 @Bean
 public HttpServer todoSslServer() throws Exception {
     return CitrusEndpoints.http()
@@ -113,20 +113,20 @@ private SslContextFactory sslContextFactory() {
     contextFactory.setKeyStorePassword("secret");
     return contextFactory;
 }        
-{% endhighlight %}
+```
         
 That is a lot of Spring bean configuration, but it works! The server component references a special **sslConnector** bean
 that defines the certificates and on the secure port **8443**. Client now have to use the certificate in order to connect.
        
 The server component has a static endpoint adapter always sending back a Http 200 Ok response when clients connect.
 
-{% highlight java %}
+```java
 @Bean
 public StaticEndpointAdapter staticEndpointAdapter() {
     return new StaticEndpointAdapter() {
         @Override
         protected Message handleMessageInternal(Message message) {
-            return new HttpMessage("<todo xmlns=\"https://citrusframework.org/samples/todolist\">" +
+            return new HttpMessage("<todo xmlns=\"http://citrusframework.org/samples/todolist\">" +
                         "<id>100</id>" +
                         "<title>todoName</title>" +
                         "<description>todoDescription</description>" +
@@ -134,8 +134,8 @@ public StaticEndpointAdapter staticEndpointAdapter() {
                     .status(HttpStatus.OK);
         }
     };
-}    
-{% endhighlight %}
+}
+```
                 
 Run
 ---------
@@ -165,3 +165,5 @@ And of course green tests at the very end of the build.
 
 Of course you can also start the Citrus tests from your favorite IDE.
 Just start the Citrus test using the TestNG IDE integration in IntelliJ, Eclipse or Netbeans.
+
+ [1]: https://citrusframework.org/reference/html#http

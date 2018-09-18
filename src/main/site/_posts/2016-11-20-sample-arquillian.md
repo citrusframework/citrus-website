@@ -13,7 +13,7 @@ With Arquillian the tests are executed within application container boundaries. 
 as container and provides access to EJB resources, Mail services and JNDI JMS resources such as destinations and connection factories.
 
 The sample integrates with Citrus and Arquillian for automated integration testing of JavaEE applications. You can read more about the
-cooperation of Citrus and Arquillian in [reference guide](http://www.citrusframework.org/reference/html/#arquillian).
+cooperation of Citrus and Arquillian in [reference guide][1].
   
 Objectives
 ---------
@@ -26,7 +26,7 @@ framework gives access to container managed resources such as JNDI resources and
 
 The Maven project POM includes the Arquillian dependencies in combination with an managed Wildfly container.
 
-{% highlight xml %}
+```xml
 <dependencyManagement>
     <dependencies>
       <dependency>
@@ -62,23 +62,23 @@ The Maven project POM includes the Arquillian dependencies in combination with a
       <scope>test</scope>
     </dependency>
 </dependencies>
-{% endhighlight %}
+```
 
 The dependencies include the **javaee-api**, **shrinkwrap** and **arquillian-junit-container**. In addition to that we need 
 the managed Wildfly container configuration.
  
-{% highlight xml %}
+```xml
 <dependency>
   <groupId>org.wildfly</groupId>
   <artifactId>wildfly-arquillian-container-managed</artifactId>
   <version>8.2.1.Final</version>
   <scope>test</scope>
 </dependency>
-{% endhighlight %}
+``` 
 
 The arquillian tests are configured with a **arquillian.xml** configuration file:
 
-{% highlight xml %}
+```xml
 <arquillian xmlns="http://jboss.org/schema/arquillian" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             xsi:schemaLocation="http://jboss.org/schema/arquillian http://jboss.org/schema/arquillian/arquillian_1_0.xsd">
 
@@ -94,14 +94,14 @@ The arquillian tests are configured with a **arquillian.xml** configuration file
 
   <extension qualifier="citrus">
     <property name="autoPackage">false</property>
-    <property name="citrusVersion">${citrus.version}</property>
+    <property name="citrusVersion">2.7</property>
   </extension>
 </arquillian>
-{% endhighlight %}
+```
 
 In **citrus-context.xml** we define the Citrus client and server components that are used during the tests.
 
-{% highlight xml %}
+```xml
 <!-- Mail server mock -->
 <citrus-mail:server id="mailServer"
                   auto-start="true"
@@ -112,12 +112,12 @@ In **citrus-context.xml** we define the Citrus client and server components that
                   auto-start="true"
                   port="18008"
                   timeout="5000"/>
-{% endhighlight %}
+```
 
 These components are used during the tests. The EJB JavaEE application connects to those services as client during the test. 
 Now lets have a look at a first sample arquillian test with its Shrinkwrap JavaEE deployments.
 
-{% highlight java %}
+```java
 public class Deployments {
 
     private static final String CXF_VERSION = "3.1.4";
@@ -157,12 +157,12 @@ public class Deployments {
                         .asFile());
     }
 }
-{% endhighlight %}
+```
 
 The tests use the Arquillian and Citrus resources with annotation based injection. All resources are automatically injected to the
 test before it is executed.
 
-{% highlight java %}
+```java
 @RunWith(Arquillian.class)
 @RunAsClient
 public class EmployeeResourceTest {
@@ -236,7 +236,7 @@ public class EmployeeResourceTest {
         citrusFramework.run(citrus.getTestCase());
     }
 }
-{% endhighlight %}
+```
 
 This is how we can integrate Citrus with Arquillian. Both frameworks cooperate with each other in order to make JavaEE applications testable 
 with automated in-container deployments.
@@ -250,3 +250,5 @@ You can run the tests by calling
 
 You should see Citrus performing several tests with lots of debugging output in the terminal. And of course green tests 
 at the very end of the build.
+
+ [1]: https://citrusframework.org/reference/html#arquillian

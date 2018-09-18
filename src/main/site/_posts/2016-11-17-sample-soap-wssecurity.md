@@ -9,7 +9,7 @@ permalink: /samples/soap-wssecurity/
 ---
 
 This sample uses SOAP web services with WSSecurity username token authentication. Clients must authenticate with proper wsse security elements and username
-password. You can read more about the Citrus SOAP features in [reference guide](http://www.citrusframework.org/reference/html/#soap)
+password. You can read more about the Citrus SOAP features in [reference guide][1]
 
 Objectives
 ---------
@@ -19,18 +19,18 @@ server endpoint validates incoming requests using the Spring **Wss4jSecurityInte
 
 First of all we add the dependency **spring-ws-security** to the Maven POM.
 
-{% highlight xml %}
+```xml
 <dependency>
   <groupId>org.springframework.ws</groupId>
   <artifactId>spring-ws-security</artifactId>
   <version>${spring.ws.version}</version>
   <scope>test</scope>
 </dependency>
-{% endhighlight %}
+```
     
 After that we can configure the SOAP client to use WSS4J security username and password for all requests.
 
-{% highlight java %}
+```java
 @Bean
 public WebServiceClient todoClient() {
     return CitrusEndpoints.soap()
@@ -55,14 +55,14 @@ public Wss4jSecurityInterceptor wss4jSecurityClientInterceptor() {
 
     return interceptor;
 }
-{% endhighlight %}
+```
    
 The client interceptor list contains the **Wss4jSecurityInterceptor** security interceptor that automatically adds username and password
 tokens in the SOAP header.
 
 The server component has to verify incoming requests to have this token set as expected:
 
-{% highlight java %}
+```java
 @Bean
 public WebServiceServer todoListServer() {
     return CitrusEndpoints.soap()
@@ -97,7 +97,7 @@ public Wss4jSecurityInterceptor wss4jSecurityServerInterceptor() {
 
     return interceptor;
 }   
-{% endhighlight %}
+```
      
 The server security interceptor validates with simple username password handler. As a result only granted users can access
 the web services. 
@@ -105,7 +105,7 @@ the web services.
 When you execute the test client and server operations will send and receive messages with WSSecurity enabled. You will see the security headers
 added to the SOAP message headers accordingly.
 
-{% highlight xml %}
+```xml
 <SOAP-ENV:Header>
     <wsse:Security xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" SOAP-ENV:mustUnderstand="1" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
         <wsse:UsernameToken wsu:Id="UsernameToken-C3539350EAFCFDFD3D14792492533112">
@@ -120,7 +120,7 @@ added to the SOAP message headers accordingly.
         </wsu:Timestamp>
     </wsse:Security>
 </SOAP-ENV:Header>
-{% endhighlight %}
+```
         
 Run
 ---------
@@ -145,3 +145,5 @@ And of course green tests at the very end of the build.
 
 Of course you can also start the Citrus tests from your favorite IDE.
 Just start the Citrus test using the TestNG IDE integration in IntelliJ, Eclipse or Netbeans.
+
+ [1]: https://citrusframework.org/reference/html#soap

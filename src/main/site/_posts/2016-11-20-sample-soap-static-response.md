@@ -20,7 +20,7 @@ Objectives
 We want to have a server component that provides a static response message to calling clients. Depending on the requested resource path the server
 should provide different response messages. we can do this in Citrus with a little bit of Spring bean configuration:
 
-{% highlight java %}
+```java
 @Bean
 public WebServiceServer todoListServer() throws Exception {
     return CitrusEndpoints.soap()
@@ -39,13 +39,13 @@ public RequestDispatchingEndpointAdapter dispatchingEndpointAdapter() {
     dispatchingEndpointAdapter.setMappingStrategy(mappingStrategy());
     return dispatchingEndpointAdapter;
 }
-{% endhighlight %}
+```
 
 The *todoListServer* is a normal server component in Citrus. The endpoint-adapter is different though and defines the way how to automatically respond to calling clients.
 The server uses a **dispatchingEndpointAdapter**. This endpoint adapter implementation uses a mapping key extractor and a mapping strategy in order to map incoming requests to response generating
 adapters.
 
-{% highlight java %}
+```java
 @Bean
 public HeaderMappingKeyExtractor mappingKeyExtractor() {
     return new SoapActionMappingKeyExtractor();
@@ -63,18 +63,18 @@ public SimpleMappingStrategy mappingStrategy() {
     mappingStrategy.setAdapterMappings(mappings);
     return mappingStrategy;
 }
-{% endhighlight %}
+```
 
 The mapping key extractor implementation evaluates the SOAP action header. Depending on that SOAP action value the
 mapping strategy maps incoming requests to different response generating adapter implementations. Here in this example we define **getTodo** and **getTodoList** actions with response
 adapters.
 
-{% highlight java %}
+```java
 @Bean
 public EndpointAdapter todoResponseAdapter() {
     StaticResponseEndpointAdapter endpointAdapter = new StaticResponseEndpointAdapter();
-    endpointAdapter.setMessagePayload("<getTodoResponse xmlns=\"https://citrusframework.org/samples/todolist\">" +
-                "<todoEntry xmlns=\"https://citrusframework.org/samples/todolist\">" +
+    endpointAdapter.setMessagePayload("<getTodoResponse xmlns=\"http://citrusframework.org/samples/todolist\">" +
+                "<todoEntry xmlns=\"http://citrusframework.org/samples/todolist\">" +
                     "<id>${todoId}</id>" +
                     "<title>${todoName}</title>" +
                     "<description>${todoDescription}</description>" +
@@ -87,7 +87,7 @@ public EndpointAdapter todoResponseAdapter() {
 @Bean
 public EndpointAdapter todoListResponseAdapter() {
     StaticResponseEndpointAdapter endpointAdapter = new StaticResponseEndpointAdapter();
-    endpointAdapter.setMessagePayload("<getTodoListResponse xmlns=\"https://citrusframework.org/samples/todolist\">" +
+    endpointAdapter.setMessagePayload("<getTodoListResponse xmlns=\"http://citrusframework.org/samples/todolist\">" +
                 "<list>" +
                     "<todoEntry>" +
                         "<id>${todoId}</id>" +
@@ -99,7 +99,7 @@ public EndpointAdapter todoListResponseAdapter() {
             "</getTodoListResponse>");
     return endpointAdapter;
 }
-{% endhighlight %}
+```
 
 The response adapters provide static response messages. In summary we have a small SOAP web service server component that automatically responds to incoming request messages
 with static message payloads. As usual the SOAP envelope handling is automatically done within the server component.

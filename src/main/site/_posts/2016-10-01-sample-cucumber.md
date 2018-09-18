@@ -9,7 +9,7 @@ permalink: /samples/cucumber/
 ---
 
 The sample uses Cucumber behavior driven development (BDD) library. The tests combine BDD feature stories with the famous 
-Gherkin syntax and Citrus integration test capabilities. Read about this feature in [reference guide](http://www.citrusframework.org/reference/html/#cucumber)
+Gherkin syntax and Citrus integration test capabilities. Read about this feature in [reference guide][1]
  
 Objectives
 ---------
@@ -25,33 +25,35 @@ Get started
 
 We start with a feature test using JUnit and Cucumber runner.
 
-{% highlight java %}
+```java
 @RunWith(Cucumber.class)
 @CucumberOptions(
         plugin = { "com.consol.citrus.cucumber.CitrusReporter" } )
 public class TodoFeatureIT {
 }
-{% endhighlight %}
+```
 
 The test feature is described in a story using Gherkin syntax.
 
-    Feature: Todo app
-    
-      Scenario: Add todo entry
-        Given Todo list is empty
-        When I add entry "Code something"
-        Then the number of todo entries should be 1
-    
-      Scenario: Remove todo entry
-        Given Todo list is empty
-        When I add entry "Remove me"
-        Then the number of todo entries should be 1
-        When I remove entry "Remove me"
-        Then the todo list should be empty
+```gherkin
+Feature: Todo app
+
+  Scenario: Add todo entry
+    Given Todo list is empty
+    When I add entry "Code something"
+    Then the number of todo entries should be 1
+
+  Scenario: Remove todo entry
+    Given Todo list is empty
+    When I add entry "Remove me"
+    Then the number of todo entries should be 1
+    When I remove entry "Remove me"
+    Then the todo list should be empty
+```
         
 The steps executed are defined in a separate class where a Citrus test designer is used to build integration test logic.
 
-{% highlight java %}
+```java
 public class TodoSteps {
 
     @CitrusResource
@@ -62,12 +64,12 @@ public class TodoSteps {
         designer.http()
             .client("todoListClient")
             .send()
-            .delete("/todolist");
+            .delete("/api/todolist");
 
         designer.http()
             .client("todoListClient")
             .receive()
-            .response(HttpStatus.FOUND);
+            .response(HttpStatus.OK);
     }
 
     @When("^I add entry \"([^\"]*)\"$")
@@ -87,14 +89,16 @@ public class TodoSteps {
     
     [...]
 }    
-{% endhighlight %}
+```
 
 Configuration
 ---------
 
 In order to enable Citrus Cucumber support we need to specify a special object factory in *cucumber.properties*.
     
-    cucumber.api.java.ObjectFactory=cucumber.runtime.java.CitrusObjectFactory
+```properties
+cucumber.api.java.ObjectFactory=cucumber.runtime.java.CitrusObjectFactory
+```
     
 The object factory takes care on creating all step definition instances. The object factory is able to inject *@CitrusResource*
 annotated fields in step classes.
@@ -109,3 +113,5 @@ Run
 ---------
 
 You can run the sample on your localhost in order to see Citrus in action. Read the instructions [how to run](/samples/run/) the sample.
+
+ [1]: https://citrusframework.org/reference/html#cucumber

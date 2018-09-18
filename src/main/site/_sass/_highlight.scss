@@ -2,9 +2,6 @@
  * Syntax highlighting styles
  */
 .highlight {
-  background-color: #FAFAFA;
-  border: 1px solid #DDDDDD;
-
   .c     { color: #998; font-style: italic } // Comment
   .err   { color: #a61717; } // Error
   .k     { font-weight: bold } // Keyword
@@ -32,6 +29,7 @@
   .kt    { color: #458; font-weight: bold } // Keyword.Type
   .m     { color: #099 } // Literal.Number
   .s     { color: #3344ee } // Literal.String
+  .nd    { color: #008080 } // Name.Annotation
   .na    { color: #008080 } // Name.Attribute
   .nb    { color: #0086B3 } // Name.Builtin
   .nc    { color: #458; font-weight: bold } // Name.Class

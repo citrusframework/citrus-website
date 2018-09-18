@@ -9,7 +9,7 @@ permalink: /samples/soap-ssl/
 ---
 
 This sample uses SOAP web services in combination with SSL secure connectivity on both client and server. You can read more about the 
-Citrus SOAP features in [reference guide](http://www.citrusframework.org/reference/html/#soap)
+Citrus SOAP features in [reference guide][1]
 
 Objectives
 ---------
@@ -19,7 +19,7 @@ keystore that holds the supported certificates. The sample uses the keystore in 
 
 We need a special Soap client configuration:
 
-{% highlight java %}
+```java
 @Bean
 public WebServiceClient todoClient() {
     return CitrusEndpoints.soap()
@@ -28,12 +28,12 @@ public WebServiceClient todoClient() {
                         .messageSender(sslRequestMessageSender())
                         .build();
 }
-{% endhighlight %}
+```
     
 The client component references a special request message sender and uses the transport scheme **https** on port **8443**. The SSL request message sender is defined in a
 Java Spring configuration class simply because it is way more comfortable to do this in Java than in XML.
     
-{% highlight java %}
+```java
 @Bean
 public HttpClient httpClient() {
     try {
@@ -59,7 +59,7 @@ public HttpClient httpClient() {
 public HttpComponentsMessageSender sslRequestMessageSender() {
     return new HttpComponentsMessageSender(httpClient());
 }
-{% endhighlight %}
+```
         
 **Note**
 We have to add the **HttpComponentsMessageSender.RemoveSoapHeadersInterceptor()** as interceptor to the http client. This prevents that content length headers get set several times which
@@ -68,7 +68,7 @@ is not allowed.
 As you can see we load the keystore file **keys/citrus.jks** in order to setup the http client ssl context. In the Citrus test case you can use the client component as usual for 
 sending messages to the server.
 
-{% highlight java %}
+```java
 soap()
     .client(todoClient)
     .send()
@@ -79,11 +79,11 @@ soap()
     .client(todoClient)
     .receive()
     .payload(new ClassPathResource("templates/addTodoEntryResponse.xml"));    
-{% endhighlight %}
+```
         
 On the server side the configuration looks like follows:
         
-{% highlight java %}
+```java
 @Bean
 public WebServiceServer todoSslServer() {
     return CitrusEndpoints.soap()
@@ -118,14 +118,14 @@ private SslContextFactory sslContextFactory() {
     contextFactory.setKeyStorePassword("secret");
     return contextFactory;
 }        
-{% endhighlight %}
-
+```
+        
 That is a lot of Spring bean configuration, but it works! The server component references a special **sslConnector** bean
 that defines the certificates and on the secure port **8443**. Client now have to use the certificate in order to connect.
        
 In the test case we can receive the requests and provide proper response messages as usual.
 
-{% highlight java %}
+```java
 soap()
     .server(todoServer)
     .receive()
@@ -134,8 +134,8 @@ soap()
 soap()
     .server(todoServer)
     .send()
-    .payload(new ClassPathResource("templates/addTodoEntryResponse.xml"));    
-{% endhighlight %}
+    .payload(new ClassPathResource("templates/addTodoEntryResponse.xml"));
+```
                 
 Run
 ---------
@@ -160,3 +160,5 @@ And of course green tests at the very end of the build.
 
 Of course you can also start the Citrus tests from your favorite IDE.
 Just start the Citrus test using the TestNG IDE integration in IntelliJ, Eclipse or Netbeans.
+
+ [1]: https://citrusframework.org/reference/html#soap

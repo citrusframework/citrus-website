@@ -8,7 +8,7 @@ categories: [samples]
 permalink: /samples/camel-context/
 ---
 
-This sample demonstrates how Citrus is able to interact with Apache Camel. Read more about this in [reference guide](http://www.citrusframework.org/reference/html/#camel)
+This sample demonstrates how Citrus is able to interact with Apache Camel. Read more about this in [reference guide][1]
 
 Objectives
 ---------
@@ -19,8 +19,7 @@ You can also simulate the Camel route endpoint with receiving messages and provi
 
 So we need a Camel route to test.
 
-{% highlight java %}
-// Apache Camel context with route to test
+```java
 @Bean
 public CamelContext camelContext() throws Exception {
     SpringCamelContext context = new SpringCamelContext();
@@ -29,13 +28,12 @@ public CamelContext camelContext() throws Exception {
                                                 .to("spring-ws:http://localhost:18009?soapAction=newsFeed"));
     return context;
 }
-{% endhighlight %}
+```
 
 The Camel route reads from a JMS queue and forwards the message to a SOAP web service endpoint. In a test scenario we need to send messages to the JMS destination and wait for messages on
 the SOAP server endpoint. Lets add configuration for this in Citrus:
 
-{% highlight java %}
-// JMS endpoint
+```java
 @Bean
 public JmsEndpoint newsJmsEndpoint() {
     return CitrusEndpoints.jms()
@@ -46,7 +44,6 @@ public JmsEndpoint newsJmsEndpoint() {
             .build();
 }
 
-// SOAP WebService server
 @Bean
 public WebServiceServer newsServer() {
     return CitrusEndpoints.soap()
@@ -56,32 +53,32 @@ public WebServiceServer newsServer() {
             .port(18009)
             .build();
 }
-{% endhighlight %}
+```
        
 The components above are used in a Citrus test case.
-       
-{% highlight java %}
+     
+```java
 @Test
 public class NewsFeedIT extends TestNGCitrusTestDesigner {
 
     @CitrusTest(name = "NewsFeed_Ok_IT")
     public void newsFeed_Ok_Test() {
         send("newsJmsEndpoint")
-                .payload("<nf:News xmlns:nf=\"https://citrusframework.org/schemas/samples/news\">" +
+                .payload("<nf:News xmlns:nf=\"http://citrusframework.org/schemas/samples/news\">" +
                             "<nf:Message>Citrus rocks!</nf:Message>" +
                         "</nf:News>");
 
-        receive("newsSoapServer")
-                .payload("<nf:News xmlns:nf=\"https://citrusframework.org/schemas/samples/news\">" +
+        receive("newsServer")
+                .payload("<nf:News xmlns:nf=\"http://citrusframework.org/schemas/samples/news\">" +
                             "<nf:Message>Citrus rocks!</nf:Message>" +
                         "</nf:News>")
                 .header(SoapMessageHeaders.SOAP_ACTION, "newsFeed");
 
-        send("newsSoapServer")
+        send("newsServer")
                 .header(SoapMessageHeaders.HTTP_STATUS_CODE, "200");
     }
 }
-{% endhighlight %}
+```       
        
 As you can see Citrus is both JMS message producer and SOAP server at the same time in a single test. The Apache Camel route in the middle will read the JMS message and forward it to the SOAP
 server endpoint where Citrus receives the message for validation purpose. This way we make sure the Camel route is working as expected.    
@@ -114,3 +111,5 @@ And of course green tests at the very end of the build.
 
 Of course you can also start the Citrus tests from your favorite IDE.
 Just start the Citrus test using the TestNG IDE integration in IntelliJ, Eclipse or Netbeans.
+
+ [1]: https://citrusframework.org/reference/html#camel

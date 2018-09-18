@@ -21,22 +21,22 @@ variable that is annotated with `@CitrusEndpoint` annotation in combination with
     
 This tells Citrus to create a new endpoint for this test class.
 
-{% highlight java %}
+```java
 @CitrusEndpoint
 @HttpClientConfig(requestUrl = "http://localhost:8080")
 private HttpClient todoClient;
-{% endhighlight %}
+```
     
 In contrast to adding the bean to the Spring application context we define the endpoint using annotation configurations. As usual we are
 able to reference this endpoint in any send and receive operation in Citrus Java fluent API.
 
-{% highlight java %}
+```java
 http()
     .client(todoClient)
     .send()
     .get("/todolist")
     .accept("text/html");
-{% endhighlight %}
+```
         
 Citrus automatically injects the endpoint with respective configuration for `requestUrl = http://localhost:8080`. You can use this endpoint
 within all test methods in this class.

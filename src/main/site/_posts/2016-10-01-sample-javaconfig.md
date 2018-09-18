@@ -20,41 +20,45 @@ configuration files and you can also use Java POJOs.
 This sample uses pure Java code for both Citrus configuration and tests. The
 Citrus TestNG test uses a context configuration annotation.
 
-{% highlight java %}
+```java
 @ContextConfiguration(classes = { EndpointConfig.class })
-{% endhighlight %}
+```
     
 This tells Spring to load the configuration from the Java class ***EndpointConfig***.
-
-{% highlight java %}
+    
+```java
 @Bean
-public HttpClient todoListClient() {
+public HttpClient todoClient() {
     return CitrusEndpoints.http()
                 .client()
                 .requestUrl("http://localhost:8080")
                 .build();
 }
-{% endhighlight %}
+```
     
 In the configuration class we are able to define Citrus components for usage in tests. As usual
 we can autowire the Http client component as Spring bean in the test cases.
-  
-{% highlight java %}
+    
+```java
 @Autowired
-private HttpClient todoListCLient;
-{% endhighlight %}
-     
-Secondly we can use the ***CitrusEndpoint*** annotation to automatically create a new endpoint component in a test.
-    
-{% highlight java %}
-@CitrusEndpoint
-@HttpClientConfig(requestUrl = "http://localhost:8080")
 private HttpClient todoClient;
-{% endhighlight %}
+```
     
-In contrast to adding the bean to the Spring application context we define the endpoint using annotation configurations.    
+As usual we are able to reference this endpoint in any send and receive operation in Citrus Java fluent API.
+
+```java
+http()
+    .client(todoClient)
+    .send()
+    .get("/todolist")
+    .accept("text/html");
+```
+        
+Citrus and Spring framework automatically injects the endpoint with respective configuration for `requestUrl = http://localhost:8080`.    
                 
 Run
 ---------
 
 You can run the sample on your localhost in order to see Citrus in action. Read the instructions [how to run](/samples/run/) the sample.
+
+ [1]: https://citrusframework.org/reference/html#validation-xhtml
