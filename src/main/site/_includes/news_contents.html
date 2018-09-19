@@ -6,28 +6,17 @@
         <a href="${context.path}/news/">All News</a>
       </li>
       <li class="{% if page.title == 'Releases' %}current{% endif %}">
-        <a href="${context.path}/news/releases/">All Releases</a>
+        <a href="${context.path}/docs/history/">All Releases</a>
       </li>
       <li>
         <a href="http://citrus.895196.n3.nabble.com/" target="_blank">Forum</a>
       </li>
     </ul>
-    <h4>Recent Releases</h4>
-    <ul>
-      {% for post in site.categories.release limit:5 %}
-      <li class="{% if page.title == post.title %}current{% endif %}">
-        <a href="${context.path}{{ post.url }}">Version {{ post.version }}</a>
-      </li>
-      {% endfor %}
-      <li>
-        <a href="${context.path}/docs/history/">History »</a>
-      </li>
-    </ul>
-    <h4>Blogs</h4>
+    <h4>Posts</h4>
     <ul>
         {% for post in site.categories.blog %}
         <li class="{% if page.title == post.title %}current{% endif %}">
-          <a href="${context.path}{{ post.url }}">{{ post.short-title }}</a>
+          <a href="${context.path}{{ post.url }}">» {{ post.short-title }}</a>
         </li>
         {% endfor %}
     </ul>

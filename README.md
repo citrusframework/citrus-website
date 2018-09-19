@@ -28,14 +28,14 @@ You can now visit the Citrus site locally by pointing your browser to `http://lo
 The blog posts, release notes, samples and news are located as markdown files in `src/main/site/_posts`. You can add new posts here. You need to chose one of the following categories:
 
 * *blog*
-* *release*
 * *samples*
+* *release* (@Deprecated not maintained since v2.7.2)
 
 Depending on what category you choose the post is rendered to different sections in the website:
 
 * [/news](https://citrusframework.github.io/news/)
-* [/releases](https://citrusframework.github.io/news/releases/)
 * [/samples](https://citrusframework.github.io/samples/)
+* [/releases](https://citrusframework.github.io/news/releases/) (@Deprecated not maintained since v2.7.2)
 
 
 ## Release to github pages
