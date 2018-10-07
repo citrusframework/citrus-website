@@ -129,7 +129,7 @@ The surefire and failsafe plugin configuration is responsible for executing all 
 {% highlight xml %}
 <plugin>
   <artifactId>maven-surefire-plugin</artifactId>
-  <version>2.19.1</version>
+  <version>2.22.0</version>
   <configuration>
     <failIfNoTests>false</failIfNoTests>
     <workingDirectory>${project.build.directory}</workingDirectory>
@@ -139,7 +139,7 @@ The surefire and failsafe plugin configuration is responsible for executing all 
 <plugin>
   <groupId>org.apache.maven.plugins</groupId>
   <artifactId>maven-failsafe-plugin</artifactId>
-  <version>2.19.1</version>
+  <version>2.22.0</version>
   <executions>
     <execution>
       <id>integration-tests</id>
