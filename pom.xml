@@ -42,13 +42,33 @@
       </roles>
     </developer>
     <developer>
-      <id>movchin</id>
-      <name>Michael Movchin</name>
+      <id>svettwer</id>
+      <name>Sven Hettwer</name>
       <email>citrus-dev-l@consol.de</email>
       <organization>ConSol Software GmbH</organization>
       <organizationUrl>http://www.consol.de/</organizationUrl>
       <roles>
-        <role>Web Developer</role>
+        <role>Developer</role>
+      </roles>
+    </developer>
+    <developer>
+      <id>s1hofmann</id>
+      <name>Simon Hofmann</name>
+      <email>citrus-dev-l@consol.de</email>
+      <organization>ConSol Software GmbH</organization>
+      <organizationUrl>http://www.consol.de/</organizationUrl>
+      <roles>
+        <role>Developer</role>
+      </roles>
+    </developer>
+    <developer>
+      <id>tnobody</id>
+      <name>Tim Keiner</name>
+      <email>citrus-dev-l@consol.de</email>
+      <organization>ConSol Software GmbH</organization>
+      <organizationUrl>http://www.consol.de/</organizationUrl>
+      <roles>
+        <role>Developer</role>
       </roles>
     </developer>
   </developers>
