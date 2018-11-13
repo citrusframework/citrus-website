@@ -1,6 +1,49 @@
+- version: 2.7.8
+  date: 2018-11-13
+  tag: v2.7.8
+  issues: https://github.com/citrusframework/citrus/issues/
+  stories: https://github.com/citrusframework/citrus/issues/
+  changes:
+  - title: Initial local build failing in citrus-arquillian
+    type: Fix
+    id: 524
+    author: christophd
+  - title: update vertx-core because of vulnerabilities
+    type: Fix
+    id: 520
+    author: svettwer
+  - title: Inconsistencies in Java doc for RepeatOnError
+    type: Fix
+    id: 509
+    author: svettwer
+  - title: Exception in async container is suppressed when used with TestNGCitrusTestRunner
+    type: Fix
+    id: 516
+    author: svettwer
+  - title: Maven Goal `citrus:create-test` generate test class with compile error
+    type: Fix
+    id: 505
+    author: sparsick
+  - title: Citrus reports containing invalid XML
+    type: Fix
+    id: 428
+    author: svettwer
+  - title: Thread leak in TestCase.finish()
+    type: Fix
+    id: 418
+    author: bwittwer
+  - title: Citrus-Maven-Plugin Generate Docs-Mojo fails due to broken path
+    type: Fix
+    id: 451
+    author: mischcon
+  - title: Add SFTP client preferred authentications setting
+    type: Update
+    id: 483
+    author: christophd
+
 - version: 2.7.7
   date: 2018-09-14
-  tag: latest
+  tag: v2.7.7
   issues: https://github.com/citrusframework/citrus/issues/
   stories: https://github.com/citrusframework/citrus/issues/
   changes:
