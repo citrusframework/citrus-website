@@ -21,7 +21,8 @@ powerful, reliable and flexible testing tool it is today. And this year, we want
 In this post, I'll go through all the points mentioned and provide some details. The roadmap only contains the major topics 
 we want to approach. We'll still answer questions, fix bugs, add enhancements and smaller features. We'll also create
 epics on GitHub for every major topic to make the progress transparent to the community. Please notice that the time
-ranges marked in the timeline are more a rough estimation to give you an idea when we want to work on a certain topic.  
+ranges marked in the timeline are more a rough estimation to give you an idea when we want to work on a certain topic.
+And as always, if you have feedback for us, just let us know!  
 But before we go into the details of the roadmap, let's have a look at some other things that we're going to change.
 
 ## Release schedule
@@ -96,27 +97,62 @@ your requested feature, enhancement or bug fix to be released.
 ### Deprecate TestDesigner
 To clean up the Java DSL, improve the maintainability of the framework and reduce the complexity from a users perspective,
 we're going to deprecate the TestDesigner. We recommend the TestRunner for a while now and think, that the 
-way it works, is the way we want to go. Therefore we'll migrate all Java samples to the TestRunner in the near future.
+way it works, is superior to the TestDesigner. Therefore we'll migrate all Java samples to the TestRunner in the near future.
 This will help you to get started with a new project and as well with a migration. Speaking of migration, we're planning to
 merge the DSL style of the TestDesigner to the TestRunner. Our goal is to get the TestRunner DSL as close as possible to
-the TestDesigner DSL so that the migration won't consume much time. In addition, we think the TestDesigner DSL is much
-easier to read and write. So merging both DSL styles should make it easier for everybody to create test cases and also
-helps new users to understand, how the framework works.
+the TestDesigner DSL so that the migration won't consume much time. In addition, we think the TestDesigner DSL comes with
+some advantages and is much easier to read, write and understand. So merging both DSL styles should make it easier for
+everybody to create test cases and also helps new users to understand, how the framework works. In v3.0.0, the
+TestDesigner will finally be removed from the framework.
 
 ### Improve Logging
+To make it easier to detect the root cause of failing tests, we'll review the current logging concept to provide you
+exactly what you have to know when something goes wrong. This should help you to identify issues with your test case
+or your system under test as efficient as possible.
+
 ### Review Maven archetypes
+Maven archetypes are a good point to start with. No matter if you want to start a new project or if you are new to the
+framework, archetypes help you to get rid of some required boilerplate. With a review of the Citrus archetypes, we want
+to make sure to make it as easy as possible for you to create the infrastructure required by framework depending on your
+current use case.
+
 ### Stop Spring 4 Bugfix Support
+As you may have noticed, Citrus switches to Spring 5 with the v2.8.0 release. Even if the public API of Citrus stays
+untouched form this change, it might be the case that some users rely on Spring 4 in other components of their test
+suite. Therefore we'll provide a Spring 4 branch of the framework with bug fixes but without new features, until mid 2019.
+The releases with Spring 4 will continue the v2.7.x release family.
+
 ### Improve documentation
+Citrus already comes with a detailed and explanatory documentation, giving insides into the framework and also into the
+integrated communication technology. We'll review the documentations structure and content to make it easier to navigate
+and more focused on the features of the framework.
+
 ### Improve Citrus project structure
+To make it easier to maintain the project, we're going to review some structures that have established over the last years.
+This mainly concerns the packages and module structure. In addition we want to make it easier to get started with Citrus
+by reviewing the way, we've setup our dependencies. The goal is to reduce the amount of required dependencies to make the
+configuration clearer, and easier to understand for new users. The changes to the package structure will be released
+in v3.0.0 by the end of the year.
+
 ### Improve test class creation
+As we're going to review and clean up our API in 2019, we'll also review the way test classes are created. The goal is
+here, too, to make the setup easier to understand and more expressive to the user, too. This improvement will be released
+in v3.0.0 by the end of the year.
+
 ### Remove ANT support
+As maven and gradle are the superior build systems on the market, we're going to remove the ant support from the framework.
+This mainly concerns the ANT test actions. The support of ant will be stopped with v3.0.0 by the end of the year.
+
 ### Create Citrus Development guide
+To encourage the community to contribute to the project and provide recipes to extend the framework from a developers
+perspective, we want create a development guide that helps you to start developing Citrus. The idea here is to make this
+a living document with small incremental additions over the time.
+
+##Thank you
+At this point, thanks a lot to all the contributors of the framework! We highly appreciate every contribution from the
+community! May it be bug reports, ideas for new features, pull requests, general feedback or anything else, you help us
+to improve Citrus step by step and that's awesome! 
 
 
 Sven Hettwer ([@SvenHettwer](https://twitter.com/SvenHettwer))
-
-
-
-
-
- 
+Citrus Maintainer and Senior Software Engineer at ConSol GmbH
