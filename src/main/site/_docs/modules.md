@@ -115,5 +115,6 @@ Tool collection with Maven plugin, archetypes and ANT tasks for executing Citrus
 
 citrus-anttasks
 citrus-maven-plugin
+citrus-maven-remote-plugin
 citrus-quickstart
 citrus-quickstart-soap

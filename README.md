@@ -37,6 +37,12 @@ Depending on what category you choose the post is rendered to different sections
 * [/samples](https://citrusframework.github.io/samples/)
 * [/releases](https://citrusframework.github.io/news/releases/) (@Deprecated not maintained since v2.7.2)
 
+The [maven-resources-plugin](https://maven.apache.org/plugins/maven-resources-plugin) is used to copy posts when 
+releasing the website. When copying it performs filtering so that variables, which can come from the maven project 
+properties or from filter resources, can be included in your posts. These variables should be specified using the 
+\${...} delimiters. For example to include the current _citrus.version_ you would specify \${citrus.version} in the post.
+If you want to escape filtering for a variable you have to use the prefix '\\' prefix on front of the \${..} delimiter - 
+for example \\${citrus.version}.  
 
 ## Release to github pages
 

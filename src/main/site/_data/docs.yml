@@ -26,6 +26,7 @@
 - title: Tools
   docs:
   - maven-plugin
+  - maven-remote-plugin
 
 - title: Miscellaneous
   docs:
