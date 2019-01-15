@@ -34,12 +34,11 @@ the API based on the feedback of the community and perform major version updates
 ## High-Priority- and Low-Priority-Modules
 During the lasts months, we've monitored the download statistics from the maven central repository and recognized that
 some modules are significantly more popular than others. From today on, we want to focus on the modules that are heavily
-used and provide the most benefit by the community. Therefore we'll divide the Citrus modules into *High-Priority* and *Low-Priority* modules.
-*Newer Modules are also High-Priority as they have to establish first*???. We'll invest the major part of our time into the 
-High-Priority-Modules to improve the documentation, samples as well as the GitHub support and also focus on bug fixes
-and new features. The Low-Priority-Modules on the other hand, will take a back seat concerning these topics. If you're
-interested in helping us maintain any modules, feel free to contact us and propose pull requests. We always
-appreciate any kind of contribution.    
+used and provide the most benefit by the community. Therefore we'll divide the Citrus modules into *High-Priority* and
+*Low-Priority* modules. We'll invest the major part of our time into the High-Priority-Modules to improve the documentation,
+samples as well as the GitHub support and also focus on bug fixes and new features. The Low-Priority-Modules on the other
+hand, will take a back seat concerning these topics. If you're interested in helping us maintain any modules, feel free
+to contact us and propose pull requests. We always appreciate any kind of contribution.    
 
 ### High-Priority-Modules
 * Camel
@@ -53,13 +52,13 @@ appreciate any kind of contribution.
 * Selenium
 * SSH
 * Vert.x
-* Websockets (with HTTP 2.0 is this not somewhat obsolete?)
+* Websockets
 * SOAP
 
 ### Low-Priority-Modules
 * Arquillian
 * Docker
-* JMX?
+* JMX
 * Kubernetes
 * Restdocs
 * RMI
