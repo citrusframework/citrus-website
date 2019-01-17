@@ -4,7 +4,7 @@ This directory contains the Jekyll sources for the Citrus website, [citrusframew
 
 ## Contributing
 
-For information about contributing, see the [Contributing page](https://citrusframework.org/docs/contributing/).
+For information about contributing, see the [Contributing page](https://github.com/citrusframework/citrus/blob/master/CONTRIBUTING.md).
 
 ## Running locally
 
