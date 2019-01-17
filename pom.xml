@@ -5,7 +5,7 @@
   <groupId>com.consol.citrus</groupId>
   <artifactId>citrus-website</artifactId>
   <packaging>pom</packaging>
-  <version>1.0.8</version>
+  <version>1.0.9</version>
   <name>citrus-website</name>
   <description>Citrus Test Framework Website Sources</description>
   <url>https://citrusframework.org</url>
