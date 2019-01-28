@@ -1,3 +1,78 @@
+- version: 2.7.9
+  date: 2019-01-27
+  tag: v2.7.9
+  issues: https://github.com/citrusframework/citrus/issues/
+  stories: https://github.com/citrusframework/citrus/issues/
+  changes:
+    - title: Lost cookie entries except the last one
+      type: Fix
+      id: 561
+      author: svettwer
+    - title: Breaking change in selenium().browser().type() public API
+      type: Fix
+      id: 551
+      author: martinmaher
+    - title: Breaking change in waitFor().http() public API
+      type: Fix
+      id: 547
+      author: svettwer
+    - title: Breaking change in waitFor().file(String)
+      type: Fix
+      id: 557
+      author: martinmaher
+    - title: Breaking change in waitFor().file(File)
+      type: Fix
+      id: 558
+      author: martinmaher
+    - title: MessageContentBuilder interface broken for buildMessageContent
+      type: Fix
+      id: 552
+      author: martinmaher
+    - title: duplicated cookie entries in http request
+      type: Fix
+      id: 569
+      author: svettwer
+    - title: Citrus functions - Inconsistent values of global variables
+      type: Fix
+      id: 535
+      author: martinmaher
+    - title: Breaking change in waitFor().message()
+      type: Fix
+      id: 556
+      author: martinmaher
+    - title: Update com.fasterxml.jackson.core:jackson-databind to version 2.9.8 or later
+      type: Update
+      id: 584
+      author: svettwer
+    - title: Breaking change in MessageContentBuilder
+      type: Fix
+      id: 559
+      author: svettwer
+    - title: WaitBuilder.condition() changed return type
+      type: Fix
+      id: 555
+      author: svettwer
+    - title: Change of class signature and typing of WaitConditionBuilder
+      type: Fix
+      id: 554
+      author: svettwer
+    - title: Scp client builder does not offer autoReadFiles anymore
+      type: Fix
+      id: 553
+      author: martinmaher
+    - title: Cookies are not recognized by HTTP client
+      type: Fix
+      id: 455
+      author: svettwer
+    - title: Improve documentation concerning parallel messages
+      type: Fix
+      id: 591
+      author: svettwer
+    - title: maven plugin creates invalid testNG Citrus tests
+      type: Fix
+      id: 562
+      author: svettwer
+
 - version: 2.7.8
   date: 2018-11-13
   tag: v2.7.8
