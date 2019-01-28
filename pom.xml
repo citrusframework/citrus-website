@@ -5,7 +5,7 @@
   <groupId>com.consol.citrus</groupId>
   <artifactId>citrus-website</artifactId>
   <packaging>pom</packaging>
-  <version>1.0.12</version>
+  <version>1.0.13</version>
   <name>citrus-website</name>
   <description>Citrus Test Framework Website Sources</description>
   <url>https://citrusframework.org</url>
@@ -106,7 +106,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <context.path/>
-    <citrus.version>2.7.9</citrus.version>
+    <citrus.version>2.8.0</citrus.version>
   </properties>
 
   <dependencies>
@@ -148,6 +148,11 @@
     <dependency>
       <groupId>com.consol.citrus.model</groupId>
       <artifactId>citrus-model-jmx</artifactId>
+      <version>${citrus.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.consol.citrus.model</groupId>
+      <artifactId>citrus-model-kafka</artifactId>
       <version>${citrus.version}</version>
     </dependency>
     <dependency>
@@ -477,6 +482,42 @@
                   <directory>${project.build.directory}/schemas/com/consol/citrus/schema</directory>
                   <includes>
                     <include>citrus-jms-testcase*.xsd</include>
+                  </includes>
+                </resource>
+              </resources>
+            </configuration>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>copy-citrus-kafka-config-schemas</id>
+            <phase>package</phase>
+            <configuration>
+              <outputDirectory>${project.build.directory}/site/_site/schema/kafka/config</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>${project.build.directory}/schemas/com/consol/citrus/schema</directory>
+                  <includes>
+                    <include>citrus-kafka-config*.xsd</include>
+                  </includes>
+                </resource>
+              </resources>
+            </configuration>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>copy-citrus-kafka-test-schemas</id>
+            <phase>package</phase>
+            <configuration>
+              <outputDirectory>${project.build.directory}/site/_site/schema/kafka/testcase</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>${project.build.directory}/schemas/com/consol/citrus/schema</directory>
+                  <includes>
+                    <include>citrus-kafka-testcase*.xsd</include>
                   </includes>
                 </resource>
               </resources>

@@ -1,3 +1,30 @@
+- version: 2.8.0
+  date: 2019-01-28
+  tag: v2.8.0
+  issues: https://github.com/citrusframework/citrus/issues/
+  stories: https://github.com/citrusframework/citrus/issues/
+  changes:
+    - title: Spring 5.x support
+      type: Update
+      id: 402
+      author: christophd
+    - title: Cucumber 3.x support
+      type: Update
+      id: 403
+      author: christophd
+    - title: Use charset from http headers to parse the payload
+      type: Update
+      id: 511
+      author: christophd
+    - title: Apache Kafka support
+      type: Update
+      id: 152
+      author: christophd
+    - title: SAXParseException when sending SOAP request with empty payload or header
+      type: Update
+      id: 439
+      author: ceazy79
+
 - version: 2.7.9
   date: 2019-01-27
   tag: v2.7.9
