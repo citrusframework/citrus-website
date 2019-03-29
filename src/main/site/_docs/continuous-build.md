@@ -4,14 +4,14 @@ title: Continuous build
 permalink: /docs/continuous-build/
 ---
 
-## Jenkins
+## Travis CI
 
-The ConSol Labs build Jenkins holds the continuous build for Citrus.
+Build with <3 on Travis CI:
 
-[http://labs-build.consol.de/view/Citrus/](http://labs-build.consol.de/view/Citrus/)
+[http://labs-build.consol.de/view/Citrus/](https://travis-ci.com/citrusframework)
 
 ## Sonar
 
 Sonar style measurements can be found here:
 
-[http://labs-build1.consol.de:9000/](http://labs-build1.consol.de:9000/)
+[https://sonarcloud.io/organizations/citrusframework/projects](https://sonarcloud.io/organizations/citrusframework/projects)
