@@ -81,6 +81,8 @@ test {
     useTestNG()
 }
 {% endhighlight %}
+
+> Warning: This tutorial uses the TestNG unit test library. If you want to use JUnit, you will have to remove the above lines from your build.gradle file.
     
 Of course JUnit is also supported. This is all for build configuration settings. We can move on to writing some Citrus integration tests. The Java test classes
 usually go to the **src/test/java** directory.
