@@ -20,11 +20,11 @@ You need following software on your computer, in order to use the Citrus Framewo
   Citrus tests will be executed with the [Gradle](https://gradle.org/) build tool.
 
 Citrus uses Maven internally for building software. But of course you can also integrate the Citrus tests in a Gradle
-project. As the Citrus tests are nothing but normal JUnit or TestNG tests the integration in the Gradle build is very easy.
+project. Since Citrus tests are nothing but normal JUnit or TestNG tests, integration into your Gradle build is very easy.
 
 ### Gradle project
 
-First of all we create a new Java project called *citrus-sample*. There are multiple ways to get started with a Gradle project. I personally
+First, we create a new Java project called *citrus-sample*. There are multiple ways to get started with a Gradle project. I personally
 prefer to use my Java IDE (IntelliJ) for generating a basic Gradle project setup. Of course there are lots of Gradle project start samples out there.
 And summing up the Gradle project structure is pretts simple so you could also create this manually. Here is the basic project structure that we
 are going to use in this quickstart.
@@ -37,8 +37,8 @@ are going to use in this quickstart.
       |   |   + test
       |   |    |   + java
       |   |    |   + resources
-      build.gradle
-      settings.gradle
+    build.gradle
+    settings.gradle
 
 The Gradle build configuration is done in the **build.gradle** and **settings.gradle** files. Here we define the project name and the project version.
 
@@ -48,7 +48,7 @@ group 'com.consol.citrus.samples'
 version '${citrus.version}'
 {% endhighlight %}
     
-Now as Citrus libraries are available on Maven central repository we add these repositories so Gradle knows how to download the required
+Now, since Citrus libraries are available on Maven central repository, we add these repositories so Gradle knows how to download the required
 Citrus artifacts.    
 
 {% highlight shell %}
