@@ -22,27 +22,5 @@ Citrus grew out of multiple JEE software projects at ConSol. The Citrus team can
 enterprise applications but also in developing and operate those. If you looking for expert assistance regardless of 
 which part analysis, design, development, testing, operations - talk to us!
 
-## Contact
- 
-In case you have any questions or requests for help, please do not hesitate to contact us. We can help to set up a suitable 
-testing environment in order to test your EAI and SOA applications in an automated way. Testing is a very important issue 
-that has to be taken seriously.
-
-Feel free to get in contact with us!
-
-The Citrus team members will listen on the following mailing-lists
-
-- **user@citrusframework.org**
-- **dev@citrusframework.org**
-
-ConSol is the company behind Citrus
-
-    ConSol Consulting & Solutions Software GmbH
-    Franziskanerstr. 38
-    D-81669 München
-
-    Tel. +49-89-45841-100
-    Fax +49-89-45841-111
-    E-Mail: info@consol.de
     
 [ConSol Website](http://www.consol.de)
