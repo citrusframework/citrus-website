@@ -35,15 +35,3 @@ The Citrus team members will listen on the following mailing-lists
 
 - **user@citrusframework.org**
 - **dev@citrusframework.org**
-
-ConSol is the company behind Citrus
-
-    ConSol Consulting & Solutions Software GmbH
-    St.-Cajetan-Str. 43
-    D-81669 München
-
-    Tel. +49-89-45841-100
-    Fax +49-89-45841-111
-    E-Mail: info@consol.de
-    
-[ConSol Website](http://www.consol.de)
