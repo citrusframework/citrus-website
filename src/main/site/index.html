@@ -9,10 +9,10 @@ overview: true
       <p class="first">Citrus Integration<br>Testing</p>
 
       <br>
-      <p>Automated integration tests for message protocols and data formats!<br>
-        HTTP REST, JMS, TCP/IP, SOAP, FTP, SSH, XML, JSON and more!</p>
+      <p>Framework for automated integration tests supporting a wide range of message protocols and data formats!<br>
+        Kafka, Http REST, JMS, TCP/IP, SOAP, FTP/SFTP, SSH, XML, JSON and much more!</p>
 
-      <a href="${context.path}/docs/download" class="btn btn-primary">Download v${citrus.version}</a>
+      <a href="https://github.com/citrusframework/citrus/releases" class="btn btn-primary">Release v${citrus.version}</a>
     </div>
   </div>
 </section>
@@ -20,17 +20,17 @@ overview: true
 <section class="intro">
   <div class="grid">
     <div class="unit whole align-center">
-      <h1>Integration challenge</h1>
-      <h2><small>How Citrus works with automated tests</small></h2>
+      <h1>Messaging integration challenge</h1>
+      <h2><small>How Citrus helps with automated integration tests</small></h2>
 
       <img src="${context.path}/img/test-scenario.png" alt="Test Scenario">
 
-      <p>In a typical test scenario the system under test is deployed on some application server and interacts with
-        Citrus over various message transports. During the test run Citrus is able to act on both sides as client and/or
-        server simulating request/response messages.</p>
+      <p>In a typical test scenario the system under test is running on some infrastructure and interacts with
+        Citrus over various message transports. During the test Citrus is able to act on both sides as client and
+        server exchanging real request/response messages.</p>
 
-      <p>With each test step you can validate the exchanged messages with expected control data. The test is fully
-        automated and repeatable, so you can easily add the integration tests to your continuous build.</p>
+      <p>With each test step you can validate the exchanged messages with expected control data including message headers, attachments and body content.
+        The test is fully automated and repeatable, so you can easily add the integration tests to CI/CD pipeline.</p>
     </div>
   </div>
   <hr>

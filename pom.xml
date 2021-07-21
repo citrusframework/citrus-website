@@ -1,11 +1,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  
+
   <groupId>com.consol.citrus</groupId>
   <artifactId>citrus-website</artifactId>
   <packaging>pom</packaging>
-  <version>1.0.13</version>
+  <version>1.1.0</version>
   <name>citrus-website</name>
   <description>Citrus Test Framework Website Sources</description>
   <url>https://citrusframework.org</url>
@@ -35,8 +35,8 @@
       <id>christophd</id>
       <name>Christoph Deppisch</name>
       <email>citrus-dev-l@consol.de</email>
-      <organization>ConSol Software GmbH</organization>
-      <organizationUrl>http://www.consol.de/</organizationUrl>
+      <organization>Red Hat</organization>
+      <organizationUrl>https://www.redhat.com/</organizationUrl>
       <roles>
         <role>Developer</role>
       </roles>
@@ -46,7 +46,7 @@
       <name>Sven Hettwer</name>
       <email>citrus-dev-l@consol.de</email>
       <organization>ConSol Software GmbH</organization>
-      <organizationUrl>http://www.consol.de/</organizationUrl>
+      <organizationUrl>https://www.consol.de/</organizationUrl>
       <roles>
         <role>Developer</role>
       </roles>
@@ -56,7 +56,7 @@
       <name>Simon Hofmann</name>
       <email>citrus-dev-l@consol.de</email>
       <organization>ConSol Software GmbH</organization>
-      <organizationUrl>http://www.consol.de/</organizationUrl>
+      <organizationUrl>https://www.consol.de/</organizationUrl>
       <roles>
         <role>Developer</role>
       </roles>
@@ -66,7 +66,7 @@
       <name>Tim Keiner</name>
       <email>citrus-dev-l@consol.de</email>
       <organization>ConSol Software GmbH</organization>
-      <organizationUrl>http://www.consol.de/</organizationUrl>
+      <organizationUrl>https://www.consol.de/</organizationUrl>
       <roles>
         <role>Developer</role>
       </roles>
@@ -83,7 +83,7 @@
     <name>ConSol Software GmbH</name>
     <url>http://www.consol.com/</url>
   </organization>
-  
+
   <mailingLists>
     <mailingList>
       <name>Project Announcements</name>
@@ -101,68 +101,73 @@
       <post>citrus-dev-l@consol.de</post>
     </mailingList>
   </mailingLists>
-  
+
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <context.path/>
-    <citrus.version>2.8.0</citrus.version>
+    <citrus.version>3.0.0</citrus.version>
   </properties>
 
   <dependencies>
     <dependency>
-      <groupId>com.consol.citrus.model</groupId>
-      <artifactId>citrus-model-core</artifactId>
+      <groupId>com.consol.citrus</groupId>
+      <artifactId>citrus-base</artifactId>
       <version>${citrus.version}</version>
     </dependency>
     <dependency>
-      <groupId>com.consol.citrus.model</groupId>
-      <artifactId>citrus-model-camel</artifactId>
+      <groupId>com.consol.citrus</groupId>
+      <artifactId>citrus-spring-integration</artifactId>
       <version>${citrus.version}</version>
     </dependency>
     <dependency>
-      <groupId>com.consol.citrus.model</groupId>
-      <artifactId>citrus-model-docker</artifactId>
+      <groupId>com.consol.citrus</groupId>
+      <artifactId>citrus-camel</artifactId>
       <version>${citrus.version}</version>
     </dependency>
     <dependency>
-      <groupId>com.consol.citrus.model</groupId>
-      <artifactId>citrus-model-ftp</artifactId>
+      <groupId>com.consol.citrus</groupId>
+      <artifactId>citrus-docker</artifactId>
       <version>${citrus.version}</version>
     </dependency>
     <dependency>
-      <groupId>com.consol.citrus.model</groupId>
-      <artifactId>citrus-model-http</artifactId>
+      <groupId>com.consol.citrus</groupId>
+      <artifactId>citrus-ftp</artifactId>
       <version>${citrus.version}</version>
     </dependency>
     <dependency>
-      <groupId>com.consol.citrus.model</groupId>
-      <artifactId>citrus-model-jdbc</artifactId>
+      <groupId>com.consol.citrus</groupId>
+      <artifactId>citrus-http</artifactId>
       <version>${citrus.version}</version>
     </dependency>
     <dependency>
-      <groupId>com.consol.citrus.model</groupId>
-      <artifactId>citrus-model-jms</artifactId>
+      <groupId>com.consol.citrus</groupId>
+      <artifactId>citrus-jdbc</artifactId>
       <version>${citrus.version}</version>
     </dependency>
     <dependency>
-      <groupId>com.consol.citrus.model</groupId>
-      <artifactId>citrus-model-jmx</artifactId>
+      <groupId>com.consol.citrus</groupId>
+      <artifactId>citrus-jms</artifactId>
       <version>${citrus.version}</version>
     </dependency>
     <dependency>
-      <groupId>com.consol.citrus.model</groupId>
-      <artifactId>citrus-model-kafka</artifactId>
+      <groupId>com.consol.citrus</groupId>
+      <artifactId>citrus-jmx</artifactId>
       <version>${citrus.version}</version>
     </dependency>
     <dependency>
-      <groupId>com.consol.citrus.model</groupId>
-      <artifactId>citrus-model-kubernetes</artifactId>
+      <groupId>com.consol.citrus</groupId>
+      <artifactId>citrus-kafka</artifactId>
       <version>${citrus.version}</version>
     </dependency>
     <dependency>
-      <groupId>com.consol.citrus.model</groupId>
-      <artifactId>citrus-model-mail</artifactId>
+      <groupId>com.consol.citrus</groupId>
+      <artifactId>citrus-kubernetes</artifactId>
+      <version>${citrus.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.consol.citrus</groupId>
+      <artifactId>citrus-mail</artifactId>
       <version>${citrus.version}</version>
     </dependency>
     <dependency>
@@ -171,42 +176,42 @@
       <version>${citrus.version}</version>
     </dependency>
     <dependency>
-      <groupId>com.consol.citrus.model</groupId>
-      <artifactId>citrus-model-rmi</artifactId>
+      <groupId>com.consol.citrus</groupId>
+      <artifactId>citrus-rmi</artifactId>
       <version>${citrus.version}</version>
     </dependency>
     <dependency>
-      <groupId>com.consol.citrus.model</groupId>
-      <artifactId>citrus-model-selenium</artifactId>
+      <groupId>com.consol.citrus</groupId>
+      <artifactId>citrus-selenium</artifactId>
       <version>${citrus.version}</version>
     </dependency>
     <dependency>
-      <groupId>com.consol.citrus.model</groupId>
-      <artifactId>citrus-model-ssh</artifactId>
+      <groupId>com.consol.citrus</groupId>
+      <artifactId>citrus-ssh</artifactId>
       <version>${citrus.version}</version>
     </dependency>
     <dependency>
-      <groupId>com.consol.citrus.model</groupId>
-      <artifactId>citrus-model-vertx</artifactId>
+      <groupId>com.consol.citrus</groupId>
+      <artifactId>citrus-vertx</artifactId>
       <version>${citrus.version}</version>
     </dependency>
     <dependency>
-      <groupId>com.consol.citrus.model</groupId>
-      <artifactId>citrus-model-websocket</artifactId>
+      <groupId>com.consol.citrus</groupId>
+      <artifactId>citrus-websocket</artifactId>
       <version>${citrus.version}</version>
     </dependency>
     <dependency>
-      <groupId>com.consol.citrus.model</groupId>
-      <artifactId>citrus-model-ws</artifactId>
+      <groupId>com.consol.citrus</groupId>
+      <artifactId>citrus-ws</artifactId>
       <version>${citrus.version}</version>
     </dependency>
     <dependency>
-      <groupId>com.consol.citrus.model</groupId>
-      <artifactId>citrus-model-zookeeper</artifactId>
+      <groupId>com.consol.citrus</groupId>
+      <artifactId>citrus-zookeeper</artifactId>
       <version>${citrus.version}</version>
     </dependency>
   </dependencies>
-  
+
   <build>
     <resources>
       <resource>
@@ -383,7 +388,7 @@
         </configuration>
         <executions>
           <execution>
-            <id>copy-citrus-core-config-schemas</id>
+            <id>copy-citrus-config-schemas</id>
             <phase>package</phase>
             <configuration>
               <outputDirectory>${project.build.directory}/site/_site/schema/config</outputDirectory>
@@ -401,7 +406,7 @@
             </goals>
           </execution>
           <execution>
-            <id>copy-citrus-core-test-schemas</id>
+            <id>copy-citrus-test-schemas</id>
             <phase>package</phase>
             <configuration>
               <outputDirectory>${project.build.directory}/site/_site/schema/testcase</outputDirectory>
@@ -410,6 +415,42 @@
                   <directory>${project.build.directory}/schemas/com/consol/citrus/schema</directory>
                   <includes>
                     <include>citrus-testcase*.xsd</include>
+                  </includes>
+                </resource>
+              </resources>
+            </configuration>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>copy-citrus-spring-integration-config-schemas</id>
+            <phase>package</phase>
+            <configuration>
+              <outputDirectory>${project.build.directory}/site/_site/schema/spring-integration/config</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>${project.build.directory}/schemas/com/consol/citrus/schema</directory>
+                  <includes>
+                    <include>citrus-spring-integration-config*.xsd</include>
+                  </includes>
+                </resource>
+              </resources>
+            </configuration>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>copy-citrus-spring-integration-test-schemas</id>
+            <phase>package</phase>
+            <configuration>
+              <outputDirectory>${project.build.directory}/site/_site/schema/spring-integration/testcase</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>${project.build.directory}/schemas/com/consol/citrus/schema</directory>
+                  <includes>
+                    <include>citrus-spring-integration-testcase*.xsd</include>
                   </includes>
                 </resource>
               </resources>
@@ -1093,7 +1134,7 @@
         <artifactId>apache-rat-plugin</artifactId>
       </plugin>
     </plugins>
-    
+
     <extensions>
       <extension>
         <groupId>org.apache.maven.wagon</groupId>
