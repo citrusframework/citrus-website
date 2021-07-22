@@ -11,25 +11,22 @@ ending with a built Citrus project ready for coding.
 
 - **[Git](http://git-scm.com/)**
   This can be either a command line client or some graphical UI. For simplicity, we assume you have the command line client installed.
-- **Java 8 (or higher version)**
+- **Java 11 (or higher version)**
   You can verify the Java installation via command line with
 
 {% highlight shell %}  
 java -version
-java version "1.8.0_112"
-Java(TM) SE Runtime Environment (build 1.8.0_112-b16)
-Java HotSpot(TM) 64-Bit Server VM (build 25.112-b16, mixed mode)</pre>
+openjdk version "11.0.1" 2018-10-16
+OpenJDK Runtime Environment 18.9 (build 11.0.1+13)
+OpenJDK 64-Bit Server VM 18.9 (build 11.0.1+13, mixed mode)
 {% endhighlight %}
   
-- **Maven 3.0.x (or higher version)**
+- **Maven 3.3.x (or higher version)**
   Download <a href="http://maven.apache.org">maven</a> and install Maven on your machine. Please verify correct version and **MAVEN_HOME** setup using following command
           
 {% highlight shell %}  
 mvn -version
-Maven version: 3.0.x
-Java version: 1.7.0_xx
-Default locale: en_US, platform encoding: MacRoman
-OS name: &quot;mac os x&quot; version: &quot;10.9&quot; arch: &quot;x86_64&quot; Family: &quot;mac&quot;</pre>
+Apache Maven 3.6.3
 {% endhighlight %}
 
 ## Initial git clone
