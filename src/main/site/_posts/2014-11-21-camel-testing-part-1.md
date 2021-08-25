@@ -11,9 +11,9 @@ Apache Camel is a great mediation and routing framework that integrates with alm
 
 So in a series of posts I would like to talk about integration testing strategies for Apache Camel projects using the Citrus integration test framework.
 
-* <a href="http://christophd.github.io/camel-testing-part-1/" title="Part 1" target="_blank">Part 1</a>: Setup the Citrus test project and interact with a sample Apache Camel project with JMS and SOAP WebService components
-* <a href="http://christophd.github.io/camel-testing-part-2/" title="Part 2" target="_blank">Part 2</a>: Invoke Camel routes from Citrus test cases and validate outbound messages
-* <a href="http://christophd.github.io/camel-testing-part-3/" title="Part 3" target="_blank">Part 3</a>: Test error situations with Camel exception handling
+* <a href="https://citrusframework.org/news/2014/11/21/camel-testing-part-1/" title="Part 1" target="_blank">Part 1</a>: Setup the Citrus test project and interact with a sample Apache Camel project with JMS and SOAP WebService components
+* <a href="https://citrusframework.org/news/2015/05/27/camel-testing-part-2/" title="Part 2" target="_blank">Part 2</a>: Invoke Camel routes from Citrus test cases and validate outbound messages
+* <a href="https://citrusframework.org/news/2015/06/03/camel-testing-part-3/" title="Part 3" target="_blank">Part 3</a>: Test error situations with Camel exception handling
 
 So lets have a sample Camel project that we would like to test. We need a simple Camel route like this:
 
