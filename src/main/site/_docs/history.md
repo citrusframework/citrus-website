@@ -10,7 +10,7 @@ permalink: "/docs/history/"
 
 | Type | Id | Changes | By |
 |:----:|:--:|:-------:|:--:|
-{% for change in release.changes %}| {{ change.type }} | {% if change.id == nil %}-{% endif %}{% if change.id != nil %}[#{{ change.id }}]({% if change.type == "Fix" %}{{ release.issues }}{% endif %}{% if change.type != "Fix" %}{{ release.stories }}{% endif %}{{ change.id }}){% endif %} | {{ change.title }} | {{ change.author }} |
+{% for change in release.changes %}| <i class="fa fa-{{ change.type }}"/> | {% if change.id == nil %}-{% endif %}{% if change.id != nil %}[#{{ change.id }}]({% if change.type == "Fix" %}{{ release.issues }}{% endif %}{% if change.type != "Fix" %}{{ release.stories }}{% endif %}{{ change.id }}){% endif %} | {{ change.title }} | {{ change.author }} |
 {% endfor %}
 
 {% endfor %}

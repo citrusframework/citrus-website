@@ -17,6 +17,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
 .fa-link:before {
   content: "\f0c1";
 }
@@ -28,3 +29,16 @@
 .fa-text-o:before {
   content: "\f0f6";
 }
+
+.fa-update:before {
+  content: "\f044";
+}
+
+.fa-add:before {
+  content: "\f196";
+}
+
+.fa-fix:before {
+  content: "\f046";
+}
+
