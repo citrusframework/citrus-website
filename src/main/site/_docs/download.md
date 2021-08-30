@@ -11,9 +11,9 @@ manual download are listed below:
 
 ## Release artifacts
 
-| Version | Artifact | Sources |
+| Version | Release date | Sources |
 |:--------|:--------|:--------|
-{% for release in site.data.releases limit:12 %}| {{ release.version }} | Release [zip](https://labs.consol.de/citrus-release/citrus-{{ release.version }}-release.zip)/[tar.gz](https://labs.consol.de/citrus-release/citrus-{{ release.version }}-release.tar.gz) | Sources [zip](https://labs.consol.de/citrus-release/citrus-{{ release.version }}-src.zip)/[tar.gz](https://labs.consol.de/citrus-release/citrus-{{ release.version }}-src.tar.gz) |
+{% for release in site.data.releases limit:12 %}| {{ release.version }} | {{ release.date }} | [zip](https://github.com/citrusframework/citrus/archive/refs/tags/v{{ release.version }}.zip)/[tar.gz](https://github.com/citrusframework/citrus/archive/refs/tags/v{{ release.version }}.tar.gz) |
 {% endfor %}
 
 The Citrus project requires Java 11 (or newer version) to run.

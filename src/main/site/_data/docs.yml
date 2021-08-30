@@ -1,10 +1,9 @@
 - title: Getting Started
   docs:
-  - home
-  - user-guide
+  - welcome
+  - documentation
   - setup-maven
   - setup-gradle
-  - setup-ant
   - features
   - download
 
