@@ -106,7 +106,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <context.path/>
-    <citrus.version>3.1.1</citrus.version>
+    <citrus.version>3.1.2</citrus.version>
   </properties>
 
   <dependencyManagement>
