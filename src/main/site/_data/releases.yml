@@ -1,3 +1,31 @@
+- version: 3.2.1
+  date: 2022-04-05
+  tag: v3.2.1
+  issues: https://github.com/citrusframework/citrus/issues/
+  stories: https://github.com/citrusframework/citrus/issues/
+  changes:
+    - title: Bump Jackson databind to 2.12.6.1
+      type: update
+      author: christophd
+    - title: Bump spring-core from 5.3.16 to 5.3.18
+      type: update
+      author: christophd
+    - title: Bump Spring Integration to 5.5.10
+      type: update
+      author: christophd
+    - title: Bump Spring WS to 3.1.3
+      type: update
+      author: christophd
+    - title: Fix outbound message logger
+      type: fix
+      author: christophd
+    - title: Avoid missing validation contexts
+      type: fix
+      author: christophd
+    - title: Fix Spring JUnit5 extension after all callback
+      type: fix
+      author: bbortt
+
 - version: 3.2.0
   date: 2022-03-04
   tag: v3.2.0

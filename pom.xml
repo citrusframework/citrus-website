@@ -20,12 +20,12 @@
   </licenses>
 
   <ciManagement>
-    <system>Jenkins</system>
-    <url>http://labs-build.consol.de/view/Citrus/</url>
+    <system>GitHub actions</system>
+    <url>https://github.com/citrusframework/citrus/actions</url>
     <notifiers>
       <notifier>
         <type>mail</type>
-        <address>citrus-dev-l@consol.de</address>
+        <address>citrus-dev@googlegroups.com</address>
       </notifier>
     </notifiers>
   </ciManagement>
@@ -34,7 +34,7 @@
     <developer>
       <id>christophd</id>
       <name>Christoph Deppisch</name>
-      <email>citrus-dev-l@consol.de</email>
+      <email>citrus-dev@googlegroups.com</email>
       <organization>Red Hat</organization>
       <organizationUrl>https://www.redhat.com/</organizationUrl>
       <roles>
@@ -44,9 +44,9 @@
     <developer>
       <id>svettwer</id>
       <name>Sven Hettwer</name>
-      <email>citrus-dev-l@consol.de</email>
-      <organization>ConSol Software GmbH</organization>
-      <organizationUrl>https://www.consol.de/</organizationUrl>
+      <email>citrus-dev@googlegroups.com</email>
+      <organization>IBM Deutschland Research and Development GmbH</organization>
+      <organizationUrl>https://www.ibm.com/</organizationUrl>
       <roles>
         <role>Developer</role>
       </roles>
@@ -54,9 +54,9 @@
     <developer>
       <id>s1hofmann</id>
       <name>Simon Hofmann</name>
-      <email>citrus-dev-l@consol.de</email>
-      <organization>ConSol Software GmbH</organization>
-      <organizationUrl>https://www.consol.de/</organizationUrl>
+      <email>citrus-dev@googlegroups.com</email>
+      <organization>Instana</organization>
+      <organizationUrl>https://www.instana.com/</organizationUrl>
       <roles>
         <role>Developer</role>
       </roles>
@@ -64,9 +64,9 @@
     <developer>
       <id>tnobody</id>
       <name>Tim Keiner</name>
-      <email>citrus-dev-l@consol.de</email>
+      <email>citrus-dev@googlegroups.com</email>
       <organization>ConSol Software GmbH</organization>
-      <organizationUrl>https://www.consol.de/</organizationUrl>
+      <organizationUrl>https://www.consol.com/</organizationUrl>
       <roles>
         <role>Developer</role>
       </roles>
@@ -81,7 +81,7 @@
 
   <organization>
     <name>ConSol Software GmbH</name>
-    <url>https://consol.com/</url>
+    <url>https://www.consol.com/</url>
   </organization>
 
   <mailingLists>
@@ -90,15 +90,11 @@
     </mailingList>
     <mailingList>
       <name>Project Development List</name>
-      <post>dev@citrusframework.org</post>
+      <post>citrus-dev@googlegroups.com</post>
     </mailingList>
     <mailingList>
       <name>Project User List</name>
-      <post>user@citrusframework.org</post>
-    </mailingList>
-    <mailingList>
-      <name>Internal Project Development List</name>
-      <post>citrus-dev-l@consol.de</post>
+      <post>citrus-users@googlegroups.com</post>
     </mailingList>
   </mailingLists>
 
@@ -106,7 +102,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <context.path/>
-    <citrus.version>3.2.0</citrus.version>
+    <citrus.version>3.2.1</citrus.version>
   </properties>
 
   <dependencyManagement>
