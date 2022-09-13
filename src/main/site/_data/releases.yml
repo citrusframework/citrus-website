@@ -1,3 +1,69 @@
+- version: 3.3.0
+  date: 2022-08-26
+  tag: v3.3.0
+  issues: https://github.com/citrusframework/citrus/issues/
+  stories: https://github.com/citrusframework/citrus/issues/
+  changes:
+    - title: Bump Apache Camel 3.14.0 to 3.16.0
+      type: update
+      author: christophd
+    - title: Bump Docker Java to 3.2.13
+      type: update
+      author: christophd
+    - title: Use JAXB directly instead of Spring OXM marshaller
+      type: update
+      author: christophd
+    - title: Bump Cucumber version to 7.3.1
+      type: update
+      author: christophd
+    - title: Bump Selenium version to 4.1.0
+      type: update
+      author: christophd
+    - title: Bump Junit Jupiter version to 5.8.2
+      type: update
+      author: christophd
+    - title: Bump Mockito version to 4.5.0
+      type: update
+      author: christophd
+    - title: Bump TestNG version to 7.5
+      type: update
+      author: christophd
+    - title: Bump Spring from 5.3.19 to 5.3.20
+      type: update
+      author: christophd
+    - title: Bump jackson version to v2.13.3
+      type: update
+      author: christophd
+    - title: Add plain XML runtime
+      id: 804
+      type: add
+      author: christophd
+    - title: Add Groovy test runtime
+      id: 857
+      type: add
+      author: christophd
+    - title: Update default SshServer host key to RSA
+      id: 859
+      type: fix
+      author: christophd
+    - title: Refactor wait action builder
+      id: 861
+      type: update
+      author: christophd
+    - title: Avoid concurrent modification exception
+      id: 879
+      type: fix
+      author: christophd
+    - title: Avoid misleading type converter lookup warnings
+      type: fix
+      author: christophd
+    - title: Fix obsolete jaxb-core dependency
+      type: fix
+      author: christophd
+    - title: Make Spring oxm marshaller dependency optional
+      type: update
+      author: christophd
+
 - version: 3.2.1
   date: 2022-04-05
   tag: v3.2.1

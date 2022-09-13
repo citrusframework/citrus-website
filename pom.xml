@@ -102,7 +102,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <context.path/>
-    <citrus.version>3.2.1</citrus.version>
+    <citrus.version>3.3.0</citrus.version>
   </properties>
 
   <dependencyManagement>
@@ -114,6 +114,11 @@
         <type>pom</type>
         <scope>import</scope>
       </dependency>
+      <dependency>
+        <groupId>com.consol.citrus</groupId>
+        <artifactId>citrus-xml</artifactId>
+        <version>${citrus.version}</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
 
@@ -121,6 +126,10 @@
     <dependency>
       <groupId>com.consol.citrus</groupId>
       <artifactId>citrus-base</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.consol.citrus</groupId>
+      <artifactId>citrus-xml</artifactId>
     </dependency>
     <dependency>
       <groupId>com.consol.citrus</groupId>
@@ -389,6 +398,24 @@
                   <directory>${project.build.directory}/schemas/com/consol/citrus/schema</directory>
                   <includes>
                     <include>citrus-config*.xsd</include>
+                  </includes>
+                </resource>
+              </resources>
+            </configuration>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>copy-citrus-xml-test-schemas</id>
+            <phase>package</phase>
+            <configuration>
+              <outputDirectory>${project.build.directory}/site/_site/schema/xml/testcase</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>${project.build.directory}/schemas/com/consol/citrus/schema/xml/testcase</directory>
+                  <includes>
+                    <include>citrus-testcase*.xsd</include>
                   </includes>
                 </resource>
               </resources>
