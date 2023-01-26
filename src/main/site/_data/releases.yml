@@ -1,3 +1,24 @@
+- version: 3.3.1
+  date: 2023-01-10
+  tag: v3.3.1
+  issues: https://github.com/citrusframework/citrus/issues/
+  stories: https://github.com/citrusframework/citrus/issues/
+  changes:
+    - title: Add citrus-xml module to BOM
+      type: fix
+      author: christophd
+    - title: Default test loader supports fluent configuration
+      id: 885
+      type: fix
+      author: bbortt
+    - title: Respect citrus context in default test loader
+      id: 885
+      type: fix
+      author: bbortt
+    - title: Avoid NullpointerException in citrus:env function
+      id: 894
+      type: fix
+      author: christophd
 - version: 3.3.0
   date: 2022-08-26
   tag: v3.3.0

@@ -102,7 +102,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <context.path/>
-    <citrus.version>3.3.0</citrus.version>
+    <citrus.version>3.3.1</citrus.version>
   </properties>
 
   <dependencyManagement>
@@ -113,11 +113,6 @@
         <version>${citrus.version}</version>
         <type>pom</type>
         <scope>import</scope>
-      </dependency>
-      <dependency>
-        <groupId>com.consol.citrus</groupId>
-        <artifactId>citrus-xml</artifactId>
-        <version>${citrus.version}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
@@ -293,7 +288,7 @@
         <plugin>
           <groupId>io.fabric8</groupId>
           <artifactId>docker-maven-plugin</artifactId>
-          <version>0.26.0</version>
+          <version>0.40.3</version>
         </plugin>
       </plugins>
     </pluginManagement>
