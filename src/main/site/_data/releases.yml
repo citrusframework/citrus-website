@@ -1,3 +1,40 @@
+- version: 3.4.0
+  date: 2023-01-27
+  tag: v3.3.4
+  issues: https://github.com/citrusframework/citrus/issues/
+  stories: https://github.com/citrusframework/citrus/issues/
+  changes:
+    - title: Add YAML runtime
+      id: 893
+      type: add
+      author: christophd
+    - title: Support multiple jsonPath validations
+      id: 892
+      type: fix
+      author: christophd
+    - title: Use standalone bom
+      id: 887
+      type: update
+      author: christophd
+    - title: Always debug log received message content
+      id: 846
+      type: update
+      author: christophd
+    - title: Spring context improvements
+      type: update
+      author: christophd
+    - title: Bump hsqldb from 2.6.1 to 2.7.1
+      type: update
+      author: dependabot
+    - title: Bump snakeyaml from 1.26 to 1.32
+      type: update
+      author: dependabot
+    - title: Update dependencies, Apache Camel 3.20.1, Selenium 4.8.0, Spring 5.3.25
+      type: update
+      author: christophd
+    - title: Update dependencies, Cucumber 7.11.0, JUnit Jupiter 5.9.2, TestNG 7.7.1
+      type: update
+      author: christophd
 - version: 3.3.1
   date: 2023-01-10
   tag: v3.3.1
