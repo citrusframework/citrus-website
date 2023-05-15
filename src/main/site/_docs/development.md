@@ -31,7 +31,7 @@ Apache Maven 3.6.3
 
 ## Initial git clone
 
-First of all we get the Citrus sources from the repository on [GitHub](http://www.github.com/). You can use the following command to do this
+First of all we get the Citrus sources from the repository on [GitHub](https://github.com/). You can use the following command to do this
 
 {% highlight shell %}  
 git clone git://github.com/citrusframework/citrus.git

@@ -2,7 +2,7 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.consol.citrus</groupId>
+  <groupId>org.citrusframework</groupId>
   <artifactId>citrus-website</artifactId>
   <packaging>pom</packaging>
   <version>1.1.0</version>
@@ -80,8 +80,8 @@
   </scm>
 
   <organization>
-    <name>ConSol Software GmbH</name>
-    <url>https://www.consol.com/</url>
+    <name>Citrus Framework Community</name>
+    <url>https://citrusframework.org</url>
   </organization>
 
   <mailingLists>
@@ -102,13 +102,13 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <context.path/>
-    <citrus.version>3.4.0</citrus.version>
+    <citrus.version>4.0.0-M1</citrus.version>
   </properties>
 
   <dependencyManagement>
     <dependencies>
       <dependency>
-        <groupId>com.consol.citrus</groupId>
+        <groupId>org.citrusframework</groupId>
         <artifactId>citrus-bom</artifactId>
         <version>${citrus.version}</version>
         <type>pom</type>
@@ -119,91 +119,87 @@
 
   <dependencies>
     <dependency>
-      <groupId>com.consol.citrus</groupId>
+      <groupId>org.citrusframework</groupId>
       <artifactId>citrus-base</artifactId>
     </dependency>
     <dependency>
-      <groupId>com.consol.citrus</groupId>
+      <groupId>org.citrusframework</groupId>
       <artifactId>citrus-xml</artifactId>
     </dependency>
     <dependency>
-      <groupId>com.consol.citrus</groupId>
+      <groupId>org.citrusframework</groupId>
       <artifactId>citrus-spring</artifactId>
     </dependency>
     <dependency>
-      <groupId>com.consol.citrus</groupId>
+      <groupId>org.citrusframework</groupId>
       <artifactId>citrus-spring-integration</artifactId>
     </dependency>
     <dependency>
-      <groupId>com.consol.citrus</groupId>
+      <groupId>org.citrusframework</groupId>
       <artifactId>citrus-camel</artifactId>
     </dependency>
     <dependency>
-      <groupId>com.consol.citrus</groupId>
+      <groupId>org.citrusframework</groupId>
       <artifactId>citrus-docker</artifactId>
     </dependency>
     <dependency>
-      <groupId>com.consol.citrus</groupId>
+      <groupId>org.citrusframework</groupId>
       <artifactId>citrus-ftp</artifactId>
     </dependency>
     <dependency>
-      <groupId>com.consol.citrus</groupId>
+      <groupId>org.citrusframework</groupId>
       <artifactId>citrus-http</artifactId>
     </dependency>
     <dependency>
-      <groupId>com.consol.citrus</groupId>
-      <artifactId>citrus-jdbc</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.consol.citrus</groupId>
+      <groupId>org.citrusframework</groupId>
       <artifactId>citrus-jms</artifactId>
     </dependency>
     <dependency>
-      <groupId>com.consol.citrus</groupId>
+      <groupId>org.citrusframework</groupId>
       <artifactId>citrus-jmx</artifactId>
     </dependency>
     <dependency>
-      <groupId>com.consol.citrus</groupId>
+      <groupId>org.citrusframework</groupId>
       <artifactId>citrus-kafka</artifactId>
     </dependency>
     <dependency>
-      <groupId>com.consol.citrus</groupId>
+      <groupId>org.citrusframework</groupId>
       <artifactId>citrus-kubernetes</artifactId>
     </dependency>
     <dependency>
-      <groupId>com.consol.citrus</groupId>
+      <groupId>org.citrusframework</groupId>
       <artifactId>citrus-mail</artifactId>
     </dependency>
     <dependency>
-      <groupId>com.consol.citrus</groupId>
+      <groupId>org.citrusframework</groupId>
       <artifactId>citrus-restdocs</artifactId>
     </dependency>
     <dependency>
-      <groupId>com.consol.citrus</groupId>
+      <groupId>org.citrusframework</groupId>
       <artifactId>citrus-rmi</artifactId>
     </dependency>
     <dependency>
-      <groupId>com.consol.citrus</groupId>
+      <groupId>org.citrusframework</groupId>
       <artifactId>citrus-selenium</artifactId>
     </dependency>
     <dependency>
-      <groupId>com.consol.citrus</groupId>
+      <groupId>org.citrusframework</groupId>
       <artifactId>citrus-ssh</artifactId>
     </dependency>
     <dependency>
-      <groupId>com.consol.citrus</groupId>
+      <groupId>org.citrusframework</groupId>
       <artifactId>citrus-vertx</artifactId>
     </dependency>
     <dependency>
-      <groupId>com.consol.citrus</groupId>
+      <groupId>org.citrusframework</groupId>
       <artifactId>citrus-websocket</artifactId>
     </dependency>
     <dependency>
-      <groupId>com.consol.citrus</groupId>
+      <groupId>org.citrusframework</groupId>
       <artifactId>citrus-ws</artifactId>
     </dependency>
     <dependency>
-      <groupId>com.consol.citrus</groupId>
+      <groupId>org.citrusframework</groupId>
       <artifactId>citrus-zookeeper</artifactId>
     </dependency>
   </dependencies>
@@ -390,7 +386,7 @@
               <outputDirectory>${project.build.directory}/site/_site/schema/config</outputDirectory>
               <resources>
                 <resource>
-                  <directory>${project.build.directory}/schemas/com/consol/citrus/schema</directory>
+                  <directory>${project.build.directory}/schemas/org/citrusframework/schema</directory>
                   <includes>
                     <include>citrus-config*.xsd</include>
                   </includes>
@@ -408,7 +404,7 @@
               <outputDirectory>${project.build.directory}/site/_site/schema/xml/testcase</outputDirectory>
               <resources>
                 <resource>
-                  <directory>${project.build.directory}/schemas/com/consol/citrus/schema/xml/testcase</directory>
+                  <directory>${project.build.directory}/schemas/org/citrusframework/schema/xml/testcase</directory>
                   <includes>
                     <include>citrus-testcase*.xsd</include>
                   </includes>
@@ -426,7 +422,7 @@
               <outputDirectory>${project.build.directory}/site/_site/schema/testcase</outputDirectory>
               <resources>
                 <resource>
-                  <directory>${project.build.directory}/schemas/com/consol/citrus/schema</directory>
+                  <directory>${project.build.directory}/schemas/org/citrusframework/schema</directory>
                   <includes>
                     <include>citrus-testcase*.xsd</include>
                   </includes>
@@ -444,7 +440,7 @@
               <outputDirectory>${project.build.directory}/site/_site/schema/spring-integration/config</outputDirectory>
               <resources>
                 <resource>
-                  <directory>${project.build.directory}/schemas/com/consol/citrus/schema</directory>
+                  <directory>${project.build.directory}/schemas/org/citrusframework/schema</directory>
                   <includes>
                     <include>citrus-spring-integration-config*.xsd</include>
                   </includes>
@@ -462,7 +458,7 @@
               <outputDirectory>${project.build.directory}/site/_site/schema/spring-integration/testcase</outputDirectory>
               <resources>
                 <resource>
-                  <directory>${project.build.directory}/schemas/com/consol/citrus/schema</directory>
+                  <directory>${project.build.directory}/schemas/org/citrusframework/schema</directory>
                   <includes>
                     <include>citrus-spring-integration-testcase*.xsd</include>
                   </includes>
@@ -480,7 +476,7 @@
               <outputDirectory>${project.build.directory}/site/_site/schema/jdbc/config</outputDirectory>
               <resources>
                 <resource>
-                  <directory>${project.build.directory}/schemas/com/consol/citrus/schema</directory>
+                  <directory>${project.build.directory}/schemas/org/citrusframework/schema</directory>
                   <includes>
                     <include>citrus-jdbc-config*.xsd</include>
                   </includes>
@@ -498,7 +494,7 @@
               <outputDirectory>${project.build.directory}/site/_site/schema/jdbc/message</outputDirectory>
               <resources>
                 <resource>
-                  <directory>${project.build.directory}/schemas/com/consol/citrus/schema</directory>
+                  <directory>${project.build.directory}/schemas/org/citrusframework/schema</directory>
                   <includes>
                     <include>citrus-jdbc-message*.xsd</include>
                   </includes>
@@ -516,7 +512,7 @@
               <outputDirectory>${project.build.directory}/site/_site/schema/jms/config</outputDirectory>
               <resources>
                 <resource>
-                  <directory>${project.build.directory}/schemas/com/consol/citrus/schema</directory>
+                  <directory>${project.build.directory}/schemas/org/citrusframework/schema</directory>
                   <includes>
                     <include>citrus-jms-config*.xsd</include>
                   </includes>
@@ -534,7 +530,7 @@
               <outputDirectory>${project.build.directory}/site/_site/schema/jms/testcase</outputDirectory>
               <resources>
                 <resource>
-                  <directory>${project.build.directory}/schemas/com/consol/citrus/schema</directory>
+                  <directory>${project.build.directory}/schemas/org/citrusframework/schema</directory>
                   <includes>
                     <include>citrus-jms-testcase*.xsd</include>
                   </includes>
@@ -552,7 +548,7 @@
               <outputDirectory>${project.build.directory}/site/_site/schema/kafka/config</outputDirectory>
               <resources>
                 <resource>
-                  <directory>${project.build.directory}/schemas/com/consol/citrus/schema</directory>
+                  <directory>${project.build.directory}/schemas/org/citrusframework/schema</directory>
                   <includes>
                     <include>citrus-kafka-config*.xsd</include>
                   </includes>
@@ -570,7 +566,7 @@
               <outputDirectory>${project.build.directory}/site/_site/schema/kafka/testcase</outputDirectory>
               <resources>
                 <resource>
-                  <directory>${project.build.directory}/schemas/com/consol/citrus/schema</directory>
+                  <directory>${project.build.directory}/schemas/org/citrusframework/schema</directory>
                   <includes>
                     <include>citrus-kafka-testcase*.xsd</include>
                   </includes>
@@ -588,7 +584,7 @@
               <outputDirectory>${project.build.directory}/site/_site/schema/ftp/config</outputDirectory>
               <resources>
                 <resource>
-                  <directory>${project.build.directory}/schemas/com/consol/citrus/schema</directory>
+                  <directory>${project.build.directory}/schemas/org/citrusframework/schema</directory>
                   <includes>
                     <include>citrus-ftp-config*.xsd</include>
                   </includes>
@@ -606,7 +602,7 @@
               <outputDirectory>${project.build.directory}/site/_site/schema/ftp/testcase</outputDirectory>
               <resources>
                 <resource>
-                  <directory>${project.build.directory}/schemas/com/consol/citrus/schema</directory>
+                  <directory>${project.build.directory}/schemas/org/citrusframework/schema</directory>
                   <includes>
                     <include>citrus-ftp-testcase*.xsd</include>
                   </includes>
@@ -624,7 +620,7 @@
               <outputDirectory>${project.build.directory}/site/_site/schema/sftp/config</outputDirectory>
               <resources>
                 <resource>
-                  <directory>${project.build.directory}/schemas/com/consol/citrus/schema</directory>
+                  <directory>${project.build.directory}/schemas/org/citrusframework/schema</directory>
                   <includes>
                     <include>citrus-sftp-config*.xsd</include>
                   </includes>
@@ -642,7 +638,7 @@
               <outputDirectory>${project.build.directory}/site/_site/schema/scp/config</outputDirectory>
               <resources>
                 <resource>
-                  <directory>${project.build.directory}/schemas/com/consol/citrus/schema</directory>
+                  <directory>${project.build.directory}/schemas/org/citrusframework/schema</directory>
                   <includes>
                     <include>citrus-scp-config*.xsd</include>
                   </includes>
@@ -660,7 +656,7 @@
               <outputDirectory>${project.build.directory}/site/_site/schema/http/config</outputDirectory>
               <resources>
                 <resource>
-                  <directory>${project.build.directory}/schemas/com/consol/citrus/schema</directory>
+                  <directory>${project.build.directory}/schemas/org/citrusframework/schema</directory>
                   <includes>
                     <include>citrus-http-config*.xsd</include>
                   </includes>
@@ -678,7 +674,7 @@
               <outputDirectory>${project.build.directory}/site/_site/schema/http/testcase</outputDirectory>
               <resources>
                 <resource>
-                  <directory>${project.build.directory}/schemas/com/consol/citrus/schema</directory>
+                  <directory>${project.build.directory}/schemas/org/citrusframework/schema</directory>
                   <includes>
                     <include>citrus-http-testcase*.xsd</include>
                   </includes>
@@ -696,7 +692,7 @@
               <outputDirectory>${project.build.directory}/site/_site/schema/websocket/config</outputDirectory>
               <resources>
                 <resource>
-                  <directory>${project.build.directory}/schemas/com/consol/citrus/schema</directory>
+                  <directory>${project.build.directory}/schemas/org/citrusframework/schema</directory>
                   <includes>
                     <include>citrus-websocket-config*.xsd</include>
                   </includes>
@@ -714,7 +710,7 @@
               <outputDirectory>${project.build.directory}/site/_site/schema/ws/config</outputDirectory>
               <resources>
                 <resource>
-                  <directory>${project.build.directory}/schemas/com/consol/citrus/schema</directory>
+                  <directory>${project.build.directory}/schemas/org/citrusframework/schema</directory>
                   <includes>
                     <include>citrus-ws-config*.xsd</include>
                   </includes>
@@ -732,7 +728,7 @@
               <outputDirectory>${project.build.directory}/site/_site/schema/ws/testcase</outputDirectory>
               <resources>
                 <resource>
-                  <directory>${project.build.directory}/schemas/com/consol/citrus/schema</directory>
+                  <directory>${project.build.directory}/schemas/org/citrusframework/schema</directory>
                   <includes>
                     <include>citrus-ws-testcase*.xsd</include>
                   </includes>
@@ -750,7 +746,7 @@
               <outputDirectory>${project.build.directory}/site/_site/schema/ssh/config</outputDirectory>
               <resources>
                 <resource>
-                  <directory>${project.build.directory}/schemas/com/consol/citrus/schema</directory>
+                  <directory>${project.build.directory}/schemas/org/citrusframework/schema</directory>
                   <includes>
                     <include>citrus-ssh-config*.xsd</include>
                   </includes>
@@ -768,7 +764,7 @@
               <outputDirectory>${project.build.directory}/site/_site/schema/ssh/message</outputDirectory>
               <resources>
                 <resource>
-                  <directory>${project.build.directory}/schemas/com/consol/citrus/schema</directory>
+                  <directory>${project.build.directory}/schemas/org/citrusframework/schema</directory>
                   <includes>
                     <include>citrus-ssh-message*.xsd</include>
                   </includes>
@@ -786,7 +782,7 @@
               <outputDirectory>${project.build.directory}/site/_site/schema/mail/config</outputDirectory>
               <resources>
                 <resource>
-                  <directory>${project.build.directory}/schemas/com/consol/citrus/schema</directory>
+                  <directory>${project.build.directory}/schemas/org/citrusframework/schema</directory>
                   <includes>
                     <include>citrus-mail-config*.xsd</include>
                   </includes>
@@ -804,7 +800,7 @@
               <outputDirectory>${project.build.directory}/site/_site/schema/mail/message</outputDirectory>
               <resources>
                 <resource>
-                  <directory>${project.build.directory}/schemas/com/consol/citrus/schema</directory>
+                  <directory>${project.build.directory}/schemas/org/citrusframework/schema</directory>
                   <includes>
                     <include>citrus-mail-message*.xsd</include>
                   </includes>
@@ -822,7 +818,7 @@
               <outputDirectory>${project.build.directory}/site/_site/schema/vertx/config</outputDirectory>
               <resources>
                 <resource>
-                  <directory>${project.build.directory}/schemas/com/consol/citrus/schema</directory>
+                  <directory>${project.build.directory}/schemas/org/citrusframework/schema</directory>
                   <includes>
                     <include>citrus-vertx-config*.xsd</include>
                   </includes>
@@ -840,7 +836,7 @@
               <outputDirectory>${project.build.directory}/site/_site/schema/camel/config</outputDirectory>
               <resources>
                 <resource>
-                  <directory>${project.build.directory}/schemas/com/consol/citrus/schema</directory>
+                  <directory>${project.build.directory}/schemas/org/citrusframework/schema</directory>
                   <includes>
                     <include>citrus-camel-config*.xsd</include>
                   </includes>
@@ -858,7 +854,7 @@
               <outputDirectory>${project.build.directory}/site/_site/schema/camel/testcase</outputDirectory>
               <resources>
                 <resource>
-                  <directory>${project.build.directory}/schemas/com/consol/citrus/schema</directory>
+                  <directory>${project.build.directory}/schemas/org/citrusframework/schema</directory>
                   <includes>
                     <include>citrus-camel-testcase*.xsd</include>
                   </includes>
@@ -876,7 +872,7 @@
               <outputDirectory>${project.build.directory}/site/_site/schema/docker/config</outputDirectory>
               <resources>
                 <resource>
-                  <directory>${project.build.directory}/schemas/com/consol/citrus/schema</directory>
+                  <directory>${project.build.directory}/schemas/org/citrusframework/schema</directory>
                   <includes>
                     <include>citrus-docker-config*.xsd</include>
                   </includes>
@@ -894,7 +890,7 @@
               <outputDirectory>${project.build.directory}/site/_site/schema/docker/testcase</outputDirectory>
               <resources>
                 <resource>
-                  <directory>${project.build.directory}/schemas/com/consol/citrus/schema</directory>
+                  <directory>${project.build.directory}/schemas/org/citrusframework/schema</directory>
                   <includes>
                     <include>citrus-docker-testcase*.xsd</include>
                   </includes>
@@ -912,7 +908,7 @@
               <outputDirectory>${project.build.directory}/site/_site/schema/kubernetes/config</outputDirectory>
               <resources>
                 <resource>
-                  <directory>${project.build.directory}/schemas/com/consol/citrus/schema</directory>
+                  <directory>${project.build.directory}/schemas/org/citrusframework/schema</directory>
                   <includes>
                     <include>citrus-kubernetes-config*.xsd</include>
                   </includes>
@@ -930,7 +926,7 @@
               <outputDirectory>${project.build.directory}/site/_site/schema/kubernetes/testcase</outputDirectory>
               <resources>
                 <resource>
-                  <directory>${project.build.directory}/schemas/com/consol/citrus/schema</directory>
+                  <directory>${project.build.directory}/schemas/org/citrusframework/schema</directory>
                   <includes>
                     <include>citrus-kubernetes-testcase*.xsd</include>
                   </includes>
@@ -948,7 +944,7 @@
               <outputDirectory>${project.build.directory}/site/_site/schema/selenium/config</outputDirectory>
               <resources>
                 <resource>
-                  <directory>${project.build.directory}/schemas/com/consol/citrus/schema</directory>
+                  <directory>${project.build.directory}/schemas/org/citrusframework/schema</directory>
                   <includes>
                     <include>citrus-selenium-config*.xsd</include>
                   </includes>
@@ -966,7 +962,7 @@
               <outputDirectory>${project.build.directory}/site/_site/schema/selenium/testcase</outputDirectory>
               <resources>
                 <resource>
-                  <directory>${project.build.directory}/schemas/com/consol/citrus/schema</directory>
+                  <directory>${project.build.directory}/schemas/org/citrusframework/schema</directory>
                   <includes>
                     <include>citrus-selenium-testcase*.xsd</include>
                   </includes>
@@ -984,7 +980,7 @@
               <outputDirectory>${project.build.directory}/site/_site/schema/cucumber/testcase</outputDirectory>
               <resources>
                 <resource>
-                  <directory>${project.build.directory}/schemas/com/consol/citrus/schema</directory>
+                  <directory>${project.build.directory}/schemas/org/citrusframework/schema</directory>
                   <includes>
                     <include>citrus-cucumber-testcase*.xsd</include>
                   </includes>
@@ -1002,7 +998,7 @@
               <outputDirectory>${project.build.directory}/site/_site/schema/zookeeper/config</outputDirectory>
               <resources>
                 <resource>
-                  <directory>${project.build.directory}/schemas/com/consol/citrus/schema</directory>
+                  <directory>${project.build.directory}/schemas/org/citrusframework/schema</directory>
                   <includes>
                     <include>citrus-zookeeper-config*.xsd</include>
                   </includes>
@@ -1020,7 +1016,7 @@
               <outputDirectory>${project.build.directory}/site/_site/schema/zookeeper/testcase</outputDirectory>
               <resources>
                 <resource>
-                  <directory>${project.build.directory}/schemas/com/consol/citrus/schema</directory>
+                  <directory>${project.build.directory}/schemas/org/citrusframework/schema</directory>
                   <includes>
                     <include>citrus-zookeeper-testcase*.xsd</include>
                   </includes>
@@ -1038,7 +1034,7 @@
               <outputDirectory>${project.build.directory}/site/_site/schema/rmi/config</outputDirectory>
               <resources>
                 <resource>
-                  <directory>${project.build.directory}/schemas/com/consol/citrus/schema</directory>
+                  <directory>${project.build.directory}/schemas/org/citrusframework/schema</directory>
                   <includes>
                     <include>citrus-rmi-config*.xsd</include>
                   </includes>
@@ -1056,7 +1052,7 @@
               <outputDirectory>${project.build.directory}/site/_site/schema/rmi/message</outputDirectory>
               <resources>
                 <resource>
-                  <directory>${project.build.directory}/schemas/com/consol/citrus/schema</directory>
+                  <directory>${project.build.directory}/schemas/org/citrusframework/schema</directory>
                   <includes>
                     <include>citrus-rmi-message*.xsd</include>
                   </includes>
@@ -1074,7 +1070,7 @@
               <outputDirectory>${project.build.directory}/site/_site/schema/jmx/config</outputDirectory>
               <resources>
                 <resource>
-                  <directory>${project.build.directory}/schemas/com/consol/citrus/schema</directory>
+                  <directory>${project.build.directory}/schemas/org/citrusframework/schema</directory>
                   <includes>
                     <include>citrus-jmx-config*.xsd</include>
                   </includes>
@@ -1092,7 +1088,7 @@
               <outputDirectory>${project.build.directory}/site/_site/schema/jmx/message</outputDirectory>
               <resources>
                 <resource>
-                  <directory>${project.build.directory}/schemas/com/consol/citrus/schema</directory>
+                  <directory>${project.build.directory}/schemas/org/citrusframework/schema</directory>
                   <includes>
                     <include>citrus-jmx-message*.xsd</include>
                   </includes>
@@ -1110,7 +1106,7 @@
               <outputDirectory>${project.build.directory}/site/_site/schema/restdocs/config</outputDirectory>
               <resources>
                 <resource>
-                  <directory>${project.build.directory}/schemas/com/consol/citrus/schema</directory>
+                  <directory>${project.build.directory}/schemas/org/citrusframework/schema</directory>
                   <includes>
                     <include>citrus-restdocs-config*.xsd</include>
                   </includes>
@@ -1208,53 +1204,5 @@
       </build>
     </profile>
 
-    <profile>
-      <id>release-gitlab</id>
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-scm-plugin</artifactId>
-            <configuration>
-              <connectionUrl>scm:git:git@gitlab.consol.de:citrus/citrus-site.git</connectionUrl>
-              <developerConnectionUrl>scm:git:git@gitlab.consol.de:citrus/citrus-site.git</developerConnectionUrl>
-              <scmVersion>master</scmVersion>
-              <scmVersionType>branch</scmVersionType>
-            </configuration>
-            <executions>
-              <execution>
-                <id>site-clone</id>
-                <phase>initialize</phase>
-                <goals>
-                  <goal>checkout</goal>
-                </goals>
-              </execution>
-              <execution>
-                <id>site-add</id>
-                <phase>verify</phase>
-                <goals>
-                  <goal>add</goal>
-                </goals>
-                <configuration>
-                  <workingDirectory>${project.build.directory}/checkout</workingDirectory>
-                  <includes>**/**</includes>
-                </configuration>
-              </execution>
-              <execution>
-                <id>site-push</id>
-                <phase>verify</phase>
-                <goals>
-                  <goal>checkin</goal>
-                </goals>
-                <configuration>
-                  <workingDirectory>${project.build.directory}/checkout</workingDirectory>
-                  <message>Update site content</message>
-                </configuration>
-              </execution>
-            </executions>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
   </profiles>
 </project>

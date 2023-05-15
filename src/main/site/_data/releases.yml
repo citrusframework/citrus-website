@@ -1,3 +1,44 @@
+- version: 4.0.0-M1
+  date: 2023-04-21
+  tag: v4.0.0-M1
+  issues: https://github.com/citrusframework/citrus/issues/
+  stories: https://github.com/citrusframework/citrus/issues/
+  changes:
+    - title: Use Java JDK 17
+      id: 922
+      type: fix
+      author: bbort
+    - title: Update to Spring 6.0
+      id: 922
+      type: update
+      author: bbort
+    - title: Update to Apache Camel 4.0
+      id: 922
+      type: update
+      author: christophd
+    - title: Update to Spring 6.0
+      id: 922
+      type: fix
+      author: bbort
+    - title: Move to groupId org.citrusframework
+      id: 938
+      type: add
+      author: bbort
+    - title: Remove obsolete dependencies
+      id: 922
+      type: fix
+      author: christophd
+    - title: Improve Groovy actions script handling
+      type: update
+      author: christophd
+    - title: Update dependency versions
+      type: update
+      author: christophd
+    - title: Fix false positive test report in DefaultTestLoader
+      id: 924
+      type: fix
+      author: christophd
+
 - version: 3.4.0
   date: 2023-01-27
   tag: v3.3.4

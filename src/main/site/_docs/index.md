@@ -20,7 +20,7 @@ for the latest Citrus release version.
 ## Additional documentation material
 
 - [News](${context.path}/news)
-- [Java Sources](http://www.github.com/citrusframework/citrus)
+- [Java Sources](https://github.com/citrusframework/citrus)
 - [Quickstart Maven](${context.path}/docs/setup-maven)
 - [Quickstart Gradle](${context.path}/docs/setup-gradle)
 - [Quickstart Ant](${context.path}/docs/setup-ant)
