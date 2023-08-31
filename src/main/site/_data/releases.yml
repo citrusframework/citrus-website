@@ -1,6 +1,6 @@
-- version: 4.0.0-M1
-  date: 2023-04-21
-  tag: v4.0.0-M1
+- version: 4.0.0-M2
+  date: 2023-08-31
+  tag: v4.0.0-M2
   issues: https://github.com/citrusframework/citrus/issues/
   stories: https://github.com/citrusframework/citrus/issues/
   changes:
@@ -16,10 +16,6 @@
       id: 922
       type: update
       author: christophd
-    - title: Update to Spring 6.0
-      id: 922
-      type: fix
-      author: bbort
     - title: Move to groupId org.citrusframework
       id: 938
       type: add
@@ -28,14 +24,38 @@
       id: 922
       type: fix
       author: christophd
+    - title: Remove vintage modules
+      id: 922
+      type: update
+      author: bbort
+    - title: Update Citrus documentation
+      id: 922
+      type: update
+      author: christophd
     - title: Improve Groovy actions script handling
       type: update
       author: christophd
     - title: Update dependency versions
       type: update
       author: christophd
+    - title: Fix build on Windows
+      type: fix
+      author: bbort
+    - title: Groovy action DSL support
+      type: add
+      author: christophd
+    - title: XML action DSL support
+      type: add
+      author: christophd
+    - title: YAML action DSL support
+      type: add
+      author: christophd
     - title: Fix false positive test report in DefaultTestLoader
       id: 924
+      type: fix
+      author: christophd
+    - title: Fix TransformAction builder charset setting on xslt resource
+      id: 965
       type: fix
       author: christophd
 
