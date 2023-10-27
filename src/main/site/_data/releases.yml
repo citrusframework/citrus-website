@@ -1,6 +1,6 @@
-- version: 4.0.0-M2
-  date: 2023-08-31
-  tag: v4.0.0-M2
+- version: 4.0.0
+  date: 2023-10-25
+  tag: v4.0.0
   issues: https://github.com/citrusframework/citrus/issues/
   stories: https://github.com/citrusframework/citrus/issues/
   changes:
@@ -28,6 +28,18 @@
       id: 922
       type: update
       author: bbort
+    - title: Remove deprecated code
+      id: 922
+      type: update
+      author: christophd
+    - title: Move citrus-jdbc module to citrus-db project
+      id: 922
+      type: update
+      author: christophd
+    - title: Move citrus-remote module to separate project
+      id: 922
+      type: update
+      author: christophd
     - title: Update Citrus documentation
       id: 922
       type: update
@@ -38,6 +50,9 @@
     - title: Update dependency versions
       type: update
       author: christophd
+    - title: Fix loading classpath resources when running from a jar
+      type: fix
+      author: turing85
     - title: Fix build on Windows
       type: fix
       author: bbort
@@ -56,6 +71,90 @@
       author: christophd
     - title: Fix TransformAction builder charset setting on xslt resource
       id: 965
+      type: fix
+      author: christophd
+    - title: CitrusSpringExtension for JUnit5 does not always log the generatedReports
+      id: 816
+      type: fix
+      author: christophd
+    - title: CitrusSpringExtension for JUnit5 occasionally clears all Results
+      id: 815
+      type: fix
+      author: christophd
+    - title: Allow deactivation of standard LoggingReporter
+      id: 973
+      type: add
+      author: schalthoeltt
+    - title: Allow comma and brackets in matcher expressions
+      id: 341
+      type: fix
+      author: schalthoeltt
+    - title: Add Hamcrest matchesPattern matcher
+      id: 988
+      type: add
+      author: schalthoeltt
+    - title: Log proper test step index on incremental Citrus tests
+      id: 948
+      type: fix
+      author: christophd
+    - title: Add QuarkusTest runtime support
+      id: 933
+      type: add
+      author: christophd
+    - title: Disable/Override standard Citrus reporters
+      id: 976
+      type: add
+      author: schalthoeltt
+    - title: Properly synchronize zip entries list
+      id: 1031
+      type: fix
+      author: tschlat
+    - title: Deactivate standard reporters
+      id: 1032
+      type: fix
+      author: tschlat
+    - title: Synchronize access to the zipEntries array cache
+      id: 1003
+      type: fix
+      author: schalthoeltt
+    - title: Add a mechanism to provide a custom test case runner
+      id: 1014
+      type: add
+      author: schalthoeltt
+    - title: Allow custom http status codes
+      id: 978
+      type: fix
+      author: bbortt
+    - title: Allow with SQL keyword for query action
+      id: 984
+      type: fix
+      author: bbortt
+    - title: Remove automatic sql variable extraction
+      id: 922
+      type: fix
+      author: bbortt
+    - title: Fix code snippets in the documentation
+      id: 995
+      type: fix
+      author: picimako
+    - title: Upgade and pin Netty 4.1.100.Final
+      id: 922
+      type: update
+      author: apupier
+    - title: Slim down dependency from docker-java to docker-java-core
+      id: 922
+      type: update
+      author: apupier
+    - title: Use try-with-resource to close buffered readers
+      id: 1020
+      type: fix
+      author: picimako
+    - title: Improve schema resolving xml
+      id: 990
+      type: fix
+      author: tom-29
+    - title: Store messages on receiving action
+      id: 1033
       type: fix
       author: christophd
 
