@@ -2,7 +2,7 @@
 layout: sample
 title: Java config sample
 name: sample-javaconfig
-group: none
+group: common
 description: Uses pure Java POJOs for configuration
 categories: [samples]
 permalink: /samples/javaconfig/

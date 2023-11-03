@@ -2,7 +2,7 @@
 layout: sample
 title: Gradle build sample
 name: sample-gradle
-group: none
+group: common
 description: Uses Gradle build to execute tests
 categories: [samples]
 permalink: /samples/gradle/

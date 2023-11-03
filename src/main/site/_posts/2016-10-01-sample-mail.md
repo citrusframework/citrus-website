@@ -2,7 +2,7 @@
 layout: sample
 title: Mail sample
 name: sample-mail
-group: none
+group: common
 description: Shows mail server activities in Citrus
 categories: [samples]
 permalink: /samples/mail/

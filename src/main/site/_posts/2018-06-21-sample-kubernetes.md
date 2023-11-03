@@ -2,7 +2,7 @@
 layout: sample
 title: Kubernetes sample
 name: sample-kubernetes
-group: none
+group: common
 description: Run tests in Kubernetes
 categories: [samples]
 permalink: /samples/kubernetes/

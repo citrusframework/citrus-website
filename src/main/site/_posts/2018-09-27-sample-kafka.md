@@ -2,7 +2,7 @@
 layout: sample
 title: Kafka sample
 name: sample-kafka
-group: none
+group: common
 description: Shows Kafka integration
 categories: [samples]
 permalink: /samples/kafka/

@@ -2,7 +2,7 @@
 layout: sample
 title: JMS sample
 name: sample-jms
-group: none
+group: common
 description: Shows JMS message broker connectivity
 categories: [samples]
 permalink: /samples/jms/

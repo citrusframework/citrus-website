@@ -2,7 +2,7 @@
 layout: sample
 title: Test behavior sample
 name: sample-behavior
-group: none
+group: common
 description: Add custom test behavior
 categories: [samples]
 permalink: /samples/behavior/

@@ -2,7 +2,7 @@
 layout: sample
 title: Message store sample
 name: sample-message-store
-group: none
+group: common
 description: Use the local message store
 categories: [samples]
 permalink: /samples/message-store/

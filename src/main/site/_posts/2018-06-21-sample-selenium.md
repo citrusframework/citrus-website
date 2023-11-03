@@ -2,7 +2,7 @@
 layout: sample
 title: Selenium sample
 name: sample-selenium
-group: none
+group: common
 description: Use Selenium for UI testing
 categories: [samples]
 permalink: /samples/selenium/

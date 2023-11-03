@@ -2,7 +2,7 @@
 layout: sample
 title: Reporting sample
 name: sample-reporting
-group: none
+group: common
 description: Add custom test reporting
 categories: [samples]
 permalink: /samples/reporting/

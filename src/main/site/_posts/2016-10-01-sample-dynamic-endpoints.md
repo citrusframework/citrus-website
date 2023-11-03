@@ -2,7 +2,7 @@
 layout: sample
 title: Dynamic endpoints sample
 name: sample-dynamic-endpoints
-group: none
+group: common
 description: Shows dynamic endpoint component usage
 categories: [samples]
 permalink: /samples/dynamic-endpoints/
