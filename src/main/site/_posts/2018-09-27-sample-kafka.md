@@ -73,4 +73,4 @@ After the tests are finished the embedded Jetty web container and the todo-list 
 
 Read further the instructions [how to run](/samples/run/) the sample.
 
- [1]: https://citrusframework.org/reference/html#kafka
+ [1]: https://citrusframework.org/citrus/reference/html#kafka

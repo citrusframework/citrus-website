@@ -92,4 +92,4 @@ And of course green tests at the very end of the build and some new reporting fi
 Of course you can also start the Citrus tests from your favorite IDE.
 Just start the Citrus test using the TestNG IDE integration in IntelliJ, Eclipse or Netbeans.
 
- [1]: https://citrusframework.org/reference/html#reporting-and-test-results
+ [1]: https://citrusframework.org/citrus/reference/html#reporting-and-test-results

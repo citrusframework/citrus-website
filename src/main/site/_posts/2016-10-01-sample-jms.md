@@ -112,4 +112,4 @@ You can do this with Maven:
 
 Read further the instructions [how to run](/samples/run/) the sample.
 
- [1]: https://citrusframework.org/reference/html#jms
+ [1]: https://citrusframework.org/citrus/reference/html#jms

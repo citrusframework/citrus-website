@@ -251,4 +251,4 @@ You can run the tests by calling
 You should see Citrus performing several tests with lots of debugging output in the terminal. And of course green tests 
 at the very end of the build.
 
- [1]: https://citrusframework.org/reference/html#arquillian
+ [1]: https://citrusframework.org/citrus/reference/html#arquillian

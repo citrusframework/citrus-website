@@ -82,4 +82,4 @@ Run
 
 You can run the sample on your localhost in order to see Citrus in action. Read the instructions [how to run](/samples/run/) the sample.
 
- [1]: https://citrusframework.org/reference/html#mail
+ [1]: https://citrusframework.org/citrus/reference/html#mail

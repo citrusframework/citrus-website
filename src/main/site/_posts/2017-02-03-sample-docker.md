@@ -375,4 +375,4 @@ Lets add a Maven profile that binds the plugin goals to the integration-test bui
 Now we are ready to call `mvn clean install -Pdocker` and everything is done automatically. We get a successful build when everything worked and
 in case a Citrus test failed we get a failed build. This Maven build is perfectly working with continuous integration on Jenkins for instance.
 
- [1]: https://citrusframework.org/reference/html#docker
+ [1]: https://citrusframework.org/citrus/reference/html#docker

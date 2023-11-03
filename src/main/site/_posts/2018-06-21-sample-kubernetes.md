@@ -332,4 +332,4 @@ The todo-list service should always be reachable for clients. We could verify th
 
 We can think of many possibilities and test scenarios with this integration test setup then.
 
- [1]: https://citrusframework.org/reference/html#kubernetes
+ [1]: https://citrusframework.org/citrus/reference/html#kubernetes
