@@ -1,3 +1,41 @@
+- version: 4.0.1
+  date: 2023-11-13
+  tag: v4.0.1
+  issues: https://github.com/citrusframework/citrus/issues/
+  stories: https://github.com/citrusframework/citrus/issues/
+  changes:
+    - title: Resolve excessive class pass scanning
+      id: 1046
+      type: fix
+      author: tschlat
+    - title: Fix bugs in resource path resolvers
+      id: 1046
+      type: fix
+      author: bbort
+    - title: Starting JBang script support
+      id: 1049
+      type: add
+      author: christophd
+    - title: Avoid duplicate loading of configuration classes
+      id: 1055
+      type: fix
+      author: christophd
+    - title: Provide ConversionService config
+      id: 1052
+      type: fix
+      author: bbort
+    - title: Improve MailServer known users configuration
+      type: add
+      author: christophd
+    - title: Fix spring.schemas
+      type: fix
+      author: christophd
+    - title: Support loading data dictionary from xml
+      type: fix
+      author: bbort
+    - title: Vulnerability in bouncycastle
+      type: fix
+      author: bbort
 - version: 4.0.0
   date: 2023-10-25
   tag: v4.0.0
