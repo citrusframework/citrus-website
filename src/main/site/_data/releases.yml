@@ -1,3 +1,54 @@
+- version: 4.0.2
+  date: 2023-11-22
+  tag: v4.0.2
+  issues: https://github.com/citrusframework/citrus/issues/
+  stories: https://github.com/citrusframework/citrus/issues/
+  changes:
+    - title: Add marshaller type environment variable setting
+      id: 1057
+      type: add
+      author: christophd
+    - title: Introduce default fallback text message validator
+      id: 1058
+      type: add
+      author: christophd
+    - title: Enable SSL secure connection configuration
+      id: 1062
+      type: add
+      author: christophd
+    - title: Flaky parallel test action container unit test
+      id: 1018
+      type: fix
+      author: christophd
+    - title: Resolve resources in fat jars
+      id: 1071
+      type: fix
+      author: tschlat
+    - title: Fix Json field reference in validation error message
+      type: fix
+      author: christophd
+    - title: Flaky sync JMS topic communication test
+      type: fix
+      author: christophd
+    - title: Avoid hiding exceptions in forked actions
+      type: fix
+      author: christophd
+    - title: Avoid NPE when reading file content of resource that does not exist
+      type: fix
+      author: christophd
+    - title: Properly initialize components added to CitrusContext
+      type: fix
+      author: christophd
+    - title: Remove unnecessary validations, and reorganize jms template
+      id: 1066
+      type: fix
+      author: picimako
+    - title: Fix flaky date function test
+      type: fix
+      author: bbort
+    - title: Cookie on http response with status code
+      type: fix
+      author: bbort
 - version: 4.0.1
   date: 2023-11-13
   tag: v4.0.1
