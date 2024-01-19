@@ -47,7 +47,7 @@ The Gradle build configuration is done in the **build.gradle** and **settings.gr
 
 {% highlight shell %}
 rootProject.name = 'citrus-sample-gradle'
-group 'com.consol.citrus.samples'
+group 'org.citrusframework.samples'
 version '${citrus.version}'
 {% endhighlight %}
     
@@ -64,9 +64,9 @@ Now lets move on with adding the Citrus libraries to the project.
 
 {% highlight shell %}
 dependencies {
-    testCompile group: 'com.consol.citrus', name: 'citrus-base', version: '${citrus.version}'
-    testCompile group: 'com.consol.citrus', name: 'citrus-jms', version: '${citrus.version}'
-    testCompile group: 'com.consol.citrus', name: 'citrus-http', version: '${citrus.version}'
+    testCompile group: 'org.citrusframework', name: 'citrus-base', version: '${citrus.version}'
+    testCompile group: 'org.citrusframework', name: 'citrus-jms', version: '${citrus.version}'
+    testCompile group: 'org.citrusframework', name: 'citrus-http', version: '${citrus.version}'
     testCompile group: 'org.testng', name: 'testng', version: '${testng.version}'
     [...]
 }
@@ -85,13 +85,13 @@ test {
 Of course JUnit is also supported. This is all for build configuration settings. We can move on to writing some Citrus integration tests. The Java test classes
 usually go to the **src/test/java** directory.
 
-Lets write a simple Citrus test case in Java and save it to the **src/test/java** folder in package **com.consol.citrus.samples**. 
+Lets write a simple Citrus test case in Java and save it to the **src/test/java** folder in package **org.citrusframework.samples**. 
 
 {% highlight java %}
-import com.consol.citrus.annotations.CitrusTest;
-import com.consol.citrus.channel.ChannelEndpoint;
-import com.consol.citrus.dsl.testng.TestNGCitrusTestDesigner;
-import com.consol.citrus.message.MessageType;
+import org.citrusframework.annotations.CitrusTest;
+import org.citrusframework.channel.ChannelEndpoint;
+import org.citrusframework.dsl.testng.TestNGCitrusTestDesigner;
+import org.citrusframework.message.MessageType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ContextConfiguration;

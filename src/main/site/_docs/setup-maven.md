@@ -34,20 +34,20 @@ it is time for you to do so before continuing this tutorial. See the [Maven](htt
 site for detailed installation instructions. So let's start with creating the Citrus Java project:
 
 {% highlight shell %}
-mvn archetype:generate -Dfilter=com.consol.citrus.archetypes:citrus
+mvn archetype:generate -Dfilter=org.citrusframework.archetypes:citrus
 
 [...]
 
 Choose archetype:
-1: remote -> com.consol.citrus.archetypes:citrus-quickstart (Citrus quickstart project)
-2: remote -> com.consol.citrus.archetypes:citrus-quickstart-jms (Citrus quickstart project with JMS consumer and producer)
-3: remote -> com.consol.citrus.archetypes:citrus-quickstart-soap (Citrus quickstart project with SOAP client and producer)
+1: remote -> org.citrusframework.archetypes:citrus-quickstart (Citrus quickstart project)
+2: remote -> org.citrusframework.archetypes:citrus-quickstart-jms (Citrus quickstart project with JMS consumer and producer)
+3: remote -> org.citrusframework.archetypes:citrus-quickstart-soap (Citrus quickstart project with SOAP client and producer)
 Choose a number: 1 
 
-Define value for groupId: com.consol.citrus.samples
+Define value for groupId: org.citrusframework.samples
 Define value for artifactId: citrus-sample
 Define value for version: 1.0-SNAPSHOT
-Define value for package: com.consol.citrus.samples
+Define value for package: org.citrusframework.samples
 
 [...]
 {% endhighlight %}
@@ -86,19 +86,19 @@ The Citrus project libraries are loaded as dependencies in our Maven POM.
 
 {% highlight xml %}
 <dependency>
-  <groupId>com.consol.citrus</groupId>
+  <groupId>org.citrusframework</groupId>
   <artifactId>citrus-base</artifactId>
   <version>${citrus.version}</version>
   <scope>test</scope>
 </dependency>
 <dependency>
-  <groupId>com.consol.citrus</groupId>
+  <groupId>org.citrusframework</groupId>
   <artifactId>citrus-jms</artifactId>
   <version>${citrus.version}</version>
   <scope>test</scope>
 </dependency>
 <dependency>
-  <groupId>com.consol.citrus</groupId>
+  <groupId>org.citrusframework</groupId>
   <artifactId>citrus-http</artifactId>
   <version>${citrus.version}</version>
   <scope>test</scope>
@@ -109,12 +109,12 @@ The Citrus Maven plugin capable of test creation and report generation.
 
 {% highlight xml %}
 <plugin>
-  <groupId>com.consol.citrus.mvn</groupId>
+  <groupId>org.citrusframework.mvn</groupId>
   <artifactId>citrus-maven-plugin</artifactId>
   <version>${citrus.version}</version>
   <configuration>
     <author>Mickey Mouse</author>
-    <targetPackage>com.consol.citrus</targetPackage>
+    <targetPackage>org.citrusframework</targetPackage>
   </configuration>
 </plugin>
 {% endhighlight %}
@@ -188,7 +188,7 @@ mvn citrus:create-test
 Enter test name: MyTest
 Enter test author: Unknown: : Christoph
 Enter test description: TODO: Description: : 
-Enter test package: com.consol.citrus.samples: : 
+Enter test package: org.citrusframework.samples: : 
 Choose unit test framework testng: :
 {% endhighlight %}
 

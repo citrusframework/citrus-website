@@ -55,9 +55,9 @@ quite simple. Just add the SNAPSHOT dependency to your projects POM like this
 
 {% highlight shell %}  
 <dependency>
-  <groupId>com.consol.citrus</groupId>
-  <artifactId>citrus-core</artifactId>
-  <version>${citrus.version}</version>
+  <groupId>org.citrusframework</groupId>
+  <artifactId>citrus-base</artifactId>
+  <version>${citrus.version}-SNAPSHOT</version>
   <scope>test</scope>
 </dependency>
 {% endhighlight %}

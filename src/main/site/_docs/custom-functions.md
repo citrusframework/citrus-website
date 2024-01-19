@@ -42,9 +42,9 @@ package com.mycompany.citrus.extension.functions;
 import java.util.Collections;
 import java.util.List;
  
-import com.consol.citrus.context.TestContext;
-import com.consol.citrus.exceptions.CitrusRuntimeException;
-import com.consol.citrus.functions.core.RandomNumberFunction;
+import org.citrusframework.context.TestContext;
+import org.citrusframework.exceptions.CitrusRuntimeException;
+import org.citrusframework.functions.core.RandomNumberFunction;
  
 public class IdGeneratingFunction implements Function {
     public String execute(List<String> parameterList, TestContext context) {

@@ -29,7 +29,7 @@ You should specify the version in your project's plugin configuration:
     <pluginManagement>
       <plugins>
         <plugin>
-          <groupId>com.consol.citrus.mvn</groupId>
+          <groupId>org.citrusframework.mvn</groupId>
           <artifactId>citrus-maven-plugin</artifactId>
           <version>${citrus.version}</version>
         </plugin>
@@ -39,7 +39,7 @@ You should specify the version in your project's plugin configuration:
     <!-- To use the plugin goals in your POM or parent POM -->
     <plugins>
       <plugin>
-        <groupId>com.consol.citrus.mvn</groupId>
+        <groupId>org.citrusframework.mvn</groupId>
         <artifactId>citrus-maven-plugin</artifactId>
         <configuration>
           ...
@@ -65,7 +65,7 @@ You should specify the version in your project's plugin configuration:
 
 ### Full name
 
-    com.consol.citrus.mvn:citrus-maven-plugin:${citrus.version}:create-excel-doc
+    org.citrusframework.mvn:citrus-maven-plugin:${citrus.version}:create-excel-doc
 
 ### Description
 
@@ -146,7 +146,7 @@ Mojo looks in this directory for test files that are included in this report. De
 
 ### Full name
 
-    com.consol.citrus.mvn:citrus-maven-plugin:${citrus.version}:create-html-doc
+    org.citrusframework.mvn:citrus-maven-plugin:${citrus.version}:create-html-doc
 
 ### Description
 
@@ -228,7 +228,7 @@ All test files in this directory are included into the report. Defaults to "src/
 
 ### Full name
 
-    com.consol.citrus.mvn:citrus-maven-plugin:${citrus.version}:create-test
+    org.citrusframework.mvn:citrus-maven-plugin:${citrus.version}:create-test
 
 ### Description
 
@@ -244,7 +244,7 @@ the plugin prompts for parameters during execution. In non-interactive mode the 
 | framework | String | - | Which unit test framework to use for test execution (default: testng; options: testng, junit) Default value is: testng. |
 | interactiveMode | boolean | - | Whether to run this command in interactive mode. Defaults to "true". Default value is: true. |
 | name | String | - | The name of the test case (must start with upper case letter). | 
-| targetPackage | String | - | Which package (folder structure) is assigned to this test. Defaults to "com.consol.citrus" Default value is: com.consol.citrus. |
+| targetPackage | String | - | Which package (folder structure) is assigned to this test. Defaults to "org.citrusframework" Default value is: org.citrusframework. |
 | xsd | String | - | Path of the xsd from which the sample request and response are get from |
 | xsdRequestElem | String | - | Name of the xsd-element used to create the xml-sample-request |
 | xsdResponseElem | String | - | Name of the xsd-element used to create the xml-sample-response |
@@ -299,12 +299,12 @@ The name of the test case (must start with upper case letter).
 
 **targetPackage:**
 
-Which package (folder structure) is assigned to this test. Defaults to "com.consol.citrus"
+Which package (folder structure) is assigned to this test. Defaults to "org.citrusframework"
 
 - **Type:** java.lang.String
 - **Required:** No
 - **Expression:** ${targetPackage}
-- **Default:** com.consol.citrus
+- **Default:** org.citrusframework
 
 **xsd:**
 

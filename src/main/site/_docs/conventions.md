@@ -33,7 +33,7 @@ case, method names and member variables always start with lower case.
 ### Test classes
 
 Unit test classes have to end with **Test** and should live in the appropriate package in test scoped java resource folder. 
-Example: *com.consol.citrus.action.SendAction* and *com.consol.citrus.action.SendActionTest*.
+Example: *org.citrusframework.action.SendAction* and *org.citrusframework.action.SendActionTest*.
 
 ## Formatting
 

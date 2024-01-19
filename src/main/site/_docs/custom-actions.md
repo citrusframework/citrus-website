@@ -48,7 +48,7 @@ scenario: your SUT outputs a lot of file traffic during the tests, so that we ne
 a specific directory right after a test run. We also put away the fact that this could be as well realized by using groovy 
 or Java actions and decide to use a custom action instead.
 
-The first step is to create our own action class which extends com.consol.citrus.actions.AbstractTestAction:
+The first step is to create our own action class which extends org.citrusframework.actions.AbstractTestAction:
 
 {% highlight java %}  
 public class SimpleCleanupDirAction extends AbstractTestAction {
@@ -65,7 +65,7 @@ public class SimpleCleanupDirAction extends AbstractTestAction {
 }
 {% endhighlight %}
   
-If you want to avoid inheritance here you could as well implement the interface com.consol.citrus.TestAction instead. 
+If you want to avoid inheritance here you could as well implement the interface org.citrusframework.TestAction instead. 
 The property directory is declared as field with appropriate getters and setters so that a value can be injected by the 
 container.
 

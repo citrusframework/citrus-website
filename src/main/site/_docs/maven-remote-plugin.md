@@ -38,7 +38,7 @@ You should specify the version in your project's plugin configuration:
     <pluginManagement>
       <plugins>
         <plugin>
-          <groupId>com.consol.citrus</groupId>
+          <groupId>org.citrusframework</groupId>
           <artifactId>citrus-remote-maven-plugin</artifactId>
           <version>${citrus.version}</version>
         </plugin>
@@ -48,7 +48,7 @@ You should specify the version in your project's plugin configuration:
     <!-- To use the plugin goals in your POM or parent POM -->
     <plugins>
       <plugin>
-        <groupId>com.consol.citrus</groupId>
+        <groupId>org.citrusframework</groupId>
         <artifactId>citrus-remote-maven-plugin</artifactId>
         <configuration>
           ...
@@ -75,7 +75,7 @@ You should specify the version in your project's plugin configuration:
 
 ### Full name
 
-    com.consol.citrus:citrus-remote-maven-plugin:${citrus.version}:test-jar
+    org.citrusframework:citrus-remote-maven-plugin:${citrus.version}:test-jar
 
 ### Description
 
@@ -88,7 +88,7 @@ After creation the JAR file, which contains a test-server, can be started manual
 | Name | Type | Description |
 |:-------:|:-------:|:-------:|
 | finalName | String | The prefix used for the executable jar filename. The format used is \<**finalName**>-citrus-tests.jar. Default value is: \${project.build.finalName}. |
-| mainClass | String | The class that is executed when the jar file is run. Default value is: com.consol.citrus.remote.CitrusRemoteServer
+| mainClass | String | The class that is executed when the jar file is run. Default value is: org.citrusframework.remote.CitrusRemoteServer
 | skip | Boolean | Skip the creation of the executable JAR file. Default value is: false. Can also be set using \${citrus.remote.plugin.skip} |
 | skipTestJar | Boolean | Skip the creation of the executable JAR file. Default value is: false. Can also be set using \${citrus.skip.test.jar} |
 | testJar | Embedded |  The test jar configuration. Refer to the [Test JAR configuration](#test-jar-configuration) for details. |
@@ -98,7 +98,7 @@ After creation the JAR file, which contains a test-server, can be started manual
 
 ### Full name
 
-    com.consol.citrus:citrus-remote-maven-plugin:${citrus.version}:test-war
+    org.citrusframework:citrus-remote-maven-plugin:${citrus.version}:test-war
 
 ### Description
 
@@ -120,7 +120,7 @@ After creation the WAR file can be deployed in any standard servlet container.
 
 ### Full name
 
-    com.consol.citrus:citrus-remote-maven-plugin:${citrus.version}:test
+    org.citrusframework:citrus-remote-maven-plugin:${citrus.version}:test
 
 ### Description
 
@@ -141,7 +141,7 @@ Triggers the execution of the citrus test by performing a remote API call to the
 
 ### Full name
 
-    com.consol.citrus:citrus-remote-maven-plugin:${citrus.version}:verify
+    org.citrusframework:citrus-remote-maven-plugin:${citrus.version}:verify
 
 ### Description
 

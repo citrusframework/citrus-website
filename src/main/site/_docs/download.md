@@ -5,7 +5,7 @@ permalink: /docs/download/
 ---
 
 Citrus ${citrus.version} is the latest stable release . You may also go for the [latest snapshot versions](#use-latest-snapshots) 
-of Citrus always being up to date with development changes. Citrus is available on [Maven central repository](http://search.maven.org/#search%7Cga%7C1%7Ccom.consol.citrus) 
+of Citrus always being up-to-date with development changes. Citrus is available on [Maven central repository](http://search.maven.org/#search%7Cga%7C1%7Corg.citrusframework) 
 so you can add Citrus as [Maven dependency](#maven) to your project. All available versions and production releases for 
 manual download are listed below:
 
@@ -16,7 +16,7 @@ manual download are listed below:
 {% for release in site.data.releases limit:12 %}| {{ release.version }} | {{ release.date }} | [zip](https://github.com/citrusframework/citrus/archive/refs/tags/v{{ release.version }}.zip)/[tar.gz](https://github.com/citrusframework/citrus/archive/refs/tags/v{{ release.version }}.tar.gz) |
 {% endfor %}
 
-The Citrus project requires Java 11 (or newer version) to run.
+Since Citrus 4.0 the project requires Java 17 (or newer version) to run.
 
 ## Maven 
 
@@ -27,7 +27,7 @@ The Citrus core module dependency.
 
 {% highlight xml %}
 <dependency>
-  <groupId>com.consol.citrus</groupId>
+  <groupId>org.citrusframework</groupId>
   <artifactId>citrus-core</artifactId>
   <version>${citrus.version}</version>
   <scope>test</scope>
@@ -38,70 +38,59 @@ In case you need Citrus modules add following dependencies. See also our modules
 
 {% highlight xml %}
 <dependency>
-  <groupId>com.consol.citrus</groupId>
+  <groupId>org.citrusframework</groupId>
   <artifactId>citrus-jms</artifactId>
   <version>${citrus.version}</version>
   <scope>test</scope>
 </dependency>
 
 <dependency>
-  <groupId>com.consol.citrus</groupId>
+  <groupId>org.citrusframework</groupId>
   <artifactId>citrus-http</artifactId>
   <version>${citrus.version}</version>
   <scope>test</scope>
 </dependency>
 
 <dependency>
-  <groupId>com.consol.citrus</groupId>
+  <groupId>org.citrusframework</groupId>
   <artifactId>citrus-ws</artifactId>
   <version>${citrus.version}</version>
   <scope>test</scope>
 </dependency>
 
 <dependency>
-  <groupId>com.consol.citrus</groupId>
+  <groupId>org.citrusframework</groupId>
   <artifactId>citrus-websocket</artifactId>
   <version>${citrus.version}</version>
   <scope>test</scope>
 </dependency>
 
 <dependency>
-  <groupId>com.consol.citrus</groupId>
+  <groupId>org.citrusframework</groupId>
   <artifactId>citrus-camel</artifactId>
   <version>${citrus.version}</version>
   <scope>test</scope>
 </dependency>
 
 <dependency>
-  <groupId>com.consol.citrus</groupId>
+  <groupId>org.citrusframework</groupId>
   <artifactId>citrus-ssh</artifactId>
   <version>${citrus.version}</version>
   <scope>test</scope>
 </dependency>
 
 <dependency>
-  <groupId>com.consol.citrus</groupId>
+  <groupId>org.citrusframework</groupId>
   <artifactId>citrus-vertx</artifactId>
   <version>${citrus.version}</version>
   <scope>test</scope>
 </dependency>
 {% endhighlight %}
 
-If you would like to use the new Java DSL test writing language you have to add this dependency to your project accordingly.
-
-{% highlight xml %}
-<dependency>
-  <groupId>com.consol.citrus</groupId>
-  <artifactId>citrus-java-dsl</artifactId>
-  <version>${citrus.version}</version>
-  <scope>test</scope>
-</dependency>
-{% endhighlight %}
-
-## Use latest snapshots
+## Use the latest snapshots
 
 Stable releases are available on Maven central repository. We also provide nightly snapshot releases that are available on
-ConSol Labs repository. So if you want to use latest snapshot releases of Citrus please add the following repository to 
+ConSol Labs repository. So if you want to use the latest snapshot releases of Citrus please add the following repository to 
 your Maven POM.
 
 {% highlight xml %}
@@ -124,5 +113,5 @@ We use [SLF4J](http://www.slf4j.org/) as logging abstraction framework, which me
 implementation. SLF4J is similar to commons-logging, so you may use whatever logging framework you want to. All you have
 to do is add an SLF4J logging implementation to your classpath.
 
-In case you are currently using [log4j](http://logging.apache.org/log4j) as logging framework just include slf4j-log4j12.jar on your classpath and Citrus 
-will use log4j too. If you want to use some other framework than please see the [SLF4J](http://www.slf4j.org/) documentation for help.
+In case you are currently using [log4j2](http://logging.apache.org/log4j) as logging framework just include `slf4j-log4j12.jar` on your classpath and Citrus 
+will use `log4j2` too. If you want to use some other framework than please see the [SLF4J](http://www.slf4j.org/) documentation for help.
