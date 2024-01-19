@@ -11,13 +11,16 @@ within minutes. You can find the project sources on GitHub [citrus-samples/sampl
 
 You need following software on your computer, in order to use the Citrus Framework:
 
-- **Java 11 or higher**
-  Installed JDK plus JAVA_HOME environment variable set up and pointing to your Java installation directory
-- **Java IDE**
-  A Java IDE will help you manage your Citrus project, create and execute test cases. Just use the Java IDE that you are 
-  used to (e.g. [Eclipse](http://www.eclipse.org/) or [IntelliJ IDEA](http://www.jetbrains.com/idea/)).
-- **Gradle 2.13 or higher**
+* **Java 17+**
+  Installed JDK plus JAVA_HOME environment variable set
+  up and pointing to your Java installation directory. Used to compile and build the Citrus code.
+
+* **Gradle 2.13+**
   Citrus tests will be executed with the [Gradle](https://gradle.org/) build tool.
+
+* **Java IDE** (optional)
+  A Java IDE will help you to manage your Citrus project (e.g. creating
+  and executing test cases). You can use the Java IDE that you like best like Eclipse or IntelliJ IDEA.
 
 Citrus uses Maven internally for building software. But of course you can also integrate the Citrus tests in a Gradle
 project. Since Citrus tests are nothing but normal JUnit or TestNG tests, integration into your Gradle build is very easy.
@@ -54,27 +57,22 @@ Citrus artifacts.
 {% highlight shell %}
 repositories {
     mavenCentral()
-    maven {
-        url 'http://labs.consol.de/maven/snapshots-repository/'
-    }
 }
 {% endhighlight %}
     
-Citrus stable release versions are available on Maven central. If you want to use the very latest snapshot version of Citrus you need
-to also add the ConSol Labs snapshot repository as server. This is optional and only applies if you want to use the snapshot versions of Citrus. 
-
 Now lets move on with adding the Citrus libraries to the project.
 
 {% highlight shell %}
 dependencies {
-    testCompile group: 'com.consol.citrus', name: 'citrus-core', version: '${citrus.version}'
-    testCompile group: 'com.consol.citrus', name: 'citrus-java-dsl', version: '${citrus.version}'
+    testCompile group: 'com.consol.citrus', name: 'citrus-base', version: '${citrus.version}'
+    testCompile group: 'com.consol.citrus', name: 'citrus-jms', version: '${citrus.version}'
+    testCompile group: 'com.consol.citrus', name: 'citrus-http', version: '${citrus.version}'
     testCompile group: 'org.testng', name: 'testng', version: '${testng.version}'
     [...]
 }
 {% endhighlight %}
     
-This enables the Citrus support for the project so we can use the Citrus classes and APIs. We decided to use TestNG unit test library.
+This enables the Citrus support for the project, so we can use the Citrus classes and APIs. We decided to use TestNG unit test library.
     
 {% highlight shell %}
 test {
@@ -174,7 +172,7 @@ If you just want to execute all tests you can call
 gradlew clean check
 {% endhighlight %}
 
-Of course you can also start the Citrus tests from your favorite IDE.
+Of course, you can also start the Citrus tests from your favorite IDE.
 Just start the Citrus test using the Gradle integration in IntelliJ, Eclipse or Netbeans.
 
 So now you are ready to use Citrus! Write test cases and add more logic to the test project. Have fun with it!

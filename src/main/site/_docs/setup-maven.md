@@ -11,13 +11,16 @@ within minutes.
 
 You need following software on your computer, in order to use the Citrus Framework:
 
-- **Java 11 or higher**
-  Installed JDK plus JAVA_HOME environment variable set up and pointing to your Java installation directory
-- **Java IDE**
-  A Java IDE will help you manage your Citrus project, create and execute test cases. Just use the Java IDE that you are 
-  used to (e.g. [Eclipse](http://www.eclipse.org/) or [IntelliJ IDEA](http://www.jetbrains.com/idea/)).
-- **Maven 3.0.x or higher**
-  Citrus tests will be executed with the [Apache Maven](http://maven.apache.org) build tool.
+* **Java 17+**
+  Installed JDK plus JAVA_HOME environment variable set
+  up and pointing to your Java installation directory. Used to compile and build the Citrus code.
+
+* **Maven 3.9.5+**
+  Citrus projects fit best with [Maven](https://maven.apache.org).
+
+* **Java IDE** (optional)
+  A Java IDE will help you to manage your Citrus project (e.g. creating
+  and executing test cases). You can use the Java IDE that you like best like Eclipse or IntelliJ IDEA.
   
 In case you already use Maven build tool in your project it is most suitable for you to include Citrus into your Maven build 
 lifecycle. In this tutorial we will setup a project with Maven and configure the Maven POM to execute all Citrus tests 
@@ -84,19 +87,13 @@ The Citrus project libraries are loaded as dependencies in our Maven POM.
 {% highlight xml %}
 <dependency>
   <groupId>com.consol.citrus</groupId>
-  <artifactId>citrus-core</artifactId>
+  <artifactId>citrus-base</artifactId>
   <version>${citrus.version}</version>
   <scope>test</scope>
 </dependency>
 <dependency>
   <groupId>com.consol.citrus</groupId>
   <artifactId>citrus-jms</artifactId>
-  <version>${citrus.version}</version>
-  <scope>test</scope>
-</dependency>
-<dependency>
-  <groupId>com.consol.citrus</groupId>
-  <artifactId>citrus-ws</artifactId>
   <version>${citrus.version}</version>
   <scope>test</scope>
 </dependency>
@@ -155,29 +152,8 @@ The surefire and failsafe plugin configuration is responsible for executing all 
 The tests are separated by naming convention. All integration tests follow the ****/IT*.java** or ****/IT*.java** naming pattern. These tests are explicitly 
 excluded from surefire plugin. This makes sure that the tests are not executed twice. Now you are ready to use both unit and integration tests in your Maven project.
 
-Another notable POM configuration is the repository section. The Citrus stable release versions are available on Maven central repository. So Maven will automatically
-download the artifacts from that servers. Now if you want to use the latest snapshot preview version of Citrus you need to add the ConSol Labs repository in your POM.
-
-{% highlight xml %}
-<repositories>
-  [...]
-
-  <repository>
-    <id>consol-labs-snapshots</id>
-    <url>http://labs.consol.de/maven/snapshots-repository/</url>
-    <snapshots>
-      <enabled>true</enabled>
-    </snapshots>
-    <releases>
-      <enabled>false</enabled>
-    </releases>
-  </repository>
-  
-  [...]
-</repositories>
-{% endhighlight %}
-
-Please note that this setting is optional and only applies for snapshot versions of Citrus.
+The Citrus release versions are available on Maven central repository. 
+So Maven will automatically download the artifacts from that servers. 
 
 ### Run
 
@@ -194,14 +170,14 @@ project.
 If you just want to execute the Citrus tests with a Maven build execute
  
 {% highlight shell %}
-mvn clean verify
+mvn verify
 {% endhighlight %} 
 
 This executes all Citrus test cases during the build and you will see Citrus performing some integration test logging output. You can also execute
 single test cases by defining the test name as Maven system property.
 
 {% highlight shell %}
-mvn clean verify -Dit.test=SampleIT
+mvn verify -Dit.test=SampleIT
 {% endhighlight %}
 
 Finally we are ready to proceed with creating new test cases. So let's add a new Citrus test case to our project. We use 
