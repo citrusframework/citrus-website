@@ -1,3 +1,55 @@
+- version: 4.1.1
+  date: 2024-01-25
+  tag: v4.1.1
+  issues: https://github.com/citrusframework/citrus/issues/
+  stories: https://github.com/citrusframework/citrus/issues/
+  changes:
+    - title: (deps) update metrics-core to v4.2.25
+      type: update
+      author: christophd
+    - title: (deps) update json-schema-validator to v1.2.0
+      type: update
+      author: christophd
+    - title: (deps) update mockito to v5.10.0
+      type: update
+      author: bbort
+    - title: (deps) update org.apache.sshd to 2.12.0
+      type: update
+      author: bbort
+    - title: (deps) update selenium-java to v4.17.0
+      type: update
+      author: bbort
+    - title: (deps) update metrics-core to v4.2.24
+      type: update
+      author: bbort
+    - title: Improve FtpMarshaller and FtpMessage
+      type: update
+      author: christophd
+    - title: Improve Camel endpoint builder support
+      type: update
+      author: christophd
+    - title: Support non Unicode remote file handle on SFTP server
+      id: 1107
+      type: update
+      author: christophd
+    - title: Improve Citrus Quarkus extension information
+      type: update
+      author: christophd
+    - title: Allow configuration of xml validator via constructor
+      type: update
+      author: bbort
+    - title: Fix some broken link formatting
+      id: 1105
+      type: fix
+      author: picimako
+    - title: Fix some code snippet issues
+      id: 1105
+      type: fix
+      author: picimako
+    - title: Fix some typos
+      id: 1105
+      type: fix
+      author: picimako
 - version: 4.1.0
   date: 2024-01-17
   tag: v4.1.0
