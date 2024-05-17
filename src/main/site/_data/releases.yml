@@ -1,3 +1,37 @@
+- version: 4.2.1
+  date: 2024-05-17
+  tag: v4.2.1
+  issues: https://github.com/citrusframework/citrus/issues/
+  stories: https://github.com/citrusframework/citrus/issues/
+  changes:
+    - title: Bump dependency versions
+      type: update
+      author: christophd
+    - title: Reduce logging level of successful validations
+      type: update
+      author: bbortt
+    - title: Let HttpMessageBuilder create messages with unique ids
+      id: 1143
+      type: fix
+      author: bbortt
+    - title: Accept status code interface
+      type: update
+      author: bbortt
+    - title: Measure test and suite execution duration
+      type: add
+      author: bbortt
+    - title: Use fixed Locale when formatting test duration
+      type: fix
+      author: christophd
+    - title: Better access into json validator for subclasses
+      type: fix
+      author: bbortt
+    - title: Always validate json array order
+      type: update
+      author: novarx
+    - title: Upgrade dependency versions
+      type: update
+      author: bbortt
 - version: 4.2.0
   date: 2024-03-25
   tag: v4.2.0
