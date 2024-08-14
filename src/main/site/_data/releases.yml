@@ -1,3 +1,42 @@
+- version: 4.3.0
+  date: 2024-08-14
+  tag: v4.3.0
+  issues: https://github.com/citrusframework/citrus/issues/
+  stories: https://github.com/citrusframework/citrus/issues/
+  changes:
+    - title: Bump dependency versions
+      type: update
+      author: bbortt
+    - title: Reformat test reporter output
+      type: fix
+      author: bbortt
+    - title: NPE in case of response header without required attribute
+      id: 1170
+      type: fix
+      author: ueberfuhr
+    - title: Use ISO date format for random JSON property values (OpenAPI)
+      type: fix
+      author: ueberfuhr
+    - title: OpenAPI uses explicitly declared values instead of random values
+      type: fix
+      author: ueberfuhr
+    - title: Allow creation of TestResult objects with specific parameters
+      id: 1181
+      type: fix
+      author: bbortt
+    - title: Adjust resolver methods to ignore nullable values
+      type: fix
+      author: bbortt
+    - title: Make tests loadable even from within jar
+      type: add
+      author: maletic
+    - title: Allow access into logging reporter for subclasses
+      type: fix
+      author: bbortt
+    - title: Citrus support not working if quarkus-jacoco is used
+      id: 1195
+      type: fix
+      author: bbortt
 - version: 4.2.1
   date: 2024-05-17
   tag: v4.2.1
