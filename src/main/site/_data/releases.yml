@@ -1,3 +1,19 @@
+- version: 4.3.1
+  date: 2024-08-15
+  tag: v4.3.1
+  issues: https://github.com/citrusframework/citrus/issues/
+  stories: https://github.com/citrusframework/citrus/issues/
+  changes:
+    - title: ResourcePathTypeResolver loads citrus-api on Windows machines
+      id: 1200
+      type: fix
+      author: bbortt
+    - title: Windows-safe path access in SpringResourceWrapper
+      type: fix
+      author: bbortt
+    - title: Cleanup ResourcePathTypeResolver
+      type: update
+      author: bbortt
 - version: 4.3.0
   date: 2024-08-14
   tag: v4.3.0
