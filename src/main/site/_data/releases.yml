@@ -1,3 +1,34 @@
+- version: 4.3.2
+  date: 2024-09-11
+  tag: v4.3.2
+  issues: https://github.com/citrusframework/citrus/issues/
+  stories: https://github.com/citrusframework/citrus/issues/
+  changes:
+    - title: Fix citrus-testng version in archetypes
+      id: 1202
+      type: fix
+      author: bbortt
+    - title: Fix ignore file system recovery for nested citrus api resources
+      id: 1204
+      type: fix
+      author: bbortt
+    - title: Fix respect custom mailserver on startup
+      id: 1199
+      type: fix
+      author: bbortt
+    - title: Take nullable root into account
+      id: 1195
+      type: fix
+      author: bbortt
+    - title: Include unmarshaller in Validation Processor
+      type: fix
+      author: leonschenk
+    - title: Upgrade minor and patch dependencies
+      type: fix
+      author: bbortt
+    - title: Fix quarkus-jacoco to platform version
+      type: fix
+      author: bbortt
 - version: 4.3.1
   date: 2024-08-15
   tag: v4.3.1
