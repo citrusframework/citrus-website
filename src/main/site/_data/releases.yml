@@ -1,3 +1,29 @@
+- version: 4.3.3
+  date: 2024-10-02
+  tag: v4.3.3
+  issues: https://github.com/citrusframework/citrus/issues/
+  stories: https://github.com/citrusframework/citrus/issues/
+  changes:
+    - title: Fix YAML finally actions
+      type: fix
+      author: christophd
+    - title: Make XsdSchemaRepositoryTest pass on all platforms
+      type: update
+      author: bbortt
+    - title: Mention citrus reporting directory property
+      id: 998
+      type: update
+      author: bbortt
+    - title: Mention kotlin support in docs
+      id: 1186
+      type: update
+      author: tschlat
+    - title: Bump version of org.springframework:spring-webmvc
+      type: update
+      author: bbortt
+    - title: Improve Maven POMs
+      type: update
+      author: christophd
 - version: 4.3.2
   date: 2024-09-11
   tag: v4.3.2
