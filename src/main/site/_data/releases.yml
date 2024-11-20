@@ -1,3 +1,70 @@
+- version: 4.4.0
+  date: 2024-11-15
+  tag: v4.4.0
+  issues: https://github.com/citrusframework/citrus/issues/
+  stories: https://github.com/citrusframework/citrus/issues/
+  changes:
+    - title: Enhance Kubernetes support
+      type: update
+      author: christophd
+    - title: Enhance Camel support
+      type: update
+      author: christophd
+    - title: Add final actions in TestContext
+      type: add
+      author: christophd
+    - title: Camel JBang support
+      type: add
+      author: christophd
+    - title: Testcontainers connector module
+      type: add
+      author: christophd
+    - title: Knative connector module
+      type: add
+      author: christophd
+    - title: Add Java test loader implementation
+      type: add
+      author: christophd
+    - title: URL encode query parameter part when creating dynamic endpoints
+      type: fix
+      author: christophd
+    - title: Fix logging reporter summary tab indentation
+      type: fix
+      author: christophd
+    - title: Use single report output directory
+      type: fix
+      author: christophd
+    - title: Add timeout to iterating action containers
+      type: fix
+      author: bbortt
+    - title: Add JUnit Jupiter engine implementation
+      type: add
+      author: christophd
+    - title: JBang connector
+      type: add
+      author: christophd
+      id: 1049
+    - title: Add option to configure disable redirect for HttpClient
+      type: add
+      author: bbortt
+      id: 1234
+    - title: Fix YAML finally actions
+      type: fix
+      author: christophd
+    - title: Enable parallel Maven build
+      type: fix
+      author: bbortt
+      id: 943
+    - title: Selective kafka receive action
+      type: add
+      author: bbortt
+      id: 1215
+    - title: UUID v4 validation matcher
+      type: add
+      author: phos-web
+    - title: Dependency updates
+      type: update
+      author: bbortt
 - version: 4.3.3
   date: 2024-10-02
   tag: v4.3.3
