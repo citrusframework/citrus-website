@@ -1,3 +1,43 @@
+- version: 4.5.0
+  date: 2024-12-11
+  tag: v4.5.0
+  issues: https://github.com/citrusframework/citrus/issues/
+  stories: https://github.com/citrusframework/citrus/issues/
+  changes:
+    - title: Add Testcontainers Docker compose support
+      type: add
+      author: christophd
+    - title: Update to Apache Camel version 4.9.0
+      type: update
+      author: christophd
+    - title: Configure wait strategy for Testcontainers
+      type: update
+      author: christophd
+    - title: Add endpoint config Groovy action
+      type: add
+      author: christophd
+    - title: Auto add Camel test actor
+      type: add
+      author: christophd
+    - title: Add environment setting to enable/disable test actors
+      id: 1275
+      type: add
+      author: christophd
+    - title: Auto create AWS clients for LocalStack Testcontainers
+      type: add
+      author: christophd
+    - title: Bind created Camel context to bean registry
+      type: fix
+      author: christophd
+    - title: Add Quarkus Testcontainers test resource
+      type: add
+      author: christophd
+    - title: Set validate expressions on Http YAML DSL
+      type: fix
+      author: christophd
+    - title: Update to Spring 6.2.0
+      type: update
+      author: bbortt
 - version: 4.4.0
   date: 2024-11-15
   tag: v4.4.0
