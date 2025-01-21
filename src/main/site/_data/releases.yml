@@ -1,3 +1,84 @@
+- version: 4.5.1
+  date: 2025-01-20
+  tag: v4.5.1
+  issues: https://github.com/citrusframework/citrus/issues/
+  stories: https://github.com/citrusframework/citrus/issues/
+  changes:
+    - title: Bump dependency versions
+      type: update
+      author: bbortt
+    - title: Enable color logging
+      type: update
+      author: christophd
+    - title: Avoid snakeyaml warning messages due to missing methods in YAML DSL
+      type: update
+      author: christophd
+    - title: Fix before suite actions builder
+      type: fix
+      author: christophd
+    - title: Add EscapeJsonFunction, test and doc
+      type: add
+      author: muellerfluri
+    - title: Improve sleep action logging
+      type: update
+      author: christophd
+    - title: Introduce Kinesis and EventBridge client factory
+      type: add
+      author: christophd
+    - title: Declare registry mirror Docker image names as compatible
+      type: update
+      author: christophd
+    - title: Add YAML Camel route support
+      type: add
+      author: christophd
+    - title: Fix Camel JBang dump output file creation
+      type: fix
+      author: christophd
+    - title: Allow to set general Docker registry mirror
+      id: 1294
+      type: fix
+      author: christophd
+    - title: Introduce separate consumers per subscription
+      id: 1281
+      type: fix
+      author: bbortt
+    - title: Fix default Kubernetes actor
+      id: 1290
+      type: fix
+      author: christophd
+    - title: Instead of string templates, use placeholders when logging
+      type: update
+      author: turing85
+    - title: Simplify if-condition, add null-safety through Optional
+      type: update
+      author: turing85
+    - title: Only register listeners when the list of listeners is not empty
+      id: 1288
+      type: fix
+      author: turing85
+    - title: Fix flaky Kubernetes actor tests
+      id: 1290
+      type: fix
+      author: christophd
+    - title: Fix mismatching variable names in echo and print documentation
+      id: 1240
+      type: fix
+      author: picimako
+    - title: Introduce descendant process id verification in Camel JBang
+      type: fix
+      author: christophd
+    - title: Set the current parent pid in the Run Camel action
+      type: fix
+      author: gansheer
+    - title: Make sure to use current pid to verify Camel app status
+      type: fix
+      author: christophd
+    - title: Add polyglot test domain specific languages docs
+      type: add
+      author: christophd
+    - title: ThrowsException strategy throws stack overflow exception
+      type: fix
+      author: bbortt
 - version: 4.5.0
   date: 2024-12-11
   tag: v4.5.0
