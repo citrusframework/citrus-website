@@ -2,7 +2,9 @@
 layout: sample
 title: Json sample
 name: sample-json
-group: samples-json
+image: /img/icons/json.png
+folder: samples-json
+group: validation
 description: Shows Json payload validation feature with JsonPath validation
 categories: [samples]
 permalink: /samples/json/

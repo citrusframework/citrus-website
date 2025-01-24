@@ -2,7 +2,9 @@
 layout: sample
 title: SOAP WS Security sample
 name: sample-soap-wssecurity
-group: samples-soap
+icon:  soap
+folder: samples-soap
+group: endpoints
 description: Configure SOAP web service client and server with WSSecurity
 categories: [samples]
 permalink: /samples/soap-wssecurity/

@@ -2,7 +2,8 @@
 layout: sample
 title: Java config sample
 name: sample-javaconfig
-group: common
+folder: common
+group: configuration
 description: Uses pure Java POJOs for configuration
 categories: [samples]
 permalink: /samples/javaconfig/

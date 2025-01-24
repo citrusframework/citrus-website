@@ -2,7 +2,9 @@
 layout: sample
 title: SQL sample
 name: sample-sql
-group: samples-db
+icon: database
+folder: samples-db
+group: validation
 description: Execute SQL statements in Citrus
 categories: [samples]
 permalink: /samples/sql/

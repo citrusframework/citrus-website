@@ -2,7 +2,9 @@
 layout: sample
 title: Gradle build sample
 name: sample-gradle
-group: common
+image: /img/icons/gradle.png
+folder: common
+group: miscellaneous
 description: Uses Gradle build to execute tests
 categories: [samples]
 permalink: /samples/gradle/

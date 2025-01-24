@@ -2,7 +2,9 @@
 layout: sample
 title: Object marshalling sample
 name: sample-oxm
-group: samples-xml
+icon: code
+folder: samples-xml
+group: validation
 description: Shows XML object marshalling feature when sending and receiving messages
 categories: [samples]
 permalink: /samples/oxm/

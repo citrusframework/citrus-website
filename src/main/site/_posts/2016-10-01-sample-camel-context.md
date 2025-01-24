@@ -2,10 +2,12 @@
 layout: sample
 title: Apache Camel sample
 name: sample-camel-context
-group: common
-description: Interact with Apache Camel context and routes
+image: /img/icons/camel.png
+folder: common
+group: demo
+description: Interact with Apache Camel
 categories: [samples]
-permalink: /samples/camel-context/
+permalink: /samples/apache-camel/
 ---
 
 This sample demonstrates how Citrus is able to interact with Apache Camel. Read more about this in [reference guide][1]

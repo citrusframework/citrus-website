@@ -23,42 +23,41 @@ name: sample-overview
     <table>
       <thead>
         <tr>
-          <th style="width: 15em;">Samples</th>
-          <th align="center">Description</th>
-          <th align="center">Sources</th>
+          <th style="width: 15em;">Configuration</th>
+          <th style="text-align:center;">Description</th>
+          <th style="text-align:center;">Sources</th>
         </tr>
       </thead>
       <tbody>
         {% assign sorted_posts = site.categories.samples | sort: 'group' %}
-        {% assign group = "common" %}
+        {% assign group = "configuration" %}
 
         {% for post in sorted_posts %}
         {% if group != post.group %}
       </tbody>
     </table>
 
-    {% assign group_parts = post.group | split: '-' %}
+    {% assign group = post.group %}
     <br/>
 
     <table>
       <thead>
       <tr>
-        <th style="width: 15em;">{{ group_parts[0] | capitalize }}&nbsp;&nbsp;{{ group_parts[1] | capitalize }}</th>
-        <th align="center">Description</th>
-        <th align="center">Sources</th>
+        <th style="width: 15em;">{{ group | capitalize }}</th>
+        <th style="text-align:center;">Description</th>
+        <th style="text-align:center;">Sources</th>
       </tr>
       </thead>
       <tbody>
-        {% assign group = post.group %}
         {% endif %}
         <tr>
           <td><a href="{{ post.permalink }}">{{ post.name }}</a></td>
-          <td align="center">{{ post.description }}</td>
-          {% if post.group != "common" %}
-          <td align="center"><a href="https://github.com/citrusframework/citrus-samples/blob/master/{{ post.group }}/{{ post.name }}" target="_blank"><i class="fa fa-pencil"></i></a></td>
+          <td style="text-align:center;">{{ post.description }}</td>
+          {% if post.folder != "common" %}
+          <td style="text-align:center;"><a href="https://github.com/citrusframework/citrus-samples/blob/master/{{ post.folder }}/{{ post.name }}" target="_blank"><i class="fa fa-pencil"></i></a></td>
           {% endif %}
-          {% if post.group == "common" %}
-          <td align="center"><a href="https://github.com/citrusframework/citrus-samples/blob/master/{{ post.name }}" target="_blank"><i class="fa fa-pencil"></i></a></td>
+          {% if post.folder == "common" %}
+          <td style="text-align:center;"><a href="https://github.com/citrusframework/citrus-samples/blob/master/{{ post.name }}" target="_blank"><i class="fa fa-pencil"></i></a></td>
           {% endif %}
         </tr>
         {% endfor %}
@@ -68,8 +67,8 @@ name: sample-overview
     <p>Pick your sample application for try out and got to the respective folder. Each sample is executable on your host. You just need Maven, Java and a git client.
       Refer to the detailed instructions in the sample <b><a href="https://github.com/citrusframework/citrus-samples/blob/master/README.md" target="_blank">README</a></b>.</p>
 
-    <p>Of course we appreciate any kind of help that you can give us in order to make things easy for Citrus users. So if you have
-      a sample worth reading for others please let us know. Also if you are missing a sample because you do not know how to accomplish the Citrus
+    <p>Of course, we appreciate any kind of help that you can give us in order to make things easy for Citrus users. So if you have
+      a sample worth reading for others please let us know. Also, if you are missing a sample because you do not know how to accomplish the Citrus
       use case please do not hesitate to contact us. You may also open a new issue in the <b><a href="https://github.com/citrusframework/citrus-samples/issues" target="_blank">Citrus samples</a></b> repository.</p>
   </div>
 </article>

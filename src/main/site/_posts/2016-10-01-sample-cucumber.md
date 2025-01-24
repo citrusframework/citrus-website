@@ -2,7 +2,9 @@
 layout: sample
 title: Cucumber sample
 name: sample-cucumber
-group: samples-cucumber
+image: /img/icons/cucumber.png
+folder: samples-cucumber
+group: demo
 description: Shows BDD integration with Cucumber
 categories: [samples]
 permalink: /samples/cucumber/

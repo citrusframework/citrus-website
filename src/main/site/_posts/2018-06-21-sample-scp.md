@@ -2,7 +2,9 @@
 layout: sample
 title: SCP sample
 name: sample-scp
-group: samples-ftp
+icon: ftp
+folder: samples-ftp
+group: endpoints
 description: SCP client and server interaction in Citrus
 categories: [samples]
 permalink: /samples/scp/

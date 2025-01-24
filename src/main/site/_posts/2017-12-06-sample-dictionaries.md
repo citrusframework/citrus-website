@@ -2,7 +2,8 @@
 layout: sample
 title: Data dictionary sample
 name: sample-dictionaries
-group: common
+folder: common
+group: miscellaneous
 description: Add data dictionaries
 categories: [samples]
 permalink: /samples/dictionaries/

@@ -2,7 +2,9 @@
 layout: sample
 title: SOAP MTOM sample
 name: sample-soap-mtom
-group: samples-soap
+icon: soap
+folder: samples-soap
+group: endpoints
 description: Handle MTOM enabled SOAP attachments
 categories: [samples]
 permalink: /samples/soap-mtom/

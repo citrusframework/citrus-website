@@ -1,8 +1,10 @@
 ---
 layout: sample
-title: SOAP WebServices sample
+title: SOAP WS sample
 name: sample-soap
-group: samples-soap
+icon:  soap
+folder: samples-soap
+group: endpoints
 description: Shows SOAP web service support
 categories: [samples]
 permalink: /samples/soap/

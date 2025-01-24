@@ -4,16 +4,22 @@ layout: samples
 
 <article>
   <h2>
+    {% if page.icon != nil %}
+    <i class="fa fa-{{ page.icon }}" style="width: 1em;height: 1em;"></i>
+    {% endif %}
+    {% if page.image != nil %}
+    <img src="{{ page.image }}" style="width: 1em;height: 1em;" alt=""/>
+    {% endif %}
     {{ page.title }}
     <a href="{{ page.url }}" class="permalink" title="Permalink">∞</a>
   </h2>
   <div class="right">
-    {% if page.group != "common" %}
-    <a href="https://github.com/citrusframework/citrus-samples/blob/master/{{ page.group }}/{{ page.name }}" target="_blank">
+    {% if page.folder != "common" %}
+    <a href="https://github.com/citrusframework/citrus-samples/blob/master/{{ page.folder }}/{{ page.name }}" target="_blank">
       <i class="fa fa-pencil"></i>&nbsp;View source code
     </a>
     {% endif %}
-    {% if page.group == "common" %}
+    {% if page.folder == "common" %}
     <a href="https://github.com/citrusframework/citrus-samples/blob/master/{{ page.name }}" target="_blank">
       <i class="fa fa-pencil"></i>&nbsp;View source code
     </a>

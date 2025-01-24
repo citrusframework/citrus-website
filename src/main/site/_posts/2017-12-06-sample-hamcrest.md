@@ -2,7 +2,8 @@
 layout: sample
 title: Hamcrest matcher sample
 name: sample-hamcrest
-group: common
+folder: common
+group: validation
 description: Use Hamcrest matchers
 categories: [samples]
 permalink: /samples/hamcrest/

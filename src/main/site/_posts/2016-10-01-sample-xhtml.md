@@ -2,7 +2,9 @@
 layout: sample
 title: XHTML sample
 name: sample-xhtml
-group: samples-xml
+icon: code
+folder: samples-xml
+group: validation
 description: Shows XHTML validation feature
 categories: [samples]
 permalink: /samples/xhtml/

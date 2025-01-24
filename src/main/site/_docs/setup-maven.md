@@ -4,8 +4,8 @@ title: Setup with Maven
 permalink: /docs/setup-maven/
 ---
 
-This quickstart shows you how to setup a new Citrus project with Maven. You will see it is very easy and you are finished 
-within minutes.
+This quickstart shows you how to set up a new Citrus project with Maven. 
+You should be finished within minutes and running your 1st Citrus test in a Maven build.
 
 ### Preconditions
 

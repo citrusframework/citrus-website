@@ -2,7 +2,9 @@
 layout: sample
 title: JMS sample
 name: sample-jms
-group: common
+image: /img/icons/activemq.png
+folder: common
+group: endpoints
 description: Shows JMS message broker connectivity
 categories: [samples]
 permalink: /samples/jms/

@@ -2,7 +2,9 @@
 layout: sample
 title: Binary sample
 name: sample-binary
-group: common
+icon:  binary
+folder: common
+group: validation
 description: Shows binary message content handling in Citrus
 categories: [samples]
 permalink: /samples/binary/

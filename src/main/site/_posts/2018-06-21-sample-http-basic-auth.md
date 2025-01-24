@@ -2,7 +2,9 @@
 layout: sample
 title: Http basic auth sample
 name: sample-http-basic-auth
-group: samples-http
+icon: globe
+folder: samples-http
+group: endpoints
 description: Basic authentication on client and server components
 categories: [samples]
 permalink: /samples/http-basic-auth/

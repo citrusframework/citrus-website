@@ -1,33 +1,32 @@
 <div class="unit one-fifth hide-on-mobiles">
   <aside>
-    <h4>Common</h4>
+    <h4>Samples</h4>
     <ul>
       <li class="{% if page.title == 'Samples' %}current{% endif %}">
-        <a href="${context.path}/samples/">Overview</a>
+        <a href="/samples/">Overview</a>
       </li>
       <li class="{% if page.title == 'TodoList' %}current{% endif %}">
-        <a href="${context.path}/samples/todo-app">Sample application</a>
+        <a href="/samples/todo-app">TodoList application</a>
       </li>
       <li class="{% if page.title == 'Running' %}current{% endif %}">
-        <a href="${context.path}/samples/run">Running</a>
+        <a href="/samples/run">Running</a>
       </li>
     </ul>
-    <h4>Samples</h4>
+    <h4>Configuration</h4>
     <ul style="margin-top: 5px;">
       {% assign sorted_posts = site.categories.samples | sort: 'group' %}
-      {% assign group = "common" %}
+      {% assign group = "configuration" %}
 
       {% for post in sorted_posts %}
       {% if group != post.group %}
     </ul>
 
-    {% assign group_parts = post.group | split: '-' %}
-    <h4>{{ group_parts[0] | capitalize }}&nbsp;&nbsp;{{ group_parts[1] | capitalize }}</h4>
+    <h4>{{ post.group | capitalize }}</h4>
     <ul style="margin-top: 5px;">
       {% assign group = post.group %}
       {% endif %}
       <li class="{% if page.title == post.title %}current{% endif %}">
-        <a href="${context.path}{{ post.url }}">{{ post.name }}</a>
+        <a href="{{ post.url }}">{{ post.name }}</a>
       </li>
       {% endfor %}
     </ul>

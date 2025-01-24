@@ -3,17 +3,17 @@
     <h4>Overview</h4>
     <ul>
       <li class="{% if page.title == 'News' %}current{% endif %}">
-        <a href="${context.path}/news/">All Posts</a>
+        <a href="/news/">All Posts</a>
       </li>
       <li class="{% if page.title == 'Releases' %}current{% endif %}">
-        <a href="${context.path}/docs/history/">All Releases</a>
+        <a href="/docs/history/">All Releases</a>
       </li>
     </ul>
     <h4>Posts</h4>
     <ul>
         {% for post in site.categories.blog %}
         <li class="{% if page.title == post.title %}current{% endif %}">
-          <a href="${context.path}{{ post.url }}">» {{ post.short-title }}</a>
+          <a href="{{ post.url }}">» {{ post.short-title }}</a>
         </li>
         {% endfor %}
     </ul>

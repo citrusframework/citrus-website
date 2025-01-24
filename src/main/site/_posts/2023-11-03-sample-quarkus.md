@@ -2,8 +2,10 @@
 layout: sample
 title: Quarkus sample
 name: sample-quarkus
+image: /img/icons/quarkus.png
+folder: demo
 group: demo
-description: Shows how to verify Quarkus applications with Citrus
+description: How to verify Quarkus applications with Citrus
 categories: [samples]
 permalink: /samples/quarkus/
 ---
@@ -23,7 +25,7 @@ If you want to learn more about Quarkus, please visit its website: [https://quar
 
 The Quarkus sample demo application is a food market event-driven application that listens for incoming events of type `booking` and `supply`.
 
-![Food Market App](${context.path}/img/assets/sample-quarkus/food-market-app-demo.png)
+![Food Market App](/img/assets/sample-quarkus/food-market-app-demo.png)
 
 Users are able to add booking events. Each of them references a product and gives an amount as well as an accepted price in a simple Json object structure.
 

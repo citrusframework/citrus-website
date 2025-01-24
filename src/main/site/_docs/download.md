@@ -4,12 +4,98 @@ title: Download
 permalink: /docs/download/
 ---
 
-Citrus ${citrus.version} is the latest stable release . You may also go for the [latest snapshot versions](#use-latest-snapshots) 
-of Citrus always being up-to-date with development changes. Citrus is available on [Maven central repository](http://search.maven.org/#search%7Cga%7C1%7Corg.citrusframework) 
-so you can add Citrus as [Maven dependency](#maven) to your project. All available versions and production releases for 
-manual download are listed below:
+Citrus ${citrus.version} is the latest stable release . Citrus is available on [Maven central repository](http://search.maven.org/#search%7Cga%7C1%7Corg.citrusframework) 
+so you can add Citrus as a [Maven dependency](#maven) to your project.
+
+## Maven 
+
+You can easily use Citrus in a Maven project by adding the Citrus modules as test-scoped dependencies in your `pom.xml`.
+
+Citrus provides a Maven BOM or "Bill Of Materials" that controls the versions and available modules that you can add to your project.
+
+{% highlight xml %}
+<dependency>
+  <groupId>org.citrusframework</groupId>
+  <artifactId>citrus-bom</artifactId>
+  <version>${citrus.version}</version>
+  <scope>import</scope>
+</dependency>
+{% endhighlight %}
+
+Now you can add individual Citrus modules to your project. Each module represents a specific features and capability in Citrus.
+
+As an example the following modules enable you to send and receive messages via Http REST, Kafka and JMS.
+
+{% highlight xml %}
+<dependency>
+  <groupId>org.citrusframework</groupId>
+  <artifactId>citrus-http</artifactId>
+  <scope>test</scope>
+</dependency>
+<dependency>
+  <groupId>org.citrusframework</groupId>
+  <artifactId>citrus-kafka</artifactId>
+  <scope>test</scope>
+</dependency>
+<dependency>
+  <groupId>org.citrusframework</groupId>
+  <artifactId>citrus-jms</artifactId>
+  <scope>test</scope>
+</dependency>
+{% endhighlight %}
+
+In case you want to use the Apache Camel or Testcontainers functionality provided in Citrus you may add these modules.
+
+{% highlight xml %}
+<dependency>
+  <groupId>org.citrusframework</groupId>
+  <artifactId>citrus-camel</artifactId>
+  <scope>test</scope>
+</dependency>
+<dependency>
+  <groupId>org.citrusframework</groupId>
+  <artifactId>citrus-testcontainers</artifactId>
+  <scope>test</scope>
+</dependency>
+{% endhighlight %}
+
+You can write Citrus test as YAML files using a domain specific language. To use this feature in Citrus add the following module:
+
+{% highlight xml %}
+<dependency>
+  <groupId>org.citrusframework</groupId>
+  <artifactId>citrus-yaml</artifactId>
+  <scope>test</scope>
+</dependency>
+{% endhighlight %}
+
+Validation of received messages is an essential part of the test. Citrus provides a powerful set of different message validators for different message data formats.
+
+As an example the following modules add validation capabilities for Json, Xml and plaintext.
+
+{% highlight xml %}
+<dependency>
+  <groupId>org.citrusframework</groupId>
+  <artifactId>citrus-validation-json</artifactId>
+  <scope>test</scope>
+</dependency>
+<dependency>
+  <groupId>org.citrusframework</groupId>
+  <artifactId>citrus-validation-xml</artifactId>
+  <scope>test</scope>
+</dependency>
+<dependency>
+  <groupId>org.citrusframework</groupId>
+  <artifactId>citrus-validation-text</artifactId>
+  <scope>test</scope>
+</dependency>
+{% endhighlight %}
+
+You can choose from a huge list of modules that all add individual Citrus capabilities to your test.
 
 ## Release artifacts
+
+All available versions and production releases for manual download are listed below:
 
 | Version | Release date | Sources |
 |:--------|:--------|:--------|
@@ -17,95 +103,6 @@ manual download are listed below:
 {% endfor %}
 
 Since Citrus 4.0 the project requires Java 17 (or newer version) to run.
-
-## Maven 
-
-You can easily use Citrus in a Maven project by defining test-scoped dependencies. Simply add the ConSol Labs repository 
-and the following dependencies to your POM (pom.xml). See also our Maven tutorial for a detailed description.
-
-The Citrus core module dependency.
-
-{% highlight xml %}
-<dependency>
-  <groupId>org.citrusframework</groupId>
-  <artifactId>citrus-core</artifactId>
-  <version>${citrus.version}</version>
-  <scope>test</scope>
-</dependency>
-{% endhighlight %}
-
-In case you need Citrus modules add following dependencies. See also our modules section for more information on Citrus modules:
-
-{% highlight xml %}
-<dependency>
-  <groupId>org.citrusframework</groupId>
-  <artifactId>citrus-jms</artifactId>
-  <version>${citrus.version}</version>
-  <scope>test</scope>
-</dependency>
-
-<dependency>
-  <groupId>org.citrusframework</groupId>
-  <artifactId>citrus-http</artifactId>
-  <version>${citrus.version}</version>
-  <scope>test</scope>
-</dependency>
-
-<dependency>
-  <groupId>org.citrusframework</groupId>
-  <artifactId>citrus-ws</artifactId>
-  <version>${citrus.version}</version>
-  <scope>test</scope>
-</dependency>
-
-<dependency>
-  <groupId>org.citrusframework</groupId>
-  <artifactId>citrus-websocket</artifactId>
-  <version>${citrus.version}</version>
-  <scope>test</scope>
-</dependency>
-
-<dependency>
-  <groupId>org.citrusframework</groupId>
-  <artifactId>citrus-camel</artifactId>
-  <version>${citrus.version}</version>
-  <scope>test</scope>
-</dependency>
-
-<dependency>
-  <groupId>org.citrusframework</groupId>
-  <artifactId>citrus-ssh</artifactId>
-  <version>${citrus.version}</version>
-  <scope>test</scope>
-</dependency>
-
-<dependency>
-  <groupId>org.citrusframework</groupId>
-  <artifactId>citrus-vertx</artifactId>
-  <version>${citrus.version}</version>
-  <scope>test</scope>
-</dependency>
-{% endhighlight %}
-
-## Use the latest snapshots
-
-Stable releases are available on Maven central repository. We also provide nightly snapshot releases that are available on
-ConSol Labs repository. So if you want to use the latest snapshot releases of Citrus please add the following repository to 
-your Maven POM.
-
-{% highlight xml %}
-<repository>
-  <id>consol-labs-snapshots</id>
-  <url>http://labs.consol.de/maven/snapshots-repository/</url>
-  <snapshots>
-    <enabled>true</enabled>
-    <updatePolicy>10080</updatePolicy>
-  </snapshots>
-  <releases>
-    <enabled>false</enabled>
-  </releases>
-</repository>
-{% endhighlight %}
 
 ## Logging framework notice
 

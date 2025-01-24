@@ -2,7 +2,9 @@
 layout: sample
 title: SOAP SSL sample
 name: sample-soap-ssl
-group: samples-soap
+icon:  soap
+folder: samples-soap
+group: endpoints
 description: Shows SOAP secure web service support
 categories: [samples]
 permalink: /samples/soap-ssl/

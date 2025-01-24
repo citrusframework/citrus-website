@@ -2,7 +2,9 @@
 layout: sample
 title: Kubernetes sample
 name: sample-kubernetes
-group: common
+image: /img/icons/kubernetes.png
+folder: common
+group: connectors
 description: Run tests in Kubernetes
 categories: [samples]
 permalink: /samples/kubernetes/

@@ -2,7 +2,9 @@
 layout: sample
 title: Selenium sample
 name: sample-selenium
-group: common
+image: /img/icons/selenium.png
+folder: common
+group: demo
 description: Use Selenium for UI testing
 categories: [samples]
 permalink: /samples/selenium/

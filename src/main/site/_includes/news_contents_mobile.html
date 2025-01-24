@@ -1,11 +1,11 @@
 <div class="docs-nav-mobile unit whole show-on-mobiles">
   <select onchange="if (this.value) window.location.href=this.value">
     <option value="">Navigate the blog…</option>
-    <option value="${context.path}/news/">News</option>
-    <option value="${context.path}/docs/history/">Releases</option>
+    <option value="/news/">News</option>
+    <option value="/docs/history/">Releases</option>
     <optgroup label="Posts">
       {% for post in site.categories.blog %}
-      <option value="${context.path}{{ post.url }}">{{ post.title }}</option>
+      <option value="{{ post.url }}">{{ post.title }}</option>
       {% endfor %}
     </optgroup>
   </select>

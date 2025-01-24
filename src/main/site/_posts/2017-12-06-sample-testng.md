@@ -2,7 +2,9 @@
 layout: sample
 title: TestNG sample
 name: sample-testng
-group: samples-testng
+image: /img/icons/testng.png
+folder: samples-testng
+group: runtimes
 description: Use TestNG test framework
 categories: [samples]
 permalink: /samples/testng/

@@ -1,12 +1,12 @@
 <div class="samples-nav-mobile unit whole show-on-mobiles">
   <select onchange="if (this.value) window.location.href=this.value">
     <option value="">Navigate the samples…</option>
-    <option value="${context.path}/samples/">Overview</option>
-    <option value="${context.path}/samples/todo-app/">Sample app</option>
-    <option value="${context.path}/samples/run/">Running</option>
+    <option value="/samples/">Overview</option>
+    <option value="/samples/todo-app/">TodoList app</option>
+    <option value="/samples/run/">Running</option>
     {% assign sorted_posts = site.categories.samples | sort: 'group' %}
     {% for post in sorted_posts %}
-    <option value="${context.path}{{ post.url }}">{{ post.name }}</option>
+    <option value="{{ post.url }}">{{ post.name }}</option>
     {% endfor %}
   </select>
 </div>

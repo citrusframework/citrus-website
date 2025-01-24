@@ -1,11 +1,13 @@
 ---
 layout: sample
-title: Swagger auto generated sample
+title: OpenAPI sample
 name: sample-swagger
-group: samples-http
-description: Auto generate tests from Swagger Open API
+image: /img/icons/openapi.png
+folder: samples-http
+group: endpoints
+description: Auto generate tests from Open API
 categories: [samples]
-permalink: /samples/swagger/
+permalink: /samples/openapi/
 ---
 
 This sample uses Swagger Open API specification to generate tests for the todo app system under test. You can read more about the 

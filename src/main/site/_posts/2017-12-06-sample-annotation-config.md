@@ -2,7 +2,8 @@
 layout: sample
 title: Annotation configuration sample
 name: sample-annotation-config
-group: common
+folder: common
+group: configuration
 description: Use Java annotation configuration
 categories: [samples]
 permalink: /samples/annotation-config/

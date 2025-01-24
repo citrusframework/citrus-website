@@ -9,7 +9,7 @@ categories: [blog]
 
 This post describes the steps to test a Camel K integration with YAKS both locally and on the Kubernetes platform.
 
-![featured.png](${context.path}/img/assets/camel-k-yaks/featured.png)
+![featured.png](/img/assets/camel-k-yaks/featured.png)
 
 # What is YAKS?
 
@@ -33,7 +33,7 @@ The integration exposes a Http service to the user.
 The service accepts client Http POST requests that add fruit model objects.
 The Camel K route applies content based routing to store the fruits in different AWS S3 buckets.
 
-![test-scenario.png](${context.path}/img/assets/camel-k-yaks/test-scenario.png)
+![test-scenario.png](/img/assets/camel-k-yaks/test-scenario.png)
 
 In the test scenario YAKS is going to invoke the Camel K service and verify that the message content has been sent to the right AWS S3 bucket.
 

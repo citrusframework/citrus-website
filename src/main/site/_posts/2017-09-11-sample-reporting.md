@@ -2,7 +2,8 @@
 layout: sample
 title: Reporting sample
 name: sample-reporting
-group: common
+folder: common
+group: configuration
 description: Add custom test reporting
 categories: [samples]
 permalink: /samples/reporting/

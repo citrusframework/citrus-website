@@ -2,7 +2,9 @@
 layout: sample
 title: XML sample
 name: sample-xml
-group: samples-xml
+icon: code
+folder: samples-xml
+group: validation
 description: Shows XML validation feature with schema and Xpath validation
 categories: [samples]
 permalink: /samples/xml/

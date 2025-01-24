@@ -1,26 +1,32 @@
 <ul>
   <li>
-    <img src="${context.path}/img/brand-logo.png" alt="Citrus"><span class="brand hide-on-mobiles">Citrus</span>
+    <img src="/img/brand-logo.png" alt="Citrus"><span class="brand hide-on-mobiles">Citrus</span>
   </li>
   <li class="{% if page.overview %}current{% endif %}">
-    <a href="${context.path}/">Home</a>
+    <a href="/">Home</a>
   </li>
-  <li class="{% if page.url contains '${context.path}/projects/' %}current{% endif %}">
-    <a href="${context.path}/projects/">Projects</a>
+  <li class="{% if page.url contains '/projects/' %}current{% endif %}">
+    <a href="/projects/">Projects</a>
   </li>
-  <li class="{% if page.url contains '${context.path}/docs/' %}current{% endif %}">
-    <a href="${context.path}/docs/documentation/">Doc<span class="hide-on-mobiles">umentation</span><span class="show-on-mobiles">s</span></a>
+  <li class="{% if page.url contains '/endpoints/' %}current{% endif %}">
+    <a href="/endpoints/">Endpoints</a>
   </li>
-  <li class="{% if page.sample %}current{% endif %}">
-    <a href="${context.path}/samples/">Samples</a>
+  <li class="{% if page.url contains '/runtimes/' %}current{% endif %}">
+    <a href="/runtimes/">Runtimes</a>
+  </li>
+  <li class="{% if page.url contains '/docs/' %}current{% endif %}">
+    <a href="/docs/documentation/">Doc<span class="hide-on-mobiles">umentation</span><span class="show-on-mobiles">s</span></a>
+  </li>
+  <li class="{% if page.url contains '/samples/' %}current{% endif %}">
+    <a href="/samples/">Samples</a>
   </li>
   <li class="{% if page.author %}current{% endif %}">
-    <a href="${context.path}/news/">News<span class="hide-on-mobiles"> &amp; Blog</span></a>
+    <a href="/news/">News<span class="hide-on-mobiles"> &amp; Blog</span></a>
   </li>
-  <li class="{% if page.url contains '${context.path}/help/' %}current{% endif %}">
-    <a href="${context.path}/help/">Help</a>
+  <li class="{% if page.url contains '/help/' %}current{% endif %}">
+    <a href="/help/">Help</a>
   </li>
   <li>
-    <a href="{{ site.repository }}" target="_blank"><span class="hide-on-mobiles">View on </span>GitHub</a>
+    <a href="{{ site.repository }}" target="_blank"><i class="fa fa-github"></i>&nbsp; GitHub</a>
   </li>
 </ul>

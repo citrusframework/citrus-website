@@ -2,7 +2,9 @@
 layout: sample
 title: SOAP attachment sample
 name: sample-soap-attachment
-group: samples-soap
+icon: soap
+folder: samples-soap
+group: endpoints
 description: How to send SOAP attachments to server
 categories: [samples]
 permalink: /samples/soap-attachment/

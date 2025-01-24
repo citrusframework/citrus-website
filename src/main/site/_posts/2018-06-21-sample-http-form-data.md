@@ -2,7 +2,9 @@
 layout: sample
 title: Http form data sample
 name: sample-http-form-data
-group: samples-http
+icon: globe
+folder: samples-http
+group: validation
 description: Exchange form data via Http GET/POST
 categories: [samples]
 permalink: /samples/http-form-data/

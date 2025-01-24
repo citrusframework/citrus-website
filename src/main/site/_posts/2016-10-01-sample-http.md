@@ -2,7 +2,9 @@
 layout: sample
 title: Http REST sample
 name: sample-http
-group: samples-http
+icon: globe
+folder: samples-http
+group: endpoints
 description: Shows REST API calls as a client
 categories: [samples]
 permalink: /samples/http/

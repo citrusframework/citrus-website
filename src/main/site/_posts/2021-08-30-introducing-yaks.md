@@ -163,7 +163,7 @@ http-to-kafka    Passed
 
 So, what happens behind the scenes when running this test on Kubernetes?
 
-![yaks-architecture.png](${context.path}/img/assets/introducing-yaks/yaks-architecture.png)
+![yaks-architecture.png](/img/assets/introducing-yaks/yaks-architecture.png)
 
 The **yaks** tool synchronizes your test code with a Kubernetes custom resource of Kind Test. 
 The resource is named `http-to-kafka` (after the file name) in the current namespace. 

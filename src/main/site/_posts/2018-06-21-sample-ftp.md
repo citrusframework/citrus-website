@@ -2,7 +2,9 @@
 layout: sample
 title: FTP sample
 name: sample-ftp
-group: samples-ftp
+icon:  ftp
+folder: samples-ftp
+group: endpoints
 description: FTP client and server interaction in Citrus
 categories: [samples]
 permalink: /samples/ftp/

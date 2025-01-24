@@ -2,7 +2,9 @@
 layout: sample
 title: Kafka sample
 name: sample-kafka
-group: common
+image: /img/icons/kafka.png
+folder: common
+group: endpoints
 description: Shows Kafka integration
 categories: [samples]
 permalink: /samples/kafka/

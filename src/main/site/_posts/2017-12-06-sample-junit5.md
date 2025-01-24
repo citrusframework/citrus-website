@@ -2,7 +2,9 @@
 layout: sample
 title: JUnit5 sample
 name: sample-junit5
-group: samples-junit
+image:  /img/icons/junit4.png
+folder: samples-junit
+group: runtimes
 description: Use JUnit5 test framework
 categories: [samples]
 permalink: /samples/junit5/

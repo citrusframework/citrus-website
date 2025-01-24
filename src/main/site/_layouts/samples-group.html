@@ -1,0 +1,61 @@
+---
+layout: samples
+---
+
+<article>
+  <h2>
+    {% if page.icon != nil %}
+    <i class="fa fa-{{ page.icon }}" style="width: 1em;height: 1em;"></i>
+    {% endif %}
+    {% if page.image != nil %}
+    <img src="{{ page.image }}" style="width: 1em;height: 1em;" alt=""/>
+    {% endif %}
+    {{ page.title }}
+    <a href="{{ page.url }}" class="permalink" title="Permalink">∞</a>
+  </h2>
+  <div class="right">
+    <a href="https://github.com/citrusframework/citrus-samples/blob/master/{{ page.name }}" target="_blank">
+      <i class="fa fa-pencil"></i>&nbsp;View sources
+    </a>
+  </div>
+  <span class="post-category">
+    <span class="label">
+      {{ page.categories | array_to_sentence_string }}
+    </span>
+  </span>
+  <div class="post-content">
+    {{ content }}
+
+    <p>See the list of available samples:</p>
+
+    {% assign posts = site.categories.samples %}
+
+    <table>
+      <thead>
+      <tr>
+        <th style="width: 15em;">Sample</th>
+        <th style="text-align:center;">Description</th>
+        <th style="text-align:center;">Sources</th>
+      </tr>
+      </thead>
+      <tbody>
+    {% for post in posts %}
+    {% if post.folder != nil %}
+    {% if page.name == post.folder %}
+      <tr>
+        <td><a href="{{ post.permalink }}">{{ post.name }}</a></td>
+        <td style="text-align:center;">{{ post.title }} - {{ post.description }}</td>
+        {% if post.folder != "common" %}
+        <td style="text-align:center;"><a href="https://github.com/citrusframework/citrus-samples/blob/master/{{ post.folder }}/{{ post.name }}" target="_blank"><i class="fa fa-pencil"></i></a></td>
+        {% endif %}
+        {% if post.folder == "common" %}
+        <td style="text-align:center;"><a href="https://github.com/citrusframework/citrus-samples/blob/master/{{ post.name }}" target="_blank"><i class="fa fa-pencil"></i></a></td>
+        {% endif %}
+      </tr>
+    {% endif %}
+    {% endif %}
+    {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</article>
