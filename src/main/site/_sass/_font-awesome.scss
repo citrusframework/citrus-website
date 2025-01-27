@@ -18,6 +18,14 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.fa-home:before {
+  content: "\f015";
+}
+
+.fa-help:before {
+  content: "\f059";
+}
+
 .fa-link:before {
   content: "\f0c1";
 }

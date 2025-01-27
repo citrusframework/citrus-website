@@ -96,4 +96,4 @@ Run
 
 You can run the sample on your localhost in order to see Citrus in action. Read the instructions [how to run](/samples/run/) the sample.
 
- [1]: https://citrusframework.org/citrus/reference/html#http
+ [1]: https://citrusframework.org/citrus/reference/html#http-rest

@@ -11,4 +11,4 @@ permalink: /samples/overview/http/
 
 Read about the Http support in the [reference guide][1]
 
- [1]: https://citrusframework.org/citrus/reference/html/#http-rest
+ [1]: https://citrusframework.org/citrus/reference/html#http-rest

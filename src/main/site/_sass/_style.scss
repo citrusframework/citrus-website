@@ -279,6 +279,10 @@ h6:hover .header-link {
       margin-right: 15px;
     }
   }
+
+  .unit.one-third {
+    min-height: 180px;
+  }
 }
 
 /* Footer */
@@ -304,12 +308,20 @@ footer {
     margin-left: 5px;
     padding: 1px;
   }
+
+  .unit.one-third:hover {
+    background-color: #212121;
+  }
 }
 
 @media (max-width: 700px) {
   footer {
     .one-third p { margin-bottom: 0; }
     .two-thirds p { margin-top: -20px; }
+  }
+
+  .unit .grid .unit {
+    min-height: 180px;
   }
 }
 
