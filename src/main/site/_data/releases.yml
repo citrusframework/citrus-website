@@ -1,3 +1,25 @@
+- version: 4.5.2
+  date: 2025-01-25
+  tag: v4.5.2
+  issues: https://github.com/citrusframework/citrus/issues/
+  stories: https://github.com/citrusframework/citrus/issues/
+  changes:
+    - title: Fix flaky synchronous JMS topic tests
+      type: fix
+      author: christophd
+    - title: Fix Citrus JBang source file templates
+      type: fix
+      author: christophd
+    - title: Fix total test duration report
+      id: 1302
+      type: fix
+      author: christophd
+    - title: Fix stopping Camel JBang integrations
+      type: fix
+      author: christophd
+    - title: Add escape json function to registry
+      type: update
+      author: bbortt
 - version: 4.5.1
   date: 2025-01-20
   tag: v4.5.1
