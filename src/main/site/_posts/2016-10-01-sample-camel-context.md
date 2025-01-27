@@ -33,7 +33,7 @@ public CamelContext camelContext() throws Exception {
 ```
 
 The Camel route reads from a JMS queue and forwards the message to a SOAP web service endpoint. In a test scenario we need to send messages to the JMS destination and wait for messages on
-the SOAP server endpoint. Lets add configuration for this in Citrus:
+the SOAP server endpoint. Let's add configuration for this in Citrus:
 
 ```java
 @Bean
@@ -56,9 +56,9 @@ public WebServiceServer newsServer() {
             .build();
 }
 ```
-       
+
 The components above are used in a Citrus test case.
-     
+
 ```java
 @Test
 public class NewsFeedIT extends TestNGCitrusTestDesigner {
@@ -80,19 +80,21 @@ public class NewsFeedIT extends TestNGCitrusTestDesigner {
                 .header(SoapMessageHeaders.HTTP_STATUS_CODE, "200");
     }
 }
-```       
-       
+```
+
 As you can see Citrus is both JMS message producer and SOAP server at the same time in a single test. The Apache Camel route in the middle will read the JMS message and forward it to the SOAP
 server endpoint where Citrus receives the message for validation purpose. This way we make sure the Camel route is working as expected.    
-                
+
 Run
 ---------
 
 The sample application uses Maven as build tool. So you can compile, package and test the
 sample with Maven.
- 
-    mvn clean install -Dembedded=true
-    
+
+```shell
+mvn install -Dembedded=true
+``` 
+
 This executes the complete Maven build lifecycle.
 
 During the build you will see Citrus performing some integration tests.
@@ -102,16 +104,20 @@ Citrus test
 
 Execute all Citrus tests by calling
 
-    mvn integration-test
+```shell
+mvn integration-test
+```
 
 You can also pick a single test by calling
 
-    mvn integration-test -Ptest=TodoListIT
+```shell
+mvn integration-test -Ptest=TodoListIT
+```
 
 You should see Citrus performing several tests with lots of debugging output in your terminal. 
 And of course green tests at the very end of the build.
 
-Of course you can also start the Citrus tests from your favorite IDE.
+Of course, you can also start the Citrus tests from your favorite IDE.
 Just start the Citrus test using the TestNG IDE integration in IntelliJ, Eclipse or Netbeans.
 
  [1]: https://citrusframework.org/citrus/reference/html#camel

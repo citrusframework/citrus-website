@@ -56,34 +56,34 @@ The command output will be like this:
 
 _Output_
 ```shell
-INFO 53887 --- [           main] citrusframework.testng.TestNGEngine : Running test source my-test.yaml
-INFO 53887 --- [           main] org.testng.internal.Utils           : [TestNG] Running:
-INFO 53887 --- [           main] rusframework.report.LoggingReporter :        .__  __                       
-INFO 53887 --- [           main] rusframework.report.LoggingReporter :   ____ |__|/  |________ __ __  ______
-INFO 53887 --- [           main] rusframework.report.LoggingReporter : _/ ___\|  \   __\_  __ \  |  \/  ___/
-INFO 53887 --- [           main] rusframework.report.LoggingReporter : \  \___|  ||  |  |  | \/  |  /\___ \ 
-INFO 53887 --- [           main] rusframework.report.LoggingReporter :  \___  >__||__|  |__|  |____//____  >
-INFO 53887 --- [           main] rusframework.report.LoggingReporter :      \/                           \/
-INFO 53887 --- [           main] rusframework.report.LoggingReporter : 
-INFO 53887 --- [           main] rusframework.report.LoggingReporter : C I T R U S  T E S T S  ${citrus.version}
-INFO 53887 --- [           main] rusframework.report.LoggingReporter : 
-INFO 53887 --- [           main] rusframework.report.LoggingReporter : ------------------------------------------------------------------------
-INFO 53887 --- [           main] .citrusframework.actions.EchoAction : Citrus rocks!
-INFO 53887 --- [           main] rusframework.report.LoggingReporter : 
-INFO 53887 --- [           main] rusframework.report.LoggingReporter : TEST SUCCESS my-test (org.citrusframework)
-INFO 53887 --- [           main] rusframework.report.LoggingReporter : ------------------------------------------------------------------------
-INFO 53887 --- [           main] rusframework.report.LoggingReporter : 
-INFO 53887 --- [           main] rusframework.report.LoggingReporter : 
-INFO 53887 --- [           main] rusframework.report.LoggingReporter : CITRUS TEST RESULTS
-INFO 53887 --- [           main] rusframework.report.LoggingReporter : 
-INFO 53887 --- [           main] rusframework.report.LoggingReporter : SUCCESS (     3 ms) my-test
-INFO 53887 --- [           main] rusframework.report.LoggingReporter : 
-INFO 53887 --- [           main] rusframework.report.LoggingReporter : TOTAL:		1
-INFO 53887 --- [           main] rusframework.report.LoggingReporter : SUCCESS:	1 (100.0%)
-INFO 53887 --- [           main] rusframework.report.LoggingReporter : FAILED:		0 (0.0%)
-INFO 53887 --- [           main] rusframework.report.LoggingReporter : PERFORMANCE:	0 ms
-INFO 53887 --- [           main] rusframework.report.LoggingReporter : 
-INFO 53887 --- [           main] rusframework.report.LoggingReporter : ------------------------------------------------------------------------
+[main] citrusframework.testng.TestNGEngine : Running test source my-test.yaml
+[main] org.testng.internal.Utils           : [TestNG] Running:
+[main] rusframework.report.LoggingReporter :        .__  __                       
+[main] rusframework.report.LoggingReporter :   ____ |__|/  |________ __ __  ______
+[main] rusframework.report.LoggingReporter : _/ ___\|  \   __\_  __ \  |  \/  ___/
+[main] rusframework.report.LoggingReporter : \  \___|  ||  |  |  | \/  |  /\___ \ 
+[main] rusframework.report.LoggingReporter :  \___  >__||__|  |__|  |____//____  >
+[main] rusframework.report.LoggingReporter :      \/                           \/
+[main] rusframework.report.LoggingReporter : 
+[main] rusframework.report.LoggingReporter : C I T R U S  T E S T S  ${citrus.version}
+[main] rusframework.report.LoggingReporter : 
+[main] rusframework.report.LoggingReporter : ------------------------------------------------------------------------
+[main] .citrusframework.actions.EchoAction : Citrus rocks!
+[main] rusframework.report.LoggingReporter : 
+[main] rusframework.report.LoggingReporter : TEST SUCCESS my-test (org.citrusframework)
+[main] rusframework.report.LoggingReporter : ------------------------------------------------------------------------
+[main] rusframework.report.LoggingReporter : 
+[main] rusframework.report.LoggingReporter : 
+[main] rusframework.report.LoggingReporter : CITRUS TEST RESULTS
+[main] rusframework.report.LoggingReporter : 
+[main] rusframework.report.LoggingReporter : SUCCESS (     3 ms) my-test
+[main] rusframework.report.LoggingReporter : 
+[main] rusframework.report.LoggingReporter : TOTAL:		1
+[main] rusframework.report.LoggingReporter : SUCCESS:	1 (100.0%)
+[main] rusframework.report.LoggingReporter : FAILED:		0 (0.0%)
+[main] rusframework.report.LoggingReporter : PERFORMANCE:	0 ms
+[main] rusframework.report.LoggingReporter : 
+[main] rusframework.report.LoggingReporter : ------------------------------------------------------------------------
 
 ===============================================
 Default Suite
