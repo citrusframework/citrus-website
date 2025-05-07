@@ -1,3 +1,68 @@
+- version: 4.6.0
+  date: 2025-05-07
+  tag: v4.6.0
+  issues: https://github.com/citrusframework/citrus/issues/
+  stories: https://github.com/citrusframework/citrus/issues/
+  changes:
+    - title: Update Maven surefire and failsafe to 3.5.3
+      type: add
+      author: christophd
+    - title: Update dependency versions
+      type: add
+      author: christophd
+    - title: Introduce validation status
+      type: add
+      author: christophd
+    - title: Assume most common message types before validation
+      type: add
+      author: bbortt
+    - title: Add Citrus agent for remote test execution
+      id: 1333
+      type: add
+      author: christophd
+    - title: Use default Http servlet filters option
+      type: add
+      author: christophd
+    - title: Properly report statistics on skipped tests
+      id: 1327
+      type: fix
+      author: christophd
+    - title: Add Kubernetes service connect test action documentation
+      type: add
+      author: christophd
+    - title: Add test action that connects local test to a Kubernetes service
+      type: add
+      author: christophd
+    - title: Add further methods to TestListener
+      id: 1218
+      type: add
+      author: phos-web
+    - title: Add camel jbang plugin support
+      id: 1280
+      type: add
+      author: gansheer
+    - title: Kafka concurrent access during shutdown
+      type: fix
+      author: bbortt
+    - title: Improve JMS purging documentation
+      id: 1230
+      type: update
+      author: luisa-frison
+    - title: Add description of beans configuration scripts in Groovy
+      type: update
+      author: christophd
+    - title: Support concurrent Citrus bean registry access
+      type: add
+      author: christophd
+    - title: Support test variables in Camel JBang command args
+      type: add
+      author: christophd
+    - title: Support Object type value in create variables
+      type: add
+      author: christophd
+    - title: Include template name in success message
+      type: update
+      author: christophd
 - version: 4.5.2
   date: 2025-01-25
   tag: v4.5.2
