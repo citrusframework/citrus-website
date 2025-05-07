@@ -6,6 +6,13 @@ permalink: /docs/media/
 
 Find below videos, conference talks and live demo sessions about Citrus and YAKS.
 
+## Quarkus Insights - Citrus Integration Test Framework
+### Episode #149
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/0wvWd2woBJ8" frameborder="0" allowfullscreen></iframe>
+
+In this podcast episode we discuss the Citrus testing framework and how it can help to verify Quarkus applications in an automated integration test.
+
 ## Testing Kamelets - Verify event sources and sinks with YAKS
 ### Presentation from ApacheCon 2021
 
