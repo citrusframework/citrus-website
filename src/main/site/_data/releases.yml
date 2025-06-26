@@ -1,3 +1,46 @@
+- version: 4.7.0
+  date: 2025-06-26
+  tag: v4.7.0
+  issues: https://github.com/citrusframework/citrus/issues/
+  stories: https://github.com/citrusframework/citrus/issues/
+  changes:
+    - title: Add create-endpoint test action
+      id: 1360
+      type: add
+      author: christophd
+    - title: Add propagation of beans to Camel registry
+      type: add
+      author: christophd
+    - title: Introduce LocalStack service client options
+      id: 1353
+      type: add
+      author: christophd
+    - title: OpenApiActionBuilder enhancements
+      id: 1175
+      type: update
+      author: tschlat
+    - title: Implement OpenAPI validation by schema validation
+      type: add
+      author: tschlat
+    - title: Provide random generator for random json object generation
+      type: add
+      author: tschlat
+    - title: Add Camel infra support
+      id: 1335
+      type: add
+      author: christophd
+    - title: Set System.out to a log4j-managed PrintStream
+      id: 1347
+      type: add
+      author: turing85
+    - title: Update to Maven central portal release
+      id: 1345
+      type: update
+      author: christophd
+    - title: YAML validation support
+      id: 1343
+      type: add
+      author: christophd
 - version: 4.6.0
   date: 2025-05-07
   tag: v4.6.0
