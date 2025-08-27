@@ -1,3 +1,90 @@
+- version: 4.8.0
+  date: 2025-08-25
+  tag: v4.8.0
+  issues: https://github.com/citrusframework/citrus/issues/
+  stories: https://github.com/citrusframework/citrus/issues/
+  changes:
+    - title: Update dependency versions
+      type: update
+      author: christophd
+    - title: Fix validation configuration issue for OpenAPI
+      id: 1389
+      type: fix
+      author: tschlat
+    - title: Allow DTD as we are in controlled environment
+      type: add
+      author: stefan-ziel
+    - title: Introduce message processor Java DSL API
+      id: 1386
+      type: add
+      author: christophd
+    - title: Introduce variable extractor Java DSL API
+      id: 1386
+      type: add
+      author: christophd
+    - title: Implement OpenAPI Codegen improvements
+      id: 1383
+      type: add
+      author: tschlat
+    - title: Provide more information when waiting for test to complete
+      type: update
+      author: christophd
+    - title: Fix isDone() logic on test action container
+      type: fix
+      author: christophd
+    - title: Optionally disable stacktrace printing
+      type: add
+      author: bbortt
+    - title: Introduce Java DSL test actions API
+      id: 1381
+      type: add
+      author: christophd
+    - title: Receive message type assumption on nullish values
+      type: fix
+      author: bbortt
+    - title: Custom kafka filtering factories
+      id: 1378
+      type: add
+      author: bbortt
+    - title: Add environment property binding support
+      id: 1371
+      type: add
+      author: christophd
+    - title: Fix before/after suite with TestNG groups
+      id: 1370
+      type: fix
+      author: christophd
+    - title: Support running multiple test sources with JUnit5 test engine
+      id: 1368
+      type: fix
+      author: christophd
+    - title: Customize test engine in Citrus JBang run
+      id: 1367
+      type: fix
+      author: christophd
+    - title: Camel infra exposed service properties fixed
+      type: fix
+      author: christophd
+    - title: Allow custom client names for LocalStack Testcontainers service
+      type: add
+      author: christophd
+    - title: Support YAML content in LogModifier
+      id: 1363
+      type: add
+      author: christophd
+    - title: Support endpoint URIs without scheme specific part
+      type: add
+      author: christophd
+    - title: Implement OpenAPI TestAPI generator
+      type: add
+      author: tschlat
+    - title: Add citrus-openapi-codegen-maven-plugin
+      id: 1362
+      type: add
+      author: tschlat
+    - title: Migrate to io.swagger.core.v3
+      type: add
+      author: bbortt
 - version: 4.7.0
   date: 2025-06-26
   tag: v4.7.0
