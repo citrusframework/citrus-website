@@ -1,3 +1,68 @@
+- version: 4.8.1
+  date: 2025-09-26
+  tag: v4.8.1
+  issues: https://github.com/citrusframework/citrus/issues/
+  stories: https://github.com/citrusframework/citrus/issues/
+  changes:
+    - title: Fill required path and cookie params in OpenAPI with random values
+      type: fix
+      author: tschlat
+    - title: Fix optional Selenium web element property in XML DSL
+      type: fix
+      author: christophd
+    - title: Improve Citrus documentation
+      type: update
+      author: christophd
+    - title: Incorporate YAKS Cucumber steps into Citrus
+      id: 1408
+      type: add
+      author: christophd
+    - title: Make random generator handles methods null safe
+      id: 1410
+      type: add
+      author: bbortt
+    - title: Add Camel Kubernetes test actions API
+      id: 1381
+      type: add
+      author: christophd
+    - title: Apply REST API parameters to a copy of the builder message
+      id: 1397
+      type: fix
+      author: tschlat
+    - title: Support Camel JBang send command
+      id: 1396
+      type: add
+      author: christophd
+    - title: Auto close dynamic endpoints
+      id: 1405
+      type: add
+      author: christophd
+    - title: Support parameterized JUnit tests
+      id: 1403
+      type: add
+      author: christophd
+    - title: Avoid NPE when verifying Camel integration STATUS information
+      id: 1402
+      type: fix
+      author: christophd
+    - title: Write original OpenAPI source into code base
+      id: 1397
+      type: fix
+      author: tschlat
+    - title: Properly encode name of namespace handler in spring.handlers
+      id: 1397
+      type: fix
+      author: tschlat
+    - title: Reduce strictness of test API xsd
+      id: 1397
+      type: fix
+      author: tschlat
+    - title: Update container image versions
+      type: update
+      author: christophd
+    - title: Update dependency versions
+      type: update
+      author: christophd
 - version: 4.8.0
   date: 2025-08-25
   tag: v4.8.0
