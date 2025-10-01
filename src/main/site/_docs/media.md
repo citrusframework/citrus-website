@@ -54,7 +54,7 @@ So if you’re looking to expand your automation efforts beyond lame, flaky, UI-
 Listen to this "testtalks" episode at <a href="https://testguild.com/podcast/automation/190-integration-automation-using-citrus-testing-framework-christoph-deppisch/" target="_blank">https://testguild.com/podcast</a>
     
 ## BDD Integration with Citrus & Cucumber
-### Citrus "Tools in action" session @DevoxxBE 2017
+### Citrus "Tools in action" session at DevoxxBE 2017
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/X76Wz0MNdrc" frameborder="0" allowfullscreen></iframe>
 
@@ -68,7 +68,7 @@ the behavior driven approach fits to testing the messaging integration with Http
 At the end we will have an automated integration test with BDD and almost no glue code to write manually.
     
 ## Citrus & Cucumber BDD
-### Citrus "Tools in action" session @DevoxxUS 2017
+### Citrus "Tools in action" session at DevoxxUS 2017
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/jNgROZjI98Y" frameborder="0" allowfullscreen></iframe>
 
@@ -79,7 +79,7 @@ The talk combines the frameworks Cucumber and Citrus and gives some code example
 testing the messaging integration with Http REST, JMS and mail.
 
 ## Testing Microservices
-### Citrus "Tools in action" session @DevoxxBE 2015
+### Citrus "Tools in action" session at DevoxxBE 2015
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/FPgXJveaLTo" frameborder="0" allowfullscreen></iframe>
 

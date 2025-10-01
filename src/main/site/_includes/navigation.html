@@ -8,6 +8,9 @@
   <li class="{% if page.url contains '/projects/' %}current{% endif %}">
     <a href="/projects/">Projects</a>
   </li>
+  <li class="{% if page.url contains '/quickstart/' %}current{% endif %}">
+    <a href="/quickstart/">Quickstart</a>
+  </li>
   <li class="{% if page.url contains '/endpoints/' %}current{% endif %}">
     <a href="/endpoints/">Endpoints</a>
   </li>
@@ -23,10 +26,10 @@
   <li class="{% if page.author %}current{% endif %}">
     <a href="/news/">News<span class="hide-on-mobiles"> &amp; Blog</span></a>
   </li>
-  <li class="{% if page.url contains '/help/' %}current{% endif %}">
-    <a href="/help/"><span class="show-on-mobiles"><i class="fa fa-help"></i></span><span class="hide-on-mobiles">Help</span></a>
-  </li>
   <li class="hide-on-mobiles">
     <a href="{{ site.repository }}" target="_blank"><i class="fa fa-github"></i>&nbsp;&nbsp;GitHub</a>
+  </li>
+  <li class="{% if page.url contains '/help/' %}current{% endif %}">
+    <a href="/help/"><i class="fa fa-help"></i></a>
   </li>
 </ul>

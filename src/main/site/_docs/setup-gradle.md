@@ -85,7 +85,7 @@ test {
 Of course JUnit is also supported. This is all for build configuration settings. We can move on to writing some Citrus integration tests. The Java test classes
 usually go to the **src/test/java** directory.
 
-Lets write a simple Citrus test case in Java and save it to the **src/test/java** folder in package **org.citrusframework.samples**. 
+Let's write a simple Citrus test case in Java and save it to the **src/test/java** folder in package **org.citrusframework.samples**. 
 
 {% highlight java %}
 import org.citrusframework.annotations.CitrusTest;

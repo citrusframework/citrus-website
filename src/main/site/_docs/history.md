@@ -18,5 +18,5 @@ permalink: "/docs/history/"
 ## Release 0.0.0 / 2006-05-01
 {: #v0-0-0}
 
-- Internal usage @ConSol
+- Internal usage at ConSol
 - Birthday!

@@ -251,7 +251,7 @@ Feature: EchoTest
 
 _Run my-test.feature_
 ```shell
-jbang --deps org.citrusframework.yaks:yaks-standard:0.20.0 citrus run my-test.feature
+jbang --deps org.citrusframework:citrus-cucumber-all:4.9.0-SNAPSHOT citrus run my-test.feature
 ```
 
 _NOTE:_ Many of the predefined Cucumber steps (e.g. `Then print '<message>'`) in Citrus are provided in a separate Citrus child project called [YAKS](https://github.com/citrusframework/yaks).

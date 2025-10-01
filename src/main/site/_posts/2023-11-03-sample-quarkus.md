@@ -84,7 +84,7 @@ The other modules add very specific Citrus capabilities such as validation of a 
 This completes the dependency setup.
 Now we can move on to writing an automated integration test that verifies the Quarkus application.
 
-## Enable Citrus with @QuarkusTest
+## Enable Citrus with QuarkusTest
 
 The test uses an arbitrary `@QuarkusTest` annotation with JUnit Jupiter.
 This means that Quarkus takes care of starting the application under test.
