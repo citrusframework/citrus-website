@@ -1,3 +1,45 @@
+- version: 4.8.2
+  date: 2025-10-25
+  tag: v4.8.2
+  issues: https://github.com/citrusframework/citrus/issues/
+  stories: https://github.com/citrusframework/citrus/issues/
+  changes:
+    - title: Improve syntax highlighter in Citrus documentation
+      type: update
+      author: christophd
+    - title: Improve Citrus documentation
+      type: update
+      author: christophd
+    - title: Improve Citrus agent service
+      type: update
+      author: christophd
+    - title: Improve Kafka Testcontainers support
+      type: update
+      author: christophd
+    - title: Align XML and YAML DSL model classes as much as possible
+      type: update
+      author: christophd
+    - title: Close Selenium browser during shutdown phase
+      type: update
+      author: christophd
+    - title: Auto detect Selenium browser from beans registry
+      type: add
+      author: christophd
+    - title: Auto bind created endpoints to bean registry
+      type: add
+      author: christophd
+    - title: Fixed camel-jbang integration for Fedora systems
+      type: fix
+      author: JiriOndrusek
+    - title: Bump Camel to 4.15.0
+      type: update
+      author: JiriOndrusek
+    - title: Adds CamelCustomIntegrationAction
+      type: add
+      author: JiriOndrusek
+    - title: Memory leak in openapi specification repository
+      type: fix
+      author: bbortt
 - version: 4.8.1
   date: 2025-09-26
   tag: v4.8.1
