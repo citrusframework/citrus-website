@@ -1,3 +1,61 @@
+- version: 4.9.0
+  date: 2025-12-15
+  tag: v4.9.0
+  issues: https://github.com/citrusframework/citrus/issues/
+  stories: https://github.com/citrusframework/citrus/issues/
+  changes:
+    - title: Set Camel version from test variable
+      id: 1439
+      type: fix
+      author: christophd
+    - title: Fix initial Camel JBang auto remove setting for XML and YAML DSL
+      type: fix
+      author: christophd
+    - title: Add validation matcher support in text message validation
+      type: update
+      author: christophd
+    - title: Add Kubernetes connect/disconnect test actions
+      type: add
+      author: christophd
+    - title: Concat a single quote
+      id: 506
+      type: fix
+      author: phos-web
+    - title: Fix default Citrus agent Docker image registry
+      type: fix
+      author: christophd
+    - title: Fix multi-platform Citrus agent Docker image
+      type: fix
+      author: christophd
+    - title: Add jsonPatch function
+      id: 1444
+      type: add
+      author: christophd
+    - title: Implement test flow reporter
+      id: 1449
+      type: add
+      author: christophd
+    - title: Combined validation mode
+      id: 1419
+      type: add
+      author: bbortt
+    - title: Add support for Camel JBang receive command
+      type: add
+      author: christophd
+    - title: Generate YAML DSl schema
+      id: 1395
+      type: add
+      author: christophd
+    - title: Select timezone for current date
+      id: 1081
+      type: update
+      author: phos-web
+    - title: Add JBang test engine
+      type: add
+      author: christophd
+    - title: Register test endpoint definitions as beans in registry
+      type: update
+      author: christophd
 - version: 4.8.2
   date: 2025-10-25
   tag: v4.8.2
