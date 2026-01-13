@@ -1,3 +1,31 @@
+- version: 4.9.1
+  date: 2026-01-13
+  tag: v4.9.1
+  issues: https://github.com/citrusframework/citrus/issues/
+  stories: https://github.com/citrusframework/citrus/issues/
+  changes:
+    - title: Add SshMessage helper for citrus-ssh
+      id: 667
+      type: fix
+      author: phos-web
+    - title: Add catalog-schema module to citrus BOM
+      type: add
+      author: christophd
+    - title: Include generated schemas in catalog-schema artifact
+      type: fix
+      author: christophd
+    - title: Only set testJar when parameter is not null
+      id: 1456
+      type: fix
+      author: christophd
+    - title: Improve Camel integration running status verification
+      id: 1452
+      type: fix
+      author: christophd
+    - title: Robust way of receiving PID from camel-jbang (using json)
+      id: 1452
+      type: fix
+      author: JiriOndrusek
 - version: 4.9.0
   date: 2025-12-15
   tag: v4.9.0

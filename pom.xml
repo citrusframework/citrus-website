@@ -121,7 +121,7 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <citrus.version>4.9.0</citrus.version>
+    <citrus.version>4.9.1</citrus.version>
   </properties>
 
   <dependencyManagement>
@@ -144,7 +144,6 @@
     <dependency>
       <groupId>org.citrusframework</groupId>
       <artifactId>citrus-catalog-schema</artifactId>
-      <version>${citrus.version}</version>
     </dependency>
     <dependency>
       <groupId>org.citrusframework</groupId>
