@@ -1,3 +1,41 @@
+- version: 4.9.2
+  date: 2026-02-06
+  tag: v4.9.2
+  issues: https://github.com/citrusframework/citrus/issues/
+  stories: https://github.com/citrusframework/citrus/issues/
+  changes:
+    - title: Allow to set custom Camel JBang version in YAML and XML DSL
+      type: fix
+      author: christophd
+    - title: Support json output in Camel cmd receive
+      type: add
+      id: 1471
+      author: christophd
+    - title: Add message store endpoint
+      type: add
+      id: 1470
+      author: christophd
+    - title: Avoid dependency to citrus-schema-generator
+      type: fix
+      author: christophd
+    - title: Add IriResourceLoader and load schema from SchemaLocation
+      id: 1459
+      type: update
+      author: tschlat
+    - title: Load schema from all resource types
+      id: 1459
+      type: fix
+      author: tschlat
+    - title: Improve Camel JBang command Json output processing
+      id: 1463
+      type: add
+      author: christophd
+    - title: Add missing catalog index entries for endpoints, functions, validation matcher
+      type: fix
+      author: christophd
+    - title: Add catalog definition entry for latest version
+      type: add
+      author: christophd
 - version: 4.9.1
   date: 2026-01-13
   tag: v4.9.1
