@@ -1,3 +1,26 @@
+- version: 4.9.3
+  date: 2026-02-26
+  tag: v4.9.3
+  issues: https://github.com/citrusframework/citrus/issues/
+  stories: https://github.com/citrusframework/citrus/issues/
+  changes:
+    - title: Support Cygwin Windows environments when using Citrus JBang
+      id: 1476
+      type: fix
+      author: christophd
+    - title: Close InputStream in FileUtils to prevent file handle leaks
+      id: 1474
+      type: fix
+      author: tschlat
+    - title: Fix SOAP assert fault YAML DSL
+      type: fix
+      author: christophd
+    - title: Provide stricter json schema for test case
+      type: update
+      author: apupier
+    - title: Add Citrus version information to the generated schema aggregates
+      type: fix
+      author: christophd
 - version: 4.9.2
   date: 2026-02-06
   tag: v4.9.2
