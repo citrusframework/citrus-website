@@ -1,3 +1,66 @@
+- version: 4.10.0
+  date: 2026-03-20
+  tag: v4.10.0
+  issues: https://github.com/citrusframework/citrus/issues/
+  stories: https://github.com/citrusframework/citrus/issues/
+  changes:
+    - title: Use more precise file pattern for yaml test case files
+      id: 1480
+      type: update
+      author: christophd
+    - title: Update dependency versions
+      type: update
+      author: christophd
+    - title: Add Camel cmd send infra option
+      type: add
+      author: christophd
+    - title: Add agent run JBang command to run tests on an agent server
+      type: add
+      author: christophd
+    - title: Reduce dependencies in citrus-agent and citrus-jbang
+      type: update
+      author: christophd
+    - title: Fix Groovy script YAML DSL schema
+      type: fix
+      author: christophd
+    - title: Add module information to endpoint builders
+      id: 1491
+      type: update
+      author: christophd
+    - title: Add inspect command in Citrus JBang
+      id: 1491
+      type: add
+      author: christophd
+    - title: Update citrus-agent UBI9 image to 1.24
+      type: update
+      author: christophd
+    - title: Auto resolve additional dependencies in Citrus JBang
+      id: 1489
+      type: add
+      author: christophd
+    - title: Citrus JBang settings configurable via EnvVar
+      type: add
+      author: christophd
+    - title: Read and set Citrus application properties in JBang run command
+      type: fix
+      author: christophd
+    - title: Expose the default Citrus application properties file
+      type: fix
+      author: christophd
+    - title: Improve Citrus JBang run command
+      type: update
+      author: christophd
+    - title: Fix YAML schema being too restrictive in additionalProperties
+      id: 1484
+      type: fix
+      author: christophd
+    - title: Fix Camel JBang integration status verification
+      id: 1402
+      type: fix
+      author: christophd
+    - title: Migrate from Log4j2 XML config to properties config
+      type: update
+      author: christophd
 - version: 4.9.4
   date: 2026-03-04
   tag: v4.9.4
