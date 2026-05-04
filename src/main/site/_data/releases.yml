@@ -1,3 +1,58 @@
+- version: 4.10.1
+  date: 2026-05-04
+  tag: v4.10.1
+  issues: https://github.com/citrusframework/citrus/issues/
+  stories: https://github.com/citrusframework/citrus/issues/
+  changes:
+    - title: Fix Http 204 no content responses in Http server
+      type: fix
+      author: christophd
+    - title: Update dependency versions
+      type: update
+      author: christophd
+    - title: YAML code analyzer missing endpoints with quotes
+      type: fix
+      author: christophd
+    - title: Replace statements with enhanced switch
+      type: update
+      author: bbortt
+    - title: Remove duplicate throws declarations
+      type: update
+      author: bbortt
+    - title: Remove unnecessary interface method modifier
+      type: update
+      author: bbortt
+    - title: Remove unnecessary semicolon
+      type: update
+      author: bbortt
+    - title: Use charset constant
+      type: update
+      author: bbortt
+    - title: Replace > 0 calls with isEmpty()
+      type: update
+      author: bbortt
+    - title: Replace calls for System.lineSeparator()
+      type: update
+      author: bbortt
+    - title: Replace string concatenations and formatted strings with log patterns
+      type: update
+      author: bbortt
+    - title: Replace functions, methods and expressions with lambdas
+      type: update
+      author: bbortt
+    - title: Replace try-finally statement with try-with-resources
+      type: update
+      author: bbortt
+    - title: Add AGENTS.md and CLAUDE.md
+      type: add
+      author: christophd
+    - title: Handle missing 200 and default response in swagger test generator
+      id: 523
+      type: update
+      author: phos-web
+    - title: Synchronize on the list of executed actions in test containers
+      type: fix
+      author: christophd
 - version: 4.10.0
   date: 2026-03-20
   tag: v4.10.0
