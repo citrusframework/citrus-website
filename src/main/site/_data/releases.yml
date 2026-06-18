@@ -1,3 +1,89 @@
+- version: 5.0.0-M2
+  date: 2026-06-18
+  tag: v5.0.0-M2
+  issues: https://github.com/citrusframework/citrus/issues/
+  stories: https://github.com/citrusframework/citrus/issues/
+  changes:
+    - title: Add native Apache Kafka container implementation option
+      id: 1559
+      type: add
+      author: christophd
+    - title: Add Strimzi Kafka container implementation option
+      id: 1555
+      type: add
+      author: christophd
+    - title: Add Floci container support to citrus-testcontainers
+      id: 1553
+      type: add
+      author: christophd
+    - title: Add Localstack auth token option
+      id: 1551
+      type: add
+      author: christophd
+    - title: Publish the Citrus JBang MCP server as a Claude Code plugin
+      id: 1550
+      type: add
+      author: christophd
+    - title: Support Endpoint URI builder when sending and receiving
+      type: add
+      author: christophd
+    - title: Add test variables support in annotation config
+      id: 1527
+      type: add
+      author: christophd
+    - title: Set Quarkus dev services properties as test variables
+      id: 1525
+      type: add
+      author: christophd
+    - title: Add Maven build skipTests option
+      id: 1567
+      type: fix
+      author: christophd
+    - title: Auto create Kafka topics on Testcontainers container start
+      id: 1558
+      type: fix
+      author: christophd
+    - title: Fix handling of Citrus file resources in CamelMessageConverter
+      id: 1562
+      type: fix
+      author: christophd
+    - title: Improve handling of binary file resource message payloads
+      id: 1523
+      type: fix
+      author: christophd
+    - title: Fix Read files documentation code example
+      id: 1544
+      type: fix
+      author: christophd
+    - title: Set reference resolver only when not null
+      type: fix
+      author: christophd
+    - title: Test message validator hint for default context
+      id: 1536
+      type: fix
+      author: bbortt
+    - title: Support message processors in YAML DSL
+      id: 1533
+      type: fix
+      author: christophd
+    - title: Include most likely message validator hints
+      id: 1529
+      type: fix
+      author: bbortt
+    - title: Filter Citrus internal message headers for Camel Exchanges
+      id: 1524
+      type: fix
+      author: christophd
+    - title: Move Test API Generator modules to citrus-tools
+      id: 1528
+      type: update
+      author: christophd
+    - title: Replace org.apache.activemq with org.apache.artemis
+      type: update
+      author: bbortt
+    - title: Update dependency versions
+      type: update
+      author: christophd
 - version: 5.0.0-M1
   date: 2026-05-15
   tag: v5.0.0-M1
