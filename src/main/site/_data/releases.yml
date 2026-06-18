@@ -1,3 +1,78 @@
+- version: 5.0.0-M1
+  date: 2026-05-15
+  tag: v5.0.0-M1
+  issues: https://github.com/citrusframework/citrus/issues/
+  stories: https://github.com/citrusframework/citrus/issues/
+  changes:
+    - title: Update to Jackson 3.1.0
+      id: 1447
+      type: update
+      author: christophd
+    - title: Update to JUnit 6
+      id: 1447
+      type: update
+      author: christophd
+    - title: Update to Apache Camel 4.20.0
+      id: 1447
+      type: update
+      author: christophd
+    - title: Update to Kafka 4.2.0
+      id: 1447
+      type: update
+      author: christophd
+    - title: Update to Jetty 12.1.8
+      id: 1447
+      type: update
+      author: christophd
+    - title: Update to Spring Integration 7.0.4
+      id: 1447
+      type: update
+      author: christophd
+    - title: Update to Spring 7.0.7
+      id: 1447
+      type: update
+      author: christophd
+    - title: Update to Spring Boot 4.0.6
+      id: 1447
+      type: update
+      author: christophd
+    - title: Update to Spring WS 5.0.1
+      id: 1447
+      type: update
+      author: christophd
+    - title: Citrus MCP server implementation
+      id: 1505
+      type: add
+      author: christophd
+    - title: Add Xml code analyzer implementation
+      type: add
+      author: christophd
+    - title: Add Groovy code analyzer implementation
+      type: add
+      author: christophd
+    - title: Add endpoints declaration to XML test case definition
+      type: add
+      author: christophd
+    - title: Add typed endpoints schema for XML DSL
+      id: 1519
+      type: add
+      author: christophd
+    - title: Support authorization/SASL when starting Redpanda Testcontainers
+      id: 1520
+      type: fix
+      author: christophd
+    - title: Fix flaky unit test in citrus-openapi
+      type: fix
+      author: christophd
+    - title: Update LocalStack container version
+      type: fix
+      author: christophd
+    - title: Update to Java 21 and Java 25 as LTS versions
+      type: update
+      author: christophd
+    - title: Convert value classes to records
+      type: update
+      author: bbortt
 - version: 4.10.1
   date: 2026-05-04
   tag: v4.10.1
