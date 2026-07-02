@@ -7,6 +7,7 @@ folder: samples-junit
 group: runtimes
 description: Use JUnit test framework
 categories: [samples]
+repository: citrus-samples
 permalink: /samples/junit/
 ---
 

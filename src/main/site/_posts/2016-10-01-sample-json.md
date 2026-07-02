@@ -7,6 +7,7 @@ folder: samples-json
 group: validation
 description: Shows Json payload validation feature with JsonPath validation
 categories: [samples]
+repository: citrus-samples
 permalink: /samples/json/
 ---
 

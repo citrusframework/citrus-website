@@ -7,6 +7,7 @@ folder: samples-json
 group: validation
 description: Shows JSON object mapping feature when sending and receiving messages
 categories: [samples]
+repository: citrus-samples
 permalink: /samples/databind/
 ---
 

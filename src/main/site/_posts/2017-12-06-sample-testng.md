@@ -7,6 +7,7 @@ folder: samples-testng
 group: runtimes
 description: Use TestNG test framework
 categories: [samples]
+repository: citrus-samples
 permalink: /samples/testng/
 ---
 

@@ -6,6 +6,7 @@ icon: globe
 group: overview
 description: All samples regarding Http protocol support
 categories: [overview]
+repository: citrus-samples
 permalink: /samples/overview/http/
 ---
 

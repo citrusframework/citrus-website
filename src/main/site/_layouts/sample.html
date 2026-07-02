@@ -15,12 +15,12 @@ layout: samples
   </h2>
   <div class="right">
     {% if page.folder != "common" %}
-    <a href="https://github.com/citrusframework/citrus-samples/blob/master/{{ page.folder }}/{{ page.name }}" target="_blank">
+    <a href="https://github.com/citrusframework/{{ page.repository }}/blob/master/{{ page.folder }}/{{ page.name }}" target="_blank">
       <i class="fa fa-pencil"></i>&nbsp;View source code
     </a>
     {% endif %}
     {% if page.folder == "common" %}
-    <a href="https://github.com/citrusframework/citrus-samples/blob/master/{{ page.name }}" target="_blank">
+    <a href="https://github.com/citrusframework/{{ page.repository }}/blob/master/{{ page.name }}" target="_blank">
       <i class="fa fa-pencil"></i>&nbsp;View source code
     </a>
     {% endif %}

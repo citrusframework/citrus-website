@@ -7,6 +7,7 @@ folder: common
 group: demo
 description: Use Selenium for UI testing
 categories: [samples]
+repository: citrus-samples
 permalink: /samples/selenium/
 ---
 

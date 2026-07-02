@@ -7,6 +7,7 @@ folder: common
 group: validation
 description: Shows binary message content handling in Citrus
 categories: [samples]
+repository: citrus-samples
 permalink: /samples/binary/
 ---
 

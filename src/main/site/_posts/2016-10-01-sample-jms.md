@@ -7,6 +7,7 @@ folder: common
 group: endpoints
 description: Shows JMS message broker connectivity
 categories: [samples]
+repository: citrus-samples
 permalink: /samples/jms/
 ---
 

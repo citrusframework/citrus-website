@@ -7,6 +7,7 @@ folder: samples-soap
 group: endpoints
 description: Auto generate tests from WSDL
 categories: [samples]
+repository: citrus-samples
 permalink: /samples/wsdl/
 ---
 

@@ -6,6 +6,7 @@ folder: common
 group: miscellaneous
 description: Use the local message store
 categories: [samples]
+repository: citrus-samples
 permalink: /samples/message-store/
 ---
 

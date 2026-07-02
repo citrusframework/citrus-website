@@ -7,6 +7,7 @@ folder: common
 group: demo
 description: Interact with Apache Camel
 categories: [samples]
+repository: citrus-samples
 permalink: /samples/apache-camel/
 ---
 

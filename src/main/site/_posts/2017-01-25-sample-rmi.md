@@ -6,6 +6,7 @@ folder: common
 group: endpoints
 description: Shows Remote Method Invocation support
 categories: [samples]
+repository: citrus-samples
 permalink: /samples/rmi/
 ---
 

@@ -6,6 +6,7 @@ folder: common
 group: endpoints
 description: Shows dynamic endpoint component usage
 categories: [samples]
+repository: citrus-samples
 permalink: /samples/dynamic-endpoints/
 ---
 

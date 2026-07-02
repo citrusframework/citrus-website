@@ -7,6 +7,7 @@ folder: samples-xml
 group: validation
 description: Shows XML object marshalling feature when sending and receiving messages
 categories: [samples]
+repository: citrus-samples
 permalink: /samples/oxm/
 ---
 

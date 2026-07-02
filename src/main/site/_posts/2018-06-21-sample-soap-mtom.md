@@ -7,6 +7,7 @@ folder: samples-soap
 group: endpoints
 description: Handle MTOM enabled SOAP attachments
 categories: [samples]
+repository: citrus-samples
 permalink: /samples/soap-mtom/
 ---
 

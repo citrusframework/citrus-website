@@ -6,6 +6,7 @@ folder: common
 group: miscellaneous
 description: Add custom test behavior
 categories: [samples]
+repository: citrus-samples
 permalink: /samples/behavior/
 ---
 

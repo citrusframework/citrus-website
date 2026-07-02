@@ -7,6 +7,7 @@ folder: common
 group: demo
 description: Prototype Citrus tests in minutes with JBang
 categories: [samples]
+repository: citrus-samples
 permalink: /samples/jbang/
 ---
 

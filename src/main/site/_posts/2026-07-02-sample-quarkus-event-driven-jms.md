@@ -7,6 +7,7 @@ folder: common
 group: quarkus
 description: How Citrus helps to verify event driven JMS messaging in a Quarkus application
 categories: [samples]
+repository: citrus-quarkus-examples
 permalink: /samples/quarkus-event-driven-jms/
 ---
 

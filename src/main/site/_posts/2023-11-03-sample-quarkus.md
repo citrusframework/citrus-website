@@ -7,6 +7,7 @@ folder: demo
 group: demo
 description: How to verify Quarkus applications with Citrus
 categories: [samples]
+repository: citrus-samples
 permalink: /samples/quarkus/
 ---
 

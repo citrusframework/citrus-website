@@ -6,6 +6,7 @@ folder: common
 group: configuration
 description: Use Java annotation configuration
 categories: [samples]
+repository: citrus-samples
 permalink: /samples/annotation-config/
 ---
 

@@ -6,6 +6,7 @@ folder: common
 group: validation
 description: Use Hamcrest matchers
 categories: [samples]
+repository: citrus-samples
 permalink: /samples/hamcrest/
 ---
 

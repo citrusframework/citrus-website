@@ -7,6 +7,7 @@ folder: samples-xml
 group: validation
 description: Shows XML validation feature with schema and Xpath validation
 categories: [samples]
+repository: citrus-samples
 permalink: /samples/xml/
 ---
 

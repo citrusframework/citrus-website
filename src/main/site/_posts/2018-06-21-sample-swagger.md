@@ -7,6 +7,7 @@ folder: samples-http
 group: endpoints
 description: Auto generate tests from Open API
 categories: [samples]
+repository: citrus-samples
 permalink: /samples/openapi/
 ---
 

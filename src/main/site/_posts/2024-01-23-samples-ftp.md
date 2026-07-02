@@ -6,6 +6,7 @@ icon: ftp
 group: overview
 description: All samples regarding Ftp protocol support
 categories: [overview]
+repository: citrus-samples
 permalink: /samples/overview/ftp/
 ---
 

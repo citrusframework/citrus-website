@@ -7,6 +7,7 @@ folder: common
 group: endpoints
 description: Shows mail server activities in Citrus
 categories: [samples]
+repository: citrus-samples
 permalink: /samples/mail/
 ---
 

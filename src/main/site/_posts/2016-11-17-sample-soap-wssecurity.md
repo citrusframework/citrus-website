@@ -7,6 +7,7 @@ folder: samples-soap
 group: endpoints
 description: Configure SOAP web service client and server with WSSecurity
 categories: [samples]
+repository: citrus-samples
 permalink: /samples/soap-wssecurity/
 ---
 

@@ -7,6 +7,7 @@ folder: samples-soap
 group: endpoints
 description: Shows SOAP secure web service support
 categories: [samples]
+repository: citrus-samples
 permalink: /samples/soap-ssl/
 ---
 

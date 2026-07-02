@@ -7,6 +7,7 @@ folder: samples-db
 group: endpoints
 description: Validates stored data in relational database
 categories: [samples]
+repository: citrus-samples
 permalink: /samples/jdbc/
 ---
 

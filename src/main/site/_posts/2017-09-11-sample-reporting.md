@@ -6,6 +6,7 @@ folder: common
 group: configuration
 description: Add custom test reporting
 categories: [samples]
+repository: citrus-samples
 permalink: /samples/reporting/
 ---
 

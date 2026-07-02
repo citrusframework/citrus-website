@@ -6,6 +6,7 @@ folder: common
 group: miscellaneous
 description: Add data dictionaries
 categories: [samples]
+repository: citrus-samples
 permalink: /samples/dictionaries/
 ---
 

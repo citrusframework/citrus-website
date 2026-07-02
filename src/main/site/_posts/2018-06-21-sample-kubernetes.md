@@ -7,6 +7,7 @@ folder: common
 group: connectors
 description: Run tests in Kubernetes
 categories: [samples]
+repository: citrus-samples
 permalink: /samples/kubernetes/
 ---
 This sample uses [Kubernetes](https://kubernetes.io/) as container platform and deploys both application under test and integration tests as pods in Kubernetes.

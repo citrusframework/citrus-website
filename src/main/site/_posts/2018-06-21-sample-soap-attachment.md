@@ -7,6 +7,7 @@ folder: samples-soap
 group: endpoints
 description: How to send SOAP attachments to server
 categories: [samples]
+repository: citrus-samples
 permalink: /samples/soap-attachment/
 ---
 

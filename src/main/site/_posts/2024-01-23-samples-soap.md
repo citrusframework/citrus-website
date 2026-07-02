@@ -6,6 +6,7 @@ icon: soap
 group: overview
 description: All samples regarding SOAP WS protocol support
 categories: [overview]
+repository: citrus-samples
 permalink: /samples/overview/soap/
 ---
 

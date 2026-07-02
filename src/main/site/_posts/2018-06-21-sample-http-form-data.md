@@ -7,6 +7,7 @@ folder: samples-http
 group: validation
 description: Exchange form data via Http GET/POST
 categories: [samples]
+repository: citrus-samples
 permalink: /samples/http-form-data/
 ---
 

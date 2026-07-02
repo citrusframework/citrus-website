@@ -7,6 +7,7 @@ folder: samples-http
 group: endpoints
 description: Shows REST API calls as a client
 categories: [samples]
+repository: citrus-samples
 permalink: /samples/http/
 ---
 

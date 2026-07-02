@@ -7,6 +7,7 @@ folder: common
 group: quarkus
 description: How Citrus helps to verify event driven Kafka messaging in a Quarkus application
 categories: [samples]
+repository: citrus-quarkus-examples
 permalink: /samples/quarkus-event-driven-kafka/
 ---
 

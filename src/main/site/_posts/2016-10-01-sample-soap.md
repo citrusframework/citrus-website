@@ -7,6 +7,7 @@ folder: samples-soap
 group: endpoints
 description: Shows SOAP web service support
 categories: [samples]
+repository: citrus-samples
 permalink: /samples/soap/
 ---
 

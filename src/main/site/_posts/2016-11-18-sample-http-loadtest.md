@@ -7,6 +7,7 @@ folder: samples-http
 group: endpoints
 description: Calls REST API on Http server with multiple threads for load testing
 categories: [samples]
+repository: citrus-samples
 permalink: /samples/http-loadtest/
 ---
 

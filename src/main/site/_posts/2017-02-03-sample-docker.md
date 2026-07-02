@@ -7,6 +7,7 @@ folder: common
 group: connectors
 description: Shows how to use Citrus within Docker
 categories: [samples]
+repository: citrus-samples
 permalink: /samples/docker/
 ---
 

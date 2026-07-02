@@ -7,6 +7,7 @@ folder: samples-ftp
 group: endpoints
 description: FTP client and server interaction in Citrus
 categories: [samples]
+repository: citrus-samples
 permalink: /samples/ftp/
 ---
 

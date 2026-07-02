@@ -7,6 +7,7 @@ folder: samples-cucumber
 group: demo
 description: Shows BDD integration with Cucumber
 categories: [samples]
+repository: citrus-samples
 permalink: /samples/cucumber/
 ---
 

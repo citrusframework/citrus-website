@@ -7,6 +7,7 @@ folder: samples-db
 group: validation
 description: Execute SQL statements in Citrus
 categories: [samples]
+repository: citrus-samples
 permalink: /samples/sql/
 ---
 

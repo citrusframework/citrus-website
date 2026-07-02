@@ -6,6 +6,7 @@ folder: samples-testng
 group: runtimes
 description: Shows TestNG data provider usage in Citrus
 categories: [samples]
+repository: citrus-samples
 permalink: /samples/dataprovider/
 ---
 

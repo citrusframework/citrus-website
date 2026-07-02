@@ -7,6 +7,7 @@ folder: common
 group: miscellaneous
 description: Uses Gradle build to execute tests
 categories: [samples]
+repository: citrus-samples
 permalink: /samples/gradle/
 ---
 

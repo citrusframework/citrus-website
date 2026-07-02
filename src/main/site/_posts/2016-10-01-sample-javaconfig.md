@@ -6,6 +6,7 @@ folder: common
 group: configuration
 description: Uses pure Java POJOs for configuration
 categories: [samples]
+repository: citrus-samples
 permalink: /samples/javaconfig/
 ---
 

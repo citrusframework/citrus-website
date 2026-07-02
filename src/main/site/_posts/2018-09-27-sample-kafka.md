@@ -7,6 +7,7 @@ folder: common
 group: endpoints
 description: Shows Kafka integration
 categories: [samples]
+repository: citrus-samples
 permalink: /samples/kafka/
 ---
 

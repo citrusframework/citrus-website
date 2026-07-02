@@ -6,6 +6,7 @@ icon: globe
 group: overview
 description: All samples regarding XML validation
 categories: [overview]
+repository: citrus-samples
 permalink: /samples/overview/xml/
 ---
 

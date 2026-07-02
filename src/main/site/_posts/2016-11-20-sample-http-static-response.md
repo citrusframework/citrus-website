@@ -7,6 +7,7 @@ folder: samples-soap
 group: endpoints
 description: Shows how to setup a static response generating Http server component
 categories: [samples]
+repository: citrus-samples
 permalink: /samples/http-static-response/
 ---
 

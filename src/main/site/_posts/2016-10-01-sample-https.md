@@ -7,6 +7,7 @@ folder: samples-http
 group: endpoints
 description: Shows how to use SSL connectivity as a client and server
 categories: [samples]
+repository: citrus-samples
 permalink: /samples/https/
 ---
 
