@@ -29,7 +29,7 @@ name: sample-overview
         </tr>
       </thead>
       <tbody>
-        {% assign sorted_posts = site.categories.samples | sort: 'group' %}
+        {% assign sorted_posts = site.categories.samples | where_exp: "post", "post.archived != true" | sort: 'group' %}
         {% assign group = "configuration" %}
 
         {% for post in sorted_posts %}

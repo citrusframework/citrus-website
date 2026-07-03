@@ -5,6 +5,7 @@ permalink: /news/releases/
 author: all
 ---
 
-{% for post in site.categories.release %}
+{% assign active_release_posts = site.categories.release | where_exp: "post", "post.archived != true" %}
+{% for post in active_release_posts %}
   {% include news_item.html %}
 {% endfor %}

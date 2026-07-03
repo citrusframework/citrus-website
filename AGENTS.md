@@ -68,6 +68,10 @@ The process to write a new blog post should follow:
 - **`_samples/`** — Represents a quickstart guide that explains a certain Citrus feature with the help of a small sample project and sample code snippets. Use a special layout: `sample`. Sample blog posts should be using a group and a permalink.
 - **`_overview/`** — Summarizes a set of samples blogs that relate to each other (e.g. all samples related to the Http transport). These posts use a special layout `samples-group` and can have an icon from `src/main/site/img/icons`. Sample overview blog posts should be using a group and a permalink.
 
+## Archiving Posts
+
+To hide a post from all listing pages without deleting it, add `archived: true` to the post's YAML front matter. The post file stays in the repo but is filtered out of every index, sidebar, and navigation element across the site.
+
 ## Key Details
 
 - The `pom.xml` declares dependencies on Citrus framework modules — these are **not runtime deps** but are used solely to extract XSD/JSON schema files for the website's `/schema/` section.

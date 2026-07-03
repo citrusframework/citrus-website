@@ -14,7 +14,7 @@
     </ul>
     <h4>Configuration</h4>
     <ul style="margin-top: 5px;">
-      {% assign sorted_posts = site.categories.samples | sort: 'group' %}
+      {% assign sorted_posts = site.categories.samples | where_exp: "post", "post.archived != true" | sort: 'group' %}
       {% assign group = "configuration" %}
 
       {% for post in sorted_posts %}

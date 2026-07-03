@@ -28,7 +28,7 @@ layout: samples
 
     <p>See the list of available samples:</p>
 
-    {% assign posts = site.categories.samples %}
+    {% assign posts = site.categories.samples | where_exp: "post", "post.archived != true" %}
 
     <table>
       <thead>

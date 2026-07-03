@@ -4,7 +4,8 @@
     <option value="/news/">News</option>
     <option value="/docs/history/">Releases</option>
     <optgroup label="Posts">
-      {% for post in site.categories.blog %}
+      {% assign active_blog_posts = site.categories.blog | where_exp: "post", "post.archived != true" %}
+      {% for post in active_blog_posts %}
       <option value="{{ post.url }}">{{ post.title }}</option>
       {% endfor %}
     </optgroup>
