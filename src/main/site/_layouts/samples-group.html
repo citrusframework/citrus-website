@@ -14,9 +14,16 @@ layout: samples
     <a href="{{ page.url }}" class="permalink" title="Permalink">∞</a>
   </h2>
   <div class="right">
-    <a href="https://github.com/citrusframework/{{ page.repository }}/blob/master/{{ page.name }}" target="_blank">
+    {% if page.folder != "common" %}
+    <a href="https://github.com/citrusframework/{{ page.repository }}/blob/master/{{ page.folder }}" target="_blank">
       <i class="fa fa-pencil"></i>&nbsp;View sources
     </a>
+    {% endif %}
+    {% if page.folder == "common" %}
+    <a href="https://github.com/citrusframework/{{ page.repository }}/blob/master/" target="_blank">
+      <i class="fa fa-pencil"></i>&nbsp;View sources
+    </a>
+    {% endif %}
   </div>
   <span class="post-category">
     <span class="label">
@@ -41,10 +48,11 @@ layout: samples
       <tbody>
     {% for post in posts %}
     {% if post.folder != nil %}
-    {% if page.name == post.folder %}
+    {% if page.folder == post.folder %}
+    {% if page.repository == post.repository %}
       <tr>
         <td><a href="{{ post.permalink }}">{{ post.name }}</a></td>
-        <td style="text-align:center;">{{ post.title }} - {{ post.description }}</td>
+        <td style="text-align:center;">{{ post.description }}</td>
         {% if post.folder != "common" %}
         <td style="text-align:center;"><a href="https://github.com/citrusframework/{{ page.repository }}/blob/master/{{ post.folder }}/{{ post.name }}" target="_blank"><i class="fa fa-pencil"></i></a></td>
         {% endif %}
@@ -52,6 +60,7 @@ layout: samples
         <td style="text-align:center;"><a href="https://github.com/citrusframework/{{ page.repository }}/blob/master/{{ post.name }}" target="_blank"><i class="fa fa-pencil"></i></a></td>
         {% endif %}
       </tr>
+    {% endif %}
     {% endif %}
     {% endif %}
     {% endfor %}
