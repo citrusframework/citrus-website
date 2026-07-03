@@ -3,8 +3,8 @@ layout: samples-group
 title: XML samples
 name: samples-xml
 icon: globe
-group: overview
-description: All samples regarding XML validation
+group: xml
+description: Samples using XML validation capabilities
 categories: [overview]
 folder: samples-xml
 repository: citrus-samples

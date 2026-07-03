@@ -3,8 +3,8 @@ layout: samples-group
 title: Soap WS samples
 name: samples-soap
 icon: soap
-group: overview
-description: All samples regarding SOAP WS protocol support
+group: soap
+description: Samples with SOAP WebServices client and server
 categories: [overview]
 folder: samples-soap
 repository: citrus-samples

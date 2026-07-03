@@ -3,8 +3,8 @@ layout: samples-group
 title: Quarkus examples
 name: samples-quarkus
 image: /img/icons/quarkus.png
-group: overview
-description: All samples using Citrus to test Quarkus applications
+group: quarkus
+description: Samples using Citrus to test Quarkus applications
 categories: [overview]
 folder: common
 repository: citrus-quarkus-examples

@@ -3,9 +3,9 @@ layout: samples-group
 title: Ftp samples
 name: samples-ftp
 icon: ftp
-group: overview
+group: ftp
 folder: samples-ftp
-description: All samples regarding Ftp protocol support
+description: Samples regarding Ftp protocol support
 categories: [overview]
 repository: citrus-samples
 permalink: /samples/overview/ftp/

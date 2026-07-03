@@ -3,8 +3,8 @@ layout: samples-group
 title: Spring examples
 name: samples-spring
 image: /img/icons/spring.png
-group: overview
-description: All samples using Citrus to test Spring applications
+group: spring
+description: Samples using Citrus to test Spring applications
 categories: [overview]
 folder: common
 repository: citrus-samples
