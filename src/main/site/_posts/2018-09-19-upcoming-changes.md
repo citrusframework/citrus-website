@@ -5,6 +5,7 @@ short-title: Future of Citrus
 author: Christoph Deppisch
 github: christophd
 categories: [blog]
+archived: true
 ---
 
 More than ten years ago I started out on a journey to implement a Java testing framework that provides automated integration tests for message-based enterprise applications with support for multiple messaging transports and data formats.
@@ -28,4 +29,3 @@ Developer & Founder, Citrus
 
 
 
- 

@@ -5,6 +5,7 @@ short-title: Arquillian & Citrus II
 author: Christoph Deppisch
 github: christophd
 categories: [blog]
+archived: true
 ---
 
 Some time has passed since [part one](/news/2015/06/29/arquillian-extension-part-1) of this blog post series and we have made some improvements on the Citrus Arquillian extension.

@@ -5,6 +5,7 @@ short-title: Arquillian & Citrus I
 author: Christoph Deppisch
 github: christophd
 categories: [blog]
+archived: true
 ---
 
 <a href="http://www.citrusframework.org" title="Citrus framework" target="_blank">Citrus</a> and <a href="http://arquillian.org/" title="Arquillian" target="_blank">Arquillian</a>

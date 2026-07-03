@@ -18,7 +18,7 @@ mvn clean resources:resources package
 Now you are able to review the website content in `target/site/_site` folder. You can also start a local Jekyll container hosting the site with:
 
 ```
-mvn docker:start
+mvn docker:run
 ```
 
 You can now visit the Citrus site locally by pointing your browser to `http://localhost:4000`.
