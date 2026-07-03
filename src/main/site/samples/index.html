@@ -54,10 +54,10 @@ name: sample-overview
           <td><a href="{{ post.permalink }}">{{ post.name }}</a></td>
           <td style="text-align:center;">{{ post.description }}</td>
           {% if post.folder != "common" %}
-          <td style="text-align:center;"><a href="https://github.com/citrusframework/citrus-samples/blob/master/{{ post.folder }}/{{ post.name }}" target="_blank"><i class="fa fa-pencil"></i></a></td>
+          <td style="text-align:center;"><a href="https://github.com/citrusframework/{{ post.repository }}/blob/master/{{ post.folder }}/{{ post.name }}" target="_blank"><i class="fa fa-pencil"></i></a></td>
           {% endif %}
           {% if post.folder == "common" %}
-          <td style="text-align:center;"><a href="https://github.com/citrusframework/citrus-samples/blob/master/{{ post.name }}" target="_blank"><i class="fa fa-pencil"></i></a></td>
+          <td style="text-align:center;"><a href="https://github.com/citrusframework/{{ post.repository }}/blob/master/{{ post.name }}" target="_blank"><i class="fa fa-pencil"></i></a></td>
           {% endif %}
         </tr>
         {% endfor %}
