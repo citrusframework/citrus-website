@@ -1,6 +1,6 @@
 ---
 layout: sample
-title: Apache Camel - Quarkus Kafka Eventing
+title: Apache Camel Quarkus - Kafka Eventing
 name: camel-kafka
 image: /img/icons/camel.png
 folder: apache-camel
