@@ -195,7 +195,7 @@ Have a look at the predefined steps we have so far:
 | yaks-selenium | Run UI tests with a Selenium remote browser simulating user interaction on a web frontend. |
 
 The list of ready-to-use steps is constantly growing, and you can also write your own steps and use them in a YAKS test! 
-Have a look at the [examples](https://github.com/citrusframework/yaks/tree/master/examples) to see all those steps in action.
+Have a look at the [examples](https://github.com/citrusframework/yaks/tree/main/examples) to see all those steps in action.
 
 The steps provided in YAKS are implemented using the integration test framework [Citrus](https://citrusframework.org/). 
 This means that you can use features like functions, validation matchers and test variables in your test.

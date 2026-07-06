@@ -536,7 +536,7 @@ JMS and many other messaging transports. The integration with Citrus framework c
 content based routing.
 
 You can find the complete sample sources on [github (https://github.com/citrusframework/citrus-simulator-demo)](https://github.com/citrusframework/citrus-simulator-demo). Also please explore all other 
-simulator [sample projects](https://github.com/citrusframework/citrus-simulator/tree/master/simulator-samples) and find out how the simulator works best for you and your requirements.
+simulator [sample projects](https://github.com/citrusframework/citrus-simulator/tree/main/simulator-samples) and find out how the simulator works best for you and your requirements.
  
 Of course any feedback is very welcome!
 
