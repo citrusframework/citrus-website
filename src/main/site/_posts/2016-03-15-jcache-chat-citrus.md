@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Testing WebSockets with a Citrus twist
-short-title: Testing WebSockets
+short-title: WebSockets testing
 author: Martin Maher
 github: martinmaher
 categories: [blog]

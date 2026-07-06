@@ -3,7 +3,8 @@ layout: post
 title: Testing webMethods with Citrus Part II
 short-title: Testing webMethods II
 author: Jan Zahalka
-github: jaza089 
+github: jaza089
+archived: true
 categories: [blog]
 ---
 

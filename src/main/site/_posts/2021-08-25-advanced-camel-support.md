@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Advanced Apache Camel support in Citrus
-short-title: Advanced Apache Camel testing
+short-title: Advanced Camel support
 author: Christoph Deppisch
 github: christophd
 categories: [blog]
