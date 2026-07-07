@@ -9,6 +9,8 @@ categories: [blog]
 
 [Apache Camel](https://camel.apache.org) is one of the most mature integration frameworks in the Java ecosystem, offering 300+ connectors to virtually every messaging system, cloud service, and protocol you can think of. [Citrus](https://citrusframework.org) is a powerful integration testing framework that orchestrates end-to-end test scenarios with clean, readable Java code. Each is strong on its own — but when you combine them, something remarkable happens.
 
+![Camel elevates Citrus](/img/assets/camel-elevates-citrus/featured.png)
+
 Citrus gains the ability to speak every protocol Camel supports, transform test data with Camel's rich data formats, and even reach into running Camel routes to trigger or verify business logic directly. In return, Camel gets a purpose-built test harness that can validate its routes in realistic, container-backed environments with proper message verification.
 
 This post explores five concrete ways Apache Camel elevates Citrus integration testing. Each section focuses on a real scenario, backed by working sample projects that you can clone and run. By the end you will have a clear picture of how the two frameworks complement each other and where to reach for Camel when writing Citrus tests.
