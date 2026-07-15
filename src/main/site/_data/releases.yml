@@ -1,3 +1,131 @@
+- version: 4.10.2
+  date: 2026-07-15
+  tag: v4.10.2
+  issues: https://github.com/citrusframework/citrus/issues/
+  stories: https://github.com/citrusframework/citrus/issues/
+  changes:
+    - title: Set Quarkus dev services properties as test variables
+      id: 1525
+      type: add
+      author: christophd
+    - title: Filter Citrus internal message headers for Camel Exchange
+      id: 1524
+      type: add
+      author: christophd
+    - title: Add Maven build skipTests option
+      id: 1567
+      type: add
+      author: christophd
+    - title: Improve JBang init and run commands
+      id: 1572
+      type: add
+      author: christophd
+    - title: Allow function and validation matcher bean injection
+      id: 1578
+      type: add
+      author: christophd
+    - title: Allow Camel Exchange as message payload
+      id: 1576
+      type: add
+      author: christophd
+    - title: Support JBang command arguments via system property or envVars
+      id: 1583
+      type: add
+      author: christophd
+    - title: Add fixed port and port configuration support for Camel infra services
+      id: 1588
+      type: add
+      author: christophd
+    - title: Add schema examples and autocompletion for Camel infra service names
+      id: 1593
+      type: add
+      author: christophd
+    - title: Add auto dependency resolving for Camel infra services in JBang
+      id: 1594
+      type: add
+      author: christophd
+    - title: Reinstall Camel plugin when version or GAV args change
+      id: 1549
+      type: add
+      author: christophd
+    - title: Support Endpoint URI builder when sending and receiving
+      type: add
+      author: christophd
+    - title: Add Xml code analyzer implementation
+      type: add
+      author: christophd
+    - title: Add Groovy code analyzer implementation
+      type: add
+      author: christophd
+    - title: Include most likely message validator hints
+      id: 1529
+      type: fix
+      author: bbortt
+    - title: Fix DefaultMessageValidationContext processing for OpenAPI operations with no response body
+      id: 1536
+      type: fix
+      author: bbortt
+    - title: Improve handling of binary file resource message payloads
+      id: 1523
+      type: fix
+      author: christophd
+    - title: Fix handling of Citrus file resources in CamelMessageConverter
+      id: 1562
+      type: fix
+      author: christophd
+    - title: Fix Read files documentation code example
+      id: 1544
+      type: fix
+      author: christophd
+    - title: Fix validate() Java DSL occurrences in documentation
+      id: 1565
+      type: fix
+      author: christophd
+    - title: Fix NPE in TestActionResult for null payloads
+      id: 1570
+      type: fix
+      author: christophd
+    - title: Handle unconvertible message payloads in TestActionResult Json report
+      id: 1590
+      type: fix
+      author: christophd
+    - title: Fix ConcurrentModificationException in HttpEndpointConfiguration
+      id: 1591
+      type: fix
+      author: christophd
+    - title: Fix flaky SendSoapMessageTestActionBuilderTest with UnfinishedStubbingException
+      id: 1575
+      type: fix
+      author: christophd
+    - title: Fix misleading log output when Camel waitForRunningState is false
+      id: 1581
+      type: fix
+      author: christophd
+    - title: Fix ConcurrentModificationException in Quarkus test resource
+      type: fix
+      author: christophd
+    - title: Fix typo in HttpServer servletHandler setter
+      type: fix
+      author: christophd
+    - title: Fix JBang run command multi-value arguments
+      type: fix
+      author: christophd
+    - title: Fix Maven dependency resolving mechanism in Citrus JBang
+      type: fix
+      author: christophd
+    - title: Complete documentation for environment variable and system property settings
+      type: update
+      author: christophd
+    - title: Bump Apache Camel version to 4.18.3
+      type: update
+      author: christophd
+    - title: Bump io.vertx:vertx-core from 4.5.26 to 4.5.27
+      type: update
+      author: dependabot
+    - title: Bump io.netty:netty-handler from 4.2.13.Final to 4.2.15.Final
+      type: update
+      author: dependabot
+
 - version: 5.0.0-M2
   date: 2026-06-18
   tag: v5.0.0-M2
