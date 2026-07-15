@@ -15,8 +15,8 @@ Requires Docker to be running.
 # Build the site (copies sources with Maven resource filtering, then runs Jekyll via Docker)
 mvn clean resources:resources package
 
-# Start a local preview server at http://localhost:4000
-mvn docker:start
+# Start a local preview server at http://localhost:4000 (foreground, Ctrl-C to stop)
+mvn docker:run
 
 # Release to GitHub Pages (commits and pushes to citrusframework.github.io)
 mvn clean resources:resources install -Prelease-github
