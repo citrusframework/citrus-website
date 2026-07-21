@@ -5,7 +5,7 @@ name: camel-aws-s3-kafka
 image: /img/icons/camel.png
 folder: apache-camel
 group: quarkus
-description: Testing Apache Camel S3-to-Kafka routes in Quarkus with Citrus, LocalStack, and Testcontainers
+description: Testing Apache Camel S3-to-Kafka routes in Quarkus with Citrus, LocalStack, Kamelet property binding, and Testcontainers
 categories: [samples]
 repository: citrus-quarkus-examples
 permalink: /samples/camel-quarkus-aws-s3-kafka/
@@ -15,9 +15,9 @@ Cloud-native integration often starts with a file landing in an S3 bucket. A new
 
 Testing it is the challenge. You need an S3-compatible object store, a Kafka broker, a bucket created before the test runs, and a way to upload files and verify the downstream output — all coordinated in a single test. You certainly do not want to test against real AWS services.
 
-This post walks you through testing an Apache Camel route that bridges AWS S3 and Kafka in a Quarkus application using the [Citrus](https://citrusframework.org) integration testing framework. You will see how Citrus provisions a LocalStack container for S3 emulation, uploads files through Camel's S3 component, and validates that each line of the file arrives as a separate JSON event on a Kafka topic.
+This post walks you through testing an Apache Camel route that bridges AWS S3 and Kafka in a Quarkus application using the [Citrus](https://citrusframework.org) integration testing framework. You will see how Citrus provisions a LocalStack container for S3 emulation, uploads files through Camel's type-safe S3 endpoint DSL, and validates that each line of the file arrives as a separate JSON event on a Kafka topic.
 
-By the end you will have a recipe for testing cloud-native Camel pipelines without touching real AWS services.
+By the end you will have a recipe for testing cloud-native Camel pipelines without touching real AWS services — and a clean separation between production and test configuration.
 
 # The application under test
 
@@ -34,14 +34,7 @@ public class Routes extends EndpointRouteBuilder {
 
     @Override
     public void configure() throws Exception {
-        from("kamelet:aws-s3-source?" +
-                "bucketNameOrArn={{aws.s3.bucketNameOrArn}}&" +
-                "region={{aws.s3.region}}&" +
-                "overrideEndpoint=true&" +
-                "forcePathStyle=true&" +
-                "uriEndpointOverride={{aws.s3.uriEndpointOverride}}&" +
-                "accessKey={{aws.s3.accessKey}}&" +
-                "secretKey={{aws.s3.secretKey}}")
+        from("kamelet:aws-s3-source")
             .split(body().tokenize("\n"))
             .filter(simple("${body} != \"\""))
             .setBody()
@@ -53,7 +46,23 @@ public class Routes extends EndpointRouteBuilder {
 }
 ```
 
-The route uses the `aws-s3-source` **Kamelet** — a pre-built, reusable Camel connector — to poll the S3 bucket for new objects. The `overrideEndpoint` and `forcePathStyle` options enable LocalStack compatibility, so the same route works against both real AWS and a local emulator. All connection properties are externalized as Camel property placeholders, resolved from `application.properties`.
+The route uses the `aws-s3-source` **Kamelet** — a pre-built, reusable Camel connector — to poll the S3 bucket for new objects. Notice that the Kamelet URI carries no inline connection parameters. All `aws-s3-source` properties are bound through Camel's standard **Kamelet property binding** mechanism in `application.properties`:
+
+```properties
+# Kamelet source properties
+camel.kamelet.aws-s3-source.bucketNameOrArn=citrus-camel-demo
+camel.kamelet.aws-s3-source.region=us-east-1
+camel.kamelet.aws-s3-source.accessKey=accesskey
+camel.kamelet.aws-s3-source.secretKey=secretkey
+
+# Kafka endpoint
+kafka.bootstrap.servers=my-cluster.namespace.local
+%test.kafka.bootstrap.servers=localhost:9092
+```
+
+This is the idiomatic Camel Kamelet approach and keeps the route URI clean. Test-specific settings like `overrideEndpoint`, `forcePathStyle`, and `uriEndpointOverride` — which only make sense against a local container — are **not** present here. They are injected dynamically by the test's `LocalStackConfigurer` lifecycle listener (see below), so the production configuration remains unaffected.
+
+The `%test.kafka.bootstrap.servers` entry is a Quarkus profile-scoped override that applies only in the `test` profile, keeping the production value clean while wiring the Kafka client to the Testcontainer-managed broker during tests.
 
 Once a file arrives, the **Splitter EIP** breaks the content on newline characters. A file containing three lines becomes three separate Camel exchanges, each carrying one line as its body. The filter step removes empty lines that might result from trailing newlines.
 
@@ -123,27 +132,28 @@ class QuarkusApplicationTest {
             implements ContainerLifecycleListener<LocalStackContainer> {
         @Override
         public Map<String, String> started(LocalStackContainer container) {
-            String serviceEndpoint = container.getEndpointOverride(AwsService.S3)
-                    .toString();
-
             S3Client s3Client = container.getClient(AwsService.S3);
             s3Client.createBucket(builder -> builder.bucket(BUCKET_NAME));
 
+            String serviceEndpoint = container.getServiceEndpoint().toString();
+
             return Map.of(
-                    "aws.s3.bucketNameOrArn", BUCKET_NAME,
-                    "aws.s3.uriEndpointOverride", serviceEndpoint,
-                    "aws.s3.accessKey", container.getAccessKey(),
-                    "aws.s3.secretKey", container.getSecretKey(),
-                    "aws.s3.region", container.getRegion()
+                    "camel.kamelet.aws-s3-source.bucketNameOrArn", BUCKET_NAME,
+                    "camel.kamelet.aws-s3-source.uriEndpointOverride", serviceEndpoint,
+                    "camel.kamelet.aws-s3-source.accessKey", container.getAccessKey(),
+                    "camel.kamelet.aws-s3-source.secretKey", container.getSecretKey(),
+                    "camel.kamelet.aws-s3-source.region", container.getRegion(),
+                    "camel.kamelet.aws-s3-source.overrideEndpoint", "true",
+                    "camel.kamelet.aws-s3-source.forcePathStyle", "true"
             );
         }
     }
 }
 ```
 
-The `services = AwsService.S3` parameter tells LocalStack to start only the S3 service, keeping the container lightweight. The lifecycle listener does two things: it creates the S3 bucket that the Camel route expects, and it returns a map of connection properties that override the `application.properties` defaults.
+The `services = AwsService.S3` parameter tells LocalStack to start only the S3 service, keeping the container lightweight. The lifecycle listener does two things: it creates the S3 bucket that the Camel route expects, and it returns a map of Kamelet properties that override the production defaults in `application.properties`.
 
-These returned properties — bucket name, endpoint URL, access key, secret key, region — are automatically injected into the Quarkus application context. When the Camel route resolves its `aws.s3.*` placeholders, they point to the LocalStack container instead of real AWS.
+The returned properties use the `camel.kamelet.aws-s3-source.*` namespace — the same Kamelet property binding mechanism that the production configuration uses. This means the listener can both override existing properties (bucket name, credentials, region) and add test-only settings (`overrideEndpoint`, `forcePathStyle`, `uriEndpointOverride`) that enable LocalStack compatibility. These test-specific settings never appear in the production `application.properties` — they are injected dynamically and only take effect when the test runs.
 
 ## The Kafka broker
 
@@ -176,21 +186,21 @@ class QuarkusApplicationTest {
 
 This is the same pattern you see in the [Camel Kafka sample](/samples/camel-quarkus-kafka/) — the listener creates the `s3-events` topic before the application starts.
 
-# Uploading files through Camel's S3 component
+# Uploading files through Camel's S3 endpoint DSL
 
-The test uses Camel's `aws2-s3` component to upload a multi-line file to the LocalStack bucket. As with the [MQTT sample](/samples/camel-quarkus-mqtt/), Citrus leverages Camel's component library for protocols it does not natively support:
+The test uses Camel's `aws2-s3` component to upload a multi-line file to the LocalStack bucket. As with the [MQTT sample](/samples/camel-quarkus-mqtt/), Citrus leverages Camel's component library for protocols it does not natively support. Instead of building a raw URI string with connection parameters, the test binds the `S3Client` from the LocalStack container into the Camel registry and uses the type-safe `aws2S3()` endpoint DSL:
 
 ```java
+runner.given(
+    camel().bind("s3Client", localStackContainer.getClient(AwsService.S3))
+);
+
 runner.when(
     camel()
         .send()
-        .endpoint("aws2-s3://citrus-camel-demo?" +
-                "overrideEndpoint=true&" +
-                "forcePathStyle=true&" +
-                "uriEndpointOverride={{aws.s3.uriEndpointOverride}}&" +
-                "accessKey={{aws.s3.accessKey}}&" +
-                "secretKey={{aws.s3.secretKey}}&" +
-                "region={{aws.s3.region}}")
+        .endpoint(aws2S3(BUCKET_NAME)
+                .advanced()
+                .amazonS3Client("#s3Client")::getRawUri)
         .message()
         .fork(true)
         .body("Hello Camel!\nHello Citrus!\nHello Quarkus!")
@@ -198,7 +208,7 @@ runner.when(
 );
 ```
 
-The `camel().send()` DSL sends a message through Camel's `aws2-s3` endpoint, which uploads the content as an S3 object. The `CamelAwsS3Key` header sets the object key to `hello.txt`. The property placeholders resolve to the same LocalStack connection settings that the application route uses.
+The `camel().bind()` call registers the `S3Client` obtained from the LocalStack container in the Camel registry under the name `s3Client`. The `aws2S3()` endpoint DSL then references this bound client via `#s3Client`, which means the test reuses the same authenticated client that LocalStack already configured — no need to manually construct a URI with access keys, endpoints, and region parameters.
 
 The `fork(true)` option sends the upload asynchronously. The S3 Kamelet polls the bucket at intervals, so there is a delay between the upload and the route picking up the file. Forking lets the test proceed to the verification step while the upload and polling happen in the background.
 
@@ -247,9 +257,9 @@ When you run the test with `./mvnw clean test`, here is the sequence of events:
 
 1. **`@LocalStackContainerSupport` launches** a LocalStack container with the S3 service and creates the `citrus-camel-demo` bucket.
 2. **`@KafkaContainerSupport` launches** a Kafka broker and creates the `s3-events` topic.
-3. **Quarkus starts** the application in test mode with S3 and Kafka connection properties pointing to the test containers.
-4. **Apache Camel discovers** the route and starts polling the S3 bucket via the `aws-s3-source` Kamelet.
-5. **The test uploads** `hello.txt` with three lines to the S3 bucket through Camel's `aws2-s3` component.
+3. **Quarkus starts** the application in test mode with Kamelet and Kafka connection properties pointing to the test containers.
+4. **Apache Camel discovers** the route and starts polling the S3 bucket via the `aws-s3-source` Kamelet, whose properties are resolved through the `camel.kamelet.aws-s3-source.*` namespace.
+5. **The test binds** the LocalStack `S3Client` into the Camel registry and **uploads** `hello.txt` with three lines to the S3 bucket through Camel's type-safe `aws2S3()` endpoint DSL.
 6. **The Kamelet detects** the new object and consumes it from the bucket.
 7. **The Splitter EIP** breaks the file into three messages — one per line.
 8. **The filter** removes any empty lines.
@@ -258,7 +268,7 @@ When you run the test with `./mvnw clean test`, here is the sequence of events:
 11. **Citrus receives** each message and validates the JSON body.
 12. **Both containers** are stopped and cleaned up automatically.
 
-The critical point is that the same connection properties drive both the application and the test. The `LocalStackConfigurer` returns properties like `aws.s3.uriEndpointOverride` that the Camel route resolves through its placeholders. The test's `aws2-s3` endpoint uses the same placeholders. This ensures that both sides always point to the same LocalStack instance.
+The critical point is the clean separation between production and test configuration. The `LocalStackConfigurer` returns `camel.kamelet.aws-s3-source.*` properties that override the production defaults and add test-only settings like `overrideEndpoint` and `forcePathStyle`. The test's `aws2-s3` endpoint reuses the same LocalStack `S3Client` through a Camel registry binding. Both sides point to the same LocalStack instance without polluting the production `application.properties`.
 
 There is one piece of test configuration worth mentioning:
 
@@ -272,7 +282,9 @@ This avoids CDI bean discovery conflicts between Citrus and Quarkus and is a one
 
 LocalStack emulates AWS services locally with high fidelity. For S3 in particular, it supports bucket creation, object upload and download, listing, and deletion — everything the Camel `aws-s3-source` Kamelet needs.
 
-The `@LocalStackContainerSupport` annotation makes this integration seamless. You specify which AWS services you need (`AwsService.S3`, `AwsService.SQS`, `AwsService.SNS`, etc.), and the annotation starts a container with only those services enabled. The lifecycle listener gives you a typed `LocalStackContainer` instance with convenience methods like `getClient(AwsService.S3)` for creating AWS SDK clients and `getEndpointOverride()` for retrieving the service URL.
+The `@LocalStackContainerSupport` annotation makes this integration seamless. You specify which AWS services you need (`AwsService.S3`, `AwsService.SQS`, `AwsService.SNS`, etc.), and the annotation starts a container with only those services enabled. The lifecycle listener gives you a typed `LocalStackContainer` instance with convenience methods like `getClient(AwsService.S3)` for creating AWS SDK clients and `getServiceEndpoint()` for retrieving the service URL.
+
+Combined with Camel's Kamelet property binding, this creates a clean layering: production `application.properties` declares the real AWS connection settings, while the `ContainerLifecycleListener` overrides them with LocalStack-specific values and adds test-only options — all through the same `camel.kamelet.*` namespace.
 
 This approach extends to any AWS service that LocalStack supports. If your Camel route consumes from SQS, writes to DynamoDB, or publishes to SNS, the same annotation-and-listener pattern provisions the infrastructure and injects the connection properties.
 
