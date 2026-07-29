@@ -1,3 +1,32 @@
+- version: 4.10.3
+  date: 2026-07-29
+  tag: v4.10.3
+  issues: https://github.com/citrusframework/citrus/issues/
+  stories: https://github.com/citrusframework/citrus/issues/
+  changes:
+    - title: Add log output when receive actions start waiting for messages
+      id: 1582
+      type: add
+      author: w3lld1
+    - title: Add documentation for using Citrus with Kaoto visual designer
+      id: 1636
+      type: add
+      author: christophd
+    - title: Improve Citrus Test DSL JSON Schema quality and correctness
+      id: 1609
+      type: fix
+      author: christophd
+    - title: DefaultTestActionBuilder produces unnamed TestAction instances
+      id: 1622
+      type: fix
+      author: bbortt
+    - title: Reduce Maven Central publishing file count by limiting checksum algorithms
+      id: 1632
+      type: update
+      author: christophd
+    - title: Improve Citrus MCP server AI tools installation section
+      type: update
+      author: christophd
 - version: 4.10.2
   date: 2026-07-15
   tag: v4.10.2
