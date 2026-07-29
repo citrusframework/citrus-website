@@ -93,3 +93,7 @@ After user confirmation, prepend the new entry at the **top** of `src/main/site/
 ### 8. Update pom.xml version
 
 Update `<citrus.version>` in `pom.xml` to `<release-version>`.
+
+### 9. Ask for commit
+
+Commit the changes, usual commit message pattern is "chore: Add <release-version> release".
