@@ -1,3 +1,279 @@
+- version: 5.0.0
+  date: 2026-08-05
+  tag: v5.0.0
+  issues: https://github.com/citrusframework/citrus/issues/
+  stories: https://github.com/citrusframework/citrus/issues/
+  changes:
+    - title: Resolve split packages to support Java module system (JPMS)
+      id: 1054
+      type: add
+      author: christophd
+    - title: Citrus MCP server implementation
+      id: 1505
+      type: add
+      author: christophd
+    - title: Publish the Citrus JBang MCP server as a Claude Code plugin
+      id: 1550
+      type: add
+      author: christophd
+    - title: Add migration guide resource to the Citrus MCP server
+      id: 1634
+      type: add
+      author: christophd
+    - title: Add migration prompt to Citrus MCP server
+      id: 1658
+      type: add
+      author: christophd
+    - title: Add MCP server resource for Citrus settings catalog
+      id: 1659
+      type: add
+      author: christophd
+    - title: Add Floci container support to citrus-testcontainers
+      id: 1553
+      type: add
+      author: christophd
+    - title: Add Strimzi Kafka container implementation option
+      id: 1555
+      type: add
+      author: christophd
+    - title: Add native Apache Kafka container implementation option
+      id: 1559
+      type: add
+      author: christophd
+    - title: Add Localstack auth token option
+      id: 1551
+      type: add
+      author: christophd
+    - title: Auto create Kafka topics on Testcontainers container start
+      id: 1558
+      type: add
+      author: christophd
+    - title: OpenAPI code generation with model builders
+      type: add
+      author: bbortt
+    - title: Support beans configuration in YAML and XML DSL
+      id: 1580
+      type: add
+      author: christophd
+    - title: Support message processors in YAML DSL
+      id: 1533
+      type: add
+      author: christophd
+    - title: Add typed endpoints schema for XML DSL
+      id: 1519
+      type: add
+      author: christophd
+    - title: Redesign logging concept for clearer test workflow output
+      id: 1586
+      type: add
+      author: christophd
+    - title: Support Camel Launcher CLI jar as alternative to JBang
+      id: 1602
+      type: add
+      author: christophd
+    - title: Add fixed port configuration support for Camel infra services
+      id: 1588
+      type: add
+      author: christophd
+    - title: Add schema examples and autocompletion for Camel infra service names
+      id: 1593
+      type: add
+      author: christophd
+    - title: Add auto dependency resolving for Camel infra services in JBang
+      id: 1594
+      type: add
+      author: christophd
+    - title: Simplify Java DSL access to message payload builders
+      id: 1639
+      type: add
+      author: christophd
+    - title: Add Camel unmarshal data format support in YAML DSL message processing
+      id: 1643
+      type: add
+      author: christophd
+    - title: Add JSON and XML marshalling/unmarshalling message processor implementations
+      id: 1645
+      type: add
+      author: christophd
+    - title: Add formatting message processors (JSON, XML, SOAP) to the message processor API
+      id: 1647
+      type: add
+      author: christophd
+    - title: Support Java ServiceLoader SPI as fallback for ResourcePathTypeResolver
+      id: 1652
+      type: add
+      author: christophd
+    - title: Support property placeholders in JBang Maven GAV dependency coordinates
+      id: 1655
+      type: add
+      author: christophd
+    - title: Add test variables support in annotation config
+      id: 1527
+      type: add
+      author: christophd
+    - title: Set Quarkus dev services properties as test variables
+      id: 1525
+      type: add
+      author: christophd
+    - title: Add log output when receive actions start waiting for messages
+      id: 1582
+      type: add
+      author: w3lld1
+    - title: Add Maven build skipTests option
+      id: 1567
+      type: add
+      author: christophd
+    - title: Support JBang command arguments via system property or envVars
+      id: 1583
+      type: add
+      author: christophd
+    - title: Reinstall Camel plugin when version or GAV args change
+      id: 1549
+      type: add
+      author: christophd
+    - title: Add expected status condition option to Knative broker verify action
+      id: 1633
+      type: add
+      author: christophd
+    - title: Allow function and validation matcher bean injection
+      id: 1578
+      type: fix
+      author: christophd
+    - title: Include most likely message validator hints
+      id: 1529
+      type: fix
+      author: bbortt
+    - title: Support authorization/SASL when starting Redpanda Testcontainers
+      id: 1520
+      type: fix
+      author: christophd
+    - title: Filter Citrus internal message headers for Camel Exchanges
+      id: 1524
+      type: fix
+      author: christophd
+    - title: Improve Camel Exchange message converter
+      id: 1576
+      type: fix
+      author: christophd
+    - title: Propagate bean references from Citrus to Camel with dynamic endpoints
+      id: 1667
+      type: fix
+      author: christophd
+    - title: YamlCodeAnalyzer fails to detect Camel endpoints using YAML multiline scalar indicators
+      id: 1669
+      type: fix
+      author: christophd
+    - title: Improve handling of binary file resource message payloads
+      id: 1523
+      type: fix
+      author: christophd
+    - title: Fix handling of Citrus file resources in CamelMessageConverter
+      id: 1562
+      type: fix
+      author: christophd
+    - title: Fix NPE in TestActionResult for null payloads
+      id: 1570
+      type: fix
+      author: christophd
+    - title: Handle unconvertible message payloads in TestActionResult Json report
+      id: 1590
+      type: fix
+      author: christophd
+    - title: Fix ConcurrentModificationException in HttpEndpointConfiguration
+      id: 1591
+      type: fix
+      author: christophd
+    - title: Fix ConcurrentModificationException in Quarkus test resource
+      type: fix
+      author: christophd
+    - title: Fix flaky SendSoapMessageTestActionBuilderTest with UnfinishedStubbingException
+      id: 1575
+      type: fix
+      author: christophd
+    - title: Fix misleading log output when Camel waitForRunningState is false
+      id: 1581
+      type: fix
+      author: christophd
+    - title: URL-encode commas in query param values to support complex query strings
+      id: 809
+      type: fix
+      author: christophd
+    - title: Improve JBang init and run commands
+      id: 1572
+      type: fix
+      author: christophd
+    - title: Filter .java extension from JBang dynamic module resolution
+      id: 1656
+      type: fix
+      author: christophd
+    - title: DefaultTestActionBuilder produces unnamed TestAction instances
+      id: 1622
+      type: fix
+      author: bbortt
+    - title: Improve Citrus Test DSL JSON Schema quality and correctness
+      id: 1609
+      type: fix
+      author: christophd
+    - title: Fix compiler warnings across all modules
+      id: 1592
+      type: fix
+      author: christophd
+    - title: Add documentation for using Citrus with Kaoto visual designer
+      id: 1636
+      type: fix
+      author: christophd
+    - title: Update to Jackson 3.1.0
+      id: 1447
+      type: update
+      author: christophd
+    - title: Update to JUnit 6
+      id: 1447
+      type: update
+      author: christophd
+    - title: Update to Spring 7 and Spring Boot 4
+      id: 1447
+      type: update
+      author: christophd
+    - title: Update to Spring WS 5.0.1 and Spring Integration 7.0.4
+      id: 1447
+      type: update
+      author: christophd
+    - title: Update to Apache Camel 4.21.0
+      id: 1447
+      type: update
+      author: christophd
+    - title: Update to Jetty 12.1.8 and Kafka 4.2.0
+      id: 1447
+      type: update
+      author: christophd
+    - title: Update to Java 21 and Java 25 as LTS versions
+      type: update
+      author: christophd
+    - title: Replace org.apache.activemq with org.apache.artemis
+      type: update
+      author: bbortt
+    - title: Rename Camel JBang references to Camel CLI
+      id: 1601
+      type: update
+      author: christophd
+    - title: Move Test API Generator modules to citrus-tools
+      id: 1528
+      type: update
+      author: christophd
+    - title: Reduce Maven Central publishing file count by limiting checksum algorithms
+      id: 1632
+      type: update
+      author: christophd
+    - title: Convert value classes to records
+      type: update
+      author: bbortt
+    - title: Code modernization (lambdas, try-with-resources, enhanced switch)
+      type: update
+      author: bbortt
+    - title: Update dependency versions
+      type: update
+      author: christophd
+
 - version: 4.10.3
   date: 2026-07-29
   tag: v4.10.3
