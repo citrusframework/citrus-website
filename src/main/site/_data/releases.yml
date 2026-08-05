@@ -222,19 +222,19 @@
       id: 1636
       type: fix
       author: christophd
-    - title: Update to Jackson 3.1.0
+    - title: Update to Jackson 3.2.1
       id: 1447
       type: update
       author: christophd
-    - title: Update to JUnit 6
+    - title: Update to JUnit 6.1.2
       id: 1447
       type: update
       author: christophd
-    - title: Update to Spring 7 and Spring Boot 4
+    - title: Update to Spring 7.0.8 and Spring Boot 4.1.0
       id: 1447
       type: update
       author: christophd
-    - title: Update to Spring WS 5.0.1 and Spring Integration 7.0.4
+    - title: Update to Spring WS 5.0.2 and Spring Integration 7.1.0
       id: 1447
       type: update
       author: christophd
@@ -242,7 +242,7 @@
       id: 1447
       type: update
       author: christophd
-    - title: Update to Jetty 12.1.8 and Kafka 4.2.0
+    - title: Update to Jetty 12.1.11 and Kafka 4.3.1
       id: 1447
       type: update
       author: christophd
