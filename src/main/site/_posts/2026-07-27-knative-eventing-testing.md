@@ -10,6 +10,7 @@ categories: [blog]
 Event-driven architecture is everywhere. A file lands in a storage bucket, a database row changes, a sensor publishes a reading — and somewhere downstream, a consumer reacts. [Knative Eventing](https://knative.dev/docs/eventing/) brings this model to Kubernetes with a clean abstraction: event sources produce [CloudEvents](https://cloudevents.io/), brokers route them, triggers filter them, and services consume them. The programming model is elegant, but testing it is not.
 
 ![Knative eventing testing](/img/assets/knative-eventing/featured.png)
+*AI generated with Google Gemini*
 
 The usual testing approach is to deploy the application to a Kubernetes cluster that has Knative already installed, trigger the event source manually, and check the downstream consumers through event logs or manual inspection. This is slow, expensive, and fragile. It ties your development feedback loop to cluster availability, makes debugging difficult, and creates test environments that are hard to reproduce. What you really want is to test Knative eventing logic locally, with real message validation, but without any heavy cloud infrastructure.
 

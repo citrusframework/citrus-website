@@ -10,6 +10,7 @@ categories: [blog]
 SOAP is far from dead. Contract-first, WSDL-driven services still power banking systems, healthcare exchanges, government APIs, and countless internal enterprise platforms. If you do integration work in Java, the chances are still quite high that you will encounter SOAP — either as a service you expose, a backend you consume, or a legacy system you bridge to a modern REST API.
 
 ![CXF SOAP WebServices testing](/img/assets/soap-ws-testing/featured.png)
+*AI generated with Google Gemini*
 
 Testing these SOAP integrations is where things get interesting. You need to verify SOAP envelopes, validate XML payloads against WSDL schemas, handle SOAP faults, and often coordinate multiple protocols in a single test. Unit tests with mocked stubs only get you so far — real confidence comes from end-to-end tests that exercise the actual SOAP processing stack.
 
