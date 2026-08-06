@@ -97,9 +97,11 @@ You can choose from a huge list of modules that all add individual Citrus capabi
 
 All available versions and production releases for manual download are listed below:
 
+{% assign active_releases = site.data.releases | where_exp: "release", "release.archived != true" %}
+
 | Version | Release date | Sources |
 |:--------|:--------|:--------|
-{% for release in site.data.releases limit:12 %}| {{ release.version }} | {{ release.date }} | [zip](https://github.com/citrusframework/citrus/archive/refs/tags/v{{ release.version }}.zip)/[tar.gz](https://github.com/citrusframework/citrus/archive/refs/tags/v{{ release.version }}.tar.gz) |
+{% for release in active_releases limit:10 %}| {{ release.version }} | {{ release.date }} | [zip](https://github.com/citrusframework/citrus/archive/refs/tags/v{{ release.version }}.zip)/[tar.gz](https://github.com/citrusframework/citrus/archive/refs/tags/v{{ release.version }}.tar.gz) |
 {% endfor %}
 
 Since Citrus 4.0 the project requires Java 17 (or newer version) to run.

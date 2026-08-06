@@ -12,9 +12,11 @@ for the latest Citrus release version.
 
 ## Release documentation
 
+{% assign active_releases = site.data.releases | where_exp: "release", "release.archived != true" %}
+
 | Version | Documentation |
 |:--------|:------|
-{% for release in site.data.releases limit:12 %}| {{ release.version }} | [HTML](/citrus/reference/{% if release.tag != "latest" %}{{ release.version }}/{% endif %}html/index.html) \| [PDF](/citrus/reference/{% if release.tag != "latest" %}{{ release.version }}/{% endif %}pdf/citrus-reference{% if release.tag != "latest" %}-{{ release.version }}{% endif %}.pdf) |
+{% for release in active_releases limit:10 %}| {{ release.version }} | [HTML](/citrus/reference/{% if release.tag != "latest" %}{{ release.version }}/{% endif %}html/index.html) \| [PDF](/citrus/reference/{% if release.tag != "latest" %}{{ release.version }}/{% endif %}pdf/citrus-reference{% if release.tag != "latest" %}-{{ release.version }}{% endif %}.pdf) |
 {% endfor %}
 
 ## Additional documentation material

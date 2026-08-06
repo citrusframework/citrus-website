@@ -4,7 +4,8 @@ layout: docs
 permalink: "/docs/history/"
 ---
 
-{% for release in site.data.releases %}
+{% assign active_releases = site.data.releases | where_exp: "release", "release.archived != true" %}
+{% for release in active_releases %}
 <h2 id="{{ release.tag }}">v{{ release.version }}</h2>
 <h7>{% if release.date != nil %}{{ release.date }}{% endif %}{% if release.date == nil %}{{ site.time | date: '%Y-%m-%d' }}{% endif %}</h7>
 

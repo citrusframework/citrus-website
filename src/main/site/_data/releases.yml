@@ -434,6 +434,7 @@
 - version: 5.0.0-M2
   date: 2026-06-18
   tag: v5.0.0-M2
+  archived: true
   issues: https://github.com/citrusframework/citrus/issues/
   stories: https://github.com/citrusframework/citrus/issues/
   changes:
@@ -520,6 +521,7 @@
 - version: 5.0.0-M1
   date: 2026-05-15
   tag: v5.0.0-M1
+  archived: true
   issues: https://github.com/citrusframework/citrus/issues/
   stories: https://github.com/citrusframework/citrus/issues/
   changes:
