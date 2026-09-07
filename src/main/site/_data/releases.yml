@@ -1,3 +1,115 @@
+- version: 5.0.1
+  date: 2026-08-30
+  tag: v5.0.1
+  issues: https://github.com/citrusframework/citrus/issues/
+  stories: https://github.com/citrusframework/citrus/issues/
+  changes:
+    - title: Add configuration property metadata for IDE auto-completion and documentation
+      id: 1666
+      type: add
+      author: christophd
+    - title: Align Kafka bootstrap servers property name to "bootstrapServers"
+      id: 1674
+      type: add
+      author: christophd
+    - title: Add ComposeContainerSupport annotation for Quarkus tests
+      id: 1688
+      type: add
+      author: christophd
+    - title: Support dynamic consumer groups for dynamic Kafka endpoint URIs
+      id: 1691
+      type: add
+      author: christophd
+    - title: Add tests and explicit retry support for ActionCondition in waitFor action
+      id: 1692
+      type: add
+      author: christophd
+    - title: ActionCondition should support Completable test actions in waitFor
+      id: 1693
+      type: add
+      author: christophd
+    - title: Add verify Camel route test action to check route existence and status
+      id: 1695
+      type: add
+      author: christophd
+    - title: Add shutdown strategy options (timeout, immediate) to Camel context stop action
+      id: 1697
+      type: add
+      author: christophd
+    - title: Add times(int) shortcut to iterate, repeat, and repeatOnError containers
+      id: 1705
+      type: add
+      author: christophd
+    - title: Add KafkaMessageByKeySelector to filter ConsumerRecords by key
+      id: 1707
+      type: add
+      author: kalayciburak
+    - title: Add Camel route statistics verification test action
+      id: 1717
+      type: add
+      author: christophd
+    - title: Improve documentation concerning validation logic substitution in validation callbacks
+      id: 618
+      type: add
+      author: AzazelSensei
+    - title: Fix SendHttpMessageTestActionBuilderTest flaky test with UnfinishedStubbingException
+      id: 1671
+      type: fix
+      author: christophd
+    - title: Testcontainers registry mirror breaks image names and fails with compatibility check
+      id: 1673
+      type: fix
+      author: christophd
+    - title: Stale AWS clients in registry when LocalStack containers are recreated between tests
+      id: 1676
+      type: fix
+      author: christophd
+    - title: Fix build compatibility for Java 25
+      id: 1657
+      type: fix
+      author: christophd
+    - title: Fix HttpEndpointConfiguration RestTemplate access thread-safety
+      id: 1690
+      type: fix
+      author: kalayciburak
+    - title: Subsequent Maven builds without clean fail due to stale compiled test resources
+      id: 1654
+      type: fix
+      author: kalayciburak
+    - title: Honour explicit correlationId header checks in HTTP transport
+      id: 1192
+      type: fix
+      author: kalayciburak
+    - title: Fix test candidate detection in provided packages for remote server with TestNG Engine
+      id: 1678
+      type: fix
+      author: cquoss
+    - title: JarFile Test Scanner should not inspect META-INF entries
+      id: 1682
+      type: fix
+      author: cquoss
+    - title: Add throws Exception clause to ThrowingHandler interface in citrus-agent
+      id: 1686
+      type: fix
+      author: cquoss
+    - title: Fix implements clause of inner parameter classes in code-gen-mojo-wrapper
+      id: 1709
+      type: fix
+      author: cquoss
+    - title: Fix type of duration field in remote-result of citrus-agent-maven-plugin
+      id: 1711
+      type: fix
+      author: cquoss
+    - title: Support test variables when setting custom AWS Service client names
+      type: update
+      author: christophd
+    - title: Update Apache Camel version to 4.22.0
+      type: update
+      author: christophd
+    - title: Bump log4j-api from 2.25.4 to 2.25.5
+      type: update
+      author: dependabot
+
 - version: 5.0.0
   date: 2026-08-05
   tag: v5.0.0
