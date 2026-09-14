@@ -505,6 +505,32 @@ Java tests are the better choice when you need:
 
 Both approaches use the same Citrus engine underneath. The YAML DSL is a frontend that maps to the same action classes as the Java API. You can start with YAML tests for a JBang prototype and migrate to Java tests when the project grows into a Quarkus or Spring Boot application — the testing patterns transfer directly.
 
+# Designing tests visually with Kaoto
+
+Writing YAML by hand works well for simple tests, but as test files grow — multiple scenarios, infrastructure setup, database interactions, nested validation — a graphical view can make the structure easier to understand and edit.
+
+![Kaoto Logo](/img/assets/kaoto-citrus-integration/kaoto-logo.png){:width="600px"}
+
+[Kaoto](https://kaoto.io) is a visual designer for Apache Camel integrations. 
+It renders YAML DSL definitions as interactive flow diagrams where you can add, configure, and reorder steps by clicking instead of typing. 
+Since Kaoto has added the Citrus YAML DSL schemas to its catalog the visual designer is able to handle Citrus YAML test files, too. 
+Kaoto is able to visualize and edit the declarative structure of a Citrus test with full support f all test actions, action containers, functions and validation matcher.
+
+![Citrus in Kaoto](/img/assets/kaoto-citrus-integration/test-icons.png){:width="700px" .center-image}
+
+In Kaoto, a Citrus YAML test renders as a sequence of actions — `send`, `receive`, `http`, `sql`, `testcontainers` — each represented as a configurable node. You can:
+
+- **Add test actions** from a palette — drag a `send` or `receive` action into the flow and configure endpoint URIs, message bodies, and headers through form fields instead of editing raw YAML.
+- **Reorder actions** by moving action nodes up or down in the flow.
+- **Configure validation** — set expected HTTP status codes, JSON response bodies, SQL column assertions, and timeout values through the action's property panel.
+- **See the full test structure at a glance** — the flow diagram shows the complete test lifecycle from infrastructure startup through message exchange to final assertions.
+
+This is especially useful for teams that are new to Citrus or prefer visual tooling. 
+The graphical editor produces the same `*.citrus.it.yaml` files shown throughout this post — you can switch between the visual editor and the YAML source at any time. 
+There is no lock-in: the file on disk is always standard Citrus YAML DSL.
+
+Kaoto runs as an [online editor in your browser](https://kaotoio.github.io/kaoto/#/) or as a [VS Code extension](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-kaoto) — install it, open a `.citrus.it.yaml` file, and the visual editor loads automatically.
+
 # Where to find the examples
 
 The complete source code for all tests shown in this post is available in the [EIP with Camel](https://github.com/christophd/eip-with-camel/tree/chore/citrus-testing) repository:
