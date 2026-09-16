@@ -106,7 +106,7 @@ Citrus sends the message and immediately starts the `receive` action listening f
 The fork enabled `send` avoids the situation where the test sends the message, waits for the Kafka acknowledgement, then starts listening, and potentially misses the processed message if the Camel route finishes before the Citrus consumer is ready.
 This can lead to flaky tests where the timing condition may succeed or fail in an unpredictable way.
 
-You can find the complete code and test in the [05-reliability example](https://github.com/christophd/eip-with-camel/tree/chore/citrus-testing/examples/05-reliability/quarkus).
+You can find the complete code and test in the [05-reliability example](https://github.com/citrusframework/citrus-camel-eip-examples/tree/main/examples/05-reliability/quarkus).
 
 # Pitfall: Cross-test interference on shared Kafka topics
 
@@ -255,6 +255,6 @@ Here are all Kafka pitfalls as a quick-reference checklist:
 
 None of these pitfalls are specific to [Citrus](https://citrusframework.org) — they apply to Kafka integration testing in general. But Citrus gives you the tools and capabilities to fix every one of them.
 
-You can explore all the testing patterns and pitfall fixes in the [eip-with-camel repository](https://github.com/christophd/eip-with-camel/tree/chore/citrus-testing).
+You can explore all the testing patterns and pitfall fixes in the [eip-with-camel repository](https://github.com/citrusframework/citrus-camel-eip-examples/tree/main).
 
 Give it a try, and let us know what you think!

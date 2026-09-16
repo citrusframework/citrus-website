@@ -72,7 +72,7 @@ t.then(
 ```
 
 This pattern applies to any inline processing that should be testable. 
-The [14-consumer-patterns example](https://github.com/christophd/eip-with-camel/tree/chore/citrus-testing/examples/14-consumer-patterns/quarkus) shows the Message Dispatcher route with named handlers for every event type — including the unknown handler.
+The [14-consumer-patterns example](https://github.com/citrusframework/citrus-camel-eip-examples/tree/main/examples/14-consumer-patterns/quarkus) shows the Message Dispatcher route with named handlers for every event type — including the unknown handler.
 
 # Pitfall: Too weak message validations gives false confidence
 
@@ -256,7 +256,7 @@ public void shouldFilterLowValueOrder() {
 The `expectTimeout()` assertion proves that no message arrived — which is the correct behavior for a filtered message.
 
 The same principle applies to Content-Based routers, format indicators (test each content type), and any route with `choice()` or `when()` logic. 
-The [09-routing-fundamentals example](https://github.com/christophd/eip-with-camel/tree/chore/citrus-testing/examples/09-routing-fundamentals/quarkus) demonstrates this pattern with separate tests for each branch of the Content-Based Router and the Message Filter.
+The [09-routing-fundamentals example](https://github.com/citrusframework/citrus-camel-eip-examples/tree/main/examples/09-routing-fundamentals/quarkus) demonstrates this pattern with separate tests for each branch of the Content-Based Router and the Message Filter.
 
 # Pitfall: Locale-dependent String formatting in JSON
 
@@ -594,6 +594,6 @@ For Kafka-specific checklist items — offset races, consumer group isolation, h
 
 None of these pitfalls are specific to [Citrus](https://citrusframework.org) — they apply to integration testing in general. But Citrus gives you the tools and capabilities to fix every one of them.
 
-You can explore all the testing patterns and pitfall fixes in the [eip-with-camel repository](https://github.com/christophd/eip-with-camel/tree/chore/citrus-testing).
+You can explore all the testing patterns and pitfall fixes in the [eip-with-camel repository](https://github.com/citrusframework/citrus-camel-eip-examples/tree/main).
 
 Give it a try, and let us know what you think!

@@ -146,7 +146,7 @@ There is a subtle point about what lands on the DLQ. Because the route uses `use
 Any fields the route would have added during successful processing (enrichment data, computed values) are absent. 
 When writing assertions against DLQ messages, only assert on what was in the original input.
 
-You can find the complete Dead Letter Channel route and test in the [05-reliability example](https://github.com/christophd/eip-with-camel/tree/chore/citrus-testing/examples/05-reliability/quarkus).
+You can find the complete Dead Letter Channel route and test in the [05-reliability example](https://github.com/citrusframework/citrus-camel-eip-examples/tree/main/examples/05-reliability/quarkus).
 
 # Testing Idempotent Receivers
 
@@ -286,7 +286,7 @@ For Spring Boot, add:
 </dependency>
 ```
 
-You can find the complete Idempotent Receiver route and test in the [22-redis-integration example](https://github.com/christophd/eip-with-camel/tree/chore/citrus-testing/examples/22-redis-integration/quarkus).
+You can find the complete Idempotent Receiver route and test in the [22-redis-integration example](https://github.com/citrusframework/citrus-camel-eip-examples/tree/main/examples/22-redis-integration/quarkus).
 
 # Testing Circuit Breaker fallback paths
 
@@ -426,7 +426,7 @@ The first time the inventory check fails, the fallback executes immediately — 
 This makes testing straightforward: you just need one message that triggers the exception. 
 You do not need to send enough failing messages to trip the circuit first.
 
-You can find the complete Circuit Breaker route and test in the [18-testing-management example](https://github.com/christophd/eip-with-camel/tree/chore/citrus-testing/examples/18-testing-management/quarkus).
+You can find the complete Circuit Breaker route and test in the [18-testing-management example](https://github.com/citrusframework/citrus-camel-eip-examples/tree/main/examples/18-testing-management/quarkus).
 
 # Wrapping up
 
@@ -437,6 +437,6 @@ Testing reliability patterns means testing failure — deliberately, systematica
 - **Circuit Breakers**: use deterministic IDs that trigger fallback paths, and verify that the fallback output matches the pre-failure message.
 - **Route testability**: extract inline branches into named `direct:` routes so every code path is visible to MBean-based assertions by accessing the route statistics and the number of completed exchanges.
 
-You can explore all the reliability pattern examples in the [eip-with-camel repository](https://github.com/christophd/eip-with-camel/tree/chore/citrus-testing), specifically the [05-reliability](https://github.com/christophd/eip-with-camel/tree/chore/citrus-testing/examples/05-reliability), [22-redis-integration](https://github.com/christophd/eip-with-camel/tree/chore/citrus-testing/examples/22-redis-integration), and [18-testing-management](https://github.com/christophd/eip-with-camel/tree/chore/citrus-testing/examples/18-testing-management) examples.
+You can explore all the reliability pattern examples in the [eip-with-camel repository](https://github.com/citrusframework/citrus-camel-eip-examples/tree/main), specifically the [05-reliability](https://github.com/citrusframework/citrus-camel-eip-examples/tree/main/examples/05-reliability), [22-redis-integration](https://github.com/citrusframework/citrus-camel-eip-examples/tree/main/examples/22-redis-integration), and [18-testing-management](https://github.com/citrusframework/citrus-camel-eip-examples/tree/main/examples/18-testing-management) examples.
 
 Give it a try, and let us know what you think!

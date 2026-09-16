@@ -20,6 +20,7 @@ name: sample-overview
     <ul>
       <li><a href="https://github.com/citrusframework/citrus-samples" target="_blank">citrus-samples</a></li>
       <li><a href="https://github.com/citrusframework/citrus-quarkus-examples" target="_blank">citrus-quarkus-examples</a></li>
+      <li><a href="https://github.com/citrusframework/citrus-camel-eip-examples" target="_blank">citrus-camel-eip-examples</a></li>
       <li><a href="https://github.com/christophd/citrus-camel-jbang-demo" target="_blank">citrus-camel-jbang-demo</a></li>
       <li><a href="https://github.com/apache/camel-jbang-examples" target="_blank">camel-jbang-examples</a></li>
     </ul>
@@ -34,10 +35,10 @@ name: sample-overview
     {% for post in active_posts %}
     <div class="unit one-third">
       {% if post.icon != nil %}
-      <h2><i class="fa fa-{{ post.icon }}" style="width: 1em;height: 1em;"></i>&nbsp;{{ post.group | capitalize }}</h2>
+      <h2><i class="fa fa-{{ post.icon }}" style="width: 1em;height: 1em;"></i>&nbsp;{{ post.group | upcase }}</h2>
       {%endif%}
       {% if post.image != nil %}
-      <h2><img src="{{ post.image }}"/>&nbsp;{{ post.group | capitalize }}</h2>
+      <h2><img src="{{ post.image }}"/>&nbsp;{{ post.group | upcase }}</h2>
       {%endif%}
       <p>{{ post.description }}<br>
         <a class="prominent" href="{{ post.permalink }}">&rarr; {{ post.name }}</a>
@@ -74,7 +75,7 @@ name: sample-overview
     <table>
       <thead>
       <tr>
-        <th style="width: 15em;">{{ group | capitalize }}</th>
+        <th style="width: 15em;">{{ group | upcase }}</th>
         <th style="text-align:center;">Description</th>
         <th style="text-align:center;">Sources</th>
       </tr>

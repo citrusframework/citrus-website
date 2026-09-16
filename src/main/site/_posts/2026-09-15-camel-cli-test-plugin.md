@@ -533,11 +533,11 @@ Kaoto runs as an [online editor in your browser](https://kaotoio.github.io/kaoto
 
 # Where to find the examples
 
-The complete source code for all tests shown in this post is available in the [EIP with Camel](https://github.com/christophd/eip-with-camel/tree/chore/citrus-testing) repository:
+The complete source code for all tests shown in this post is available in the [EIP with Camel](https://github.com/citrusframework/citrus-camel-eip-examples/tree/main) repository:
 
-- **Order validation example**: [order-validation-test.yaml](https://github.com/christophd/eip-with-camel/blob/chore/citrus-testing/examples/41-citrus-testing/test/order-validation-test.yaml), [order-http-test.yaml](https://github.com/christophd/eip-with-camel/blob/chore/citrus-testing/examples/41-citrus-testing/test/order-http-test.yaml), and the [route under test](https://github.com/christophd/eip-with-camel/blob/chore/citrus-testing/examples/41-citrus-testing/order-validation-route.yaml).
-- **SQL Polling Consumer YAML test**: [Consumer Patterns example](https://github.com/christophd/eip-with-camel/blob/chore/citrus-testing/examples/14-consumer-patterns/yaml-dsl/test/sql-polling-consumer.citrus.it.yaml) with PostgreSQL database interactions.
-- **Message Filter negative test**: [Routing Fundamentals example](https://github.com/christophd/eip-with-camel/blob/chore/citrus-testing/examples/09-routing-fundamentals/yaml-dsl/test/message-filter.citrus.it.yaml) with `expectTimeout` in YAML.
+- **Order validation example**: [order-validation-test.yaml](https://github.com/citrusframework/citrus-camel-eip-examples/blob/main/examples/41-citrus-testing/test/order-validation-test.yaml), [order-http-test.yaml](https://github.com/citrusframework/citrus-camel-eip-examples/blob/main/examples/41-citrus-testing/test/order-http-test.yaml), and the [route under test](https://github.com/citrusframework/citrus-camel-eip-examples/blob/main/examples/41-citrus-testing/order-validation-route.yaml).
+- **SQL Polling Consumer YAML test**: [Consumer Patterns example](https://github.com/citrusframework/citrus-camel-eip-examples/blob/main/examples/14-consumer-patterns/yaml-dsl/test/sql-polling-consumer.citrus.it.yaml) with PostgreSQL database interactions.
+- **Message Filter negative test**: [Routing Fundamentals example](https://github.com/citrusframework/citrus-camel-eip-examples/blob/main/examples/09-routing-fundamentals/yaml-dsl/test/message-filter.citrus.it.yaml) with `expectTimeout` in YAML.
 
 Install the Camel test plugin with `camel plugin add test`, then run any test with `camel test run <file>`.
 

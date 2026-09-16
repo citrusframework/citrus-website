@@ -279,7 +279,7 @@ This is useful for services that are expensive, slow, or unavailable in the test
 # Integration testing with Citrus
 
 Citrus integration tests operate at a different level. They start real infrastructure, send messages through real Kafka brokers, and validate the output on real topics. 
-Here is what the filter route test looks like with Citrus (from the [Routing Fundamentals example](https://github.com/christophd/eip-with-camel/tree/chore/citrus-testing/examples/09-routing-fundamentals/quarkus)):
+Here is what the filter route test looks like with Citrus (from the [Routing Fundamentals example](https://github.com/citrusframework/citrus-camel-eip-examples/tree/main/examples/09-routing-fundamentals/quarkus)):
 
 ```java
 @QuarkusTest
@@ -397,7 +397,7 @@ The transport layer is where the most painful production bugs hide.
 
 # Combining both in a single project
 
-The [Testing Strategies example](https://github.com/christophd/eip-with-camel/tree/chore/citrus-testing/examples/37-testing-strategies/quarkus) demonstrates this layering of unit and integration tests in one Maven project.
+The [Testing Strategies example](https://github.com/citrusframework/citrus-camel-eip-examples/tree/main/examples/37-testing-strategies/quarkus) demonstrates this layering of unit and integration tests in one Maven project.
 
 The separation of test categories is not just organizational. 
 Maven's surefire plugin runs the unit tests (`*Test.java`) during the `test` phase, while the failsafe plugin runs the integration tests (`*IT.java`) during the `integration-test` phase. 
@@ -437,11 +437,11 @@ The integration test is slower but covers the full transport chain.
 
 # Where to find the examples
 
-The complete source code for all tests shown in this post is available in the [EIP with Camel](https://github.com/christophd/eip-with-camel/tree/chore/citrus-testing) repository:
+The complete source code for all tests shown in this post is available in the [EIP with Camel](https://github.com/citrusframework/citrus-camel-eip-examples/tree/main) repository:
 
-- **Testing Strategies example**: [Unit tests](https://github.com/christophd/eip-with-camel/tree/chore/citrus-testing/examples/37-testing-strategies/quarkus/src/test/java/com/example/eip/testing/unit) and [integration tests](https://github.com/christophd/eip-with-camel/tree/chore/citrus-testing/examples/37-testing-strategies/quarkus/src/test/java/com/example/eip/testing/integration) side by side.
-- **Routes under test**: [OrderFilterRoute](https://github.com/christophd/eip-with-camel/blob/chore/citrus-testing/examples/37-testing-strategies/quarkus/src/main/java/com/example/eip/testing/OrderFilterRoute.java), [OrderValidationRoute](https://github.com/christophd/eip-with-camel/blob/chore/citrus-testing/examples/37-testing-strategies/quarkus/src/main/java/com/example/eip/testing/OrderValidationRoute.java), [PaymentGatewayRoute](https://github.com/christophd/eip-with-camel/blob/chore/citrus-testing/examples/37-testing-strategies/quarkus/src/main/java/com/example/eip/testing/PaymentGatewayRoute.java).
-- **Citrus integration test examples**: [Routing Fundamentals](https://github.com/christophd/eip-with-camel/tree/chore/citrus-testing/examples/09-routing-fundamentals/quarkus/src/test/java/com/example/eip/routing) for the full Citrus approach with real Kafka infrastructure.
+- **Testing Strategies example**: [Unit tests](https://github.com/citrusframework/citrus-camel-eip-examples/tree/main/examples/37-testing-strategies/quarkus/src/test/java/com/example/eip/testing/unit) and [integration tests](https://github.com/citrusframework/citrus-camel-eip-examples/tree/main/examples/37-testing-strategies/quarkus/src/test/java/com/example/eip/testing/integration) side by side.
+- **Routes under test**: [OrderFilterRoute](https://github.com/citrusframework/citrus-camel-eip-examples/blob/main/examples/37-testing-strategies/quarkus/src/main/java/com/example/eip/testing/OrderFilterRoute.java), [OrderValidationRoute](https://github.com/citrusframework/citrus-camel-eip-examples/blob/main/examples/37-testing-strategies/quarkus/src/main/java/com/example/eip/testing/OrderValidationRoute.java), [PaymentGatewayRoute](https://github.com/citrusframework/citrus-camel-eip-examples/blob/main/examples/37-testing-strategies/quarkus/src/main/java/com/example/eip/testing/PaymentGatewayRoute.java).
+- **Citrus integration test examples**: [Routing Fundamentals](https://github.com/citrusframework/citrus-camel-eip-examples/tree/main/examples/09-routing-fundamentals/quarkus/src/test/java/com/example/eip/routing) for the full Citrus approach with real Kafka infrastructure.
 
 Use unit tests for fast iteration on routing logic. Add Citrus integration tests for end-to-end confidence across transport boundaries. 
 Together they cover the full spectrum — from predicate correctness to wire-format fidelity.

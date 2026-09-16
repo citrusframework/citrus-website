@@ -21,7 +21,7 @@
       {% if group != post.group %}
     </ul>
 
-    <h4>{{ post.group | capitalize }}</h4>
+    <h4>{{ post.group | upcase }}</h4>
     <ul style="margin-top: 5px;">
       {% assign group = post.group %}
       {% endif %}

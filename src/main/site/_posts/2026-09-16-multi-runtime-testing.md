@@ -266,7 +266,7 @@ The Quarkus test module requires these Citrus dependencies:
 
 The key module is `citrus-quarkus` — it provides the `@CitrusSupport` annotation and the Quarkus-specific test lifecycle integration.
 
-You can find the complete Quarkus test in the [04-channel-types/quarkus example](https://github.com/christophd/eip-with-camel/tree/chore/citrus-testing/examples/04-channel-types/quarkus).
+You can find the complete Quarkus test in the [04-channel-types/quarkus example](https://github.com/citrusframework/citrus-camel-eip-examples/tree/main/examples/04-channel-types/quarkus).
 
 # Spring Boot runtime
 
@@ -420,7 +420,7 @@ The Spring Boot module swaps `citrus-quarkus` for `citrus-spring`:
 
 All other Citrus dependencies (`citrus-camel`, `citrus-junit-jupiter`, `citrus-kafka`, `citrus-testcontainers`, `citrus-validation-json`) are the same.
 
-You can find the complete Spring Boot test in the [04-channel-types/spring-boot example](https://github.com/christophd/eip-with-camel/tree/chore/citrus-testing/examples/04-channel-types/spring-boot).
+You can find the complete Spring Boot test in the [04-channel-types/spring-boot example](https://github.com/citrusframework/citrus-camel-eip-examples/tree/main/examples/04-channel-types/spring-boot).
 
 # YAML DSL runtime
 
@@ -509,21 +509,21 @@ citrus.camel.jbang.version=4.21.0
 
 The `dump.integration.output=true` setting enables log capture so that `camel.jbang.verify` can match against route log output. The `version` setting pins the JBang Camel version.
 
-You can find the complete YAML DSL tests in the [04-channel-types/yaml-dsl example](https://github.com/christophd/eip-with-camel/tree/chore/citrus-testing/examples/04-channel-types/yaml-dsl).
+You can find the complete YAML DSL tests in the [04-channel-types/yaml-dsl example](https://github.com/citrusframework/citrus-camel-eip-examples/tree/main/examples/04-channel-types/yaml-dsl).
 
 # Side-by-side comparison
 
 Here is the full comparison of what changes across runtimes:
 
-| Aspect                   | Quarkus                                | Spring Boot                                                                                | YAML DSL                        |
-|--------------------------|----------------------------------------|--------------------------------------------------------------------------------------------|---------------------------------|
-| Test annotations         | `@QuarkusTest`, `@CitrusSupport`       | `@SpringBootTest`, `@CamelSpringBootTest`, `@CitrusSpringSupport`, `@ContextConfiguration` | N/A                             |
-| TestCaseRunner injection | Outer class                            | Each `@Nested` class                                                                       | N/A (implicit)                  |
-| CamelContext injection   | `@Inject @BindToRegistry`              | `@Autowired`                                                                               | N/A                             |
-| Infrastructure setup     | `@CitrusConfiguration @BindToRegistry` | `@Configuration @Bean`                                                                     | `testcontainers` action         |
-| Config discovery         | `citrus-application.properties`        | Automatic via `@ContextConfiguration`                                                      | `citrus-application.properties` |
-| Runtime module           | `citrus-quarkus`                       | `citrus-spring`                                                                            | Built into JBang CLI tooling    |
-| Verification             | Kafka event receive                    | Kafka event receive                                                                        | Kafka event + Log message       |
+| Aspect                   | Quarkus                                   | Spring Boot                                                                         | YAML DSL                        |
+|--------------------------|-------------------------------------------|-------------------------------------------------------------------------------------|---------------------------------|
+| Test annotations         | `@QuarkusTest`, `@CitrusSupport`          | `@SpringBootTest`, `@CamelSpringBootTest`, `@CitrusSpringSupport`, `@ContextConfig` | N/A                             |
+| TestCaseRunner injection | Outer class                               | Each `@Nested` class                                                                | N/A (implicit)                  |
+| CamelContext injection   | `@Inject`, `@BindToRegistry`              | `@Autowired`                                                                        | N/A                             |
+| Infrastructure setup     | `@CitrusConfiguration`, `@BindToRegistry` | `@Configuration`, `@Bean`                                                           | `testcontainers` action         |
+| Config discovery         | `citrus-application` properties           | Automatic via `@ContextConfig`                                                      | `citrus-application` properties |
+| Runtime module           | `citrus-quarkus`                          | `citrus-spring`                                                                     | Built into JBang CLI tooling    |
+| Verification             | Kafka event receive                       | Kafka event receive                                                                 | Kafka event + Log message       |
 
 The key takeaway: the test actions — `send()`, `receive()`, `repeatOnError()`, `waitForCamelRouteStarted()` — are identical in Quarkus and Spring Boot. The YAML DSL uses its own action syntax but expresses the same concepts. What changes is the wiring: how you start the test, how you inject dependencies, and how you discover configuration.
 
@@ -566,6 +566,6 @@ Pick the runtime that matches your project:
 
 The testing patterns transfer across all three. Once you learn `send()`, `receive()`, `repeatOnError()`, and `waitForCamelRouteStarted()` in one runtime, you can apply the same patterns in any other. The EipTestSupport interface, the infrastructure lifecycle, and the assertion strategies are portable — only the annotations and injection mechanisms are runtime-specific.
 
-You can explore all three runtime variants side by side in the [eip-with-camel repository](https://github.com/christophd/eip-with-camel/tree/chore/citrus-testing). Every example under `examples/` has `quarkus/`, `spring-boot/`, and `yaml-dsl/` subdirectories implementing the same routes and tests.
+You can explore all three runtime variants side by side in the [eip-with-camel repository](https://github.com/citrusframework/citrus-camel-eip-examples/tree/main). Every example under `examples/` has `quarkus/`, `spring-boot/`, and `yaml-dsl/` subdirectories implementing the same routes and tests.
 
 Give it a try, and let us know what you think!
