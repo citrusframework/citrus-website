@@ -17,7 +17,7 @@ Citrus test generation features in [reference guide][1]
 Objectives
 ---------
 
-The [todo-list](../todo-app/README.md) sample application manages todo entries. The application provides a REST web API 
+The [todo-list](/samples/todo-app/) sample application manages todo entries. The application provides a REST web API 
 for adding new entries and listing all entries. This API is specified using Swagger ()
 
 The sample API specification looks like this.
@@ -236,7 +236,7 @@ The build helper plugin adds the generated tests to the Maven project source/res
 Run
 ---------
 
-**NOTE:** This test depends on the [todo-app](../todo-app/) WAR which must have been installed into your local maven repository using `mvn clean install` beforehand.
+**NOTE:** This test depends on the [todo-app](/samples/todo-app/) `.war` which must have been installed into your local maven repository using `mvn clean install` beforehand.
 
 The sample application uses Maven as build tool. So you can compile, package and test the
 sample with Maven.

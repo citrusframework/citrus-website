@@ -51,7 +51,7 @@ This sample uses the [Fabric8 Maven plugins](https://maven.fabric8.io/) for gene
 First of all we build and deploy the todo-list application as pod in Kubernetes. We are going to build a Docker image the runs the todo-list application as web 
 application in Tomcat 8. In addition to that we define a service resource in Kubernetes that exposes the todo-list REST API to other pods. 
 
-The complete configuration is placed in the todo-list project Maven POM ([pom.xml](../todo-app/pom.xml)) as plugin configuration. The Fabric8 Maven plugin configuration looks like follows.
+The complete configuration is placed in the [todo-list](/samples/todo-app/) project Maven POM (pom.xml) as a plugin configuration. The Fabric8 Maven plugin configuration looks like follows.
   
 ```xml
 <plugin>

@@ -17,7 +17,7 @@ Citrus SOAP features in [reference guide][1]
 Objectives
 ---------
 
-The [todo-list](../todo-app/README.md) sample application manages todo entries. The application provides a SOAP web service
+The [todo-list](/samples/todo-app/) sample application manages todo entries. The application provides a SOAP web service
 endpoint for adding new entries and listing all entries. In this sample we send SOAP attachments to the server adding additional information
 to the todo entries.
 

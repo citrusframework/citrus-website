@@ -17,7 +17,7 @@ Citrus test generation features in [reference guide][4]
 Objectives
 ---------
 
-The [todo-list](../todo-app/README.md) sample application manages todo entries. The application provides a SOAP Web Service API 
+The [todo-list](/samples/todo-app/) sample application manages todo entries. The application provides a SOAP Web Service API 
 for adding new entries and listing all entries. This API is specified using a WSDL file.
 
 The sample API specification looks like this.

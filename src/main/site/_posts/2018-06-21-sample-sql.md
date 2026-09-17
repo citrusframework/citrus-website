@@ -16,7 +16,7 @@ This sample uses JDBC database connection to verify stored data in SQL query res
 Objectives
 ---------
 
-The [todo-list](../todo-app/README.md) sample application stores data to a relational database. This sample shows 
+The [todo-list](/samples/todo-app/) sample application stores data to a relational database. This sample shows 
 the usage of database JDBC validation actions in Citrus. We are able to execute SQL statements on a database target. 
 See the [reference guide][1] database chapter for details.
 
