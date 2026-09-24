@@ -290,42 +290,17 @@ public interface EipTestSupport extends TestActionSupport {
                 );
     }
 
-    default TestActionBuilder<?> assertProcessedExchanges(
-            String routeId, long expected, CamelContext camelContext) {
-        return assertProcessedExchanges(routeId, it -> it == expected, camelContext);
-    }
-
-    default TestActionBuilder<?> assertProcessedExchanges(
-            String routeId, Predicate<Long> check, CamelContext camelContext) {
+    default TestActionBuilder<?> verifyCompletedExchanges(
+            String routeId, long count, CamelContext camelContext) {
         return repeatOnError()
                 .until((i, context) -> i > 20)
                 .autoSleep(Duration.ofSeconds(1))
                 .actions(
-                    context -> {
-                        ManagedCamelContext managedContext = camelContext
-                                .getCamelContextExtension()
-                                .getContextPlugin(ManagedCamelContext.class);
-                        ManagedRouteMBean routeMBean =
-                                managedContext.getManagedRoute(routeId);
-                        if (routeMBean != null) {
-                            long failed = routeMBean.getExchangesFailed();
-                            if (failed > 0) {
-                                throw new ValidationException(
-                                    "Route '%s' has %d failed exchanges"
-                                            .formatted(routeId, failed));
-                            }
-                            long completed = routeMBean.getExchangesCompleted();
-                            if (!check.test(completed)) {
-                                throw new ValidationException(
-                                    "Route '%s' has %d completed exchanges"
-                                            .formatted(routeId, completed));
-                            }
-                        } else {
-                            throw new CitrusRuntimeException(
-                                "No managed route stats for '%s'"
-                                        .formatted(routeId));
-                        }
-                    }
+                    camel()
+                        .camelContext(camelContext)
+                        .route()
+                        .verifyRouteStats(routeId)
+                        .completed(count)
                 );
     }
 }
@@ -334,10 +309,10 @@ public interface EipTestSupport extends TestActionSupport {
 `waitForCamelRouteStarted` uses Camel's Control Bus to poll the dispatcher route's status.
 The dispatcher must be fully started — consuming from Kafka and ready to dispatch — before the test sends any events.
 
-`assertProcessedExchanges` is the core verification mechanism for dispatcher tests.
+`verifyCompletedExchanges` is the core verification mechanism for dispatcher tests.
 Since the handler routes only log messages internally (they do not publish to external endpoints), there is no output topic to receive from.
-Instead, the test checks Camel's JMX management API: how many exchanges has a specific handler route completed, and did any of them fail?
-The convenience overload `assertProcessedExchanges(routeId, 1, camelContext)` checks that exactly one exchange was processed — the natural assertion for "this handler was invoked exactly once."
+Instead, the test uses Citrus's built-in Camel route statistics verification: how many exchanges has a specific handler route completed?
+The call `verifyCompletedExchanges(routeId, 1, camelContext)` checks that exactly one exchange was completed — the natural assertion for "this handler was invoked exactly once."
 
 This approach makes the test independent of the handler's internal behavior.
 Whether the handler logs, writes to a database, or calls an API, the test verifies the *routing decision* — which handler was selected — not the handler's output.
@@ -401,9 +376,7 @@ class EipTests implements EipTestSupport {
                     .header(KafkaMessageHeaders.MESSAGE_KEY, "${id}")
             );
 
-            t.then(
-                assertProcessedExchanges("handle-order-placed", 1, camelContext)
-            );
+            t.then(verifyCompletedExchanges("handle-order-placed", 1, camelContext));
         }
 
         @Test
@@ -425,9 +398,7 @@ class EipTests implements EipTestSupport {
                     .header(KafkaMessageHeaders.MESSAGE_KEY, "${id}")
             );
 
-            t.then(
-                assertProcessedExchanges("handle-order-cancelled", 1, camelContext)
-            );
+            t.then(verifyCompletedExchanges("handle-order-cancelled", 1, camelContext));
         }
 
         @Test
@@ -449,9 +420,7 @@ class EipTests implements EipTestSupport {
                     .header(KafkaMessageHeaders.MESSAGE_KEY, "${id}")
             );
 
-            t.then(
-                assertProcessedExchanges("handle-order-refunded", 1, camelContext)
-            );
+            t.then(verifyCompletedExchanges("handle-order-refunded", 1, camelContext));
         }
 
         @Test
@@ -473,16 +442,14 @@ class EipTests implements EipTestSupport {
                     .header(KafkaMessageHeaders.MESSAGE_KEY, "${id}")
             );
 
-            t.then(
-                assertProcessedExchanges("handle-order-unknown", 1, camelContext)
-            );
+            t.then(verifyCompletedExchanges("handle-order-unknown", 1, camelContext));
         }
     }
 }
 ```
 
 All four tests follow the same given-when-then structure.
-The only thing that changes between them is the `eventType` variable and the handler route ID passed to `assertProcessedExchanges`.
+The only thing that changes between them is the `eventType` variable and the handler route ID passed to `verifyCompletedExchanges`.
 
 **Given — set up variables and wait for the dispatcher.**
 Each test generates a random order ID and sets the `eventType` to the value that should trigger a specific handler.
@@ -493,7 +460,7 @@ A single message goes to `kafka:eip.consumer.dispatch` using the shared `order.j
 The `eventType` variable is resolved into the `event_type` field of the JSON body.
 
 **Then — verify the correct handler processed the message.**
-`assertProcessedExchanges` checks that the expected handler route completed exactly one exchange without errors.
+`verifyCompletedExchanges` checks that the expected handler route completed exactly one exchange.
 For `shouldDispatchOrderPlacedEvent`, it asserts against `handle-order-placed`.
 For `shouldSkipUnknownEventType`, it asserts against `handle-order-unknown`.
 
@@ -508,7 +475,7 @@ This test proves two things:
 
 1. **The whitelist works.** An unknown event type does not reach `toD()` — it is caught by the `choice()` and routed to the fallback handler instead. Without this test, a code change that accidentally removes the whitelist check would go undetected.
 
-2. **The fallback handler exists and processes successfully.** If the `direct:handle-order_unknown` route were missing, the test would fail with a `NoSuchEndpointException`. The `assertProcessedExchanges` check also verifies that the fallback handler completed without errors (the `failed > 0` check inside the assertion).
+2. **The fallback handler exists and processes successfully.** If the `direct:handle-order_unknown` route were missing, the test would fail with a `NoSuchEndpointException`. The `verifyCompletedExchanges` check also verifies that the fallback handler completed without errors.
 
 This is a test that cannot be reasonably written with mocked endpoints.
 The `toD()` resolution, the `choice()` predicate evaluation, and the `direct:` endpoint dispatch all happen inside Camel's routing engine — mocking any of these would bypass the exact logic being tested.
@@ -550,9 +517,7 @@ class EipTests implements EipTestSupport {
                     .header(KafkaMessageHeaders.MESSAGE_KEY, "${id}")
             );
 
-            t.then(
-                assertProcessedExchanges("handle-order-placed", 1, camelContext)
-            );
+            t.then(verifyCompletedExchanges("handle-order-placed", 1, camelContext));
         }
 
         @Test
@@ -619,15 +584,15 @@ The message dispatcher test suite demonstrates a repeatable pattern for testing 
 
 4. **Always test the fallback path.** The unknown event type test is not an afterthought — it verifies the dispatcher's safety net. In production systems, unknown event types can appear due to schema evolution, message corruption, or cross-version compatibility issues. The fallback handler and its test ensure the dispatcher does not throw exceptions or route to unexpected endpoints when this happens.
 
-## Why `assertProcessedExchanges` is the right tool here
+## Why `verifyCompletedExchanges` is the right tool here
 
 For patterns that produce output on a Kafka topic, the natural Citrus assertion is `receive()` — consume from the output topic and validate the message body.
 The message dispatcher's handlers do not produce external output, so `receive()` has nothing to consume.
 
-`assertProcessedExchanges` solves this by checking Camel's internal bookkeeping:
+`verifyCompletedExchanges` solves this by using Citrus's built-in Camel route statistics verification:
 
-- **Exchange count.** Has the handler route processed exactly the expected number of exchanges? For a dispatcher test that sends one message, the expected count is 1.
-- **Error detection.** Did any exchange on the route fail? A `ResolveEndpointFailedException` from a bad `toD()` target, a serialization error in the handler, or any other exception would increment the failure counter. The assertion fails fast on any error, providing a clear signal.
+- **Exchange count.** Has the handler route completed exactly the expected number of exchanges? For a dispatcher test that sends one message, the expected count is 1.
+- **Error detection.** The route statistics verification checks for failed exchanges automatically. A `ResolveEndpointFailedException` from a bad `toD()` target, a serialization error in the handler, or any other exception is detected, providing a clear signal.
 - **Retry tolerance.** The `repeatOnError()` wrapper retries up to 20 times with 1-second intervals. This accommodates Kafka consumer lag — the dispatcher route might not have consumed and dispatched the message by the time the assertion first runs.
 
 This pattern applies to any route that processes messages internally without producing verifiable output on an external channel: logging routes, metric-emitting routes, routes that call internal services, and — as in this case — dispatcher handler routes.
@@ -637,6 +602,6 @@ This pattern applies to any route that processes messages internally without pro
 - **Message dispatchers centralize type-based routing.** A single Kafka consumer with `toD()` fans out to N handler routes, keeping the routing logic in one place rather than scattered across consuming services.
 - **Whitelist validation is essential with `toD()`.** Because `toD()` constructs endpoint URIs from message content, untrusted values must be validated against a known set before reaching the dynamic expression. The `ALLOWED_EVENT_TYPES` set and the `choice()` guard implement this pattern.
 - **Test every dispatch target, including the fallback.** One test per handler route ensures complete coverage of the routing table. The unknown event type test verifies that the safety net works — it is not optional.
-- **`assertProcessedExchanges` verifies internal routing decisions.** When handler routes do not produce external output, Camel's management API provides exchange counts and error rates as an alternative verification mechanism. This makes the test independent of what the handler actually does.
+- **`verifyCompletedExchanges` verifies internal routing decisions.** When handler routes do not produce external output, Citrus's Camel route statistics verification provides exchange counts as an alternative verification mechanism. This makes the test independent of what the handler actually does.
 - **One template, N tests.** The same message template serves all four test cases. Only the `eventType` variable and the assertion target change — this keeps the test suite focused on the routing decision, not the message structure.
 - **Two runtimes, one test pattern.** The test logic is identical across Quarkus and Spring Boot. Only the bootstrap annotations and dependency injection differ — the given-when-then flow, the template, and the assertions stay the same.

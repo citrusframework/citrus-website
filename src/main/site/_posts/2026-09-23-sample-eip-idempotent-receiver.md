@@ -257,42 +257,17 @@ public interface EipTestSupport extends TestActionSupport {
                 );
     }
 
-    default TestActionBuilder<?> assertProcessedExchanges(
-            String routeId, long expected, CamelContext camelContext) {
-        return assertProcessedExchanges(routeId, it -> it == expected, camelContext);
-    }
-
-    default TestActionBuilder<?> assertProcessedExchanges(
-            String routeId, Predicate<Long> check, CamelContext camelContext) {
+    default TestActionBuilder<?> verifyCompletedExchanges(
+            String routeId, long count, CamelContext camelContext) {
         return repeatOnError()
                 .until((i, context) -> i > 20)
                 .autoSleep(Duration.ofSeconds(1))
                 .actions(
-                    context -> {
-                        ManagedCamelContext managedContext = camelContext
-                                .getCamelContextExtension()
-                                .getContextPlugin(ManagedCamelContext.class);
-                        ManagedRouteMBean routeMBean =
-                                managedContext.getManagedRoute(routeId);
-                        if (routeMBean != null) {
-                            long failed = routeMBean.getExchangesFailed();
-                            if (failed > 0) {
-                                throw new ValidationException(
-                                    "Route '%s' has %d failed exchanges"
-                                            .formatted(routeId, failed));
-                            }
-                            long completed = routeMBean.getExchangesCompleted();
-                            if (!check.test(completed)) {
-                                throw new ValidationException(
-                                    "Route '%s' has %d completed exchanges"
-                                            .formatted(routeId, completed));
-                            }
-                        } else {
-                            throw new CitrusRuntimeException(
-                                "No managed route stats for '%s'"
-                                        .formatted(routeId));
-                        }
-                    }
+                    camel()
+                        .camelContext(camelContext)
+                        .route()
+                        .verifyRouteStats(routeId)
+                        .completed(count)
                 );
     }
 }
@@ -301,9 +276,9 @@ public interface EipTestSupport extends TestActionSupport {
 `waitForCamelRouteStarted` uses Camel's Control Bus to poll the route status every second, up to 20 retries.
 This ensures the idempotent receiver route is fully started — including its Kafka consumer group registration and JDBC repository initialization — before the test sends any messages.
 
-`assertProcessedExchanges` uses Camel's JMX management API to verify how many exchanges a route has completed.
+`verifyCompletedExchanges` uses Citrus's built-in Camel route statistics verification to check how many exchanges a route has completed.
 For the idempotent receiver, this is particularly useful: the route receives *both* messages (the unique one and the duplicate), but only forwards the unique one.
-The management API confirms that both exchanges were consumed from Kafka and processed by the route — even though only one produced output on the downstream topic.
+The route statistics verification confirms that both exchanges were consumed from Kafka and processed by the route — even though only one produced output on the downstream topic.
 
 ## The idempotent receiver tests
 
@@ -369,9 +344,7 @@ class EipTests implements EipTestSupport {
                     .timeout(5000)
             );
 
-            t.then(
-                assertProcessedExchanges("idempotent-receiver", 2, camelContext)
-            );
+            t.then(verifyCompletedExchanges("idempotent-receiver", 2, camelContext));
         }
     }
 }
@@ -399,7 +372,7 @@ If the idempotent receiver failed to drop the duplicate, a second message would 
 Proving a negative — that something did *not* happen — requires a timeout-based approach, and Citrus's `expectTimeout()` provides exactly this.
 
 **Then (third assertion) — verify both exchanges were processed.**
-`assertProcessedExchanges("idempotent-receiver", 2, camelContext)` confirms that the route consumed and processed *both* messages from Kafka.
+`verifyCompletedExchanges("idempotent-receiver", 2, camelContext)` confirms that the route consumed and processed *both* messages from Kafka.
 This is an important distinction: the route processed two exchanges, but the `idempotentConsumer()` EIP filtered one of them before the downstream `to()` step.
 The exchange count of 2 proves that the duplicate was not lost or rejected at the Kafka level — it was consumed and deliberately skipped by the idempotent logic.
 
@@ -471,7 +444,7 @@ Citrus's `expectTimeout()` is purpose-built for this: it attempts to consume fro
 **The route processes more exchanges than it produces output for.**
 In a content-based router or splitter, every input exchange produces at least one output.
 The idempotent receiver deliberately drops exchanges — but they are still *processed* by the route.
-Camel's management API provides visibility into this: `assertProcessedExchanges` confirms that both messages were consumed and processed, even though only one was forwarded downstream.
+Citrus's route statistics verification provides visibility into this: `verifyCompletedExchanges` confirms that both messages were consumed and processed, even though only one was forwarded downstream.
 
 **Consumer groups must be isolated per test.**
 Because Kafka consumer groups track offsets, two tests sharing the same group can interfere with each other.
@@ -487,7 +460,7 @@ The random `id` variable generated by `citrus:randomNumber(4)` ensures each test
 
 - **Idempotent receivers prevent duplicate processing.** With at-least-once delivery, duplicates are inevitable. The idempotent receiver pattern tracks processed message IDs and silently skips messages it has already seen — essential for payment processing, inventory updates, and any operation with side effects.
 - **`expectTimeout()` proves that duplicates are dropped.** Testing a negative — that a message was *not* forwarded — requires a timeout-based assertion. Citrus provides `expectTimeout()` for exactly this purpose, failing the test only if a message unexpectedly appears.
-- **`assertProcessedExchanges` distinguishes consumption from forwarding.** The route consumes both messages from Kafka but forwards only one. Camel's management API reveals the true exchange count, confirming that the duplicate was consumed and deliberately filtered — not lost.
+- **`verifyCompletedExchanges` distinguishes consumption from forwarding.** The route consumes both messages from Kafka but forwards only one. Citrus's route statistics verification reveals the true exchange count, confirming that the duplicate was consumed and deliberately filtered — not lost.
 - **Isolated consumer groups prevent test interference.** Each test method should use its own Kafka consumer group. Shared groups cause unpredictable offset tracking, where one test's `receive()` call may consume messages intended for another.
 - **Random IDs prevent cross-test contamination.** The JDBC idempotent repository is persistent — a duplicate ID from a previous test run would cause false deduplication. Citrus's `citrus:randomNumber()` function generates unique IDs per test execution.
 - **Two runtimes, one test pattern.** Whether you run on Quarkus or Spring Boot, the test structure — send the same message twice, verify one output, confirm no second output, check exchange counts — stays the same. Only the bootstrap annotations and dependency injection differ.

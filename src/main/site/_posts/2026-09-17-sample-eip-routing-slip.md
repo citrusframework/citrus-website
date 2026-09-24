@@ -183,7 +183,7 @@ class RoutingSlipDomesticTest {
         );
 
         t.given(waitForCamelRouteStarted("order-routing-slip", camelContext));
-        t.given(resetRouteStatistics(camelContext, "order-routing-slip",
+        t.given(resetRouteStats(camelContext, "order-routing-slip",
                 "validate-order", "assign-carrier",
                 "hazmat-compliance", "customs-classification"));
 
@@ -195,9 +195,9 @@ class RoutingSlipDomesticTest {
                 .header("kafka.KEY", "${id}")
         );
 
-        t.then(assertProcessedExchanges("order-routing-slip", 1, camelContext));
-        t.then(assertProcessedExchanges("validate-order", 1, camelContext));
-        t.then(assertProcessedExchanges("assign-carrier", 1, camelContext));
+        t.then(verifyCompletedExchanges("order-routing-slip", 1, camelContext));
+        t.then(verifyCompletedExchanges("validate-order", 1, camelContext));
+        t.then(verifyCompletedExchanges("assign-carrier", 1, camelContext));
     }
 }
 ```
@@ -206,13 +206,13 @@ The test follows Citrus's given-when-then structure.
 
 The `given` phase creates test variables — a random order ID, `"US"` as the country, and `false` for hazmat.
 It then waits for the `order-routing-slip` route to be fully started and connected to Kafka.
-The `resetRouteStatistics` call zeroes out the exchange counters on all routes before the test runs — this ensures that counters from earlier tests in the suite do not pollute the assertions.
+The `resetRouteStats` call zeroes out the exchange counters on all routes before the test runs — this ensures that counters from earlier tests in the suite do not pollute the assertions.
 
 The `when` phase sends the order to the `eip.orders.placed` topic.
 The message body is loaded from the `order.json` template, and Citrus resolves the placeholders with the variables defined above.
 
 The `then` phase verifies that exactly the right routes processed exactly one exchange each.
-The `assertProcessedExchanges` utility (described below) uses Camel's managed route beans to check the exchange counter, confirming the routing slip ran to completion.
+The `verifyCompletedExchanges` utility (described below) uses Citrus's Camel route statistics verification to check the exchange counter, confirming the routing slip ran to completion.
 Because the counters were reset before the test, the assertion can use an exact count of `1` instead of `>= 1` — a stronger guarantee that the test is observing only its own exchange.
 
 ## Hazmat order
@@ -233,7 +233,7 @@ class RoutingSlipHazmatTest {
         );
 
         t.given(waitForCamelRouteStarted("order-routing-slip", camelContext));
-        t.given(resetRouteStatistics(camelContext, "order-routing-slip",
+        t.given(resetRouteStats(camelContext, "order-routing-slip",
                 "validate-order", "assign-carrier",
                 "hazmat-compliance", "customs-classification"));
 
@@ -245,9 +245,9 @@ class RoutingSlipHazmatTest {
                 .header("kafka.KEY", "${id}")
         );
 
-        t.then(assertProcessedExchanges("validate-order", 1, camelContext));
-        t.then(assertProcessedExchanges("hazmat-compliance", 1, camelContext));
-        t.then(assertProcessedExchanges("assign-carrier", 1, camelContext));
+        t.then(verifyCompletedExchanges("validate-order", 1, camelContext));
+        t.then(verifyCompletedExchanges("hazmat-compliance", 1, camelContext));
+        t.then(verifyCompletedExchanges("assign-carrier", 1, camelContext));
     }
 }
 ```
@@ -273,7 +273,7 @@ class RoutingSlipInternationalTest {
         );
 
         t.given(waitForCamelRouteStarted("order-routing-slip", camelContext));
-        t.given(resetRouteStatistics(camelContext, "order-routing-slip",
+        t.given(resetRouteStats(camelContext, "order-routing-slip",
                 "validate-order", "assign-carrier",
                 "hazmat-compliance", "customs-classification"));
 
@@ -285,9 +285,9 @@ class RoutingSlipInternationalTest {
                 .header("kafka.KEY", "${id}")
         );
 
-        t.then(assertProcessedExchanges("validate-order", 1, camelContext));
-        t.then(assertProcessedExchanges("customs-classification", 1, camelContext));
-        t.then(assertProcessedExchanges("assign-carrier", 1, camelContext));
+        t.then(verifyCompletedExchanges("validate-order", 1, camelContext));
+        t.then(verifyCompletedExchanges("customs-classification", 1, camelContext));
+        t.then(verifyCompletedExchanges("assign-carrier", 1, camelContext));
     }
 }
 ```
@@ -313,7 +313,7 @@ class RoutingSlipFullPipelineTest {
         );
 
         t.given(waitForCamelRouteStarted("order-routing-slip", camelContext));
-        t.given(resetRouteStatistics(camelContext, "order-routing-slip",
+        t.given(resetRouteStats(camelContext, "order-routing-slip",
                 "validate-order", "assign-carrier",
                 "hazmat-compliance", "customs-classification"));
 
@@ -325,11 +325,11 @@ class RoutingSlipFullPipelineTest {
                 .header("kafka.KEY", "${id}")
         );
 
-        t.then(assertProcessedExchanges("order-routing-slip", 1, camelContext));
-        t.then(assertProcessedExchanges("validate-order", 1, camelContext));
-        t.then(assertProcessedExchanges("hazmat-compliance", 1, camelContext));
-        t.then(assertProcessedExchanges("customs-classification", 1, camelContext));
-        t.then(assertProcessedExchanges("assign-carrier", 1, camelContext));
+        t.then(verifyCompletedExchanges("order-routing-slip", 1, camelContext));
+        t.then(verifyCompletedExchanges("validate-order", 1, camelContext));
+        t.then(verifyCompletedExchanges("hazmat-compliance", 1, camelContext));
+        t.then(verifyCompletedExchanges("customs-classification", 1, camelContext));
+        t.then(verifyCompletedExchanges("assign-carrier", 1, camelContext));
     }
 }
 ```
@@ -337,31 +337,31 @@ class RoutingSlipFullPipelineTest {
 This test sets both `country` to `"DE"` and `hazmat` to `true`, producing the maximum-length routing slip: `direct:validate-order,direct:hazmat-compliance,direct:customs-classification,direct:assign-carrier`.
 
 The `then` phase asserts against *every* route in the slip.
-Each `assertProcessedExchanges` call verifies that the named route completed exactly one exchange without errors.
+Each `verifyCompletedExchanges` call verifies that the named route completed exactly one exchange without errors.
 If any step was skipped or failed, the corresponding assertion catches it.
 
 # Verifying route execution with Camel's management API
 
-The `EipTestSupport` interface provides two core utilities for routing slip tests: resetting route statistics before each test, and asserting the exchange counts afterward.
+The `EipTestSupport` interface provides three core utilities for routing slip tests: resetting route statistics before each test, verifying completed exchange counts, and verifying route statistics with flexible matchers.
 
 ## Resetting route statistics
 
 When multiple tests run in the same suite, exchange counters accumulate across tests.
 If the domestic test increments `validate-order` to 1, the hazmat test would see it at 2 — making exact-count assertions impossible without a reset.
 
-The `resetRouteStatistics` utility zeroes out the counters for a set of routes before each test:
+The `resetRouteStats` utility zeroes out the counters for a set of routes before each test:
 
 ```java
-default TestActionBuilder<?> resetRouteStatistics(
+default TestActionBuilder<?> resetRouteStats(
         CamelContext camelContext, String... routeIds) {
     return sequential()
             .actions(Arrays.stream(routeIds)
-                    .map(routeId -> resetRouteStatistics(routeId, camelContext))
+                    .map(routeId -> resetRouteStats(routeId, camelContext))
                     .collect(Collectors.toSet())
                     .toArray(TestActionBuilder[]::new));
 }
 
-default TestActionBuilder<?> resetRouteStatistics(
+default TestActionBuilder<?> resetRouteStats(
         String routeId, CamelContext camelContext) {
     return () -> (context) -> {
         ManagedCamelContext managedContext = camelContext
@@ -384,60 +384,47 @@ default TestActionBuilder<?> resetRouteStatistics(
 The `reset(true)` call performs a deep reset, cascading to all processors within the route.
 Each test resets *all* routes — not just the ones it expects to hit — so that a route that should *not* be visited stays at zero.
 
-## Asserting exchange counts
+## Verifying completed exchanges
 
-The `assertProcessedExchanges` utility inspects Camel's internal route statistics to verify which steps the message visited.
-Unlike pattern tests that consume output messages, this approach works with `direct:` endpoints that produce no external output:
+The `verifyCompletedExchanges` utility uses Citrus's built-in Camel route statistics verification to check how many exchanges a route has completed.
+Unlike the previous manual JMX approach, this leverages the `citrus-camel` module's `verifyRouteStats()` DSL directly:
 
 ```java
-default TestActionBuilder<?> assertProcessedExchanges(
-        String routeId, long expected, CamelContext camelContext) {
-    return assertProcessedExchanges(routeId, it -> it == expected, camelContext);
-}
-
-default TestActionBuilder<?> assertProcessedExchanges(
-        String routeId, Predicate<Long> check, CamelContext camelContext) {
+default TestActionBuilder<?> verifyCompletedExchanges(
+        String routeId, long count, CamelContext camelContext) {
     return repeatOnError()
             .until((i, context) -> i > 20)
             .autoSleep(Duration.ofSeconds(1))
             .actions(
-                context -> {
-                    ManagedCamelContext managedContext = camelContext
-                            .getCamelContextExtension()
-                            .getContextPlugin(ManagedCamelContext.class);
-                    ManagedRouteMBean routeMBean =
-                            managedContext.getManagedRoute(routeId);
-
-                    if (routeMBean != null) {
-                        long failed = routeMBean.getExchangesFailed();
-                        if (failed > 0) {
-                            throw new ValidationException(
-                                "Route '%s' has %d failed exchanges"
-                                    .formatted(routeId, failed));
-                        }
-                        long completed = routeMBean.getExchangesCompleted();
-                        if (!check.test(completed)) {
-                            throw new ValidationException(
-                                "Route '%s' has %d completed exchanges"
-                                    .formatted(routeId, completed));
-                        }
-                    } else {
-                        throw new CitrusRuntimeException(
-                            "No managed route for routeId '%s'"
-                                .formatted(routeId));
-                    }
-                }
+                camel()
+                    .camelContext(camelContext)
+                    .route()
+                    .verifyRouteStats(routeId)
+                    .completed(count)
             );
 }
 ```
 
-The utility uses Camel's `ManagedCamelContext` to access the `ManagedRouteMBean` for a given route ID.
-Each managed route bean tracks two key counters: completed exchanges and failed exchanges.
-
-The method first checks for failures — if any exchange failed on the route, the test fails immediately with a clear error message.
-Then it checks the completed count against the provided predicate.
-The convenience overload `assertProcessedExchanges(routeId, 1, camelContext)` asserts an exact count — the most common case when route statistics have been reset before each test.
+The `camel().route().verifyRouteStats(routeId).completed(count)` call checks that the route completed exactly the specified number of exchanges.
 The `repeatOnError` wrapper retries up to 20 times with one-second pauses, accommodating the asynchronous nature of Kafka-based processing where there is a delay between sending a message and the route completing its execution.
+
+For more flexible assertions — such as verifying that a route processed *at least* a certain number of exchanges — the `verifyRouteStats` helper accepts a JSON stats expression with Citrus validation matchers:
+
+```java
+default TestActionBuilder<?> verifyRouteStats(
+        String routeId, String stats, CamelContext camelContext) {
+    return repeatOnError()
+            .until((i, context) -> i > 20)
+            .autoSleep(Duration.ofSeconds(1))
+            .actions(
+                camel()
+                    .camelContext(camelContext)
+                    .route()
+                    .verifyRouteStats(routeId)
+                    .stats(stats)
+            );
+}
+```
 
 This approach has an important advantage over output-message verification: it directly proves which processing steps the message visited, not just where it ended up.
 A routing slip with four steps produces no output messages if the steps are all `direct:` endpoints — there is nothing to consume.
@@ -640,7 +627,7 @@ Both runtimes share these common dependencies:
 </dependency>
 ```
 
-The `citrus-camel` module provides the Control Bus integration used in `waitForCamelRouteStarted` and the managed route bean access in `assertProcessedExchanges`.
+The `citrus-camel` module provides the Control Bus integration used in `waitForCamelRouteStarted` and the route statistics verification in `verifyCompletedExchanges`.
 The `citrus-kafka` module provides the Kafka send actions.
 The `citrus-testcontainers` module manages the Docker Compose lifecycle for the Kafka broker.
 
@@ -667,8 +654,8 @@ Unlike single-destination patterns where you check output messages, a routing sl
 
 Here is what Citrus brings to this problem:
 
-- **Reset-and-assert pattern** — The `resetRouteStatistics` utility zeroes out exchange counters before each test, enabling exact-count assertions. Combined with `assertProcessedExchanges`, this proves not only which steps were visited but that each step processed exactly the expected number of exchanges — a stronger guarantee than `>= 1` checks.
-- **Route-level exchange assertions** — The `assertProcessedExchanges` utility uses Camel's `ManagedRouteMBean` to inspect completed and failed exchange counters per route. This directly proves which steps were visited without relying on output messages.
+- **Reset-and-verify pattern** — The `resetRouteStats` utility zeroes out exchange counters before each test, enabling exact-count assertions. Combined with `verifyCompletedExchanges`, this proves not only which steps were visited but that each step processed exactly the expected number of exchanges — a stronger guarantee than `>= 1` checks.
+- **Route-level exchange verification** — The `verifyCompletedExchanges` utility uses Citrus's built-in Camel route statistics verification DSL to check completed exchange counters per route. This directly proves which steps were visited without relying on output messages.
 - **Test variables for data-driven scenarios** — A single `order.json` template serves all four test scenarios. The `${country}` and `${hazmat}` variables drive the routing slip behavior, keeping the tests concise and the intent clear.
 - **Retry-tolerant verification** — The `repeatOnError` wrapper accommodates Kafka's asynchronous processing model, retrying assertions until the route counters reflect the completed exchange.
 - **Multi-runtime portability** — The same test logic runs on Quarkus and Spring Boot. Only the wiring annotations change; the send, wait, and assertion logic stays identical.

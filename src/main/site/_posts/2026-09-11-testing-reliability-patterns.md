@@ -16,7 +16,7 @@ Testing failure scenarios is harder than testing success.
 How do you send a message that triggers a Dead Letter Channel? How do you verify that a duplicate was silently dropped? How do you assert on a route that logs an error but produces no output message? 
 These questions matter because reliability patterns are invisible until something breaks — and production is the worst place to discover they are misconfigured.
 
-[Citrus](https://citrusframework.org) provides the tools to test all of these scenarios: `repeatOnError` for polling DLQ topics, `assertProcessedExchanges` for verifying routes with no output topic, deterministic test data for triggering specific failure conditions, and ordered test methods for building stateful test sequences like deduplication.
+[Citrus](https://citrusframework.org) provides the tools to test all of these scenarios: `repeatOnError` for polling DLQ topics, `camel().route().verifyRouteStats()` for verifying routes with no output topic, deterministic test data for triggering specific failure conditions, and ordered test methods for building stateful test sequences like deduplication.
 
 ![Citrus](/img/assets/testing-reliability-patterns/featured.png){:width="700px" .center-image}
 *AI generated with Google Gemini*
@@ -432,8 +432,8 @@ You can find the complete Circuit Breaker route and test in the [18-testing-mana
 
 Testing reliability patterns means testing failure — deliberately, systematically, and reproducibly. The techniques we covered work together:
 
-- **Dead Letter Channels**: use deterministic IDs that trigger exceptions, `repeatOnError` to poll the DLQ, and assert only on original message fields.
-- **Idempotent Receivers**: use ordered tests to seed and re-send the same event, and `assertProcessedExchanges` to verify the duplicate handler.
+- **Dead Letter Channels**: use deterministic IDs that trigger exceptions, `repeatOnError()` to poll the DLQ, and assert only on original message fields.
+- **Idempotent Receivers**: use ordered tests to seed and re-send the same event, and `camel().route().verifyRouteStats()` to verify the duplicate handler.
 - **Circuit Breakers**: use deterministic IDs that trigger fallback paths, and verify that the fallback output matches the pre-failure message.
 - **Route testability**: extract inline branches into named `direct:` routes so every code path is visible to MBean-based assertions by accessing the route statistics and the number of completed exchanges.
 

@@ -352,37 +352,31 @@ public interface EipTestSupport extends TestActionSupport {
                 );
     }
 
-    default TestActionBuilder<?> assertProcessedExchanges(
-            String routeId, Predicate<Long> check, CamelContext camelContext) {
+    default TestActionBuilder<?> verifyCompletedExchanges(
+            String routeId, long count, CamelContext camelContext) {
         return repeatOnError()
                 .until((i, context) -> i > 20)
                 .autoSleep(Duration.ofSeconds(1))
                 .actions(
-                    context -> {
-                        ManagedCamelContext managedContext = camelContext
-                                .getCamelContextExtension()
-                                .getContextPlugin(ManagedCamelContext.class);
-                        ManagedRouteMBean routeMBean =
-                                managedContext.getManagedRoute(routeId);
-                        if (routeMBean != null) {
-                            long failed = routeMBean.getExchangesFailed();
-                            if (failed > 0) {
-                                throw new ValidationException(
-                                    "Route '%s' has %d failed exchanges"
-                                            .formatted(routeId, failed));
-                            }
-                            long completed = routeMBean.getExchangesCompleted();
-                            if (!check.test(completed)) {
-                                throw new ValidationException(
-                                    "Route '%s' has %d completed exchanges"
-                                            .formatted(routeId, completed));
-                            }
-                        } else {
-                            throw new CitrusRuntimeException(
-                                "No managed route stats for '%s'"
-                                        .formatted(routeId));
-                        }
-                    }
+                    camel()
+                        .camelContext(camelContext)
+                        .route()
+                        .verifyRouteStats(routeId)
+                        .completed(count)
+                );
+    }
+
+    default TestActionBuilder<?> verifyRouteStats(
+            String routeId, String stats, CamelContext camelContext) {
+        return repeatOnError()
+                .until((i, context) -> i > 20)
+                .autoSleep(Duration.ofSeconds(1))
+                .actions(
+                    camel()
+                        .camelContext(camelContext)
+                        .route()
+                        .verifyRouteStats(routeId)
+                        .stats(stats)
                 );
     }
 }
@@ -392,7 +386,8 @@ public interface EipTestSupport extends TestActionSupport {
 It ensures the polling consumer route is fully started before the test produces any test data.
 Without this guard, an order inserted into PostgreSQL might be missed if the SQL consumer has not yet started polling.
 
-`assertProcessedExchanges` uses Camel's JMX management API to check how many exchanges a route has processed.
+`verifyCompletedExchanges` uses Citrus's built-in Camel route statistics verification to check how many exchanges a route has completed.
+For more flexible assertions, `verifyRouteStats` accepts a JSON stats expression with Citrus validation matchers — for example, `@greaterThan(1)@` to verify that a route processed more than one exchange.
 This is particularly useful for polling consumer tests where there is no explicit output message to receive — the timer-based polling consumer logs the message but does not forward it to another endpoint.
 The assertion verifies that the route actually ran and successfully processed exchanges without errors.
 
@@ -436,9 +431,9 @@ class EipTests implements EipTestSupport {
                     .header(KafkaMessageHeaders.MESSAGE_KEY, "${id}")
             );
 
-            t.then(
-                assertProcessedExchanges("polling-consumer", it -> it > 1, camelContext)
-            );
+            t.then(verifyRouteStats("polling-consumer", """
+                    { "exchangesCompleted": "@greaterThan(1)@" }
+                """, camelContext));
         }
     }
 }
@@ -453,8 +448,8 @@ A single order message goes to `kafka:eip.consumer.poll` — the topic that the 
 
 **Then — assert the route processed exchanges.**
 The test does *not* try to receive the message from another Kafka topic, because the polling consumer route only logs the message — it does not forward it anywhere.
-Instead, it uses `assertProcessedExchanges` with a predicate `it -> it > 1`.
-The predicate checks that more than one exchange has completed on the `polling-consumer` route.
+Instead, it uses `verifyRouteStats` with a JSON stats expression `{ "exchangesCompleted": "@greaterThan(1)@" }`.
+The `@greaterThan(1)@` matcher checks that more than one exchange has completed on the `polling-consumer` route.
 Why more than one?
 Because the timer fires repeatedly, producing exchanges even when no message is available (the "no message" branch of the `choice()`).
 The assertion retries until the route has processed at least one exchange *with* the polled message.
@@ -499,9 +494,9 @@ class EipTests implements EipTestSupport {
                     .header(KafkaMessageHeaders.MESSAGE_KEY, "${id}")
             );
 
-            t.then(
-                assertProcessedExchanges("polling-consumer", it -> it > 1, camelContext)
-            );
+            t.then(verifyRouteStats("polling-consumer", """
+                    { "exchangesCompleted": "@greaterThan(1)@" }
+                """, camelContext));
         }
     }
 }
@@ -674,9 +669,9 @@ The `onConsume` status update is a side effect that is just as important as the 
 The test verifies it explicitly with a SQL query after receiving the Kafka message.
 If the `onConsume` query fails silently, the row would be reprocessed on the next poll — a production bug that only a test covering both the output and the side effect can detect.
 
-**`assertProcessedExchanges` provides a fallback verification path.**
+**`verifyRouteStats` provides a fallback verification path.**
 When a polling consumer only logs messages internally (like the timer-based variant), there is no output endpoint to receive from.
-Camel's management API lets the test verify that the route processed exchanges without errors — a useful technique for any route that does not produce verifiable output on an external endpoint.
+Citrus's route statistics verification lets the test verify that the route processed exchanges without errors — a useful technique for any route that does not produce verifiable output on an external endpoint.
 
 ## Key takeaways
 
@@ -685,5 +680,5 @@ Camel's management API lets the test verify that the route processed exchanges w
 - **SQL polling with `onConsume` is a two-phase operation.** The SELECT reads the row; the `onConsume` UPDATE marks it as processed. Both phases must be verified in the test — the Kafka output proves the read worked, and the SQL assertion proves the update ran.
 - **`@variable(name)@` captures dynamic values from the system under test.** Database-generated IDs cannot be predicted by the test. Citrus's variable extraction lets you capture these values from the first assertion and use them in subsequent verifications.
 - **`repeatOnError()` accommodates poll timing naturally.** Rather than inserting fixed sleeps matching the poll interval, Citrus retries the assertion until it succeeds or the retry limit is reached — making tests both reliable and as fast as possible.
-- **`assertProcessedExchanges` verifies routes without external output.** When a polling consumer only logs or internally processes messages, Camel's management API provides exchange counts and error rates as an alternative verification mechanism.
+- **`verifyRouteStats` verifies routes without external output.** When a polling consumer only logs or internally processes messages, Citrus's Camel route statistics verification provides exchange counts as an alternative verification mechanism, with support for flexible matchers like `@greaterThan()@`.
 - **Three runtimes, one test pattern.** Whether you run on Quarkus, Spring Boot, or YAML DSL with Camel JBang, the test structure — seed the source, wait for the poll, verify the output and side effects — stays the same. Only the bootstrap annotations and infrastructure wiring change.

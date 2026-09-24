@@ -204,6 +204,9 @@ class LoadBalancerTest {
         );
 
         t.given(waitForCamelRouteStarted("load-balancer-demo", camelContext));
+        t.given(resetRouteStats(camelContext, "load-balancer-demo",
+                "fulfillment-center-east", "fulfillment-center-central",
+                "fulfillment-center-west"));
 
         t.when(
             iterate()
@@ -218,10 +221,10 @@ class LoadBalancerTest {
                 )
         );
 
-        t.then(assertProcessedExchanges("load-balancer-demo", it -> it >= 3, camelContext));
-        t.then(assertProcessedExchanges("fulfillment-center-east", it -> it >= 1, camelContext));
-        t.then(assertProcessedExchanges("fulfillment-center-central", it -> it >= 1, camelContext));
-        t.then(assertProcessedExchanges("fulfillment-center-west", it -> it >= 1, camelContext));
+        t.then(verifyCompletedExchanges("load-balancer-demo", 3, camelContext));
+        t.then(verifyCompletedExchanges("fulfillment-center-east", 1, camelContext));
+        t.then(verifyCompletedExchanges("fulfillment-center-central", 1, camelContext));
+        t.then(verifyCompletedExchanges("fulfillment-center-west", 1, camelContext));
     }
 }
 ```
@@ -247,67 +250,43 @@ Sending exactly three, with round-robin, guarantees that each fulfillment center
 ## The then phase — verifying distribution
 
 The `then` phase is where the load-balancer-specific verification happens.
-It consists of four `assertProcessedExchanges` calls:
+It consists of four `verifyCompletedExchanges` calls:
 
-1. `load-balancer-demo` must have processed at least 3 exchanges — confirming all three messages were consumed from Kafka and routed.
-2. `fulfillment-center-east` must have processed at least 1 exchange.
-3. `fulfillment-center-central` must have processed at least 1 exchange.
-4. `fulfillment-center-west` must have processed at least 1 exchange.
+1. `load-balancer-demo` must have completed exactly 3 exchanges — confirming all three messages were consumed from Kafka and routed.
+2. `fulfillment-center-east` must have completed exactly 1 exchange.
+3. `fulfillment-center-central` must have completed exactly 1 exchange.
+4. `fulfillment-center-west` must have completed exactly 1 exchange.
 
-The use of `it -> it >= 1` rather than `it -> it == 1` is deliberate.
-While round-robin guarantees exactly one message per center when sending three, previous test runs in the same JVM (other test classes also send to the load-balanced topic) may have already incremented the counters.
-Using `>= 1` makes the assertion resilient to execution order within the test suite.
+The `resetRouteStats` call in the `given` phase zeroes out exchange counters before the test runs, enabling exact-count assertions.
+Round-robin guarantees exactly one message per center when sending three, and the reset ensures counters from earlier tests in the suite do not pollute the assertions.
 
 If any of the four assertions fail — for example, if a bug in the route configuration accidentally sent all three messages to East — the test catches it immediately.
 
 # Verifying route execution with Camel's management API
 
-The `assertProcessedExchanges` utility is the core verification mechanism for the load balancer test.
-It inspects Camel's internal route statistics through the JMX management API:
+The `verifyCompletedExchanges` utility is the core verification mechanism for the load balancer test.
+It uses Citrus's built-in Camel route statistics verification DSL:
 
 ```java
 public interface EipTestSupport extends TestActionSupport {
 
-    default TestActionBuilder<?> assertProcessedExchanges(
-            String routeId, Predicate<Long> check, CamelContext camelContext) {
+    default TestActionBuilder<?> verifyCompletedExchanges(
+            String routeId, long count, CamelContext camelContext) {
         return repeatOnError()
                 .until((i, context) -> i > 20)
                 .autoSleep(Duration.ofSeconds(1))
                 .actions(
-                    context -> {
-                        ManagedCamelContext managedContext = camelContext
-                                .getCamelContextExtension()
-                                .getContextPlugin(ManagedCamelContext.class);
-                        ManagedRouteMBean routeMBean =
-                                managedContext.getManagedRoute(routeId);
-
-                        if (routeMBean != null) {
-                            long failed = routeMBean.getExchangesFailed();
-                            if (failed > 0) {
-                                throw new ValidationException(
-                                    "Route '%s' has %d failed exchanges"
-                                        .formatted(routeId, failed));
-                            }
-                            long completed = routeMBean.getExchangesCompleted();
-                            if (!check.test(completed)) {
-                                throw new ValidationException(
-                                    "Route '%s' has %d completed exchanges"
-                                        .formatted(routeId, completed));
-                            }
-                        } else {
-                            throw new CitrusRuntimeException(
-                                "No managed route for routeId '%s'"
-                                    .formatted(routeId));
-                        }
-                    }
+                    camel()
+                        .camelContext(camelContext)
+                        .route()
+                        .verifyRouteStats(routeId)
+                        .completed(count)
                 );
     }
 }
 ```
 
-The utility retrieves the `ManagedRouteMBean` for the given route ID and checks two counters.
-First, it verifies that no exchanges failed — a load balancer that silently drops a message to a failing endpoint should not pass the test.
-Then it verifies the completed count against the provided predicate.
+The `camel().route().verifyRouteStats(routeId).completed(count)` call checks that the route completed exactly the specified number of exchanges.
 
 The `repeatOnError` wrapper retries up to 20 times with one-second pauses.
 This accommodates the asynchronous nature of Kafka-based processing: after sending three messages, there is a delay before all three have been consumed, routed through the load balancer, and fully processed by the downstream centers.
@@ -515,7 +494,7 @@ Both runtimes share these common dependencies:
 </dependency>
 ```
 
-The `citrus-camel` module provides the Control Bus integration used in `waitForCamelRouteStarted` and the managed route bean access in `assertProcessedExchanges`.
+The `citrus-camel` module provides the Control Bus integration used in `waitForCamelRouteStarted` and the route statistics verification in `verifyCompletedExchanges`.
 The `citrus-kafka` module provides the Kafka send actions.
 The `citrus-testcontainers` module manages the Docker Compose lifecycle for the Kafka broker.
 
@@ -543,8 +522,8 @@ Unlike content-based routing where a single message reveals the routing decision
 Here is what Citrus brings to this problem:
 
 - **Multi-message send with a loop** — A `for` loop sends three messages, one for each downstream endpoint in the round-robin cycle. Each message gets a fresh `id` via `citrus:randomNumber(4)`, ensuring unique order identities.
-- **Route-level exchange assertions** — Four `assertProcessedExchanges` calls verify the distribution: the load balancer route processed all three messages, and each fulfillment center received at least one. This proves the round-robin strategy is working.
-- **Failure detection** — The `assertProcessedExchanges` utility checks for failed exchanges before checking completed counts. If a downstream center threw an exception, the test fails immediately with a clear error — not a silent miscount.
+- **Route-level exchange verification** — Four `verifyCompletedExchanges` calls verify the distribution: the load balancer route processed all three messages, and each fulfillment center received exactly one. Combined with `resetRouteStats`, this proves the round-robin strategy is working with exact counts.
+- **Failure detection** — The `verifyCompletedExchanges` utility uses Citrus's route statistics verification, which checks for failed exchanges before checking completed counts. If a downstream center threw an exception, the test fails immediately with a clear error — not a silent miscount.
 - **Retry-tolerant verification** — The `repeatOnError` wrapper accommodates the delay between sending Kafka messages and the route completing its processing, retrying assertions until the counters stabilize.
 - **Multi-runtime portability** — The same test logic runs on Quarkus and Spring Boot. Only the wiring annotations change; the send loop, wait, and assertion logic stays identical.
 
