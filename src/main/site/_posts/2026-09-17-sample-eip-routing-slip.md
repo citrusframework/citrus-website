@@ -393,8 +393,7 @@ Unlike the previous manual JMX approach, this leverages the `citrus-camel` modul
 default TestActionBuilder<?> verifyCompletedExchanges(
         String routeId, long count, CamelContext camelContext) {
     return repeatOnError()
-            .until((i, context) -> i > 20)
-            .autoSleep(Duration.ofSeconds(1))
+            .times(20)
             .actions(
                 camel()
                     .camelContext(camelContext)
@@ -414,8 +413,7 @@ For more flexible assertions — such as verifying that a route processed *at le
 default TestActionBuilder<?> verifyRouteStats(
         String routeId, String stats, CamelContext camelContext) {
     return repeatOnError()
-            .until((i, context) -> i > 20)
-            .autoSleep(Duration.ofSeconds(1))
+            .times(20)
             .actions(
                 camel()
                     .camelContext(camelContext)
@@ -441,8 +439,7 @@ The example addresses this with a reusable utility that uses Camel's Control Bus
 default TestActionBuilder<?> waitForCamelRouteStarted(
         String routeId, CamelContext camelContext) {
     return repeatOnError()
-            .until((i, context) -> i > 20)
-            .autoSleep(Duration.ofSeconds(1))
+            .times(20)
             .actions(
                 camel().camelContext(camelContext)
                         .controlBus()

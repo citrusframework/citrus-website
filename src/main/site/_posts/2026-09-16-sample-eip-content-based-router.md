@@ -296,8 +296,7 @@ public interface EipTestSupport extends TestActionSupport {
     default TestActionBuilder<?> waitForCamelRouteStarted(
             String routeId, CamelContext camelContext) {
         return repeatOnError()
-                .until((i, context) -> i > 20)
-                .autoSleep(Duration.ofSeconds(1))
+                .times(20)
                 .actions(
                     camel().camelContext(camelContext)
                             .controlBus()
@@ -342,7 +341,7 @@ public void shouldRouteDomesticOrder() {
 
     t.then(
         repeatOnError()
-            .until((i, context) -> i > 25)
+            .times(25)
             .autoSleep(Duration.ofMillis(500))
             .actions(
                 receive()
@@ -394,7 +393,7 @@ public void shouldRouteInternationalOrder() {
 
     t.then(
         repeatOnError()
-            .until((i, context) -> i > 25)
+            .times(25)
             .autoSleep(Duration.ofMillis(500))
             .actions(
                 receive()
@@ -439,7 +438,7 @@ public void shouldRouteHazmatOrder() {
 
     t.then(
         repeatOnError()
-            .until((i, context) -> i > 25)
+            .times(25)
             .autoSleep(Duration.ofMillis(500))
             .actions(
                 receive()

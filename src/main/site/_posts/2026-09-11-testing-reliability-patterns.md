@@ -125,8 +125,7 @@ public void shouldRouteFailedOrderToDLQ() {
 
     t.then(
         repeatOnError()
-            .until((i, context) -> i > 10)
-            .autoSleep(Duration.ofSeconds(1))
+            .times(10)
             .actions(
                 receive()
                     .endpoint("kafka:eip.orders.dlq?consumerGroup=citrus-dlq-group")

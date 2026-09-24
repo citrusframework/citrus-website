@@ -156,8 +156,7 @@ class SqlPollingConsumerTest {
 
         t.then(
             repeatOnError()
-                .until((i, context) -> i > 15)
-                .autoSleep(Duration.ofSeconds(1))
+                .times(15)
                 .actions(
                     receive()
                         .endpoint("kafka:eip.orders.placed?consumerGroup=citrus-placed-group")
@@ -206,8 +205,7 @@ The `sql(dataSource).statement(...)` action executes a SQL INSERT using the inje
 ```java
 t.then(
     repeatOnError()
-        .until((i, context) -> i > 15)
-        .autoSleep(Duration.ofSeconds(1))
+        .times(15)
         .actions(
             receive()
                 .endpoint("kafka:eip.orders.placed?consumerGroup=citrus-placed-group")
@@ -326,8 +324,7 @@ actions:
 
   # Receive from Kafka and capture the generated ID
   - repeatOnError:
-      until: i >= 15
-      autoSleep: 1000
+      times: 15
       actions:
       - receive:
           endpoint: >-
@@ -421,8 +418,7 @@ class TransactionalOutboxTest {
         // Verify the payment row was written
         t.then(
             repeatOnError()
-                .until((i, context) -> i > 15)
-                .autoSleep(Duration.ofSeconds(1))
+                .times(15)
                 .actions(
                     sql(dataSource)
                         .query()
@@ -436,7 +432,7 @@ class TransactionalOutboxTest {
         // Verify the outbox event was published to Kafka
         t.then(
             repeatOnError()
-                .until((i, context) -> i > 20)
+                .times(20)
                 .autoSleep(Duration.ofSeconds(2))
                 .actions(
                     receive()
@@ -455,8 +451,7 @@ class TransactionalOutboxTest {
         // Verify the outbox row was marked as published
         t.then(
             repeatOnError()
-                .until((i, context) -> i > 15)
-                .autoSleep(Duration.ofSeconds(1))
+                .times(15)
                 .actions(
                     sql(dataSource)
                         .query()

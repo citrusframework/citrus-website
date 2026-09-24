@@ -116,8 +116,7 @@ Here is the code for the helper method `waitForCamelRouteStarted()`:
 ```java
 default TestActionBuilder<?> waitForCamelRouteStarted(String routeId, CamelContext camelContext) {
     return repeatOnError()
-            .until((i, context) -> i > 20)
-            .autoSleep(Duration.ofSeconds(1))
+            .times(20)
             .actions(
                 camel().camelContext(camelContext)
                         .controlBus()

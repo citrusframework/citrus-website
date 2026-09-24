@@ -319,8 +319,7 @@ public interface EipTestSupport extends TestActionSupport {
     default TestActionBuilder<?> waitForCamelRouteStarted(
             String routeId, CamelContext camelContext) {
         return repeatOnError()
-                .until((i, context) -> i > 20)
-                .autoSleep(Duration.ofSeconds(1))
+                .times(20)
                 .actions(
                     camel().camelContext(camelContext)
                             .controlBus()
@@ -384,8 +383,7 @@ class EipTests implements EipTestSupport {
 
             t.then(
                 repeatOnError()
-                    .until((i, context) -> i > 15)
-                    .autoSleep(Duration.ofSeconds(1))
+                    .times(15)
                     .actions(
                         sql(dataSource)
                             .query()
@@ -398,7 +396,7 @@ class EipTests implements EipTestSupport {
 
             t.then(
                 repeatOnError()
-                    .until((i, context) -> i > 20)
+                    .times(20)
                     .autoSleep(Duration.ofSeconds(2))
                     .actions(
                         receive()
@@ -417,8 +415,7 @@ class EipTests implements EipTestSupport {
 
             t.then(
                 repeatOnError()
-                    .until((i, context) -> i > 15)
-                    .autoSleep(Duration.ofSeconds(1))
+                    .times(15)
                     .actions(
                         sql(dataSource)
                             .query()
