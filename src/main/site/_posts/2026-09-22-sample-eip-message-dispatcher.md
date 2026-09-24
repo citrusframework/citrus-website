@@ -180,141 +180,6 @@ The distinction matters for testing:
 A content-based router test sends a message and receives it from the correct output topic — a 1:1 input-to-output verification.
 A message dispatcher test sends a message and verifies that the correct *handler route* processed it — a verification against Camel's internal route management, not an external channel.
 
-## Test infrastructure
-
-The dispatcher requires only Kafka — no databases, caches, or external services.
-A Docker Compose stack provisions a Kafka broker and a Kafka UI for monitoring:
-
-```yaml
-services:
-  kafka:
-    image: docker.io/apache/kafka:latest
-    ports:
-      - "9092:9092"
-    # ... KRaft configuration ...
-
-  kafka-ui:
-    image: docker.io/provectuslabs/kafka-ui:latest
-    ports:
-      - "8090:8080"
-    depends_on:
-      kafka:
-        condition: service_healthy
-```
-
-The `BeforeSuite` starts the compose stack and waits for the Kafka UI to become reachable; the `AfterSuite` stops the Camel context and tears down the containers.
-
-### Quarkus infrastructure setup
-
-```java
-@CitrusConfiguration
-public class EipInfraSetup implements TestActionSupport {
-
-    @BindToRegistry
-    public BeforeSuite startInfra() {
-        return beforeSuite().actions(
-                    testcontainers().compose()
-                            .up("_infra/compose.yaml")
-                            .containerName("eip-infra")
-                            .autoRemove(false),
-                    waitFor()
-                            .http()
-                            .url("http://localhost:8090")
-                            .seconds(25)
-                ).build();
-    }
-
-    @BindToRegistry
-    public AfterSuite stopInfra() {
-        return afterSuite().actions(
-                    camel().camelContext().stop(),
-                    testcontainers().compose()
-                            .down()
-                            .containerName("eip-infra")
-                ).build();
-    }
-}
-```
-
-### Spring Boot infrastructure setup
-
-```java
-@Configuration
-public class EipInfraSetup implements TestActionSupport {
-
-    @Bean
-    public BeforeSuite startInfra() {
-        return beforeSuite().actions(
-                    testcontainers().compose()
-                            .up("_infra/compose.yaml")
-                            .containerName("eip-infra")
-                            .autoRemove(false),
-                    waitFor()
-                            .http()
-                            .url("http://localhost:8090")
-                            .seconds(25)
-                ).build();
-    }
-
-    @Bean
-    public AfterSuite stopInfra() {
-        return afterSuite().actions(
-                    camel().camelContext().stop(),
-                    testcontainers().compose()
-                            .down()
-                            .containerName("eip-infra")
-                ).build();
-    }
-}
-```
-
-## Shared test utilities
-
-Both runtimes implement the `EipTestSupport` interface with two methods that are particularly useful for dispatcher tests.
-
-```java
-public interface EipTestSupport extends TestActionSupport {
-
-    default TestActionBuilder<?> waitForCamelRouteStarted(
-            String routeId, CamelContext camelContext) {
-        return repeatOnError()
-                .times(20)
-                .actions(
-                    camel().camelContext(camelContext)
-                            .controlBus()
-                            .route(routeId)
-                            .status()
-                            .result(ServiceStatus.Started),
-                    sleep().seconds(5)
-                );
-    }
-
-    default TestActionBuilder<?> verifyCompletedExchanges(
-            String routeId, long count, CamelContext camelContext) {
-        return repeatOnError()
-                .times(20)
-                .actions(
-                    camel()
-                        .camelContext(camelContext)
-                        .route()
-                        .verifyRouteStats(routeId)
-                        .completed(count)
-                );
-    }
-}
-```
-
-`waitForCamelRouteStarted` uses Camel's Control Bus to poll the dispatcher route's status.
-The dispatcher must be fully started — consuming from Kafka and ready to dispatch — before the test sends any events.
-
-`verifyCompletedExchanges` is the core verification mechanism for dispatcher tests.
-Since the handler routes only log messages internally (they do not publish to external endpoints), there is no output topic to receive from.
-Instead, the test uses Citrus's built-in Camel route statistics verification: how many exchanges has a specific handler route completed?
-The call `verifyCompletedExchanges(routeId, 1, camelContext)` checks that exactly one exchange was completed — the natural assertion for "this handler was invoked exactly once."
-
-This approach makes the test independent of the handler's internal behavior.
-Whether the handler logs, writes to a database, or calls an API, the test verifies the *routing decision* — which handler was selected — not the handler's output.
-
 ## Message template
 
 The tests use a JSON template with Citrus variable placeholders:
@@ -542,17 +407,6 @@ class EipTests implements EipTestSupport {
 }
 ```
 
-The test logic is identical across both runtimes.
-The differences are limited to the class-level annotations and dependency injection:
-
-| Concern                | Quarkus                                | Spring Boot                                |
-|------------------------|----------------------------------------|--------------------------------------------|
-| Test bootstrap         | `@QuarkusTest`                         | `@SpringBootTest` + `@CamelSpringBootTest` |
-| Citrus integration     | `@CitrusSupport`                       | `@CitrusSpringSupport`                     |
-| CamelContext injection | `@Inject` + `@BindToRegistry`          | `@Autowired`                               |
-| TestCaseRunner scope   | Class-level field                      | Nested class field with `@CitrusResource`  |
-| Infrastructure config  | `@CitrusConfiguration` auto-discovered | `@ContextConfiguration` explicit           |
-
 ## What the tests prove
 
 The four tests together form a complete coverage of the dispatcher's routing logic:
@@ -594,6 +448,8 @@ The message dispatcher's handlers do not produce external output, so `receive()`
 - **Retry tolerance.** The `repeatOnError()` wrapper retries up to 20 times with 1-second intervals. This accommodates Kafka consumer lag — the dispatcher route might not have consumed and dispatched the message by the time the assertion first runs.
 
 This pattern applies to any route that processes messages internally without producing verifiable output on an external channel: logging routes, metric-emitting routes, routes that call internal services, and — as in this case — dispatcher handler routes.
+
+For the test infrastructure setup, shared test utilities, runtime wiring, dependencies, and how to run the tests, see the [Camel EIP examples](/samples/camel-eip/) overview page.
 
 ## Key takeaways
 

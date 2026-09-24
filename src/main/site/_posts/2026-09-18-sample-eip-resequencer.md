@@ -101,110 +101,9 @@ This means test execution time is bounded by this timeout — your test must be 
 This interaction between batch size and timeout is exactly the kind of behavior that unit tests with mocked endpoints cannot capture.
 An integration test with real Kafka infrastructure surfaces the actual timing behavior and proves that the resequencer works end-to-end.
 
-## Test infrastructure
-
-Before diving into the test code, here is how the test infrastructure is set up.
-Both runtimes use a shared pattern: a `BeforeSuite` action starts a Kafka broker via Testcontainers Docker Compose, and an `AfterSuite` action tears it down.
-
-### Quarkus infrastructure setup
-
-```java
-@CitrusConfiguration
-public class EipInfraSetup {
-
-    @BindToRegistry
-    public BeforeSuite beforeSuite() {
-        return new TestDesigner().beforeSuite()
-            .actions(
-                testcontainers()
-                    .compose()
-                    .up()
-                    .file("_infra/compose.yaml")
-                    .waitFor("kafka", HttpWaitStrategy.newInstance()
-                        .url("http://localhost:8090/")
-                        .timeout(60000L))
-            );
-    }
-
-    @BindToRegistry
-    public AfterSuite afterSuite(CamelContext camelContext) {
-        return new TestDesigner().afterSuite()
-            .actions(
-                camel().camelContext(camelContext).stop(),
-                testcontainers()
-                    .compose()
-                    .down()
-            );
-    }
-}
-```
-
-### Spring Boot infrastructure setup
-
-```java
-@Configuration
-public class EipInfraSetup {
-
-    @Bean
-    public BeforeSuite beforeSuite() {
-        return new TestDesigner().beforeSuite()
-            .actions(
-                testcontainers()
-                    .compose()
-                    .up()
-                    .file("_infra/compose.yaml")
-                    .waitFor("kafka", HttpWaitStrategy.newInstance()
-                        .url("http://localhost:8090/")
-                        .timeout(60000L))
-            );
-    }
-
-    @Bean
-    public AfterSuite afterSuite(CamelContext camelContext) {
-        return new TestDesigner().afterSuite()
-            .actions(
-                camel().camelContext(camelContext).stop(),
-                testcontainers()
-                    .compose()
-                    .down()
-            );
-    }
-}
-```
-
-The difference is purely in the annotation style: `@CitrusConfiguration` with `@BindToRegistry` for Quarkus CDI, versus `@Configuration` with `@Bean` for Spring's application context.
-The infrastructure lifecycle — start Kafka, wait for readiness, run tests, stop Camel, tear down containers — is identical.
-
 ## The resequencer test
 
 The test scenario is straightforward: send three messages with out-of-order sequence numbers (3, 1, 2), then verify that the resequencer produces output on the resequenced topic.
-
-### A shared test utility
-
-Both runtimes implement the `EipTestSupport` interface, which provides a reusable `waitForCamelRouteStarted` method:
-
-```java
-public interface EipTestSupport extends TestActionSupport {
-
-    default TestActionBuilder<?> waitForCamelRouteStarted(
-            String routeId, CamelContext camelContext) {
-        return repeatOnError()
-                .times(20)
-                .actions(
-                    camel().camelContext(camelContext)
-                            .controlBus()
-                            .route(routeId)
-                            .status()
-                            .result(ServiceStatus.Started),
-                    sleep().seconds(5)
-                );
-    }
-}
-```
-
-This utility uses Camel's Control Bus to poll the route status every second, up to 20 retries.
-It ensures the `batch-resequencer` route is fully started and consuming from Kafka before the test sends any messages.
-Without this guard, messages sent before the route is ready would be lost.
 
 ### Message template
 
@@ -418,17 +317,6 @@ class EipTests implements EipTestSupport {
 }
 ```
 
-The test logic is identical.
-The differences live entirely in the test class annotations and dependency injection:
-
-| Concern                | Quarkus                                | Spring Boot                                |
-|------------------------|----------------------------------------|--------------------------------------------|
-| Test bootstrap         | `@QuarkusTest`                         | `@SpringBootTest` + `@CamelSpringBootTest` |
-| Citrus integration     | `@CitrusSupport`                       | `@CitrusSpringSupport`                     |
-| CamelContext injection | `@Inject` + `@BindToRegistry`          | `@Autowired`                               |
-| TestCaseRunner scope   | Class-level field                      | Nested class field with `@CitrusResource`  |
-| Infrastructure config  | `@CitrusConfiguration` auto-discovered | `@ContextConfiguration` explicit           |
-
 ## Why resequencer tests need patience
 
 Unlike a content-based router or a wire tap, where the output appears almost immediately after the input, a batch resequencer deliberately introduces delay.
@@ -445,6 +333,8 @@ If the retry window were shorter than the batch timeout, the test would fail int
 The batch size is 10, but the test sends only 3 messages.
 This forces the resequencer to rely on the timeout rather than the batch size to flush.
 It is a deliberate test design choice: it verifies that the timeout mechanism works correctly, which is the more common production scenario (batches rarely fill to capacity under real workloads).
+
+For the test infrastructure setup, shared test utilities, runtime wiring, dependencies, and how to run the tests, see the [Camel EIP examples](/samples/camel-eip/) overview page.
 
 ## Key takeaways
 

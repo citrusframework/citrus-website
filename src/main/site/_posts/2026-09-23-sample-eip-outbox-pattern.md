@@ -206,137 +206,6 @@ The `published` column defaults to `false` — the outbox publisher's SELECT que
 
 The partial index `idx_outbox_unpublished` is a performance optimization: it covers only rows with `published = false`, so the polling query's execution plan remains efficient even as the table grows with millions of published rows.
 
-## Test infrastructure
-
-The tests require Kafka for message transport and PostgreSQL for the transactional writes and the outbox table.
-A Docker Compose stack provisions both:
-
-```yaml
-services:
-  kafka:
-    image: docker.io/apache/kafka:latest
-    ports:
-      - "9092:9092"
-    # ... KRaft configuration ...
-
-  kafka-ui:
-    image: docker.io/provectuslabs/kafka-ui:latest
-    ports:
-      - "8090:8080"
-    depends_on:
-      kafka:
-        condition: service_healthy
-
-  postgres:
-    image: docker.io/library/postgres:16-alpine
-    ports:
-      - "5432:5432"
-    environment:
-      - POSTGRES_DB=eipdb
-      - POSTGRES_USER=eipuser
-      - POSTGRES_PASSWORD=eippass
-    volumes:
-      - ./postgres/init-schemas.sql:/docker-entrypoint-initdb.d/01-init-schemas.sql:Z
-```
-
-The PostgreSQL container mounts the init script that creates the `payments` schema and both tables at startup.
-A `BeforeSuite` action starts the compose stack and waits for readiness; an `AfterSuite` tears it down.
-
-### Quarkus infrastructure setup
-
-```java
-@CitrusConfiguration
-public class EipInfraSetup implements TestActionSupport {
-
-    @BindToRegistry
-    public BeforeSuite startInfra() {
-        return beforeSuite().actions(
-                    testcontainers().compose()
-                            .up("_infra/compose.yaml")
-                            .containerName("eip-infra")
-                            .autoRemove(false),
-                    waitFor()
-                            .http()
-                            .url("http://localhost:8090")
-                            .seconds(25)
-                ).build();
-    }
-
-    @BindToRegistry
-    public AfterSuite stopInfra() {
-        return afterSuite().actions(
-                    camel().camelContext().stop(),
-                    testcontainers().compose()
-                            .down()
-                            .containerName("eip-infra")
-                ).build();
-    }
-}
-```
-
-### Spring Boot infrastructure setup
-
-```java
-@Configuration
-public class EipInfraSetup implements TestActionSupport {
-
-    @Bean
-    public BeforeSuite startInfra() {
-        return beforeSuite().actions(
-                    testcontainers().compose()
-                            .up("_infra/compose.yaml")
-                            .containerName("eip-infra")
-                            .autoRemove(false),
-                    waitFor()
-                            .http()
-                            .url("http://localhost:8090")
-                            .seconds(25)
-                ).build();
-    }
-
-    @Bean
-    public AfterSuite stopInfra() {
-        return afterSuite().actions(
-                    camel().camelContext().stop(),
-                    testcontainers().compose()
-                            .down()
-                            .containerName("eip-infra")
-                ).build();
-    }
-}
-```
-
-The `waitFor().http()` call blocks until the Kafka UI is reachable on port 8090.
-Since the UI depends on Kafka and all containers share the same compose lifecycle, this is a reliable proxy for the entire stack being ready — including PostgreSQL, which starts faster than Kafka.
-
-## Shared test utilities
-
-Both runtimes use a shared `EipTestSupport` interface that provides reusable helper methods for waiting on route startup and verifying exchange counts.
-
-```java
-public interface EipTestSupport extends TestActionSupport {
-
-    default TestActionBuilder<?> waitForCamelRouteStarted(
-            String routeId, CamelContext camelContext) {
-        return repeatOnError()
-                .times(20)
-                .actions(
-                    camel().camelContext(camelContext)
-                            .controlBus()
-                            .route(routeId)
-                            .status()
-                            .result(ServiceStatus.Started),
-                    sleep().seconds(5)
-                );
-    }
-}
-```
-
-`waitForCamelRouteStarted` uses Camel's Control Bus to poll the route status every second, up to 20 retries.
-The outbox test waits for *two* routes — `transactional-client` and `outbox-publisher` — because both must be running before the test sends a payment request.
-If the transactional route has not started, the Kafka message sits unprocessed.
-If the outbox publisher has not started, the event sits in the outbox table and never reaches Kafka.
-
 ## The outbox pattern test
 
 The test exercises the full pipeline: send a payment request to Kafka, verify the payment record in PostgreSQL, verify the event on the downstream Kafka topic, and confirm the outbox row was marked as published.
@@ -580,6 +449,8 @@ This is the kind of subtle, asynchronous bug that only an end-to-end integration
 Unlike most EIP tests that wait for a single route, the outbox test must wait for both `transactional-client` and `outbox-publisher`.
 Omitting the wait for either route produces different failure modes: a missing transactional route means the Kafka message is never consumed; a missing outbox publisher means the event is written to the database but never published.
 The separate `waitForCamelRouteStarted` calls for each route make the test's dependencies explicit.
+
+For the test infrastructure setup, shared test utilities, runtime wiring, dependencies, and how to run the tests, see the [Camel EIP examples](/samples/camel-eip/) overview page.
 
 ## Key takeaways
 

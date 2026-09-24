@@ -166,107 +166,7 @@ By using identical variables in both templates, the test implicitly asserts that
 The `status` field in the output template has no corresponding variable in the input.
 It is hardcoded to `"NEW"` because the translator adds it — this verifies that the route correctly injects default values that the external system does not provide.
 
-## Test infrastructure
-
-Both runtimes use a `BeforeSuite`/`AfterSuite` pattern to manage the test infrastructure lifecycle.
-The Docker Compose stack includes Kafka and Redis (Redis is used by other transformation patterns in the same example project, but the message translator test only needs Kafka).
-
-### Quarkus infrastructure setup
-
-```java
-@CitrusConfiguration
-public class EipInfraSetup implements TestActionSupport {
-
-    @BindToRegistry
-    public BeforeSuite startInfra() {
-        return beforeSuite().actions(
-                    testcontainers().compose()
-                            .up("_infra/compose.yaml")
-                            .containerName("eip-infra")
-                            .autoRemove(false),
-                    waitFor()
-                            .http()
-                            .url("http://localhost:8090")
-                            .seconds(25)
-                ).build();
-    }
-
-    @BindToRegistry
-    public AfterSuite stopInfra() {
-        return afterSuite().actions(
-                    camel().camelContext().stop(),
-                    testcontainers().compose()
-                            .down()
-                            .containerName("eip-infra")
-                ).build();
-    }
-}
-```
-
-### Spring Boot infrastructure setup
-
-```java
-@Configuration
-public class EipInfraSetup implements TestActionSupport {
-
-    @Bean
-    public BeforeSuite startInfra() {
-        return beforeSuite().actions(
-                    testcontainers().compose()
-                            .up("_infra/compose.yaml")
-                            .containerName("eip-infra")
-                            .autoRemove(false),
-                    waitFor()
-                            .http()
-                            .url("http://localhost:8090")
-                            .seconds(25)
-                ).build();
-    }
-
-    @Bean
-    public AfterSuite stopInfra() {
-        return afterSuite().actions(
-                    camel().camelContext().stop(),
-                    testcontainers().compose()
-                            .down()
-                            .containerName("eip-infra")
-                ).build();
-    }
-}
-```
-
-The infrastructure code uses Citrus's `testcontainers()` DSL to bring up the Docker Compose stack and `waitFor().http()` to block until the Kafka UI (port 8090) is reachable — a proxy for the Kafka broker itself being ready.
-The `afterSuite` stops the Camel context first, then tears down the containers.
-
-The annotation difference is the same as in previous examples: `@CitrusConfiguration` with `@BindToRegistry` for Quarkus, `@Configuration` with `@Bean` for Spring Boot.
-
 ## The message translator test
-
-### A shared test utility
-
-Both runtimes implement the `EipTestSupport` interface, which provides a reusable `waitForCamelRouteStarted` method:
-
-```java
-public interface EipTestSupport extends TestActionSupport {
-
-    default TestActionBuilder<?> waitForCamelRouteStarted(
-            String routeId, CamelContext camelContext) {
-        return repeatOnError()
-                .times(20)
-                .actions(
-                    camel().camelContext(camelContext)
-                            .controlBus()
-                            .route(routeId)
-                            .status()
-                            .result(ServiceStatus.Started),
-                    sleep().seconds(5)
-                );
-    }
-}
-```
-
-This utility polls the Camel route's status via the Control Bus every second, up to 20 retries.
-It ensures the `message-translator` route is consuming from Kafka before the test sends any messages.
 
 ### Quarkus test
 
@@ -343,69 +243,6 @@ The translator route needs time to consume the message, transform it, and publis
 While all of that is done the receiving operation initializes the Kafka consumer with a proper offset.
 There is no racing condition between the order processing and the consumer initialization.
 
-### Spring Boot test
-
-```java
-@SpringBootTest(classes = TransformationApplication.class)
-@CamelSpringBootTest
-@CitrusSpringSupport
-@ContextConfiguration(classes = { EipInfraSetup.class, CitrusSpringConfig.class })
-class EipTests implements EipTestSupport {
-
-    @Autowired
-    CamelContext camelContext;
-
-    @Nested
-    class MessageTranslatorTest {
-
-        @CitrusResource
-        TestCaseRunner t;
-
-        @Test
-        public void shouldTranslateExternalOrderToCanonicalFormat() {
-            t.given(
-                createVariables()
-                    .variable("id", "citrus:randomNumber(4)")
-                    .variable("sku", "SKU-ABC-42")
-                    .variable("quantity", 5)
-                    .variable("amount", 99.95)
-                    .variable("country", "US")
-                    .variable("hazardous", false)
-            );
-
-            t.given(waitForCamelRouteStarted("message-translator", camelContext));
-
-            t.when(
-                send()
-                    .endpoint("kafka:eip.orders.external")
-                    .message()
-                    .fork(true)
-                    .body(Resources.create("templates/external-order.json"))
-                    .header(KafkaMessageHeaders.MESSAGE_KEY, "${id}")
-            );
-
-            t.then(
-                receive()
-                    .endpoint("kafka:eip.orders.placed?consumerGroup=citrus-translator-placed-group")
-                    .message()
-                    .body(Resources.create("templates/canonical-order.json"))
-            );
-        }
-    }
-}
-```
-
-The test logic is identical.
-The differences are confined to the test class annotations and dependency injection:
-
-| Concern                | Quarkus                                | Spring Boot                                |
-|------------------------|----------------------------------------|--------------------------------------------|
-| Test bootstrap         | `@QuarkusTest`                         | `@SpringBootTest` + `@CamelSpringBootTest` |
-| Citrus integration     | `@CitrusSupport`                       | `@CitrusSpringSupport`                     |
-| CamelContext injection | `@Inject` + `@BindToRegistry`          | `@Autowired`                               |
-| TestCaseRunner scope   | Class-level field                      | Nested class field with `@CitrusResource`  |
-| Infrastructure config  | `@CitrusConfiguration` auto-discovered | `@ContextConfiguration` explicit           |
-
 ## Why template-based validation beats field-by-field assertions
 
 A common alternative to Citrus's template approach is writing Java assertions that parse the received JSON and check each field individually:
@@ -447,6 +284,8 @@ This single test verifies the complete translation pipeline:
 A unit test with mocked Kafka endpoints could verify the `process()` block in isolation.
 But it would not catch issues in serialization configuration, Kafka consumer group behavior, or the interaction between `unmarshal().json()` and the downstream `marshal().json()`.
 The integration test catches all of these.
+
+For the test infrastructure setup, shared test utilities, runtime wiring, dependencies, and how to run the tests, see the [Camel EIP examples](/samples/camel-eip/) overview page.
 
 ## Key takeaways
 

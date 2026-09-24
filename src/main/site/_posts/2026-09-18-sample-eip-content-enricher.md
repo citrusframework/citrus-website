@@ -285,104 +285,6 @@ The enrichment fields use their own Citrus variables (`${productName}`, `${produ
 These values must match what is seeded in the Redis product catalog for the given SKU.
 This tight coupling between the test variables and the seeded data is intentional — it is the assertion that the enricher looked up the right product and merged the right fields.
 
-## Test infrastructure
-
-The Docker Compose stack for this example includes both Kafka and Redis:
-
-```yaml
-services:
-  kafka:
-    image: docker.io/apache/kafka:4.3.1
-    ports:
-      - "9092:9092"
-      - "9094:9094"
-    # ... Kafka configuration ...
-
-  kafka-ui:
-    image: docker.io/provectuslabs/kafka-ui:v0.7.2
-    ports:
-      - "8090:8080"
-    depends_on:
-      kafka:
-        condition: service_healthy
-
-  redis:
-    image: docker.io/library/redis:8.10.1-alpine
-    ports:
-      - "6379:6379"
-    healthcheck:
-      test: ["CMD-SHELL", "redis-cli ping | grep PONG"]
-```
-
-Redis is the enrichment source.
-The `BeforeSuite` brings up the full compose stack; the `AfterSuite` tears it down.
-
-### Quarkus infrastructure setup
-
-```java
-@CitrusConfiguration
-public class EipInfraSetup implements TestActionSupport {
-
-    @BindToRegistry
-    public BeforeSuite startInfra() {
-        return beforeSuite().actions(
-                    testcontainers().compose()
-                            .up("_infra/compose.yaml")
-                            .containerName("eip-infra")
-                            .autoRemove(false),
-                    waitFor()
-                            .http()
-                            .url("http://localhost:8090")
-                            .seconds(25)
-                ).build();
-    }
-
-    @BindToRegistry
-    public AfterSuite stopInfra() {
-        return afterSuite().actions(
-                    camel().camelContext().stop(),
-                    testcontainers().compose()
-                            .down()
-                            .containerName("eip-infra")
-                ).build();
-    }
-}
-```
-
-### Spring Boot infrastructure setup
-
-```java
-@Configuration
-public class EipInfraSetup implements TestActionSupport {
-
-    @Bean
-    public BeforeSuite startInfra() {
-        return beforeSuite().actions(
-                    testcontainers().compose()
-                            .up("_infra/compose.yaml")
-                            .containerName("eip-infra")
-                            .autoRemove(false),
-                    waitFor()
-                            .http()
-                            .url("http://localhost:8090")
-                            .seconds(25)
-                ).build();
-    }
-
-    @Bean
-    public AfterSuite stopInfra() {
-        return afterSuite().actions(
-                    camel().camelContext().stop(),
-                    testcontainers().compose()
-                            .down()
-                            .containerName("eip-infra")
-                ).build();
-    }
-}
-```
-
-The `waitFor().http().url("http://localhost:8090")` call blocks until the Kafka UI is reachable — a reliable proxy for the Kafka broker and Redis both being ready, since the UI depends on Kafka and both containers are part of the same compose stack.
-
 ## The content enricher test
 
 ### Quarkus test
@@ -588,6 +490,8 @@ This single test exercises a pipeline that spans two Camel routes, two infrastru
 A unit test could verify step 5 (the aggregation strategy) in isolation.
 But steps 1–4 and 6–7 involve real infrastructure — Kafka serialization, Camel's `enrich()` EIP mechanics, the `direct:` route dispatch, and the Redis connection.
 The integration test catches misconfiguration at any of these layers.
+
+For the test infrastructure setup, shared test utilities, runtime wiring, dependencies, and how to run the tests, see the [Camel EIP examples](/samples/camel-eip/) overview page.
 
 ## Key takeaways
 

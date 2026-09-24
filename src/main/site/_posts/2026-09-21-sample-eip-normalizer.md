@@ -173,104 +173,6 @@ Partner A's test consumes from `citrus-normalized-a-group`, Partner B from `citr
 Please keep in mind that the setup of Kafka consumer groups always goes hand in hand with the offset-reset setting (`earliest`, `latest`) that is being used.
 Because Kafka tracks offsets per consumer group independently, each test sees only the messages it produces — no cross-contamination.
 
-## Test infrastructure
-
-Both runtimes use a shared pattern: a `BeforeSuite` action starts a Kafka broker via Testcontainers Docker Compose, and an `AfterSuite` action tears it down.
-
-### Quarkus infrastructure setup
-
-```java
-@CitrusConfiguration
-public class EipInfraSetup implements TestActionSupport {
-
-    @BindToRegistry
-    public BeforeSuite startInfra() {
-        return beforeSuite().actions(
-                    testcontainers().compose()
-                            .up("_infra/compose.yaml")
-                            .containerName("eip-infra")
-                            .autoRemove(false),
-                    waitFor()
-                            .http()
-                            .url("http://localhost:8090")
-                            .seconds(25)
-                ).build();
-    }
-
-    @BindToRegistry
-    public AfterSuite stopInfra() {
-        return afterSuite().actions(
-                    camel().camelContext().stop(),
-                    testcontainers().compose()
-                            .down()
-                            .containerName("eip-infra")
-                ).build();
-    }
-}
-```
-
-### Spring Boot infrastructure setup
-
-```java
-@Configuration
-public class EipInfraSetup implements TestActionSupport {
-
-    @Bean
-    public BeforeSuite startInfra() {
-        return beforeSuite().actions(
-                    testcontainers().compose()
-                            .up("_infra/compose.yaml")
-                            .containerName("eip-infra")
-                            .autoRemove(false),
-                    waitFor()
-                            .http()
-                            .url("http://localhost:8090")
-                            .seconds(25)
-                ).build();
-    }
-
-    @Bean
-    public AfterSuite stopInfra() {
-        return afterSuite().actions(
-                    camel().camelContext().stop(),
-                    testcontainers().compose()
-                            .down()
-                            .containerName("eip-infra")
-                ).build();
-    }
-}
-```
-
-The difference is purely in the annotation style: `@CitrusConfiguration` with `@BindToRegistry` for Quarkus CDI, versus `@Configuration` with `@Bean` for Spring's application context.
-The infrastructure lifecycle — start Kafka, wait for readiness, run tests, stop Camel, tear down containers — is identical.
-
-## A shared test utility
-
-Both runtimes implement the `EipTestSupport` interface, which provides a reusable `waitForCamelRouteStarted` method:
-
-```java
-public interface EipTestSupport extends TestActionSupport {
-
-    default TestActionBuilder<?> waitForCamelRouteStarted(
-            String routeId, CamelContext camelContext) {
-        return repeatOnError()
-                .times(20)
-                .actions(
-                    camel().camelContext(camelContext)
-                            .controlBus()
-                            .route(routeId)
-                            .status()
-                            .result(ServiceStatus.Started),
-                    sleep().seconds(5)
-                );
-    }
-}
-```
-
-This utility uses Camel's Control Bus to poll the route status every second, up to 20 retries.
-Each normalizer test waits for its specific route (`normalizer-partner-a`, `normalizer-partner-b`, or `normalizer-partner-c`) to reach `Started` status before sending any messages.
-Without this guard, messages sent before the consumer route is ready would be lost — and the test would fail because no normalized output ever appears.
-
 ## Message templates
 
 The tests use JSON templates with Citrus variable placeholders.
@@ -559,6 +461,8 @@ This means we can have one single parameterized test that has the input Kafka to
 Adding new partners to the test coverage then resides to just creating the partner template input file together with the input Kafka topic name.
 The test validate the contract, not the implementation.
 This is the normalizer pattern delivering on its promise: N inputs, one canonical output.
+
+For the test infrastructure setup, shared test utilities, runtime wiring, dependencies, and how to run the tests, see the [Camel EIP examples](/samples/camel-eip/) overview page.
 
 ## Key takeaways
 

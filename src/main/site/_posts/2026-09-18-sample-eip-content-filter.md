@@ -197,76 +197,6 @@ This makes the template a structural contract: everything in the template must b
 
 For a content filter — especially one whose purpose is security or privacy — proving what is absent is more important than proving what is present.
 
-## Test infrastructure
-
-The Docker Compose stack includes Kafka and Redis (Redis is used by the content enricher in the same example project; the content filter test only needs Kafka).
-
-### Quarkus infrastructure setup
-
-```java
-@CitrusConfiguration
-public class EipInfraSetup implements TestActionSupport {
-
-    @BindToRegistry
-    public BeforeSuite startInfra() {
-        return beforeSuite().actions(
-                    testcontainers().compose()
-                            .up("_infra/compose.yaml")
-                            .containerName("eip-infra")
-                            .autoRemove(false),
-                    waitFor()
-                            .http()
-                            .url("http://localhost:8090")
-                            .seconds(25)
-                ).build();
-    }
-
-    @BindToRegistry
-    public AfterSuite stopInfra() {
-        return afterSuite().actions(
-                    camel().camelContext().stop(),
-                    testcontainers().compose()
-                            .down()
-                            .containerName("eip-infra")
-                ).build();
-    }
-}
-```
-
-### Spring Boot infrastructure setup
-
-```java
-@Configuration
-public class EipInfraSetup implements TestActionSupport {
-
-    @Bean
-    public BeforeSuite startInfra() {
-        return beforeSuite().actions(
-                    testcontainers().compose()
-                            .up("_infra/compose.yaml")
-                            .containerName("eip-infra")
-                            .autoRemove(false),
-                    waitFor()
-                            .http()
-                            .url("http://localhost:8090")
-                            .seconds(25)
-                ).build();
-    }
-
-    @Bean
-    public AfterSuite stopInfra() {
-        return afterSuite().actions(
-                    camel().camelContext().stop(),
-                    testcontainers().compose()
-                            .down()
-                            .containerName("eip-infra")
-                ).build();
-    }
-}
-```
-
-The lifecycle pattern is the same as in the other transformation examples: Citrus's `testcontainers()` DSL brings up the Docker Compose stack, `waitFor().http()` blocks until the infrastructure is ready, and `afterSuite` tears everything down after the tests complete.
-
 ## The content filter test
 
 ### Quarkus test
@@ -355,73 +285,6 @@ the enricher needs time to consume the message, call the Redis lookup route, mer
 While all of that is done the receiving operation initializes the Kafka consumer with a proper offset.
 There is no racing condition between the order processing and the consumer initialization.
 
-### Spring Boot test
-
-```java
-@SpringBootTest(classes = TransformationApplication.class)
-@CamelSpringBootTest
-@CitrusSpringSupport
-@ContextConfiguration(classes = { EipInfraSetup.class, CitrusSpringConfig.class })
-class EipTests implements EipTestSupport {
-
-    @Autowired
-    CamelContext camelContext;
-
-    @Nested
-    class ContentFilterTest {
-
-        @CitrusResource
-        TestCaseRunner t;
-
-        @Test
-        public void shouldStripNonAllowedFieldsFromOrder() {
-            t.given(
-                createVariables()
-                    .variable("id", "citrus:randomNumber(4)")
-                    .variable("sku", "SKU-DEF-77")
-                    .variable("quantity", 1)
-                    .variable("amount", 89.99)
-                    .variable("country", "GB")
-                    .variable("hazardous", false)
-                    .variable("productName", "Running Shoes")
-                    .variable("productCategory", "Footwear")
-                    .variable("weightKg", "1.2")
-                    .variable("shippingZone", "ZONE-2")
-            );
-
-            t.given(waitForCamelRouteStarted("content-filter", camelContext));
-
-            t.when(
-                send()
-                    .endpoint("kafka:eip.orders.enriched")
-                    .message()
-                    .fork(true)
-                    .body(Resources.create("templates/enriched-order.json"))
-                    .header(KafkaMessageHeaders.MESSAGE_KEY, "${id}")
-            );
-
-            t.then(
-                receive()
-                    .endpoint("kafka:eip.orders.analytics?consumerGroup=citrus-analytics-group")
-                    .message()
-                    .body(Resources.create("templates/filtered-order.json"))
-            );
-        }
-    }
-}
-```
-
-The test logic is identical.
-The differences are confined to the framework annotations:
-
-| Concern                | Quarkus                                | Spring Boot                                |
-|------------------------|----------------------------------------|--------------------------------------------|
-| Test bootstrap         | `@QuarkusTest`                         | `@SpringBootTest` + `@CamelSpringBootTest` |
-| Citrus integration     | `@CitrusSupport`                       | `@CitrusSpringSupport`                     |
-| CamelContext injection | `@Inject` + `@BindToRegistry`          | `@Autowired`                               |
-| TestCaseRunner scope   | Class-level field                      | Nested class field with `@CitrusResource`  |
-| Infrastructure config  | `@CitrusConfiguration` auto-discovered | `@ContextConfiguration` explicit           |
-
 ## The content filter in the transformation pipeline
 
 The content filter does not operate in isolation.
@@ -451,6 +314,8 @@ When you add `estimated_delivery` to the enriched order schema:
 
 This is the advantage of an allowlist over a blocklist: new fields default to *excluded*, and you must explicitly opt in.
 With a blocklist, new fields default to *included*, and you must remember to add them to the exclusion list — a task that is easy to forget and whose failure is silent until someone audits the data flow.
+
+For the test infrastructure setup, shared test utilities, runtime wiring, dependencies, and how to run the tests, see the [Camel EIP examples](/samples/camel-eip/) overview page.
 
 ## Key takeaways
 

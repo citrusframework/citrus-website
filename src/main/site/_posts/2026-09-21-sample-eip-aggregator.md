@@ -152,104 +152,6 @@ If it sends fewer than three, the test must wait for the timeout.
 This dual-condition behavior is exactly the kind of nuance that unit tests with mocked endpoints miss.
 An integration test with real Kafka infrastructure surfaces the actual timing behavior.
 
-## Test infrastructure
-
-Both runtimes use a shared pattern: a `BeforeSuite` action starts Kafka and PostgreSQL containers via Testcontainers Docker Compose, and an `AfterSuite` action tears them down.
-
-### Quarkus infrastructure setup
-
-```java
-@CitrusConfiguration
-public class EipInfraSetup implements TestActionSupport {
-
-    @BindToRegistry
-    public BeforeSuite startInfra() {
-        return beforeSuite().actions(
-                    testcontainers().compose()
-                            .up("_infra/compose.yaml")
-                            .containerName("eip-infra")
-                            .autoRemove(false),
-                    waitFor()
-                            .http()
-                            .url("http://localhost:8090")
-                            .seconds(25)
-                ).build();
-    }
-
-    @BindToRegistry
-    public AfterSuite stopInfra() {
-        return afterSuite().actions(
-                    camel().camelContext().stop(),
-                    testcontainers().compose()
-                            .down()
-                            .containerName("eip-infra")
-                ).build();
-    }
-}
-```
-
-### Spring Boot infrastructure setup
-
-```java
-@Configuration
-public class EipInfraSetup implements TestActionSupport {
-
-    @Bean
-    public BeforeSuite startInfra() {
-        return beforeSuite().actions(
-                    testcontainers().compose()
-                            .up("_infra/compose.yaml")
-                            .containerName("eip-infra")
-                            .autoRemove(false),
-                    waitFor()
-                            .http()
-                            .url("http://localhost:8090")
-                            .seconds(25)
-                ).build();
-    }
-
-    @Bean
-    public AfterSuite stopInfra() {
-        return afterSuite().actions(
-                    camel().camelContext().stop(),
-                    testcontainers().compose()
-                            .down()
-                            .containerName("eip-infra")
-                ).build();
-    }
-}
-```
-
-The compose file provisions both a Kafka broker and a PostgreSQL database — Kafka for the aggregator's messaging, PostgreSQL for the persistent aggregation repository (covered later in this post).
-The `waitFor().http()` action blocks until the Kafka UI on port 8090 is reachable, which serves as a proxy for Kafka readiness.
-
-## A shared test utility
-
-Both runtimes implement the `EipTestSupport` interface, which provides a reusable `waitForCamelRouteStarted` method:
-
-```java
-public interface EipTestSupport extends TestActionSupport {
-
-    default TestActionBuilder<?> waitForCamelRouteStarted(
-            String routeId, CamelContext camelContext) {
-        return repeatOnError()
-                .times(20)
-                .actions(
-                    camel().camelContext(camelContext)
-                            .controlBus()
-                            .route(routeId)
-                            .status()
-                            .result(ServiceStatus.Started),
-                    sleep().seconds(5)
-                );
-    }
-}
-```
-
-This utility uses Camel's Control Bus to poll the route status every second, up to 20 retries.
-It ensures the `order-aggregator` route is fully started and consuming from Kafka before the test sends any messages.
-Without this guard, line items sent before the route is ready would be lost — and the test would appear to fail because the aggregator never received enough messages to trigger completion.
-
 ## Message templates
 
 The tests use JSON templates with Citrus variable placeholders for dynamic values.
@@ -386,43 +288,7 @@ The `repeatOnError()` block retries up to 15 times with 1-second intervals — g
 Because the test sends exactly three line items (matching the `completionSize(3)` threshold), the aggregator should flush almost immediately after the third message arrives.
 The retry window is generous to account for Kafka consumer lag and Camel processing time, but in practice the assertion typically succeeds within 2-3 seconds.
 
-### Spring Boot test
-
-```java
-@SpringBootTest(classes = AggregatorApplication.class)
-@CamelSpringBootTest
-@CitrusSpringSupport
-@ContextConfiguration(classes = { EipInfraSetup.class, CitrusSpringConfig.class })
-class EipTests implements EipTestSupport {
-
-    @Autowired
-    CamelContext camelContext;
-
-    @Nested
-    class AggregatorTest {
-
-        @CitrusResource
-        TestCaseRunner t;
-
-        @Test
-        public void shouldAggregateThreeLineItemsIntoCompleteOrder() {
-            // Test logic is identical to the Quarkus variant
-            // ...
-        }
-    }
-}
-```
-
-The test logic is identical.
-The differences live entirely in the test class annotations and dependency injection:
-
-| Concern                | Quarkus                                | Spring Boot                                |
-|------------------------|----------------------------------------|--------------------------------------------|
-| Test bootstrap         | `@QuarkusTest`                         | `@SpringBootTest` + `@CamelSpringBootTest` |
-| Citrus integration     | `@CitrusSupport`                       | `@CitrusSpringSupport`                     |
-| CamelContext injection | `@Inject` + `@BindToRegistry`          | `@Autowired`                               |
-| TestCaseRunner scope   | Class-level field                      | Nested class field with `@CitrusResource`  |
-| Infrastructure config  | `@CitrusConfiguration` auto-discovered | `@ContextConfiguration` explicit           |
+For the test infrastructure setup, shared test utilities, runtime wiring, dependencies, and how to run the tests, see the [Camel EIP examples](/samples/camel-eip/) overview page.
 
 ## Persistent aggregation
 

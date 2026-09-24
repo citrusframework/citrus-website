@@ -132,152 +132,6 @@ CREATE TABLE IF NOT EXISTS camel_messageprocessed (
 The composite primary key `(processorName, messageId)` ensures that each processor instance has its own namespace.
 Multiple routes using the same table can each track their own set of processed IDs independently by choosing different processor names.
 
-## Test infrastructure
-
-The tests need Kafka for message transport and PostgreSQL for the JDBC idempotent repository.
-A Docker Compose stack provisions both services:
-
-```yaml
-services:
-  kafka:
-    image: docker.io/apache/kafka:latest
-    ports:
-      - "9092:9092"
-    # ... KRaft configuration ...
-
-  kafka-ui:
-    image: docker.io/provectuslabs/kafka-ui:latest
-    ports:
-      - "8090:8080"
-    depends_on:
-      kafka:
-        condition: service_healthy
-
-  postgres:
-    image: docker.io/library/postgres:16-alpine
-    ports:
-      - "5432:5432"
-    environment:
-      - POSTGRES_DB=eipdb
-      - POSTGRES_USER=eipuser
-      - POSTGRES_PASSWORD=eippass
-    volumes:
-      - ./postgres/init-schemas.sql:/docker-entrypoint-initdb.d/01-init-schemas.sql:Z
-```
-
-The PostgreSQL container mounts an init script that creates the `camel_messageprocessed` table automatically at startup.
-A `BeforeSuite` action starts the compose stack and waits for the Kafka UI to become healthy.
-
-### Quarkus infrastructure setup
-
-```java
-@CitrusConfiguration
-public class EipInfraSetup implements TestActionSupport {
-
-    @BindToRegistry
-    public BeforeSuite startInfra() {
-        return beforeSuite().actions(
-                    testcontainers().compose()
-                            .up("_infra/compose.yaml")
-                            .containerName("eip-infra")
-                            .autoRemove(false),
-                    waitFor()
-                            .http()
-                            .url("http://localhost:8090")
-                            .seconds(25)
-                ).build();
-    }
-
-    @BindToRegistry
-    public AfterSuite stopInfra() {
-        return afterSuite().actions(
-                    camel().camelContext().stop(),
-                    testcontainers().compose()
-                            .down()
-                            .containerName("eip-infra")
-                ).build();
-    }
-}
-```
-
-### Spring Boot infrastructure setup
-
-```java
-@Configuration
-public class EipInfraSetup implements TestActionSupport {
-
-    @Bean
-    public BeforeSuite startInfra() {
-        return beforeSuite().actions(
-                    testcontainers().compose()
-                            .up("_infra/compose.yaml")
-                            .containerName("eip-infra")
-                            .autoRemove(false),
-                    waitFor()
-                            .http()
-                            .url("http://localhost:8090")
-                            .seconds(25)
-                ).build();
-    }
-
-    @Bean
-    public AfterSuite stopInfra() {
-        return afterSuite().actions(
-                    camel().camelContext().stop(),
-                    testcontainers().compose()
-                            .down()
-                            .containerName("eip-infra")
-                ).build();
-    }
-}
-```
-
-The `waitFor().http()` call blocks until the Kafka UI is reachable on port 8090.
-Since the UI depends on Kafka and all containers share the same compose lifecycle, this is a reliable proxy for the entire stack being ready.
-
-## Shared test utilities
-
-Both runtime variants use a shared `EipTestSupport` interface that provides reusable helper methods.
-
-```java
-public interface EipTestSupport extends TestActionSupport {
-
-    default TestActionBuilder<?> waitForCamelRouteStarted(
-            String routeId, CamelContext camelContext) {
-        return repeatOnError()
-                .times(20)
-                .actions(
-                    camel().camelContext(camelContext)
-                            .controlBus()
-                            .route(routeId)
-                            .status()
-                            .result(ServiceStatus.Started),
-                    sleep().seconds(5)
-                );
-    }
-
-    default TestActionBuilder<?> verifyCompletedExchanges(
-            String routeId, long count, CamelContext camelContext) {
-        return repeatOnError()
-                .times(20)
-                .actions(
-                    camel()
-                        .camelContext(camelContext)
-                        .route()
-                        .verifyRouteStats(routeId)
-                        .completed(count)
-                );
-    }
-}
-```
-
-`waitForCamelRouteStarted` uses Camel's Control Bus to poll the route status every second, up to 20 retries.
-This ensures the idempotent receiver route is fully started — including its Kafka consumer group registration and JDBC repository initialization — before the test sends any messages.
-
-`verifyCompletedExchanges` uses Citrus's built-in Camel route statistics verification to check how many exchanges a route has completed.
-For the idempotent receiver, this is particularly useful: the route receives *both* messages (the unique one and the duplicate), but only forwards the unique one.
-The route statistics verification confirms that both exchanges were consumed from Kafka and processed by the route — even though only one produced output on the downstream topic.
-
 ## The idempotent receiver tests
 
 The test methods cover the pattern's two complementary behaviors: deduplication of identical messages, and pass-through of unique messages.
@@ -374,44 +228,6 @@ Proving a negative — that something did *not* happen — requires a timeout-ba
 This is an important distinction: the route processed two exchanges, but the `idempotentConsumer()` EIP filtered one of them before the downstream `to()` step.
 The exchange count of 2 proves that the duplicate was not lost or rejected at the Kafka level — it was consumed and deliberately skipped by the idempotent logic.
 
-#### Spring Boot
-
-```java
-@SpringBootTest(classes = EndpointsApplication.class)
-@CamelSpringBootTest
-@CitrusSpringSupport
-@ContextConfiguration(classes = { EipInfraSetup.class, CitrusSpringConfig.class })
-class EipTests implements EipTestSupport {
-
-    @Autowired
-    CamelContext camelContext;
-
-    @Nested
-    class IdempotentReceiverTest {
-
-        @CitrusResource
-        TestCaseRunner t;
-
-        @Test
-        public void shouldDeduplicateIdenticalOrders() {
-            // Test logic is identical to the Quarkus variant
-            // ...
-        }
-    }
-}
-```
-
-The test logic is identical.
-The differences are in the class-level annotations and dependency injection:
-
-| Concern                | Quarkus                                | Spring Boot                                |
-|------------------------|----------------------------------------|--------------------------------------------|
-| Test bootstrap         | `@QuarkusTest`                         | `@SpringBootTest` + `@CamelSpringBootTest` |
-| Citrus integration     | `@CitrusSupport`                       | `@CitrusSpringSupport`                     |
-| CamelContext injection | `@Inject` + `@BindToRegistry`          | `@Autowired`                               |
-| TestCaseRunner scope   | Class-level field                      | Nested class field with `@CitrusResource`  |
-| Infrastructure config  | `@CitrusConfiguration` auto-discovered | `@ContextConfiguration` explicit           |
-
 ## The order template
 
 The tests use a shared JSON template that Citrus resolves at runtime:
@@ -453,6 +269,8 @@ Assigning a unique consumer group per test method — `citrus-dedup-group` for t
 The JDBC repository persists `order_id` values in PostgreSQL.
 If the deduplication test runs before the pass-through test with the same `order_id`, the pass-through test would fail because the ID is already in the repository.
 The random `id` variable generated by `citrus:randomNumber(4)` ensures each test run uses a unique `order_id`, avoiding cross-test contamination.
+
+For the test infrastructure setup, shared test utilities, runtime wiring, dependencies, and how to run the tests, see the [Camel EIP examples](/samples/camel-eip/) overview page.
 
 ## Key takeaways
 
