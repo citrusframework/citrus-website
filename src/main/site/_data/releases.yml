@@ -1,3 +1,53 @@
+- version: 5.0.2
+  date: 2026-09-25
+  tag: v5.0.2
+  issues: https://github.com/citrusframework/citrus/issues/
+  stories: https://github.com/citrusframework/citrus/issues/
+  changes:
+    - title: Add CamelResetRouteStatsAction to reset Camel route statistics in tests
+      id: 1731
+      type: add
+      author: christophd
+    - title: Add single route(String) method to CamelRouteActionBuilderBase
+      type: add
+      author: christophd
+    - title: Properly resolve query array parameters from Citrus context
+      id: 1721
+      type: fix
+      author: tschlat
+    - title: Register custom serializers via module in agent JsonSupport
+      id: 1727
+      type: fix
+      author: christophd
+    - title: Revert duration type change in RemoteResult
+      id: 1711
+      type: fix
+      author: christophd
+    - title: Resolve camel-test-infra artifact from catalog by service prefix
+      id: 1732
+      type: fix
+      author: christophd
+    - title: Use actual receive timeout in JMS consumer timeout exception
+      id: 1726
+      type: fix
+      author: christophd
+    - title: Let inline system properties override properties file
+      id: 1733
+      type: fix
+      author: christophd
+    - title: Respect explicit message type in receive action validation
+      id: 1734
+      type: fix
+      author: christophd
+    - title: Support nested jar URLs in ResourcePathTypeResolver
+      id: 1725
+      type: fix
+      author: christophd
+    - title: Handle SQL result set validation for 0 rows
+      id: 1723
+      type: fix
+      author: christophd
+
 - version: 5.0.1
   date: 2026-08-30
   tag: v5.0.1
