@@ -79,6 +79,21 @@ Some EIP samples add additional services to the same Compose file depending on w
       - ./postgres/init-schemas.sql:/docker-entrypoint-initdb.d/01-init-schemas.sql:Z
 ```
 
+- **Redis** — used by the Redis Integration example (caching, idempotent deduplication, and distributed locking). A lightweight `redis-cli ping` health check is sufficient:
+
+```yaml
+  redis:
+    image: docker.io/library/redis:8.10.1-alpine
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+      start_period: 5s
+```
+
 - **Apache Pulsar** — used by the Messaging Bridge (bidirectional Pulsar-Kafka bridging). Pulsar's startup is significantly slower than Kafka's — its health check uses a 60-second `start_period` with up to 15 retries:
 
 ```yaml
