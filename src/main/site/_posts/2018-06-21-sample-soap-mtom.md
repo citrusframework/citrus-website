@@ -3,7 +3,7 @@ layout: sample
 title: SOAP MTOM sample
 name: sample-soap-mtom
 icon: soap
-folder: samples-soap
+folder: samples-soap/sample-soap-mtom
 group: [soap, endpoints, spring]
 description: Handle MTOM enabled SOAP attachments
 categories: [samples]

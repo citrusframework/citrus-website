@@ -3,7 +3,7 @@ layout: sample
 title: SQL sample
 name: sample-sql
 icon: database
-folder: samples-db
+folder: samples-db/sample-sql
 group: [validation, spring]
 description: Execute SQL statements in Citrus
 categories: [samples]

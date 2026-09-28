@@ -3,7 +3,7 @@ layout: sample
 title: Apache Camel Quarkus - Direct Endpoint Testing
 name: camel-direct
 image: /img/icons/camel.png
-folder: apache-camel
+folder: apache-camel/camel-direct
 group: [camel, quarkus]
 description: Testing Apache Camel routes with direct and mock endpoints in Quarkus using Citrus
 categories: [samples]

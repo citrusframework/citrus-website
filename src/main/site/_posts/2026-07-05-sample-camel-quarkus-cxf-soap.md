@@ -3,7 +3,7 @@ layout: sample
 title: Apache Camel Quarkus - CXF SOAP WebService Testing
 name: camel-cxf-soap
 image: /img/icons/camel.png
-folder: apache-camel
+folder: apache-camel/camel-cxf-soap
 group: [camel, quarkus]
 description: Testing Apache Camel CXF SOAP WebServices in Quarkus with Citrus SOAP client and JAXB marshalling
 categories: [samples]

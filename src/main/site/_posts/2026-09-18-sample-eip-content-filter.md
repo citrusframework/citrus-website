@@ -3,7 +3,7 @@ layout: sample
 title: Testing the Content Filter Pattern with Citrus
 name: content-filter
 image: /img/icons/camel.png
-folder: examples
+folder: examples/12-transformation
 group: eip
 description: Testing the Content Filter EIP in Apache Camel with Citrus across Quarkus and Spring Boot
 categories: [samples]

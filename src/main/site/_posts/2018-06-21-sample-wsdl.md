@@ -3,7 +3,7 @@ layout: sample
 title: WSDL auto generated sample
 name: sample-wsdl
 icon: soap
-folder: samples-soap
+folder: samples-soap/sample-wsdl
 group: [soap, endpoints, spring]
 description: Auto generate tests from WSDL
 categories: [samples]

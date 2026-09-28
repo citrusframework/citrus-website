@@ -3,7 +3,7 @@ layout: sample
 title: Apache Camel Quarkus - File Processing Pipeline
 name: camel-file-inbox
 image: /img/icons/camel.png
-folder: apache-camel
+folder: apache-camel/camel-file-inbox
 group: [camel, quarkus]
 description: Testing Apache Camel file processing with ZIP data formats and Splitter EIP in Quarkus using Citrus
 categories: [samples]

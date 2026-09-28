@@ -3,7 +3,7 @@ layout: sample
 title: Apache Camel Quarkus - HTTP to PostgreSQL
 name: camel-postgresql
 image: /img/icons/camel.png
-folder: apache-camel
+folder: apache-camel/camel-postgresql
 group: [camel, quarkus]
 description: Testing a Camel HTTP-to-PostgreSQL route in Quarkus with Citrus HTTP client and SQL validation
 categories: [samples]

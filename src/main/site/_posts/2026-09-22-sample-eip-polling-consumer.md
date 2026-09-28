@@ -3,7 +3,7 @@ layout: sample
 title: Testing the Polling Consumer Pattern with Citrus
 name: polling-consumer
 image: /img/icons/camel.png
-folder: examples
+folder: examples/14-consumer-patterns
 group: eip
 description: Testing the Polling Consumer EIP in Apache Camel with Citrus across Quarkus, Spring Boot and YAML DSL
 categories: [samples]

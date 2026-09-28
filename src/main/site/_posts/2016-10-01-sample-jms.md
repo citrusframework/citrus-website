@@ -3,7 +3,7 @@ layout: sample
 title: JMS sample
 name: sample-jms
 image: /img/icons/activemq.png
-group: [endpoints, spring]
+group: [endpoints, jms, spring]
 description: Shows JMS message broker connectivity
 categories: [samples]
 repository: citrus-samples

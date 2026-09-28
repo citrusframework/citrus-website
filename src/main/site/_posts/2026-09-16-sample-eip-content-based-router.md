@@ -3,7 +3,7 @@ layout: sample
 title: Testing the Content-Based Routers with Citrus
 name: content-based-router
 image: /img/icons/camel.png
-folder: examples
+folder: examples/09-routing-fundamentals
 group: eip
 description: Testing the Content-Based Router EIP in Apache Camel with Citrus across Quarkus, Spring Boot and YAML DSL
 categories: [samples]

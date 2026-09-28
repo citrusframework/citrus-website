@@ -3,8 +3,8 @@ layout: sample
 title: SFTP sample
 name: sample-sftp
 icon: ftp
-folder: samples-ftp
-group: [ftp, endpoints]
+folder: samples-ftp/sample-sftp
+group: [endpoints, ftp]
 description: SFTP client and server interaction in Citrus
 categories: [samples]
 repository: citrus-samples

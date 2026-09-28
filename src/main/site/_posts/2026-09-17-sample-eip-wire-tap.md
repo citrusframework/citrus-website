@@ -3,7 +3,7 @@ layout: sample
 title: Testing the Wire Tap Pattern with Citrus
 name: wire-tap
 image: /img/icons/camel.png
-folder: examples
+folder: examples/11-advanced-routing
 group: eip
 description: Testing the Wire Tap EIP in Apache Camel with Citrus across Quarkus and Spring Boot
 categories: [samples]

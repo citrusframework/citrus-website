@@ -3,8 +3,8 @@ layout: sample
 title: TestNG sample
 name: sample-testng
 image: /img/icons/testng.png
-folder: samples-testng
-group: runtimes
+folder: samples-testng/sample-testng
+group: [runtimes, testng]
 description: Use TestNG test framework
 categories: [samples]
 repository: citrus-samples

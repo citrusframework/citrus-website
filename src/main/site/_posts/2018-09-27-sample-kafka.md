@@ -3,7 +3,7 @@ layout: sample
 title: Kafka sample
 name: sample-kafka
 image: /img/icons/kafka.png
-group: [endpoints, spring]
+group: [endpoints, kafka, spring]
 description: Shows Kafka integration
 categories: [samples]
 repository: citrus-samples

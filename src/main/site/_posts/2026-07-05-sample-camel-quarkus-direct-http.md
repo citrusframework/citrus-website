@@ -3,7 +3,7 @@ layout: sample
 title: Apache Camel Quarkus - HTTP Service Virtualization
 name: camel-direct-http
 image: /img/icons/camel.png
-folder: apache-camel
+folder: apache-camel/camel-direct-http
 group: [camel, quarkus]
 description: Testing Apache Camel routes with external HTTP dependencies using Citrus service virtualization
 categories: [samples]

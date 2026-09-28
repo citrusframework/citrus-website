@@ -3,7 +3,7 @@ layout: sample
 title: Https sample
 name: sample-https
 icon: globe
-folder: samples-http
+folder: samples-http/sample-https
 group: [http, endpoints, spring]
 description: Shows how to use SSL connectivity as a client and server
 categories: [samples]

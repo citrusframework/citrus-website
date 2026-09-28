@@ -14,7 +14,7 @@ layout: samples
     <a href="{{ page.url }}" class="permalink" title="Permalink">∞</a>
   </h2>
   <div class="right">
-    {% if page.folder != nil and page.folder != "common" %}
+    {% if page.folder != nil %}
     <a href="https://github.com/citrusframework/{{ page.repository }}/blob/master/{{ page.folder }}" target="_blank">
       <i class="fa fa-pencil"></i>&nbsp;View sources
     </a>
@@ -52,8 +52,8 @@ layout: samples
       <tr>
         <td><a href="{{ post.permalink }}">{{ post.name }}</a></td>
         <td style="text-align:center;">{{ post.description }}</td>
-        {% if post.folder != nil and post.folder != "common" %}
-        <td style="text-align:center;"><a href="https://github.com/citrusframework/{{ post.repository }}/blob/master/{{ post.folder }}/{{ post.name }}" target="_blank"><i class="fa fa-pencil"></i></a></td>
+        {% if post.folder != nil %}
+        <td style="text-align:center;"><a href="https://github.com/citrusframework/{{ post.repository }}/blob/master/{{ post.folder }}" target="_blank"><i class="fa fa-pencil"></i></a></td>
         {% else %}
         <td style="text-align:center;"><a href="https://github.com/citrusframework/{{ post.repository }}/blob/master/{{ post.name }}" target="_blank"><i class="fa fa-pencil"></i></a></td>
         {% endif %}

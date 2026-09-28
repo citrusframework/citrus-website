@@ -3,7 +3,7 @@ layout: sample
 title: OpenAPI sample
 name: sample-swagger
 image: /img/icons/openapi.png
-folder: samples-http
+folder: samples-http/sample-swagger
 group: [http, endpoints, spring]
 description: Auto generate tests from Open API
 categories: [samples]

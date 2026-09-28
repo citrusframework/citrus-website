@@ -3,7 +3,7 @@ layout: sample
 title: Testing Apache Pulsar Routes with Citrus
 name: pulsar-deep-dive
 image: /img/icons/camel.png
-folder: apache-camel
+folder: examples/21-pulsar-deep-dive
 group: camel
 description: Testing Pulsar-backed Camel routes — shared subscriptions, key-shared ordering, and dead-letter topics — with Citrus on Quarkus and Spring Boot
 categories: [samples]

@@ -3,7 +3,7 @@ layout: sample
 title: Testing the Resequencer Pattern with Citrus
 name: resequencer
 image: /img/icons/camel.png
-folder: examples
+folder: examples/11-advanced-routing
 group: eip
 description: Testing the Resequencer EIP in Apache Camel with Citrus across Quarkus, Spring Boot, and YAML DSL
 categories: [samples]

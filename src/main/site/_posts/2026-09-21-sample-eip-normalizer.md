@@ -3,7 +3,7 @@ layout: sample
 title: Testing the Normalizer Pattern with Citrus
 name: normalizer
 image: /img/icons/camel.png
-folder: examples
+folder: examples/13-aggregator
 group: eip
 description: Testing the Normalizer EIP in Apache Camel with Citrus across Quarkus and Spring Boot
 categories: [samples]

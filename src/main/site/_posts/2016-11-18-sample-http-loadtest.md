@@ -3,7 +3,7 @@ layout: sample
 title: Http load testing sample
 name: sample-http-loadtest
 icon: globe
-folder: samples-http
+folder: samples-http/sample-http-loadtest
 group: [http, endpoints, spring]
 description: Calls REST API on Http server with multiple threads for load testing
 categories: [samples]

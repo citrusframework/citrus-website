@@ -3,8 +3,8 @@ layout: sample
 title: XHTML sample
 name: sample-xhtml
 icon: code
-folder: samples-xml
-group: [xml, validation]
+folder: samples-xml/sample-xhtml
+group: [validation, xml, spring]
 description: Shows XHTML validation feature
 categories: [samples]
 repository: citrus-samples

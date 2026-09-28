@@ -3,7 +3,7 @@ layout: sample
 title: Testing Message Reliability with Citrus
 name: message-reliability
 image: /img/icons/camel.png
-folder: examples
+folder: examples/05-reliability
 group: eip
 description: Testing Dead Letter Queue patterns in Apache Camel with Citrus across Quarkus and Spring Boot
 categories: [samples]

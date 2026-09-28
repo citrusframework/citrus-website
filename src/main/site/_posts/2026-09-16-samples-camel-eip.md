@@ -6,7 +6,6 @@ image: /img/icons/camel.png
 group: eip
 description: Samples using Citrus to test Camel Enterprise Integration Patterns
 categories: [overview]
-folder: examples
 repository: citrus-camel-eip-examples
 permalink: /samples/overview/camel-eip/
 ---

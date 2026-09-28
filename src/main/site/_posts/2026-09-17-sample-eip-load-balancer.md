@@ -3,7 +3,7 @@ layout: sample
 title: Testing the Load Balancer Pattern with Citrus
 name: load-balancer
 image: /img/icons/camel.png
-folder: examples
+folder: examples/11-advanced-routing
 group: eip
 description: Testing the Load Balancer EIP in Apache Camel with Citrus across Quarkus and Spring Boot
 categories: [samples]

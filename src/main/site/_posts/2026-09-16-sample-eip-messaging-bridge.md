@@ -3,7 +3,7 @@ layout: sample
 title: Testing the Messaging Bridge Pattern with Citrus
 name: messaging-bridge
 image: /img/icons/camel.png
-folder: examples
+folder: examples/06-channel-infra
 group: eip
 description: Testing the Messaging Bridge EIP in Apache Camel with Citrus across Quarkus, Spring Boot and YAML DSL
 categories: [samples]

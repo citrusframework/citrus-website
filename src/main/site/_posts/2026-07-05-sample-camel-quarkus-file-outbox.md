@@ -3,7 +3,7 @@ layout: sample
 title: Apache Camel Quarkus - File Aggregation Outbox
 name: camel-file-outbox
 image: /img/icons/camel.png
-folder: apache-camel
+folder: apache-camel/camel-file-outbox
 group: [camel, quarkus]
 description: Testing Apache Camel Aggregator EIP with file output in Quarkus using Citrus
 categories: [samples]

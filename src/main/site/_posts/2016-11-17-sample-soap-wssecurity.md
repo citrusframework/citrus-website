@@ -3,7 +3,7 @@ layout: sample
 title: SOAP WS Security sample
 name: sample-soap-wssecurity
 icon:  soap
-folder: samples-soap
+folder: samples-soap/sample-soap-wssecurity
 group: [soap, endpoints, spring]
 description: Configure SOAP web service client and server with WSSecurity
 categories: [samples]

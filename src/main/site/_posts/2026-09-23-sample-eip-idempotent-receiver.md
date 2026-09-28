@@ -3,7 +3,7 @@ layout: sample
 title: Testing the Idempotent Receiver Pattern with Citrus
 name: idempotent-receiver
 image: /img/icons/camel.png
-folder: examples
+folder: examples/15-endpoints
 group: eip
 description: Testing the Idempotent Receiver EIP in Apache Camel with Citrus across Quarkus, Spring Boot and YAML DSL
 categories: [samples]

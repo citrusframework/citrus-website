@@ -3,7 +3,7 @@ layout: sample
 title: Testing the Routing Slip Pattern with Citrus
 name: routing-slip
 image: /img/icons/camel.png
-folder: examples
+folder: examples/10-composed-routing
 group: eip
 description: Testing the Routing Slip EIP in Apache Camel with Citrus across Quarkus and Spring Boot
 categories: [samples]

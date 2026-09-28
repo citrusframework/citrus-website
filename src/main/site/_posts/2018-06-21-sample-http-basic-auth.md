@@ -3,7 +3,7 @@ layout: sample
 title: Http basic auth sample
 name: sample-http-basic-auth
 icon: globe
-folder: samples-http
+folder: samples-http/sample-http-basic-auth
 group: [http, endpoints, spring]
 description: Basic authentication on client and server components
 categories: [samples]

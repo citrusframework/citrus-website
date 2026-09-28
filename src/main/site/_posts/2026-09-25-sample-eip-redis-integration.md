@@ -3,7 +3,7 @@ layout: sample
 title: Testing Redis-Backed Camel Routes with Citrus
 name: redis-integration
 image: /img/icons/camel.png
-folder: apache-camel
+folder: examples/22-redis-integration
 group: camel
 description: Testing Redis-backed Apache Camel routes — caching, idempotent deduplication, and distributed locking — with Citrus across Quarkus and Spring Boot
 categories: [samples]

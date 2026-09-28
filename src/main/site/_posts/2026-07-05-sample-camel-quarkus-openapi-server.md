@@ -3,7 +3,7 @@ layout: sample
 title: Apache Camel Quarkus - OpenAPI Contract Testing
 name: camel-openapi-server
 image: /img/icons/camel.png
-folder: apache-camel
+folder: apache-camel/camel-openapi-server
 group: [camel, quarkus]
 description: Testing Apache Camel OpenAPI REST services in Quarkus with specification-driven Citrus test actions
 categories: [samples]

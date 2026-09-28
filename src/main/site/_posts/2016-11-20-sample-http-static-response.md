@@ -3,7 +3,7 @@ layout: sample
 title: Static Http response sample
 name: sample-http-static-response
 icon: globe
-folder: samples-soap
+folder: samples-soap/sample-http-static-response
 group: [soap, endpoints, spring]
 description: Shows how to setup a static response generating Http server component
 categories: [samples]

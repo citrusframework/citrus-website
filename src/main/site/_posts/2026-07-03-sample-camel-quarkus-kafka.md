@@ -3,7 +3,7 @@ layout: sample
 title: Apache Camel Quarkus - Kafka Eventing
 name: camel-kafka
 image: /img/icons/camel.png
-folder: apache-camel
+folder: apache-camel/camel-kafka
 group: [camel, quarkus]
 description: Testing Apache Camel Kafka routes in Quarkus with Citrus and Testcontainers
 categories: [samples]

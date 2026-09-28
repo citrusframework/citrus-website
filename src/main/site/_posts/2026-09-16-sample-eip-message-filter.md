@@ -3,7 +3,7 @@ layout: sample
 title: Testing the Message Filter Pattern with Citrus
 name: message-filter
 image: /img/icons/camel.png
-folder: examples
+folder: examples/09-routing-fundamentals
 group: eip
 description: Testing the Message Filter EIP in Apache Camel with Citrus across Quarkus, Spring Boot and YAML DSL
 categories: [samples]

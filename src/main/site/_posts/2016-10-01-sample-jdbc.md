@@ -3,7 +3,7 @@ layout: sample
 title: SQL sample
 name: sample-jdbc
 icon:  database
-folder: samples-db
+folder: samples-db/sample-jdbc
 group: [endpoints, spring]
 description: Validates stored data in relational database
 categories: [samples]

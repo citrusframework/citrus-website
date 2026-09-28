@@ -3,7 +3,7 @@ layout: sample
 title: Testing the Message Dispatcher Pattern with Citrus
 name: message-dispatcher
 image: /img/icons/camel.png
-folder: examples
+folder: examples/14-consumer-patterns
 group: eip
 description: Testing the Message Dispatcher EIP in Apache Camel with Citrus across Quarkus and Spring Boot
 categories: [samples]

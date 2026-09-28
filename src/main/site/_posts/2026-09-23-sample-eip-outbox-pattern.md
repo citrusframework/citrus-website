@@ -3,7 +3,7 @@ layout: sample
 title: Testing the Outbox Pattern with Citrus
 name: outbox-pattern
 image: /img/icons/camel.png
-folder: examples
+folder: examples/15-endpoints
 group: eip
 description: Testing the Transactional Outbox Pattern in Apache Camel with Citrus across Quarkus and Spring Boot
 categories: [samples]

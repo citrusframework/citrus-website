@@ -3,8 +3,8 @@ layout: sample
 title: JUnit sample
 name: sample-junit
 image: /img/icons/junit.png
-folder: samples-junit
-group: runtimes
+folder: samples-junit/sample-junit
+group: [runtimes, junit]
 description: Use JUnit test framework
 categories: [samples]
 repository: citrus-samples
