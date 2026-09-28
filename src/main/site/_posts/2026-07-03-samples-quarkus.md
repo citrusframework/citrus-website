@@ -6,7 +6,6 @@ image: /img/icons/quarkus.png
 group: quarkus
 description: Samples using Citrus to test Quarkus applications
 categories: [overview]
-folder: common
 repository: citrus-quarkus-examples
 permalink: /samples/overview/quarkus/
 ---

@@ -3,7 +3,6 @@ layout: sample
 title: Quarkus - Event-Driven Kafka
 name: event-driven-kafka
 image: /img/icons/quarkus.png
-folder: common
 group: quarkus
 description: How Citrus helps to verify event driven Kafka messaging in a Quarkus application
 categories: [samples]

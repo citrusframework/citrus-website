@@ -2,7 +2,6 @@
 layout: sample
 title: Test behavior sample
 name: sample-behavior
-folder: common
 group: miscellaneous
 description: Add custom test behavior
 categories: [samples]

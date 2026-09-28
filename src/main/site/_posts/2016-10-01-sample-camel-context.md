@@ -3,7 +3,6 @@ layout: sample
 title: Apache Camel sample
 name: sample-camel-context
 image: /img/icons/camel.png
-folder: common
 group: [demo, camel]
 description: Interact with Apache Camel
 categories: [samples]

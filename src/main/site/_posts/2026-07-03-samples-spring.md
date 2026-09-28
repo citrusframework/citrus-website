@@ -6,7 +6,6 @@ image: /img/icons/spring.png
 group: spring
 description: Samples using Citrus to test Spring applications
 categories: [overview]
-folder: common
 repository: citrus-samples
 permalink: /samples/overview/spring/
 ---

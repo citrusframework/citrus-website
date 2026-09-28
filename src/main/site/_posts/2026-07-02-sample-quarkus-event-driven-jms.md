@@ -3,7 +3,6 @@ layout: sample
 title: Quarkus - Event-Driven JMS
 name: event-driven-jms
 image: /img/icons/quarkus.png
-folder: common
 group: quarkus
 description: How Citrus helps to verify event driven JMS messaging in a Quarkus application
 categories: [samples]

@@ -3,7 +3,6 @@ layout: sample
 title: Binary sample
 name: sample-binary
 icon:  binary
-folder: common
 group: validation
 description: Shows binary message content handling in Citrus
 categories: [samples]

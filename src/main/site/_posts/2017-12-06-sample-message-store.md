@@ -2,7 +2,6 @@
 layout: sample
 title: Message store sample
 name: sample-message-store
-folder: common
 group: miscellaneous
 description: Use the local message store
 categories: [samples]

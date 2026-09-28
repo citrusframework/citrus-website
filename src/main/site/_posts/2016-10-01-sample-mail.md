@@ -3,7 +3,6 @@ layout: sample
 title: Mail sample
 name: sample-mail
 icon:  mail
-folder: common
 group: endpoints
 description: Shows mail server activities in Citrus
 categories: [samples]

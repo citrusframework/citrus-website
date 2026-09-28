@@ -3,7 +3,6 @@ layout: sample
 title: JBang sample
 name: sample-jbang
 image: /img/icons/jbang.png
-folder: common
 group: demo
 description: Prototype Citrus tests in minutes with JBang
 categories: [samples]
