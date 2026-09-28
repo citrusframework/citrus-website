@@ -54,36 +54,35 @@ name: sample-overview
         The samples should help you to learn about the capabilities of Citrus.
         Please find following list of samples and their primary objective</p>
 
-    <table>
-      <thead>
-        <tr>
-          <th style="width: 15em;">Configuration</th>
-          <th style="text-align:center;">Description</th>
-          <th style="text-align:center;">Sources</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% assign sorted_posts = site.categories.samples | where_exp: "post", "post.archived != true" | sort: 'group' %}
-        {% assign group = "configuration" %}
+    {% assign all_posts = site.categories.samples | where_exp: "post", "post.archived != true" %}
+    {% assign group_names = "" %}
+    {% for post in all_posts %}
+      {% assign post_groups = post.group | join: "," | split: "," %}
+      {% assign first_group = post_groups | first %}
+      {% if group_names == "" %}
+        {% assign group_names = first_group %}
+      {% else %}
+        {% unless group_names contains first_group %}
+          {% assign group_names = group_names | append: "," | append: first_group %}
+        {% endunless %}
+      {% endif %}
+    {% endfor %}
+    {% assign sorted_groups = group_names | split: "," | sort %}
 
-        {% for post in sorted_posts %}
-        {% if group != post.group %}
-      </tbody>
-    </table>
-
-    {% assign group = post.group %}
-    <br/>
-
+    {% for grp in sorted_groups %}
     <table>
       <thead>
       <tr>
-        <th style="width: 15em;">{{ group | upcase }}</th>
+        <th style="width: 15em;">{{ grp | upcase }}</th>
         <th style="text-align:center;">Description</th>
         <th style="text-align:center;">Sources</th>
       </tr>
       </thead>
       <tbody>
-        {% endif %}
+        {% for post in all_posts %}
+          {% assign post_groups = post.group | join: "," | split: "," %}
+          {% assign first_group = post_groups | first %}
+          {% if first_group == grp %}
         <tr>
           <td><a href="{{ post.permalink }}">{{ post.name }}</a></td>
           <td style="text-align:center;">{{ post.description }}</td>
@@ -94,9 +93,11 @@ name: sample-overview
           <td style="text-align:center;"><a href="https://github.com/citrusframework/{{ post.repository }}/blob/master/{{ post.name }}" target="_blank"><i class="fa fa-pencil"></i></a></td>
           {% endif %}
         </tr>
+          {% endif %}
         {% endfor %}
       </tbody>
     </table>
+    {% endfor %}
   </div>
 
   <div class="grid">

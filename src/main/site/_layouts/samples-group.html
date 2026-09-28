@@ -14,12 +14,11 @@ layout: samples
     <a href="{{ page.url }}" class="permalink" title="Permalink">∞</a>
   </h2>
   <div class="right">
-    {% if page.folder != "common" %}
+    {% if page.folder != nil and page.folder != "common" %}
     <a href="https://github.com/citrusframework/{{ page.repository }}/blob/master/{{ page.folder }}" target="_blank">
       <i class="fa fa-pencil"></i>&nbsp;View sources
     </a>
-    {% endif %}
-    {% if page.folder == "common" %}
+    {% else %}
     <a href="https://github.com/citrusframework/{{ page.repository }}/blob/master/" target="_blank">
       <i class="fa fa-pencil"></i>&nbsp;View sources
     </a>
@@ -47,20 +46,18 @@ layout: samples
       </thead>
       <tbody>
     {% for post in posts %}
-    {% if post.folder != nil %}
-    {% if page.folder == post.folder %}
-    {% if page.repository == post.repository %}
+    {% if post.group != nil %}
+    {% assign post_groups = post.group | join: "," | split: "," %}
+    {% if post_groups contains page.group %}
       <tr>
         <td><a href="{{ post.permalink }}">{{ post.name }}</a></td>
         <td style="text-align:center;">{{ post.description }}</td>
-        {% if post.folder != "common" %}
-        <td style="text-align:center;"><a href="https://github.com/citrusframework/{{ page.repository }}/blob/master/{{ post.folder }}/{{ post.name }}" target="_blank"><i class="fa fa-pencil"></i></a></td>
-        {% endif %}
-        {% if post.folder == "common" %}
-        <td style="text-align:center;"><a href="https://github.com/citrusframework/{{ page.repository }}/blob/master/{{ post.name }}" target="_blank"><i class="fa fa-pencil"></i></a></td>
+        {% if post.folder != nil and post.folder != "common" %}
+        <td style="text-align:center;"><a href="https://github.com/citrusframework/{{ post.repository }}/blob/master/{{ post.folder }}/{{ post.name }}" target="_blank"><i class="fa fa-pencil"></i></a></td>
+        {% else %}
+        <td style="text-align:center;"><a href="https://github.com/citrusframework/{{ post.repository }}/blob/master/{{ post.name }}" target="_blank"><i class="fa fa-pencil"></i></a></td>
         {% endif %}
       </tr>
-    {% endif %}
     {% endif %}
     {% endif %}
     {% endfor %}

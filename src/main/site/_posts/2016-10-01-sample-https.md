@@ -4,7 +4,7 @@ title: Https sample
 name: sample-https
 icon: globe
 folder: samples-http
-group: endpoints
+group: [http, endpoints, spring]
 description: Shows how to use SSL connectivity as a client and server
 categories: [samples]
 repository: citrus-samples

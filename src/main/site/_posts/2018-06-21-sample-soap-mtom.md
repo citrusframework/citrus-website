@@ -4,7 +4,7 @@ title: SOAP MTOM sample
 name: sample-soap-mtom
 icon: soap
 folder: samples-soap
-group: endpoints
+group: [soap, endpoints, spring]
 description: Handle MTOM enabled SOAP attachments
 categories: [samples]
 repository: citrus-samples

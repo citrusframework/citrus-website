@@ -4,7 +4,7 @@ title: Static SOAP response sample
 name: sample-soap-static-response
 icon:  soap
 folder: samples-soap
-group: endpoints
+group: [soap, endpoints, spring]
 description: Shows how to setup a static response generating SOAP web service server component
 categories: [samples]
 repository: citrus-samples

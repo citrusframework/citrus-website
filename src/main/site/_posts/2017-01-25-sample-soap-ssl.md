@@ -4,7 +4,7 @@ title: SOAP SSL sample
 name: sample-soap-ssl
 icon:  soap
 folder: samples-soap
-group: endpoints
+group: [soap, endpoints, spring]
 description: Shows SOAP secure web service support
 categories: [samples]
 repository: citrus-samples

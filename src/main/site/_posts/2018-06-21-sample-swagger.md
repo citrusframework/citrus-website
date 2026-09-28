@@ -4,7 +4,7 @@ title: OpenAPI sample
 name: sample-swagger
 image: /img/icons/openapi.png
 folder: samples-http
-group: endpoints
+group: [http, endpoints, spring]
 description: Auto generate tests from Open API
 categories: [samples]
 repository: citrus-samples

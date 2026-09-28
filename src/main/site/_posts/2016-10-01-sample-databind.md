@@ -4,7 +4,7 @@ title: Json databind sample
 name: sample-databind
 icon:  json
 folder: samples-json
-group: validation
+group: [json, validation, spring]
 description: Shows JSON object mapping feature when sending and receiving messages
 categories: [samples]
 repository: citrus-samples

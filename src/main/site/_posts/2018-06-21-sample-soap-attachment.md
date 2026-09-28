@@ -4,7 +4,7 @@ title: SOAP attachment sample
 name: sample-soap-attachment
 icon: soap
 folder: samples-soap
-group: endpoints
+group: [soap, endpoints, spring]
 description: How to send SOAP attachments to server
 categories: [samples]
 repository: citrus-samples

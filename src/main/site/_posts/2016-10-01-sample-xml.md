@@ -4,7 +4,7 @@ title: XML sample
 name: sample-xml
 icon: code
 folder: samples-xml
-group: validation
+group: [xml, validation, spring]
 description: Shows XML validation feature with schema and Xpath validation
 categories: [samples]
 repository: citrus-samples

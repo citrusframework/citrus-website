@@ -4,7 +4,7 @@ title: SOAP WS Addressing sample
 name: sample-soap-wsaddressing
 icon:  soap
 folder: samples-soap
-group: endpoints
+group: [soap, endpoints, spring]
 description: Configure SOAP web service client and server with WSSecurity
 categories: [samples]
 repository: citrus-samples

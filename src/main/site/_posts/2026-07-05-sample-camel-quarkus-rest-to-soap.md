@@ -4,7 +4,7 @@ title: Apache Camel Quarkus - REST to SOAP Bridge
 name: camel-rest-to-soap
 image: /img/icons/camel.png
 folder: apache-camel
-group: quarkus
+group: [camel, quarkus]
 description: Testing a Camel REST-to-SOAP protocol bridge in Quarkus with Citrus HTTP client and SOAP server
 categories: [samples]
 repository: citrus-quarkus-examples

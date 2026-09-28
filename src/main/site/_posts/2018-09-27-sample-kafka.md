@@ -4,7 +4,7 @@ title: Kafka sample
 name: sample-kafka
 image: /img/icons/kafka.png
 folder: common
-group: endpoints
+group: [endpoints, spring]
 description: Shows Kafka integration
 categories: [samples]
 repository: citrus-samples

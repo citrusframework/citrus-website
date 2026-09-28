@@ -4,7 +4,7 @@ title: SQL sample
 name: sample-jdbc
 icon:  database
 folder: samples-db
-group: endpoints
+group: [endpoints, spring]
 description: Validates stored data in relational database
 categories: [samples]
 repository: citrus-samples

@@ -4,7 +4,7 @@ title: Apache Camel Quarkus - Knative Eventing with SSL/TLS
 name: camel-knative-ssl
 image: /img/icons/camel.png
 folder: apache-camel
-group: quarkus
+group: [camel, quarkus]
 description: Testing TLS-secured Knative eventing in a Camel Quarkus application using Citrus
 categories: [samples]
 repository: citrus-quarkus-examples

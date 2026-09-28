@@ -4,7 +4,7 @@ title: Http form data sample
 name: sample-http-form-data
 icon: globe
 folder: samples-http
-group: validation
+group: [http, validation, spring]
 description: Exchange form data via Http GET/POST
 categories: [samples]
 repository: citrus-samples

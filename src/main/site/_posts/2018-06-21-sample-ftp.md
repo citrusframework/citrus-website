@@ -4,7 +4,7 @@ title: FTP sample
 name: sample-ftp
 icon:  ftp
 folder: samples-ftp
-group: endpoints
+group: [ftp, endpoints]
 description: FTP client and server interaction in Citrus
 categories: [samples]
 repository: citrus-samples

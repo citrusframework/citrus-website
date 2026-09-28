@@ -4,7 +4,7 @@ title: Apache Camel Quarkus - JMS Integration Testing
 name: camel-jms
 image: /img/icons/camel.png
 folder: apache-camel
-group: quarkus
+group: [camel, quarkus]
 description: Testing Apache Camel JMS routes in Quarkus with Citrus and ActiveMQ Artemis
 categories: [samples]
 repository: citrus-quarkus-examples

@@ -4,7 +4,7 @@ title: Object marshalling sample
 name: sample-oxm
 icon: code
 folder: samples-xml
-group: validation
+group: [xml, validation, spring]
 description: Shows XML object marshalling feature when sending and receiving messages
 categories: [samples]
 repository: citrus-samples

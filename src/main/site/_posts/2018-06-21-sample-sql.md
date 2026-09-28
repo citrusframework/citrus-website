@@ -4,7 +4,7 @@ title: SQL sample
 name: sample-sql
 icon: database
 folder: samples-db
-group: validation
+group: [validation, spring]
 description: Execute SQL statements in Citrus
 categories: [samples]
 repository: citrus-samples

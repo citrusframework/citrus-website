@@ -4,7 +4,7 @@ title: Http basic auth sample
 name: sample-http-basic-auth
 icon: globe
 folder: samples-http
-group: endpoints
+group: [http, endpoints, spring]
 description: Basic authentication on client and server components
 categories: [samples]
 repository: citrus-samples

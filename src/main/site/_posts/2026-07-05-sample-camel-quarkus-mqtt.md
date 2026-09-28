@@ -4,7 +4,7 @@ title: Apache Camel Quarkus - MQTT to Kafka Routing
 name: camel-mqtt
 image: /img/icons/camel.png
 folder: apache-camel
-group: quarkus
+group: [camel, quarkus]
 description: Testing Apache Camel MQTT-to-Kafka routing with Content Based Router in Quarkus using Citrus
 categories: [samples]
 repository: citrus-quarkus-examples

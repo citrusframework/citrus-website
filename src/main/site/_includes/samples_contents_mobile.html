@@ -4,9 +4,28 @@
     <option value="/samples/">Overview</option>
     <option value="/samples/todo-app/">TodoList App</option>
     <option value="/samples/camel-eip/">Camel EIP</option>
-    {% assign sorted_posts = site.categories.samples | where_exp: "post", "post.archived != true" | sort: 'group' %}
-    {% for post in sorted_posts %}
+    {% assign all_posts = site.categories.samples | where_exp: "post", "post.archived != true" %}
+    {% assign group_names = "" %}
+    {% for post in all_posts %}
+      {% assign post_groups = post.group | join: "," | split: "," %}
+      {% assign first_group = post_groups | first %}
+      {% if group_names == "" %}
+        {% assign group_names = first_group %}
+      {% else %}
+        {% unless group_names contains first_group %}
+          {% assign group_names = group_names | append: "," | append: first_group %}
+        {% endunless %}
+      {% endif %}
+    {% endfor %}
+    {% assign sorted_groups = group_names | split: "," | sort %}
+    {% for grp in sorted_groups %}
+      {% for post in all_posts %}
+        {% assign post_groups = post.group | join: "," | split: "," %}
+        {% assign first_group = post_groups | first %}
+        {% if first_group == grp %}
     <option value="{{ post.url }}">{{ post.name }}</option>
+        {% endif %}
+      {% endfor %}
     {% endfor %}
   </select>
 </div>

@@ -4,7 +4,7 @@ title: WSDL auto generated sample
 name: sample-wsdl
 icon: soap
 folder: samples-soap
-group: endpoints
+group: [soap, endpoints, spring]
 description: Auto generate tests from WSDL
 categories: [samples]
 repository: citrus-samples

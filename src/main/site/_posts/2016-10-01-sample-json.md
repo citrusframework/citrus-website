@@ -4,7 +4,7 @@ title: Json sample
 name: sample-json
 image: /img/icons/json.png
 folder: samples-json
-group: validation
+group: [json, validation, spring]
 description: Shows Json payload validation feature with JsonPath validation
 categories: [samples]
 repository: citrus-samples

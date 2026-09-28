@@ -4,7 +4,7 @@ title: Apache Camel Quarkus - Knative Eventing with CloudEvents
 name: camel-knative
 image: /img/icons/camel.png
 folder: apache-camel
-group: quarkus
+group: [camel, quarkus]
 description: Testing Apache Camel Knative eventing and CloudEvents in Quarkus using Citrus
 categories: [samples]
 repository: citrus-quarkus-examples

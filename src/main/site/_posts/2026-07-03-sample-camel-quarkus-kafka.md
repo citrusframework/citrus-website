@@ -4,7 +4,7 @@ title: Apache Camel Quarkus - Kafka Eventing
 name: camel-kafka
 image: /img/icons/camel.png
 folder: apache-camel
-group: quarkus
+group: [camel, quarkus]
 description: Testing Apache Camel Kafka routes in Quarkus with Citrus and Testcontainers
 categories: [samples]
 repository: citrus-quarkus-examples

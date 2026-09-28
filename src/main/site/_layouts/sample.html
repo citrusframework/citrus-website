@@ -14,12 +14,11 @@ layout: samples
     <a href="{{ page.url }}" class="permalink" title="Permalink">∞</a>
   </h2>
   <div class="right">
-    {% if page.folder != "common" %}
+    {% if page.folder != nil and page.folder != "common" %}
     <a href="https://github.com/citrusframework/{{ page.repository }}/blob/master/{{ page.folder }}/{{ page.name }}" target="_blank">
       <i class="fa fa-pencil"></i>&nbsp;View source code
     </a>
-    {% endif %}
-    {% if page.folder == "common" %}
+    {% else %}
     <a href="https://github.com/citrusframework/{{ page.repository }}/blob/master/{{ page.name }}" target="_blank">
       <i class="fa fa-pencil"></i>&nbsp;View source code
     </a>

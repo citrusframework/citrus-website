@@ -4,7 +4,7 @@ title: SOAP WS sample
 name: sample-soap
 icon:  soap
 folder: samples-soap
-group: endpoints
+group: [soap, endpoints, spring]
 description: Shows SOAP web service support
 categories: [samples]
 repository: citrus-samples

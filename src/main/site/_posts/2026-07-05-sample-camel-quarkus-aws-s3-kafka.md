@@ -4,7 +4,7 @@ title: Apache Camel Quarkus - AWS S3 to Kafka Pipeline
 name: camel-aws-s3-kafka
 image: /img/icons/camel.png
 folder: apache-camel
-group: quarkus
+group: [camel, quarkus]
 description: Testing Apache Camel S3-to-Kafka routes in Quarkus with Citrus, LocalStack, Kamelet property binding, and Testcontainers
 categories: [samples]
 repository: citrus-quarkus-examples

@@ -4,7 +4,7 @@ title: Apache Camel Quarkus - CXF SOAP Client Testing
 name: camel-cxf-soap-client
 image: /img/icons/camel.png
 folder: apache-camel
-group: quarkus
+group: [camel, quarkus]
 description: Testing Apache Camel CXF SOAP client routes in Quarkus with Citrus service virtualization
 categories: [samples]
 repository: citrus-quarkus-examples

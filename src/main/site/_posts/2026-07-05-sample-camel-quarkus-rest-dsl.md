@@ -4,7 +4,7 @@ title: Apache Camel Quarkus - REST DSL Testing
 name: camel-rest-dsl
 image: /img/icons/camel.png
 folder: apache-camel
-group: quarkus
+group: [camel, quarkus]
 description: Testing Apache Camel REST DSL endpoints in Quarkus with Citrus HTTP client
 categories: [samples]
 repository: citrus-quarkus-examples

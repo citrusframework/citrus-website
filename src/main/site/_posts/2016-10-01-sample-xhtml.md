@@ -4,7 +4,7 @@ title: XHTML sample
 name: sample-xhtml
 icon: code
 folder: samples-xml
-group: validation
+group: [xml, validation]
 description: Shows XHTML validation feature
 categories: [samples]
 repository: citrus-samples
