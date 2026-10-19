@@ -1,3 +1,153 @@
+- version: 5.1.0
+  date: 2026-10-19
+  tag: v5.1.0
+  issues: https://github.com/citrusframework/citrus/issues/
+  stories: https://github.com/citrusframework/citrus/issues/
+  changes:
+    - title: Add GraphQL client and server support (citrus-graphql)
+      id: 1797
+      type: add
+      author: asuruceanu
+    - title: Add AssertJ validation module (citrus-validation-assertj)
+      id: 1782
+      type: add
+      author: asuruceanu
+    - title: Upgrade Playwright to 1.63.0 and expose missing driver capabilities
+      id: 1737
+      type: add
+      author: asuruceanu
+    - title: Add XML and YAML DSL elements for Playwright actions
+      id: 1745
+      type: add
+      author: asuruceanu
+    - title: Send HTTP requests with the browser session
+      id: 1751
+      type: add
+      author: asuruceanu
+    - title: Expose remaining Playwright driver options on their owning actions
+      id: 1759
+      type: add
+      author: asuruceanu
+    - title: Add Playwright entry to citrus-endpoint-catalog
+      id: 1775
+      type: add
+      author: asuruceanu
+    - title: Add Cucumber steps for Playwright (citrus-cucumber-playwright)
+      id: 1803
+      type: add
+      author: asuruceanu
+    - title: Add Selenium interaction actions (double click, right click, drag and drop, press keys)
+      id: 1819
+      type: add
+      author: asuruceanu
+    - title: Add Selenium verify and extract actions with variable-aware locators
+      id: 1821
+      type: add
+      author: asuruceanu
+    - title: Add Selenium frame and cookie actions with JavaScript result variable
+      id: 1830
+      type: add
+      author: asuruceanu
+    - title: Add Selenium browser options (headless, arguments, window size, timeouts)
+      id: 1833
+      type: add
+      author: asuruceanu
+    - title: Make applied test behaviors named, nested and scopeable
+      id: 1752
+      type: add
+      author: asuruceanu
+    - title: Typed results for tests with typed answers
+      id: 1757
+      type: add
+      author: asuruceanu
+    - title: Add plain-Java SqlResultSetValidator for SQL queries
+      id: 619
+      type: add
+      author: asuruceanu
+    - title: Support java.util.List in variable path expressions
+      id: 1762
+      type: add
+      author: asuruceanu
+    - title: Add allOf, anyOf, not combinator validation matchers
+      id: 1768
+      type: add
+      author: christophd
+    - title: Add greaterThanOrEqualTo and lowerThanOrEqualTo validation matchers
+      id: 1767
+      type: add
+      author: asuruceanu
+    - title: Name the path expression when a value matcher fails
+      id: 1784
+      type: add
+      author: asuruceanu
+    - title: Add validate(BiConsumer) to CamelVerifyRouteStatsAction for custom route stats validation
+      id: 1765
+      type: add
+      author: christophd
+    - title: Preserve flow report history across multiple test runs
+      id: 1825
+      type: add
+      author: asuruceanu
+    - title: Fork a JVM for the Playwright browser install
+      id: 1714
+      type: fix
+      author: asuruceanu
+    - title: Fix Selenium action bugs (start-page NPE, find error handling, JS error collection, cache clearing)
+      id: 1812
+      type: fix
+      author: asuruceanu
+    - title: Fix XML test DSL schema compilation with strict XSD validators
+      id: 1791
+      type: fix
+      author: asuruceanu
+    - title: Remove JBang citrus-application.properties to avoid uber-jar collision
+      id: 1761
+      type: fix
+      author: christophd
+    - title: Replace static final fields with dynamic accessor methods in CitrusSettings
+      id: 1771
+      type: fix
+      author: christophd
+    - title: Expose strict mode on JsonMessageValidationContextBuilder interface
+      id: 1785
+      type: fix
+      author: christophd
+    - title: Mark send action done when message creation fails
+      id: 1798
+      type: fix
+      author: asuruceanu
+    - title: Upgrade javassist to 3.33.0-GA for Java 9+ compatibility
+      id: 1811
+      type: fix
+      author: christophd
+    - title: Isolate TestContext per dynamic test in JUnitCitrusTest
+      id: 1816
+      type: fix
+      author: christophd
+    - title: Stabilize CamelRouteIT with seda handoff
+      id: 1720
+      type: fix
+      author: asuruceanu
+    - title: Correct agent command option descriptions
+      id: 1824
+      type: fix
+      author: asuruceanu
+    - title: Omit default Content-Type on bodyless HTTP requests
+      id: 1826
+      type: fix
+      author: asuruceanu
+    - title: Resolve secured-connection reference by its own name
+      id: 1835
+      type: fix
+      author: asuruceanu
+    - title: Upgrade Selenium HtmlUnit browser to htmlunit3-driver
+      id: 1801
+      type: update
+      author: asuruceanu
+    - title: Align dependency versions with Apache Camel 4.23.0
+      type: update
+      author: christophd
+
 - version: 5.0.2
   date: 2026-09-25
   tag: v5.0.2
