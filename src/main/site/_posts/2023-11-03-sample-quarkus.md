@@ -3,7 +3,7 @@ layout: sample
 title: Quarkus sample
 name: sample-quarkus
 image: /img/icons/quarkus.png
-folder: demo/sample-quarkus
+folder: showcases/quarkus
 group: [demo, quarkus]
 description: How to verify Quarkus applications with Citrus
 categories: [samples]

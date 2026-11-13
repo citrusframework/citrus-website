@@ -2,6 +2,7 @@
 layout: sample
 title: Annotation configuration sample
 name: sample-annotation-config
+folder: core/annotation-config
 group: configuration
 description: Use Java annotation configuration
 categories: [samples]

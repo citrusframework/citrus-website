@@ -2,6 +2,7 @@
 layout: sample
 title: Docker sample
 name: sample-docker
+folder: connectors/docker
 image: /img/icons/docker.png
 group: connectors
 description: Shows how to use Citrus within Docker

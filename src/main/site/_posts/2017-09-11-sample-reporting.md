@@ -2,6 +2,7 @@
 layout: sample
 title: Reporting sample
 name: sample-reporting
+folder: core/reporting
 group: configuration
 description: Add custom test reporting
 categories: [samples]

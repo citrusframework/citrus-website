@@ -2,6 +2,7 @@
 layout: sample
 title: JMS sample
 name: sample-jms
+folder: endpoints/jms
 image: /img/icons/activemq.png
 group: [endpoints, jms, spring]
 description: Shows JMS message broker connectivity
@@ -62,7 +63,7 @@ The JMS operation is asynchronous so we do not get any response back. Next actio
 entry has been added successfully. The XPath expression validation makes sure the the last todo entry displayed is the todo item that 
 we have added before in the test.
 
-You can read about http and XPath validation features in the sample [xhtml](../sample-xhtml/README.md)
+You can read about http and XPath validation features in the sample [xhtml](/samples/xhtml/)
 
 In order to demonstrate the receive operation on a JMS queue in Citrus we can trigger a JMS report message on the todo-app server via Http.
 

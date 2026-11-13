@@ -2,6 +2,7 @@
 layout: sample
 title: Test behavior sample
 name: sample-behavior
+folder: core/behaviors
 group: miscellaneous
 description: Add custom test behavior
 categories: [samples]

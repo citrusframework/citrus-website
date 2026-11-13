@@ -4,7 +4,7 @@ title: Http samples
 name: samples-http
 icon: globe
 group: http
-folder: samples-http
+folder: endpoints/http
 description: Samples regarding Http protocol support
 categories: [overview]
 repository: citrus-samples

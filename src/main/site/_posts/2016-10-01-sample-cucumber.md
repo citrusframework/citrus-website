@@ -3,7 +3,7 @@ layout: sample
 title: Cucumber sample
 name: sample-cucumber
 image: /img/icons/cucumber.png
-folder: samples-cucumber/sample-cucumber
+folder: runtimes/cucumber
 group: demo
 description: Shows BDD integration with Cucumber
 categories: [samples]

@@ -6,7 +6,7 @@ image: /img/icons/json.png
 group: json
 description: Samples using Json validation capabilities
 categories: [overview]
-folder: samples-json
+folder: validation/json
 repository: citrus-samples
 permalink: /samples/overview/json/
 ---

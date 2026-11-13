@@ -3,7 +3,7 @@ layout: sample
 title: SOAP WS sample
 name: sample-soap
 icon:  soap
-folder: samples-soap/sample-soap
+folder: endpoints/ws/basic
 group: [soap, endpoints, spring]
 description: Shows SOAP web service support
 categories: [samples]

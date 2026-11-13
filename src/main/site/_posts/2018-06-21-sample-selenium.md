@@ -2,6 +2,7 @@
 layout: sample
 title: Selenium sample
 name: sample-selenium
+folder: connectors/selenium
 image: /img/icons/selenium.png
 group: demo
 description: Use Selenium for UI testing

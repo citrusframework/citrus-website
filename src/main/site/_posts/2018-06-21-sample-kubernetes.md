@@ -2,6 +2,7 @@
 layout: sample
 title: Kubernetes sample
 name: sample-kubernetes
+folder: connectors/kubernetes
 image: /img/icons/kubernetes.png
 group: connectors
 description: Run tests in Kubernetes

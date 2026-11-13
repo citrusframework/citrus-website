@@ -2,6 +2,7 @@
 layout: sample
 title: Gradle build sample
 name: sample-gradle
+folder: build-tools/gradle
 image: /img/icons/gradle.png
 group: miscellaneous
 description: Uses Gradle build to execute tests

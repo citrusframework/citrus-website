@@ -3,7 +3,7 @@ layout: sample
 title: TestNG sample
 name: sample-testng
 image: /img/icons/testng.png
-folder: samples-testng/sample-testng
+folder: runtimes/testng
 group: [runtimes, testng]
 description: Use TestNG test framework
 categories: [samples]

@@ -3,7 +3,7 @@ layout: sample
 title: SCP sample
 name: sample-scp
 icon: ftp
-folder: samples-ftp/sample-scp
+folder: endpoints/ftp/scp
 group: [endpoints, ftp]
 description: SCP client and server interaction in Citrus
 categories: [samples]

@@ -6,7 +6,7 @@ icon: soap
 group: soap
 description: Samples with SOAP WebServices client and server
 categories: [overview]
-folder: samples-soap
+folder: endpoints/ws
 repository: citrus-samples
 permalink: /samples/overview/soap/
 ---

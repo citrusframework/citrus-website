@@ -2,6 +2,7 @@
 layout: sample
 title: Apache Camel sample
 name: sample-camel-context
+folder: endpoints/camel
 image: /img/icons/camel.png
 group: [demo, camel]
 description: Interact with Apache Camel

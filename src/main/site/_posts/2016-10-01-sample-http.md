@@ -3,7 +3,7 @@ layout: sample
 title: Http REST sample
 name: sample-http
 icon: globe
-folder: samples-http/sample-http
+folder: endpoints/http/basic
 group: [http, endpoints, spring]
 description: Shows REST API calls as a client
 categories: [samples]

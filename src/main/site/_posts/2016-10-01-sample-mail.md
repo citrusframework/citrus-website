@@ -2,6 +2,7 @@
 layout: sample
 title: Mail sample
 name: sample-mail
+folder: endpoints/mail
 icon:  mail
 group: endpoints
 description: Shows mail server activities in Citrus
