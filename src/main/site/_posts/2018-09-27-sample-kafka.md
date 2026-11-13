@@ -2,6 +2,7 @@
 layout: sample
 title: Kafka sample
 name: sample-kafka
+folder: endpoints/kafka
 image: /img/icons/kafka.png
 group: [endpoints, kafka, spring]
 description: Shows Kafka integration

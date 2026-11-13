@@ -3,7 +3,7 @@ layout: sample
 title: Json sample
 name: sample-json
 image: /img/icons/json.png
-folder: samples-json/sample-json
+folder: validation/json/json
 group: [validation, json, spring]
 description: Shows Json payload validation feature with JsonPath validation
 categories: [samples]

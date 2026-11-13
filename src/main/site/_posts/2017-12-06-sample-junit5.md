@@ -3,7 +3,7 @@ layout: sample
 title: JUnit5 sample
 name: sample-junit5
 image:  /img/icons/junit4.png
-folder: samples-junit/sample-junit5
+folder: runtimes/junit-jupiter
 group: [runtimes, junit]
 description: Use JUnit5 test framework
 categories: [samples]

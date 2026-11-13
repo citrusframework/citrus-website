@@ -4,7 +4,7 @@ title: Ftp samples
 name: samples-ftp
 icon: ftp
 group: ftp
-folder: samples-ftp
+folder: endpoints/ftp
 description: Samples regarding Ftp protocol support
 categories: [overview]
 repository: citrus-samples

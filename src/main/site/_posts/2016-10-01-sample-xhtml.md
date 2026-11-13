@@ -3,7 +3,7 @@ layout: sample
 title: XHTML sample
 name: sample-xhtml
 icon: code
-folder: samples-xml/sample-xhtml
+folder: validation/xml/xhtml
 group: [validation, xml, spring]
 description: Shows XHTML validation feature
 categories: [samples]

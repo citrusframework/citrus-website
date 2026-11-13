@@ -3,7 +3,7 @@ layout: sample
 title: XML sample
 name: sample-xml
 icon: code
-folder: samples-xml/sample-xml
+folder: validation/xml/xml
 group: [validation, xml, spring]
 description: Shows XML validation feature with schema and Xpath validation
 categories: [samples]

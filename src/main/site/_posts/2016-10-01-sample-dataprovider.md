@@ -2,7 +2,7 @@
 layout: sample
 title: TestNG data provider sample
 name: sample-dataprovider
-folder: samples-testng/sample-dataprovider
+folder: runtimes/testng-dataprovider
 group: [runtimes, testng]
 description: Shows TestNG data provider usage in Citrus
 categories: [samples]

@@ -2,6 +2,7 @@
 layout: sample
 title: RMI sample
 name: sample-rmi
+folder: endpoints/rmi
 group: endpoints
 description: Shows Remote Method Invocation support
 categories: [samples]

@@ -3,7 +3,7 @@ layout: sample
 title: Json databind sample
 name: sample-databind
 icon:  json
-folder: samples-json/sample-databind
+folder: validation/json/databind
 group: [validation, json, spring]
 description: Shows JSON object mapping feature when sending and receiving messages
 categories: [samples]

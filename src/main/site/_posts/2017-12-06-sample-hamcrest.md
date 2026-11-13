@@ -2,6 +2,7 @@
 layout: sample
 title: Hamcrest matcher sample
 name: sample-hamcrest
+folder: validation/hamcrest
 group: validation
 description: Use Hamcrest matchers
 categories: [samples]

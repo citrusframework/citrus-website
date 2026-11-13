@@ -2,6 +2,7 @@
 layout: sample
 title: Dynamic endpoints sample
 name: sample-dynamic-endpoints
+folder: core/dynamic-endpoints
 group: endpoints
 description: Shows dynamic endpoint component usage
 categories: [samples]

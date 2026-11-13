@@ -2,6 +2,7 @@
 layout: sample
 title: Java config sample
 name: sample-javaconfig
+folder: core/java-config
 group: configuration
 description: Uses pure Java POJOs for configuration
 categories: [samples]

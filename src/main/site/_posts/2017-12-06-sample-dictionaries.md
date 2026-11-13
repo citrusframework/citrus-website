@@ -2,6 +2,7 @@
 layout: sample
 title: Data dictionary sample
 name: sample-dictionaries
+folder: core/data-dictionaries
 group: miscellaneous
 description: Add data dictionaries
 categories: [samples]

@@ -3,7 +3,7 @@ layout: sample
 title: JUnit sample
 name: sample-junit
 image: /img/icons/junit.png
-folder: samples-junit/sample-junit
+folder: runtimes/junit4
 group: [runtimes, junit]
 description: Use JUnit test framework
 categories: [samples]
