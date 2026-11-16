@@ -6,7 +6,8 @@ image: /img/icons/jbang.png
 group: demo
 description: Prototype Citrus tests in minutes with JBang
 categories: [samples]
-repository: citrus-samples
+repository: citrus
+folder: connectors/citrus-jbang-connector
 permalink: /samples/jbang/
 ---
 

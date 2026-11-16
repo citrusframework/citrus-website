@@ -87,9 +87,9 @@ name: sample-overview
           <td><a href="{{ post.permalink }}">{{ post.name }}</a></td>
           <td style="text-align:center;">{{ post.description }}</td>
           {% if post.folder != nil %}
-          <td style="text-align:center;"><a href="https://github.com/citrusframework/{{ post.repository }}/blob/master/{{ post.folder }}" target="_blank"><i class="fa fa-pencil"></i></a></td>
+          <td style="text-align:center;"><a href="https://github.com/citrusframework/{{ post.repository }}/tree/main/{{ post.folder }}" target="_blank"><i class="fa fa-pencil"></i></a></td>
           {% else %}
-          <td style="text-align:center;"><a href="https://github.com/citrusframework/{{ post.repository }}/blob/master/{{ post.name }}" target="_blank"><i class="fa fa-pencil"></i></a></td>
+          <td style="text-align:center;"><a href="https://github.com/citrusframework/{{ post.repository }}/tree/main/{{ post.name }}" target="_blank"><i class="fa fa-pencil"></i></a></td>
           {% endif %}
         </tr>
           {% endif %}
@@ -101,7 +101,7 @@ name: sample-overview
 
   <div class="grid">
     <p>Pick your sample application for try out and got to the respective folder. Each sample is executable on your host. You just need Maven, Java and a git client.
-      Refer to the detailed instructions in the sample <b><a href="https://github.com/citrusframework/citrus-samples/blob/master/README.md" target="_blank">README</a></b>.</p>
+      Refer to the detailed instructions in the sample <b><a href="https://github.com/citrusframework/citrus-samples/blob/main/README.md" target="_blank">README</a></b>.</p>
 
     <p>Of course, we appreciate any kind of help that you can give us in order to make things easy for Citrus users. So if you have
       a sample worth reading for others please let us know. Also, if you are missing a sample because you do not know how to accomplish the Citrus
